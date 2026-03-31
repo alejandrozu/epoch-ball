@@ -1,7 +1,7 @@
 # Research Context
 
 - Stage: research_loop
-- Note: session 7, starting attempt_007
+- Note: session 7, attempt_007 done; best=attempt_003
 - Agent: ARC1
 - Model: gpt-5.4
 - Reasoning effort: xhigh
@@ -10,13 +10,13 @@
 - Semantic Scholar auth token available: yes
 - Best score: 0.56
 - Ready for paper: no
-- Current hypothesis: A new route to an explicit smooth Hamiltonian is to approximate the explicit square-slot witness by a structured composition of exact kick and drift Hamiltonian segments, using source-indexed smooth Gaussian kicks and gl
+- Current hypothesis: A new topological/origami route may reach arbitrary 1-epsilon density by subdividing each source moment triangle Delta(1) into m^2 tiny lattice triangles and reassigning them piecewise-affinely into tiny target triangles
 
 ## Latest Summary
 
-- Worked: Implemented src/witness_guided_kick_drift.py, a new witness-guided Hamiltonian generator based on exact alternating kick and drift segments with smooth time windows. The script emits a real smooth Hamiltonian.py and supp
-- Did not work: The family failed decisively as a packing mechanism. The better of the two discrete smoke fits, using a radius-only loss, only reached surrogate ratio 0.00034465526940376647. When converted into the emitted smooth Hamilt
-- Next step: Drop separable kick-drift witness fitting. The next family should encode the branch geometry explicitly, most likely through an origami/folding or multi-chart generating-function construction rather than another smooth b
+- Worked: Implemented src/origami_moment_tiling.py, a new piecewise toric origami family based on subdividing each source moment triangle into m^2 tiny triangles and mapping them by affine symplectic toric charts into tiny target 
+- Did not work: The family fails the correctness requirement because the current origami assignment is not continuous. For every nontrivial k=10 case tested, the continuity audit reported zero continuous internal source adjacencies on b
+- Next step: Keep the origami direction but replace the arbitrary tiny-triangle permutation by a continuity-preserving simplicial origami assignment, where each ball maps to a connected target triangulated disk with a globally consis
 
 ## Strongest Current Path
 

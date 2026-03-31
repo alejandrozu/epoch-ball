@@ -1,7 +1,7 @@
 {
   "attempt_id": "attempt_007",
   "created_at": "2026-03-31T16:10:29.726691+00:00",
-  "updated_at": "2026-03-31T16:23:23+00:00",
+  "updated_at": "2026-03-31T16:29:12.348027+00:00",
   "hypothesis": "A new topological/origami route may reach arbitrary 1-epsilon density by subdividing each source moment triangle Delta(1) into m^2 tiny lattice triangles and reassigning them piecewise-affinely into tiny target triangles inside Delta(ceil(m sqrt(k)) / m). If the folding can later be made continuous and then smoothed, this would give a natural epsilon-dependent family with near-full density.",
   "score": 0.55,
   "keep": true,
@@ -10,7 +10,7 @@
   "worked": "Implemented src/origami_moment_tiling.py, a new piecewise toric origami family based on subdividing each source moment triangle into m^2 tiny triangles and mapping them by affine symplectic toric charts into tiny target triangles inside Delta(n / m) with n = ceil(m sqrt(k)). The exact density formula k m^2 / n^2 was confirmed numerically: for k=10, m=5 the exact ratio is 0.9765625000000001, and for the epsilon-driven run eps=0.01 the script chooses m=6, n=19 and achieves exact ratio 0.9972299168975068. The epsilon branch remains computationally practical: for k=10, eps=1e-4 it found m=117, n=370 with exact ratio 0.9999269539810081. Saved reproducing artifacts and sweeps under results/research_loop/.",
   "did_not_work": "The family fails the correctness requirement because the current origami assignment is not continuous. For every nontrivial k=10 case tested, the continuity audit reported zero continuous internal source adjacencies on ball 0: 0/30 for m=5, 0/45 for the eps=0.01 case m=6, and still 0/20358 for the eps=1e-4 case m=117. The fold jumps remain macroscopic instead of shrinking, with max edge-midpoint jump 0.9219544457292888 at m=5, 1.1843892002959913 at m=6, and 1.1511284867665776 at m=117. Because the construction is only a discontinuous piecewise toric map, it does not produce the required smooth Hamiltonian or even a continuous symplectic embedding.",
   "next_step": "Keep the origami direction but replace the arbitrary tiny-triangle permutation by a continuity-preserving simplicial origami assignment, where each ball maps to a connected target triangulated disk with a globally consistent vertex map. The next experiment should search triangular-grid partitions or graph embeddings that preserve edge compatibility before attempting any smoothing or Hamiltonian realization.",
-  "patterns_noticed": "Several strong patterns emerged. First, the exact radius and exact ratio match the combinatorial formula essentially to machine precision across all tested runs, so the density side of the construction is internally consistent. Second, the fold-line defect is structural rather than a discretization artifact: in the k=10 sweep over m=2 through 12, every nontrivial case had continuous_adjacencies_ball0 = 0, while the mean edge-midpoint jump stayed in a narrow O(1) band around 0.42 to 0.48 and the max jump stayed around 0.69 to 1.18. Third, this non-decay persists along the epsilon-driven branch: at eps=0.001 the method chooses m=43 and still has mean jump 0.4642697897624856, and at eps=0.0001 it chooses m=117 with mean jump 0.46481708065374355. Fourth, the sampled boundary radius can underestimate the exact radius once m is large, causing sampled ratios above 1; this is a diagnostic that random boundary sampling misses the worst discontinuity points, so the exact combinatorial audit is more trustworthy than finite sampling for this family. Fifth, the minimal m selected by the epsilon branch shows an arithmetic oscillation tied to rational approximants of sqrt(10): eps=0.01 and eps=0.005 both stop at m=6, eps=0.001 jumps to m=43, and eps=0.0001 jumps to m=117. Finally, the trivial perfect-square control k=16, eps=0.01 reduces to m=1 and ratio 1.0 with no internal edges, confirming that the continuity audit itself is behaving sensibly rather than misreporting every case.",
+  "patterns_noticed": "Several strong patterns emerged. First, the exact radius and exact ratio match the combinatorial formula essentially to machine precision across all tested runs, so the density side of the construction is internally consistent. Second, the fold-line defect is structural rather than a discretization artifact: in the k=10 sweep over m=2 through 12, every nontrivial case had continuous_adjacencies_ball0 = 0, while the mean edge-midpoint jump stayed in a narrow O(1) band around 0.42 to 0.48 and the max jump stayed around 0.69 to 1.18. Third, this non-decay persists along the epsilon-driven branch: at eps=0.001 the method chooses m=43 and still has mean jump 0.4642697897624856, and at eps=0.0001 it chooses m=117 with mean jump 0.46481708065374355. Fourth, the sampled boundary radius can underestimate the exact radius once m is large, causing sampled ratios above 1; this is a diagnostic that random boundary sampling misses the worst discontinuity points, so the exact combinatorial audit is more trustworthy than finite sampling for this family. Fifth, the minimal m selected by the epsilon branch shows an arithmetic oscillation tied to rational approximants of sqrt(10): eps=0.01 and eps=0.005 both stop at m=6, eps=0.001 jumps to m=43, and eps=0.0001 jumps to m=117. Sixth, connectivity of the assigned target sets is not the main obstruction: in the saved connectivity audit, 5 of 10 ball blocks are already connected at m=5 and 8 of 10 are connected at m=6, yet the continuity count still stays at zero. That narrows the failure to incompatible local triangle gluings and inconsistent vertex images rather than mere fragmentation of the target region. Finally, the trivial perfect-square control k=16, eps=0.01 reduces to m=1 and ratio 1.0 with no internal edges, confirming that the continuity audit itself is behaving sensibly rather than misreporting every case.",
   "commands_run": [
     "python -m py_compile src/origami_moment_tiling.py",
     "python src/origami_moment_tiling.py --k 10 --m 5 --n-pts 500",
@@ -22,7 +22,8 @@
     "python src/origami_moment_tiling.py --k 10 --eps 0.01 --n-pts 300 > results/research_loop/attempt_007_origami_k10_eps0.01.json",
     "python src/origami_moment_tiling.py --k 16 --eps 0.01 --n-pts 300 > results/research_loop/attempt_007_origami_k16_eps0.01.json",
     "python - <<'PY' > results/research_loop/attempt_007_origami_sweep_k10.json ... PY",
-    "python - <<'PY' > results/research_loop/attempt_007_origami_eps_scaling_k10.json ... PY"
+    "python - <<'PY' > results/research_loop/attempt_007_origami_eps_scaling_k10.json ... PY",
+    "python - <<'PY' > results/research_loop/attempt_007_origami_connectivity_k10.json ... PY"
   ],
   "files_changed": [
     "src/origami_moment_tiling.py",
@@ -31,6 +32,7 @@
     "results/research_loop/attempt_007_origami_k16_eps0.01.json",
     "results/research_loop/attempt_007_origami_sweep_k10.json",
     "results/research_loop/attempt_007_origami_eps_scaling_k10.json",
+    "results/research_loop/attempt_007_origami_connectivity_k10.json",
     "results/research_loop/attempt_007_findings.md",
     "results/research_loop/attempts/attempt_007.json",
     "results/research_loop/state.json",
@@ -44,17 +46,21 @@
     "results/research_loop/attempt_007_origami_k16_eps0.01.json",
     "results/research_loop/attempt_007_origami_sweep_k10.json",
     "results/research_loop/attempt_007_origami_eps_scaling_k10.json",
+    "results/research_loop/attempt_007_origami_connectivity_k10.json",
     "results/research_loop/attempt_007_findings.md"
   ],
   "evaluation": {
     "k10_m5_exact_ratio": 0.9765625000000001,
     "k10_m5_sampled_ratio": 0.9767028519264672,
+    "k10_m5_connected_target_blocks": 5,
     "k10_eps0.01_m": 6,
     "k10_eps0.01_exact_ratio": 0.9972299168975068,
     "k10_eps0.01_continuous_adjacencies_ball0": 0,
     "k10_eps0.01_source_adjacencies_ball0": 45,
     "k10_eps0.01_max_edge_midpoint_jump_ball0": 1.1843892002959913,
     "k10_eps0.01_mean_edge_midpoint_jump_ball0": 0.45166567821749953,
+    "k10_m6_connected_target_blocks": 8,
+    "k10_m6_continuity_zero_despite_connected_blocks": true,
     "k10_eps1e-4_m": 117,
     "k10_eps1e-4_exact_ratio": 0.9999269539810081,
     "k10_eps1e-4_continuous_adjacencies_ball0": 0,
@@ -66,5 +72,5 @@
   },
   "notes": "No new literature artifact was saved in this session. The decisive signal came from direct repo experiments. One important caution is that sampled_ratio can exceed exact_ratio for this discontinuous family because random boundary sampling may miss the worst fold points; the exact combinatorial radius should therefore be treated as the authoritative density measure.",
   "exit_code": 0,
-  "elapsed_seconds": 718.27
+  "elapsed_seconds": 1119.98
 }

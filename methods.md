@@ -42,6 +42,13 @@
 - Core idea: replace generic global polynomials by a composition of exact kick and drift Hamiltonian segments, fit the segment parameters against the explicit square-slot witness on sampled boundary points, and emit a real smooth `Hamiltonian.py`
 - Outcome: failed as a viable Hamiltonian family; although the emitted Hamiltonian was smooth and fast enough to evaluate, the best discrete surrogate ratio was only about `3.45e-4` and the audited RK4 ratio dropped further to about `6.60e-5`, far below even the repository's original poor polynomial baseline
 
+## attempt_007
+
+- Family: topological origami moment-tiling by tiny-triangle reassignment in toric coordinates
+- Mathematical modes: topological, discrete <-> continuous mapping, combinatorial
+- Core idea: subdivide each source moment triangle into `m^2` tiny lattice triangles and map them piecewise-affinely into tiny target triangles inside `Delta(ceil(m sqrt(k)) / m)`, using local affine symplectic toric charts on each tiny triangle
+- Outcome: partial but invalid as a Hamiltonian solution; the exact density formula was validated up to ratio `0.9999269539810081` for `k=10`, `eps=1e-4`, but every nontrivial `k=10` test had zero continuous internal source adjacencies and `O(1)` fold jumps, so the current assignment is not even continuous
+
 ## Next family should avoid
 
 - Another global polynomial or neural-style optimization ansatz
@@ -50,7 +57,8 @@
 - Another purely affine local-piece or rectangular lamination ansatz
 - Another generic slit-chart or exterior-log-polar rectangle-packing ansatz that replaces the toric action variables by arbitrary area coordinates and then applies the same square-slot recipe
 - Another separable kick-drift boundary-fitting ansatz that tries to learn the branch structure of the toric witness through source-indexed Gaussian kicks and global drifts
+- Another arbitrary tiny-triangle origami permutation that ignores global vertex and edge compatibility across fold lines
 
 ## Most promising next family
 
-- An explicit symplectic folding / origami family with multiple geometric charts or sector cuts, or another generating-function construction that handles the toric branch data geometrically instead of fitting it through generic smooth coordinates or separable flow factorizations
+- A continuity-preserving simplicial origami family: search for connected target subcomplexes or triangular-grid graph embeddings whose per-triangle affine symplectic charts glue with a globally consistent vertex map, or another generating-function construction that enforces this compatibility directly

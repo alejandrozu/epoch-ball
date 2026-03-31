@@ -1,7 +1,7 @@
 {
   "version": "1.1",
   "created_at": "2026-03-31T14:22:51.477190+00:00",
-  "updated_at": "2026-03-31T16:10:29.729409+00:00",
+  "updated_at": "2026-03-31T16:29:12.348552+00:00",
   "status": "running",
   "current_stage": "research_loop",
   "attempt_count": 7,
@@ -10,14 +10,14 @@
   "current_attempt_id": "attempt_007",
   "best_attempt_id": "attempt_003",
   "best_score": 0.56,
-  "current_hypothesis": "A new route to an explicit smooth Hamiltonian is to approximate the explicit square-slot witness by a structured composition of exact kick and drift Hamiltonian segments, using source-indexed smooth Gaussian kicks and global smooth drifts instead of the repository's old global polynomial ansatz.",
+  "current_hypothesis": "A new topological/origami route may reach arbitrary 1-epsilon density by subdividing each source moment triangle Delta(1) into m^2 tiny lattice triangles and reassigning them piecewise-affinely into tiny target triangles inside Delta(ceil(m sqrt(k)) / m). If the folding can later be made continuous and then smoothed, this would give a natural epsilon-dependent family with near-full density.",
   "ready_for_paper": false,
-  "stop_reason": "Attempt 006 ruled out the witness-guided smooth kick-drift factorization: the emitted Hamiltonian was smooth and fast, but its audited k=10 ratio was only about 6.60e-05, so separable kick-drift fitting does not capture the toric branch geometry.",
+  "stop_reason": "Attempt 007 verified that tiny-triangle origami reassignment can achieve exact near-full combinatorial density, but every nontrivial k=10 case had zero continuous internal edges and O(1) fold jumps, so the current piecewise map is not a valid smooth Hamiltonian solution.",
   "paper_generated": false,
   "review_verdict": null,
   "last_summary": {
-    "worked": "Implemented src/witness_guided_kick_drift.py, a new witness-guided Hamiltonian generator based on exact alternating kick and drift segments with smooth time windows. The script emits a real smooth Hamiltonian.py and supports training against the explicit square-slot witness from attempt_003. The emitted Hamiltonian benchmarked at about 0.340 seconds for a batch of 5000 points, well within the runtime constraint for single calls. Saved the training smoke-fit summaries and the end-to-end audit under results/research_loop/.",
-    "did_not_work": "The family failed decisively as a packing mechanism. The better of the two discrete smoke fits, using a radius-only loss, only reached surrogate ratio 0.00034465526940376647. When converted into the emitted smooth Hamiltonian.py and audited with RK4, the ratio dropped further to 6.601766155665936e-05 at radius 19.72808660462524 for k=10. That audited ratio is only about 0.53% of the repository's original polynomial baseline from attempt_001 and about 0.0106% of the toric square witness ratio 0.625.",
-    "next_step": "Drop separable kick-drift witness fitting. The next family should encode the branch geometry explicitly, most likely through an origami/folding or multi-chart generating-function construction rather than another smooth boundary-fitting flow factorization."
+    "worked": "Implemented src/origami_moment_tiling.py, a new piecewise toric origami family based on subdividing each source moment triangle into m^2 tiny triangles and mapping them by affine symplectic toric charts into tiny target triangles inside Delta(n / m) with n = ceil(m sqrt(k)). The exact density formula k m^2 / n^2 was confirmed numerically: for k=10, m=5 the exact ratio is 0.9765625000000001, and for the epsilon-driven run eps=0.01 the script chooses m=6, n=19 and achieves exact ratio 0.9972299168975068. The epsilon branch remains computationally practical: for k=10, eps=1e-4 it found m=117, n=370 with exact ratio 0.9999269539810081. Saved reproducing artifacts and sweeps under results/research_loop/.",
+    "did_not_work": "The family fails the correctness requirement because the current origami assignment is not continuous. For every nontrivial k=10 case tested, the continuity audit reported zero continuous internal source adjacencies on ball 0: 0/30 for m=5, 0/45 for the eps=0.01 case m=6, and still 0/20358 for the eps=1e-4 case m=117. The fold jumps remain macroscopic instead of shrinking, with max edge-midpoint jump 0.9219544457292888 at m=5, 1.1843892002959913 at m=6, and 1.1511284867665776 at m=117. Because the construction is only a discontinuous piecewise toric map, it does not produce the required smooth Hamiltonian or even a continuous symplectic embedding.",
+    "next_step": "Keep the origami direction but replace the arbitrary tiny-triangle permutation by a continuity-preserving simplicial origami assignment, where each ball maps to a connected target triangulated disk with a globally consistent vertex map. The next experiment should search triangular-grid partitions or graph embeddings that preserve edge compatibility before attempting any smoothing or Hamiltonian realization."
   }
 }
