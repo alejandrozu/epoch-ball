@@ -1,21 +1,45 @@
 {
   "attempt_id": "attempt_014",
   "created_at": "2026-03-31T18:53:57.904423+00:00",
-  "updated_at": "2026-03-31T18:53:57.904433+00:00",
-  "hypothesis": "",
-  "score": null,
-  "keep": false,
+  "updated_at": "2026-03-31T19:02:33.000000+00:00",
+  "hypothesis": "A local boundary-uniqueness obstruction may upgrade attempt 013 from a bounded search failure to a general rigid-family impossibility: if an internal seam edge of a rigid piecewise-affine origami lands on `x1=0` or `x2=0` in the target simplex, then the two unit source triangles adjacent to that seam edge are forced to map to the same unique target unit triangle. If this is correct, the entire rigid axis-seam strategy is impossible, not just the two-piece straight-cut cases exhaustively searched in attempt 013.",
+  "score": 0.62,
+  "keep": true,
   "ready_for_paper": false,
-  "paper_readiness_reason": "",
-  "worked": "",
-  "did_not_work": "",
-  "next_step": "",
-  "patterns_noticed": "",
-  "commands_run": [],
-  "files_changed": [],
-  "artifacts": [],
-  "evaluation": {},
-  "notes": "",
-  "exit_code": null,
-  "elapsed_seconds": null
+  "paper_readiness_reason": "This attempt adds the strongest repo-local obstruction so far on the post-attempt-012 axis-seam line. The new script proves and validates the local boundary-edge uniqueness mechanism, then audits all 81 cuts in the saved attempt-013 search artifact and shows every one satisfies the theorem's forced-overlap bound. It is still not paper-ready because it remains a negative result on one broad rigid family, does not address non-rigid or base-mixing local models, and does not produce a constructive Hamiltonian.",
+  "worked": "Implemented `src/axis_seam_local_obstruction.py`, a proof-style local obstruction script for rigid axis seams. The script enumerates the unit-triangle incidence structure of the target simplex, verifies exactly up to side 40 that every unit boundary edge on `x1=0`, `x2=0`, or the diagonal has one incident unit triangle while interior edges have two, and verifies up to axis-path length 20 that a boundary path of length `L` on `x1=0` or `x2=0` meets `L` distinct incident unit triangles. It then audits the saved search artifact `results/research_loop/attempt_013_axis_seam_two_piece_search.json` and checks all 81 searched cuts from attempt 013 against the resulting lower bound `min_overlap_count >= seam_length_edges`. Every cut passes, and the artifact still has total valid pair count 0. The saved report is `results/research_loop/attempt_014_axis_seam_local_obstruction.json`.",
+  "did_not_work": "This broader rigid family still does not make the proposed solution correct. Attempt 014 shows that any rigid internal seam mapped to a true coordinate axis in the target simplex forces overlap immediately, edge-by-edge. So the entire rigid axis-seam origami strategy is impossible, not merely the specific two-piece straight-cut instances from attempt 013. Coordinate-axis seams were the only algebraically plausible place for derivative mismatch after attempt 012, but they are now ruled out geometrically for rigid piecewise-affine target sheets.",
+  "next_step": "Leave rigid axis-seam origami entirely. The next live family must either use non-rigid within-piece maps, a non-fiber-preserving/base-mixing local model, or a construction whose discontinuity set does not map to boundary edges of the target simplex.",
+  "patterns_noticed": "The key new pattern is local and exact. Every unit boundary edge of the triangular target simplex has only one incident unit triangle; this is true not only on `x1=0` and `x2=0` but also on the diagonal boundary. Interior edges have exactly two incident unit triangles. Combining that with attempt 012 yields a sharp separation: geometrically, any target boundary seam forces sheet coincidence because the boundary edge has only one adjacent triangle, while symplectically, only the coordinate axes are even eligible to hide derivative mismatch because only there does a torus factor collapse. So the coordinate axes are the only algebraically legal seams, yet they are still geometrically impossible for rigid origami. The path-level version is equally clean: a boundary axis path of length `L` meets `L` distinct unit triangles, so a rigid seam of length `L` on `x1=0` or `x2=0` forces at least `L` overlapping target triangles. When audited against attempt 013, every searched cut obeys this lower bound exactly or with slack; the slack ranges from 0 up to 16 in the saved artifact, with the tight cases occurring at the shallow one-edge cuts. This upgrades the search signal into a general rigid-family obstruction: any future piecewise-affine family that still relies on rigid target triangles and internal seams on boundary edges is structurally doomed, regardless of how many pieces it uses.",
+  "commands_run": [
+    "python -m py_compile src/axis_seam_local_obstruction.py",
+    "python src/axis_seam_local_obstruction.py --max-side 40 --max-length 20 --output results/research_loop/attempt_014_axis_seam_local_obstruction.json"
+  ],
+  "files_changed": [
+    "src/axis_seam_local_obstruction.py",
+    "results/research_loop/attempt_014_axis_seam_local_obstruction.json",
+    "results/research_loop/attempts/attempt_014.json",
+    "results/research_loop/state.json",
+    "results/research_loop/summary.md",
+    "results/research_context.md",
+    "results/research_loop/best_attempt.md",
+    "methods.md"
+  ],
+  "artifacts": [
+    "results/research_loop/attempt_014_axis_seam_local_obstruction.json"
+  ],
+  "evaluation": {
+    "boundary_uniqueness_max_side_checked": 40,
+    "axis_path_overlap_max_length_checked": 20,
+    "all_boundary_counts_match_expected": true,
+    "all_axis_paths_force_distinct_overlap_count_equal_to_length": true,
+    "attempt_013_audited_cut_count": 81,
+    "attempt_013_total_valid_pair_count": 0,
+    "attempt_013_all_cuts_satisfy_min_overlap_ge_seam_length": true,
+    "attempt_013_min_gap_over_theorem": 0,
+    "attempt_013_max_gap_over_theorem": 16
+  },
+  "notes": "No external literature was needed for this step because the obstruction is a direct combinatorial property of the triangular lattice and the target simplex. The script's conclusion is a mathematical inference from the verified local uniqueness mechanism and the exact incidence structure, not just another bounded search result.",
+  "exit_code": 0,
+  "elapsed_seconds": 515.1
 }
