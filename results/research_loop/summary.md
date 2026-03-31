@@ -22,25 +22,25 @@ Your task is to analyze this solution and make sure it is correct
 - Status: running
 - Best score: 0.56
 - Ready for paper: no
-- Current hypothesis: A genuinely different smooth candidate is to replace the singular toric polar chart by a smooth nonlinear slit-disk chart based on exterior log-polar coordinates, flatten each planar unit disk to a rectangle by an exact 
-- Stop reason: Attempt 005 ruled out the naive smooth slit-chart square-slot family: although the planar chart is smooth and numerically correct, its best sampled ratios were only about 0.0769 for k=10 and 0.1230 for k=16, so generic a
+- Current hypothesis: A new route to an explicit smooth Hamiltonian is to approximate the explicit square-slot witness by a structured composition of exact kick and drift Hamiltonian segments, using source-indexed smooth Gaussian kicks and gl
+- Stop reason: Attempt 006 ruled out the witness-guided smooth kick-drift factorization: the emitted Hamiltonian was smooth and fast, but its audited k=10 ratio was only about 6.60e-05, so separable kick-drift fitting does not capture 
 
 ## Latest Summary
 
-- Worked: Validated src/smooth_slit_chart_packing.py, a new smooth nonlinear slit-chart packing family. After the earlier fixes to the chart tables and angle branch handling, the planar chart had area_total approximately pi and ro
-- Did not work: The family failed decisively as a packing mechanism. Even in the perfect-square case k=16, where the toric square-slot family is exact, the smooth slit-chart family only achieved sampled ratio about 0.1230. For k=10 it o
-- Next step: Do not revisit generic slit-chart rectangle packings. The next construction should either smooth the toric/action variables while preserving a simplex-type relation analogous to x1+x2<=1, or switch to a fundamentally dif
+- Worked: Implemented src/witness_guided_kick_drift.py, a new witness-guided Hamiltonian generator based on exact alternating kick and drift segments with smooth time windows. The script emits a real smooth Hamiltonian.py and supp
+- Did not work: The family failed decisively as a packing mechanism. The better of the two discrete smoke fits, using a radius-only loss, only reached surrogate ratio 0.00034465526940376647. When converted into the emitted smooth Hamilt
+- Next step: Drop separable kick-drift witness fitting. The next family should encode the branch geometry explicitly, most likely through an origami/folding or multi-chart generating-function construction rather than another smooth b
 
 ## Prior Evidence Ledger
 
 ### attempt_006
-- Hypothesis: n/a
-- Score: n/a
-- Keep: no
+- Hypothesis: A new route to an explicit smooth Hamiltonian is to approximate the explicit square-slot witness by a structured composition of exact kick and drift Hamiltonian segments, using source-indexed smooth Gaussian kicks and gl
+- Score: 0.5
+- Keep: yes
 - Ready for paper: no
-- Worked: n/a
-- Did not work: n/a
-- Next step: n/a
+- Worked: Implemented src/witness_guided_kick_drift.py, a new witness-guided Hamiltonian generator based on exact alternating kick and drift segments with smooth time windows. The script emits a real smooth Hamiltonian.py and supp
+- Did not work: The family failed decisively as a packing mechanism. The better of the two discrete smoke fits, using a radius-only loss, only reached surrogate ratio 0.00034465526940376647. When converted into the emitted smooth Hamilt
+- Next step: Drop separable kick-drift witness fitting. The next family should encode the branch geometry explicitly, most likely through an origami/folding or multi-chart generating-function construction rather than another smooth b
 
 ### attempt_005
 - Hypothesis: A genuinely different smooth candidate is to replace the singular toric polar chart by a smooth nonlinear slit-disk chart based on exterior log-polar coordinates, flatten each planar unit disk to a rectangle by an exact 

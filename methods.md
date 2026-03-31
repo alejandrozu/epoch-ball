@@ -35,6 +35,13 @@
 - Core idea: replace the singular toric polar chart by a smooth planar symplectic chart from an exterior point, flatten each unit disk to a rectangle by an exact area-preserving triangular map, and then reuse the standard `l^2` square-slot packing in those smooth coordinates
 - Outcome: failed as a viable packing family; the planar chart itself is numerically correct with area `≈ pi` and tiny roundtrip error near the best parameters, but the best sampled ratios were only about `0.0769` for `k=10` and `0.1230` for `k=16`, showing that generic area coordinates destroy the toric packing mechanism
 
+## attempt_006
+
+- Family: witness-guided smooth kick-drift Hamiltonian factorization with source-indexed Gaussian kicks
+- Mathematical modes: recursion / recurrence, dynamical systems
+- Core idea: replace generic global polynomials by a composition of exact kick and drift Hamiltonian segments, fit the segment parameters against the explicit square-slot witness on sampled boundary points, and emit a real smooth `Hamiltonian.py`
+- Outcome: failed as a viable Hamiltonian family; although the emitted Hamiltonian was smooth and fast enough to evaluate, the best discrete surrogate ratio was only about `3.45e-4` and the audited RK4 ratio dropped further to about `6.60e-5`, far below even the repository's original poor polynomial baseline
+
 ## Next family should avoid
 
 - Another global polynomial or neural-style optimization ansatz
@@ -42,7 +49,8 @@
 - Another purely square-grid or one-block toric pass that leaves the polar singularity unresolved
 - Another purely affine local-piece or rectangular lamination ansatz
 - Another generic slit-chart or exterior-log-polar rectangle-packing ansatz that replaces the toric action variables by arbitrary area coordinates and then applies the same square-slot recipe
+- Another separable kick-drift boundary-fitting ansatz that tries to learn the branch structure of the toric witness through source-indexed Gaussian kicks and global drifts
 
 ## Most promising next family
 
-- A smooth constructive family that preserves a simplex-type action relation while regularizing the singular toric chart, or a fundamentally different non-affine folding construction that retains the square-root compression mechanism
+- An explicit symplectic folding / origami family with multiple geometric charts or sector cuts, or another generating-function construction that handles the toric branch data geometrically instead of fitting it through generic smooth coordinates or separable flow factorizations

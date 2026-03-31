@@ -1,7 +1,7 @@
 {
   "version": "1.1",
   "created_at": "2026-03-31T14:22:51.477190+00:00",
-  "updated_at": "2026-03-31T15:52:20.142231+00:00",
+  "updated_at": "2026-03-31T16:10:22.100176+00:00",
   "status": "running",
   "current_stage": "research_loop",
   "attempt_count": 6,
@@ -10,14 +10,14 @@
   "current_attempt_id": "attempt_006",
   "best_attempt_id": "attempt_003",
   "best_score": 0.56,
-  "current_hypothesis": "A genuinely different smooth candidate is to replace the singular toric polar chart by a smooth nonlinear slit-disk chart based on exterior log-polar coordinates, flatten each planar unit disk to a rectangle by an exact area-preserving map, and then reuse the standard l^2 square-slot packing in those smooth canonical coordinates.",
+  "current_hypothesis": "A new route to an explicit smooth Hamiltonian is to approximate the explicit square-slot witness by a structured composition of exact kick and drift Hamiltonian segments, using source-indexed smooth Gaussian kicks and global smooth drifts instead of the repository's old global polynomial ansatz.",
   "ready_for_paper": false,
-  "stop_reason": "Attempt 005 ruled out the naive smooth slit-chart square-slot family: although the planar chart is smooth and numerically correct, its best sampled ratios were only about 0.0769 for k=10 and 0.1230 for k=16, so generic area-coordinate rectangles destroy the toric packing mechanism.",
+  "stop_reason": "Attempt 006 ruled out the witness-guided smooth kick-drift factorization: the emitted Hamiltonian was smooth and fast, but its audited k=10 ratio was only about 6.60e-05, so separable kick-drift fitting does not capture the toric branch geometry.",
   "paper_generated": false,
   "review_verdict": null,
   "last_summary": {
-    "worked": "Validated src/smooth_slit_chart_packing.py, a new smooth nonlinear slit-chart packing family. After the earlier fixes to the chart tables and angle branch handling, the planar chart had area_total approximately pi and roundtrip error below about 2e-11 in the relevant near-a=1 regime. Reproducible sweeps gave best sampled upper-bound ratios 0.07689370674740484 for k=10 and 0.12302993079584774 for k=16, both at a=1.01. Saved the main sweeps and diagnostic scans under results/research_loop/.",
-    "did_not_work": "The family failed decisively as a packing mechanism. Even in the perfect-square case k=16, where the toric square-slot family is exact, the smooth slit-chart family only achieved sampled ratio about 0.1230. For k=10 it only reached about 0.0769, which is about 12.3% of the toric square baseline 0.625 and about 11.1% of the better attempt_003 axis-block witness 0.6925. Because these ratios come from sampled boundary radii, they are optimistic upper bounds on the true ratio, so the actual performance can only be worse.",
-    "next_step": "Do not revisit generic slit-chart rectangle packings. The next construction should either smooth the toric/action variables while preserving a simplex-type relation analogous to x1+x2<=1, or switch to a fundamentally different non-affine folding family."
+    "worked": "Implemented src/witness_guided_kick_drift.py, a new witness-guided Hamiltonian generator based on exact alternating kick and drift segments with smooth time windows. The script emits a real smooth Hamiltonian.py and supports training against the explicit square-slot witness from attempt_003. The emitted Hamiltonian benchmarked at about 0.340 seconds for a batch of 5000 points, well within the runtime constraint for single calls. Saved the training smoke-fit summaries and the end-to-end audit under results/research_loop/.",
+    "did_not_work": "The family failed decisively as a packing mechanism. The better of the two discrete smoke fits, using a radius-only loss, only reached surrogate ratio 0.00034465526940376647. When converted into the emitted smooth Hamiltonian.py and audited with RK4, the ratio dropped further to 6.601766155665936e-05 at radius 19.72808660462524 for k=10. That audited ratio is only about 0.53% of the repository's original polynomial baseline from attempt_001 and about 0.0106% of the toric square witness ratio 0.625.",
+    "next_step": "Drop separable kick-drift witness fitting. The next family should encode the branch geometry explicitly, most likely through an origami/folding or multi-chart generating-function construction rather than another smooth boundary-fitting flow factorization."
   }
 }

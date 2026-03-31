@@ -1,0 +1,26 @@
+{
+  "benchmark": {
+    "batch_size": 5000,
+    "mean": -2.113233184794001e-09,
+    "seconds": 0.09149732700007007,
+    "std": 2.0107236504002592e-09
+  },
+  "eps": 0.99,
+  "implied_max_eps_from_min_ratio": 0.9999339823384433,
+  "k": 10,
+  "max_ratio": 6.601766155665936e-05,
+  "mean_ratio": 6.601766155665936e-05,
+  "min_ratio": 6.601766155665936e-05,
+  "module": "/home/archivara/work/repo/Hamiltonian.py",
+  "passes_all_runs": false,
+  "runs": [
+    {
+      "n_pts": 200,
+      "n_steps": 200,
+      "radius": 19.72808660462524,
+      "ratio": 6.601766155665936e-05,
+      "seed": 123
+    }
+  ],
+  "target_ratio": 0.010000000000000009
+}
