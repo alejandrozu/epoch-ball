@@ -28,7 +28,10 @@ from dataclasses import asdict, dataclass
 
 import torch
 
-from hybrid_boundary_strip_family import analyze_hybrid_family, build_adjacency, subdivide_triangle
+try:
+    from src.hybrid_boundary_strip_family import analyze_hybrid_family, build_adjacency, subdivide_triangle
+except ModuleNotFoundError:
+    from hybrid_boundary_strip_family import analyze_hybrid_family, build_adjacency, subdivide_triangle
 
 
 torch.set_default_dtype(torch.float64)
@@ -269,11 +272,20 @@ def search_realizations(m: int, k: int, config_limit: int, steps: int, lr: float
     target_area = 1.0 / (2.0 * m * m)
 
     open_ok, closed_ok = corner_triple_counts(faces_fwd, n_vertices)
-    closed_ok = sorted(closed_ok, key=lambda triple: (max(abs((triple[1] - triple[0]) - 19), abs((triple[2] - triple[1]) - 19)), max([
-        triple[1] - triple[0],
-        triple[2] - triple[1],
-        n_vertices - (triple[2] - triple[0]),
-    ])))
+    def triple_balance_key(triple: tuple[int, int, int]) -> tuple[int, int, tuple[int, int, int]]:
+        counts = (
+            triple[1] - triple[0],
+            triple[2] - triple[1],
+            n_vertices - (triple[2] - triple[0]),
+        )
+        return (
+            0 if counts[1] == 19 else 1,
+            max(counts) - min(counts),
+            -min(counts),
+            counts,
+        )
+
+    closed_ok = sorted(closed_ok, key=triple_balance_key)
 
     results: list[RealizationResult] = []
     for reverse, faces in ((False, faces_fwd), (True, faces_rev)):
