@@ -33,6 +33,15 @@ Your task is to analyze this solution and make sure it is correct
 
 ## Prior Evidence Ledger
 
+### attempt_014
+- Hypothesis: n/a
+- Score: n/a
+- Keep: no
+- Ready for paper: no
+- Worked: n/a
+- Did not work: n/a
+- Next step: n/a
+
 ### attempt_013
 - Hypothesis: A genuinely new axis-seam origami family may survive the attempt-012 obstruction: partition one source moment triangle into rigid affine pieces and allow derivative jumps only along seams whose common image lies on a tru
 - Score: 0.6
@@ -95,12 +104,3 @@ Your task is to analyze this solution and make sure it is correct
 - Worked: Implemented src/origami_moment_tiling.py, a new piecewise toric origami family based on subdividing each source moment triangle into m^2 tiny triangles and mapping them by affine symplectic toric charts into tiny target 
 - Did not work: The family fails the correctness requirement because the current origami assignment is not continuous. For every nontrivial k=10 case tested, the continuity audit reported zero continuous internal source adjacencies on b
 - Next step: Keep the origami direction but replace the arbitrary tiny-triangle permutation by a continuity-preserving simplicial origami assignment, where each ball maps to a connected target triangulated disk with a globally consis
-
-### attempt_006
-- Hypothesis: A new route to an explicit smooth Hamiltonian is to approximate the explicit square-slot witness by a structured composition of exact kick and drift Hamiltonian segments, using source-indexed smooth Gaussian kicks and gl
-- Score: 0.5
-- Keep: yes
-- Ready for paper: no
-- Worked: Implemented src/witness_guided_kick_drift.py, a new witness-guided Hamiltonian generator based on exact alternating kick and drift segments with smooth time windows. The script emits a real smooth Hamiltonian.py and supp
-- Did not work: The family failed decisively as a packing mechanism. The better of the two discrete smoke fits, using a radius-only loss, only reached surrogate ratio 0.00034465526940376647. When converted into the emitted smooth Hamilt
-- Next step: Drop separable kick-drift witness fitting. The next family should encode the branch geometry explicitly, most likely through an origami/folding or multi-chart generating-function construction rather than another smooth b
