@@ -1,0 +1,54 @@
+{
+  "benchmark": {
+    "batch_size": 5000,
+    "mean": 0.025945877602475798,
+    "seconds": 0.05906584200056386,
+    "std": 2.209296461647672
+  },
+  "eps": 0.1,
+  "implied_max_eps_from_min_ratio": 0.9995427725686356,
+  "k": 10,
+  "max_ratio": 0.0004924278740676749,
+  "mean_ratio": 0.00047923638313867873,
+  "min_ratio": 0.00045722743136449354,
+  "module": "/home/archivara/work/repo/Hamiltonian.py",
+  "passes_all_runs": false,
+  "runs": [
+    {
+      "n_pts": 512,
+      "n_steps": 256,
+      "radius": 11.94694107968733,
+      "ratio": 0.0004908774848161674,
+      "seed": 11
+    },
+    {
+      "n_pts": 512,
+      "n_steps": 256,
+      "radius": 12.026607952575722,
+      "ratio": 0.00047799943614075004,
+      "seed": 29
+    },
+    {
+      "n_pts": 512,
+      "n_steps": 256,
+      "radius": 11.937526341426917,
+      "ratio": 0.0004924278740676749,
+      "seed": 47
+    },
+    {
+      "n_pts": 512,
+      "n_steps": 256,
+      "radius": 12.160933972735252,
+      "ratio": 0.00045722743136449354,
+      "seed": 59
+    },
+    {
+      "n_pts": 512,
+      "n_steps": 256,
+      "radius": 12.028808892771526,
+      "ratio": 0.0004776496893043078,
+      "seed": 83
+    }
+  ],
+  "target_ratio": 0.9
+}

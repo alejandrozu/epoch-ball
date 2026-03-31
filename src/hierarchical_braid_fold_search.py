@@ -36,6 +36,7 @@ class BraidSpec:
     shift0: float
     shift_growth: float
     collapse_frac: float
+    return_frac: float
     angle_step: float
     support_scale: float
     sign_scale: float
@@ -161,6 +162,7 @@ def rhs_stage_a(
     nodes: list[PairNode],
     weight: float,
     p1_scale: float,
+    shift_scale: float,
 ) -> tuple[np.ndarray, np.ndarray, np.ndarray, np.ndarray]:
     q1_dot = np.zeros_like(q1)
     q2_dot = np.zeros_like(q2)
@@ -168,6 +170,8 @@ def rhs_stage_a(
     p2_dot = np.zeros_like(p2)
 
     for node in nodes:
+        shift_q2 = shift_scale * node.shift_q2
+        shift_p2 = shift_scale * node.shift_p2
         z = q1 - node.q_mid
         a = z / node.support_q
         b = p1 / p1_scale
@@ -175,7 +179,7 @@ def rhs_stage_a(
         side_arg = z / node.sign_width
         side = np.tanh(side_arg)
         coeff = window * side
-        lform = node.shift_q2 * p2 - node.shift_p2 * q2
+        lform = shift_q2 * p2 - shift_p2 * q2
 
         dwindow_dq1 = window * (-4.0 * (a**3) / node.support_q)
         dwindow_dp1 = window * (-4.0 * (b**3) / p1_scale)
@@ -186,8 +190,8 @@ def rhs_stage_a(
 
         q1_dot += weight * dcoeff_dp1 * lform
         p1_dot += -weight * dcoeff_dq1 * lform
-        q2_dot += weight * coeff * node.shift_q2
-        p2_dot += weight * coeff * node.shift_p2
+        q2_dot += weight * coeff * shift_q2
+        p2_dot += weight * coeff * shift_p2
 
     return q1_dot, q2_dot, p1_dot, p2_dot
 
@@ -241,7 +245,7 @@ def rhs(
     level_groups: list[list[PairNode]],
     spec: BraidSpec,
 ) -> tuple[np.ndarray, np.ndarray]:
-    n_main_stages = 2 * len(level_groups)
+    n_main_stages = 3 * len(level_groups)
     stage, weight = stage_weight(t, n_main_stages)
     if weight == 0.0:
         return np.zeros_like(q), np.zeros_like(p)
@@ -251,12 +255,24 @@ def rhs(
     p1 = p[:, 0]
     p2 = p[:, 1]
 
-    level = stage // 2
+    level = stage // 3
     nodes = level_groups[level]
-    if stage % 2 == 0:
-        q1_dot, q2_dot, p1_dot, p2_dot = rhs_stage_a(q1, q2, p1, p2, nodes, weight, spec.p1_scale)
-    else:
+    stage_type = stage % 3
+    if stage_type == 0:
+        q1_dot, q2_dot, p1_dot, p2_dot = rhs_stage_a(q1, q2, p1, p2, nodes, weight, spec.p1_scale, shift_scale=1.0)
+    elif stage_type == 1:
         q1_dot, q2_dot, p1_dot, p2_dot = rhs_stage_b(q1, q2, p1, p2, nodes, weight)
+    else:
+        q1_dot, q2_dot, p1_dot, p2_dot = rhs_stage_a(
+            q1,
+            q2,
+            p1,
+            p2,
+            nodes,
+            weight,
+            spec.p1_scale,
+            shift_scale=-spec.return_frac,
+        )
 
     q_dot = np.stack([q1_dot, q2_dot], axis=1)
     p_dot = np.stack([p1_dot, p2_dot], axis=1)
@@ -295,23 +311,26 @@ def evaluate_points(points: np.ndarray, level_groups: list[list[PairNode]], spec
 
 def build_specs() -> list[BraidSpec]:
     specs: list[BraidSpec] = []
-    for shift0 in [0.8, 1.1, 1.4]:
-        for shift_growth in [1.25, 1.5]:
-            for collapse_frac in [0.45, 0.65, 0.8]:
-                for angle_step in [0.8, 1.1]:
-                    for support_scale in [1.0, 1.3]:
-                        specs.append(
-                            BraidSpec(
-                                shift0=shift0,
-                                shift_growth=shift_growth,
-                                collapse_frac=collapse_frac,
-                                angle_step=angle_step,
-                                support_scale=support_scale,
-                                sign_scale=0.45,
-                                target_sign_scale=0.55,
-                                p1_scale=3.0,
-                            )
-                        )
+    for shift0 in [0.6, 0.9, 1.2]:
+        for shift_growth in [1.0, 1.2, 1.4]:
+            for collapse_frac in [0.8, 0.95]:
+                for angle_step in [0.6, 0.8, 1.0]:
+                    for support_scale in [1.1, 1.3]:
+                        for target_sign_scale in [0.15, 0.3, 0.55]:
+                            for p1_scale in [3.0, 6.0]:
+                                specs.append(
+                                    BraidSpec(
+                                        shift0=shift0,
+                                        shift_growth=shift_growth,
+                                        collapse_frac=collapse_frac,
+                                        return_frac=0.0,
+                                        angle_step=angle_step,
+                                        support_scale=support_scale,
+                                        sign_scale=0.35,
+                                        target_sign_scale=target_sign_scale,
+                                        p1_scale=p1_scale,
+                                    )
+                                )
     return specs
 
 
@@ -396,7 +415,12 @@ def level_group_payload(level_groups: list[list[PairNode]]) -> list[list[dict]]:
     return payload
 
 
-def render_hamiltonian(level_groups: list[list[PairNode]], translation_shift: list[float], p1_scale: float) -> str:
+def render_hamiltonian(
+    level_groups: list[list[PairNode]],
+    translation_shift: list[float],
+    p1_scale: float,
+    return_frac: float,
+) -> str:
     groups = level_group_payload(level_groups)
     return f"""import math
 import torch
@@ -406,6 +430,7 @@ torch.set_default_dtype(torch.float64)
 _WINDOW_NORM = {WINDOW_NORM!r}
 _MAIN_LEVELS = {groups!r}
 _P1_SCALE = {p1_scale!r}
+_RETURN_FRAC = {return_frac!r}
 _TRANSLATE = torch.tensor({translation_shift!r}, dtype=torch.float64)
 
 
@@ -426,20 +451,22 @@ def _stage_weight(t, n_stages):
     return stage, n_stages * _bump_unit_interval(u)
 
 
-def _stage_a(Q, P, nodes):
+def _stage_a(Q, P, nodes, shift_scale):
     q1 = Q[:, 0]
     q2 = Q[:, 1]
     p1 = P[:, 0]
     p2 = P[:, 1]
     H = 0.0 * (q1 + q2 + p1 + p2)
     for node in nodes:
+        shift_q2 = shift_scale * node["shift_q2"]
+        shift_p2 = shift_scale * node["shift_p2"]
         z = q1 - node["q_mid"]
         a = z / node["support_q"]
         b = p1 / _P1_SCALE
         window = torch.exp(-(a.pow(4)) - (b.pow(4)))
         side = torch.tanh(z / node["sign_width"])
         coeff = window * side
-        H = H + coeff * (node["shift_q2"] * p2 - node["shift_p2"] * q2)
+        H = H + coeff * (shift_q2 * p2 - shift_p2 * q2)
     return H
 
 
@@ -463,17 +490,20 @@ def _stage_b(Q, P, nodes):
 
 
 def Hamiltonian(Q, P, t):
-    n_main_stages = 2 * len(_MAIN_LEVELS)
+    n_main_stages = 3 * len(_MAIN_LEVELS)
     total_stages = n_main_stages + 1
     stage, weight = _stage_weight(t, total_stages)
     H = 0.0 * (Q[:, 0] + P[:, 0])
     if weight == 0.0:
         return H
     if stage < n_main_stages:
-        level = stage // 2
-        if stage % 2 == 0:
-            return weight * _stage_a(Q, P, _MAIN_LEVELS[level])
-        return weight * _stage_b(Q, P, _MAIN_LEVELS[level])
+        level = stage // 3
+        stage_type = stage % 3
+        if stage_type == 0:
+            return weight * _stage_a(Q, P, _MAIN_LEVELS[level], 1.0)
+        if stage_type == 1:
+            return weight * _stage_b(Q, P, _MAIN_LEVELS[level])
+        return weight * _stage_a(Q, P, _MAIN_LEVELS[level], -_RETURN_FRAC)
     dq = _TRANSLATE[:2].to(Q.device)
     dp = _TRANSLATE[2:].to(P.device)
     return weight * ((P * dq).sum(dim=1) - (Q * dp).sum(dim=1))
@@ -552,7 +582,9 @@ def main() -> None:
     )
 
     level_groups = build_level_groups(args.k, best_spec)
-    args.emit.write_text(render_hamiltonian(level_groups, dense["translation_shift"], best_spec.p1_scale))
+    args.emit.write_text(
+        render_hamiltonian(level_groups, dense["translation_shift"], best_spec.p1_scale, best_spec.return_frac)
+    )
 
     summary = {
         "attempt": "attempt_018",
