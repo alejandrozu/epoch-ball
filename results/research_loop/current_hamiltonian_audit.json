@@ -1,0 +1,40 @@
+{
+  "benchmark": {
+    "batch_size": 5000,
+    "mean": 0.30176123166411645,
+    "seconds": 0.0053217160000258446,
+    "std": 25.506479989456405
+  },
+  "eps": 0.99,
+  "implied_max_eps_from_min_ratio": 0.9876147235129766,
+  "k": 10,
+  "max_ratio": 0.012805716487264873,
+  "mean_ratio": 0.012608519995876968,
+  "min_ratio": 0.012385276487023322,
+  "module": "/home/archivara/work/repo/resumed-7ca1cea6-f81a-4892-aae8-375a2e9c51bd_aristotle/Hamiltonian.py",
+  "passes_all_runs": true,
+  "runs": [
+    {
+      "n_pts": 1000,
+      "n_steps": 500,
+      "radius": 5.30407808741294,
+      "ratio": 0.012634567013342706,
+      "seed": 0
+    },
+    {
+      "n_pts": 1000,
+      "n_steps": 500,
+      "radius": 5.330569050817562,
+      "ratio": 0.012385276487023322,
+      "seed": 123
+    },
+    {
+      "n_pts": 1000,
+      "n_steps": 500,
+      "radius": 5.286266203651303,
+      "ratio": 0.012805716487264873,
+      "seed": 999
+    }
+  ],
+  "target_ratio": 0.010000000000000009
+}
