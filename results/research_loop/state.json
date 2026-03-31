@@ -1,23 +1,23 @@
 {
   "version": "1.1",
   "created_at": "2026-03-31T14:22:51.477190+00:00",
-  "updated_at": "2026-03-31T18:21:43.576957+00:00",
+  "updated_at": "2026-03-31T18:31:47.252731+00:00",
   "status": "running",
   "current_stage": "research_loop",
   "attempt_count": 12,
   "session_count": 12,
   "last_exit_code": 0,
   "current_attempt_id": "attempt_012",
-  "best_attempt_id": "attempt_011",
-  "best_score": 0.57,
-  "current_hypothesis": "An algebraic exact-recurrence solver can remove the remaining uncertainty in the `m=6` hybrid strip: if the boundary-only source strip admits a rational equal-area realization and the induced local toric charts glue across internal edges, then the `9 rigid + 1 strip` decomposition would become a genuine near-full `k=10` witness. If the exact strip still fails, the obstruction lies in the angle/gluing layer rather than the area equations.",
+  "best_attempt_id": "attempt_012",
+  "best_score": 0.58,
+  "current_hypothesis": "The exact `m=6` hybrid strip cannot be repaired by any facewise fiber-preserving generating-function correction over the same affine action map. In `B^4`, only coordinate-axis edges collapse torus directions; the diagonal wall does not. Since all 35 internal edges of the exact strip keep both source and target circles active, every edge would require full `A^{-T}` agreement, which never occurs. The next viable family must either force derivative jumps onto coordinate-axis seams or leave the fiber-preserving toric framework.",
   "ready_for_paper": false,
-  "stop_reason": "Attempt 011 exactified the `m=6` hybrid strip and proved that the boundary-only toric chart still fails in 4D. The new exact solver found a unique rational seed `17/36`, verified that all 36 source faces have exact area `1/72`, and confirmed zero action-map jump on all 35 internal edges. But every internal edge midpoint lies in the interior of `Delta(1)` and no adjacent pair shares the same `A^{-T}` matrix (`same_angle_matrix_count = 0`), so the piecewise toric map cannot be continuous on the full `T^2` fibers. The current hybrid witness is therefore still invalid, and the next step must replace the angle/gluing layer rather than the area equations.",
+  "stop_reason": "Attempt 012 broadened the exact strip to the full facewise generating-function / cotangent-lift family and still ruled it out. The new transform-method audit shows that for `B^4`, only the coordinate axes collapse torus directions, while the diagonal wall `x1 + x2 = 1` does not. On the exact hybrid strip all 35 internal shared edges have both source and target circles active, so the full restricted `A^{-T}` matrix must agree across each edge. It never does (`restricted_match_count = 0`), so no fiber-preserving generating-function correction can repair the strip. The next step must redesign the action complex around coordinate-axis seams or leave the fiber-preserving toric framework entirely.",
   "paper_generated": false,
   "review_verdict": null,
   "last_summary": {
-    "worked": "Implemented `src/hybrid_strip_recurrence_solver.py`, a new algebraic exactification tool for the hybrid `9 rigid + 1 strip` family. The script scans rational seeds up to denominator 72, finds a unique exact recurrence seed `17/36`, reconstructs the 38 source boundary vertices in exact `Fraction` arithmetic, and verifies that all 36 source faces have exact area `1/72`, matching the target strip exactly. The same script then computes the induced affine toric data on every face and confirms that the piecewise action map glues on all 35 internal edges with exact zero midpoint jump. The full report was saved to `results/research_loop/attempt_011_exact_strip_gluing.json`.",
-    "did_not_work": "The exactification does not make the proposed solution correct. The toric gluing audit shows that all 35 internal shared edges have midpoints strictly inside `Delta(1)`, so each carries a full `T^2` fiber, but `same_angle_matrix_count = 0`: no adjacent pair has matching `A^{-T}`. In fact the 36 faces carry 36 distinct action matrices. Because constant angle translations cannot repair a nonzero linear mismatch on a full torus fiber, the boundary-only strip is still not a continuous 4D toric piecewise-affine symplectic embedding. So the current hybrid family still does not solve the task.",
-    "next_step": "Leave boundary-only exact strip fitting inside the same toric chart class. The next hybrid attempt should add a genuinely different angle/gluing mechanism, such as a generating-function layer, a non-toric local model, or a formal proof that any connected non-triangular boundary-only strip in this piecewise toric affine class forces global affineness and therefore cannot work."
+    "worked": "Implemented `src/hybrid_generating_function_audit.py`, a new transform-method audit for the exact `m=6`, `k=10` hybrid strip. The script enlarges each face map to the most general fiber-preserving exact symplectomorphism over the saved affine action map, derives the restricted-angle continuity rule, includes a toy axis-edge positive control, and saves an exact audit to `results/research_loop/attempt_012_generating_function_audit.json`.",
+    "did_not_work": "The generating-function enlargement still cannot repair the exact strip. For the standard `T^2` action on `B^4`, only the coordinate axes collapse circles; the diagonal wall does not. All 35 internal edges of the exact strip have source and target active angle sets `[0,1]`, so the full `2 x 2` restricted matrix `A^{-T}` must match across each edge. It never does (`restricted_match_count = 0`), so no facewise fiber-preserving generating-function correction can make the strip continuous.",
+    "next_step": "Stop trying to repair the saved strip inside the same fiber-preserving toric framework. The next live direction is to redesign the action complex so derivative jumps occur only along coordinate-axis seams, or else move to a non-toric local model where the facewise map does not preserve the action-base projection."
   }
 }

@@ -79,6 +79,60 @@ def midpoint(u: tuple[Fraction, Fraction], v: tuple[Fraction, Fraction]) -> tupl
     return ((u[0] + v[0]) / 2, (u[1] + v[1]) / 2)
 
 
+def vector4_to_json(vector: tuple[Fraction, Fraction, Fraction, Fraction]) -> list[str]:
+    return [frac_to_str(entry) for entry in vector]
+
+
+def rank_of_two_vectors(
+    left: tuple[Fraction, Fraction, Fraction, Fraction],
+    right: tuple[Fraction, Fraction, Fraction, Fraction],
+) -> int:
+    if all(entry == 0 for entry in left) and all(entry == 0 for entry in right):
+        return 0
+    if all(entry == 0 for entry in left) or all(entry == 0 for entry in right):
+        return 1
+    pivot = next(idx for idx, entry in enumerate(left) if entry != 0)
+    scale = right[pivot] / left[pivot]
+    if all(right[idx] == scale * left[idx] for idx in range(4)):
+        return 1
+    return 2
+
+
+def torus_orbit_rank_controls() -> dict:
+    """Explicit orbit-rank controls for the standard T^2-action on B^4."""
+    diagonal_boundary_point = (Fraction(3, 5), Fraction(0), Fraction(4, 5), Fraction(0))
+    axis_point = (Fraction(0), Fraction(0), Fraction(1), Fraction(0))
+
+    def orbit_tangents(point: tuple[Fraction, Fraction, Fraction, Fraction]) -> tuple[tuple[Fraction, ...], tuple[Fraction, ...]]:
+        q1, p1, q2, p2 = point
+        return (
+            (-p1, q1, Fraction(0), Fraction(0)),
+            (Fraction(0), Fraction(0), -p2, q2),
+        )
+
+    diag_v1, diag_v2 = orbit_tangents(diagonal_boundary_point)
+    axis_v1, axis_v2 = orbit_tangents(axis_point)
+    return {
+        "description": (
+            "The diagonal wall x1 + x2 = 1 is only the sphere boundary of B^4. "
+            "When both complex coordinates are nonzero, the T^2 orbit still has rank 2. "
+            "Rank drops only on coordinate axes."
+        ),
+        "diagonal_boundary_point": {
+            "cartesian_point": vector4_to_json(diagonal_boundary_point),
+            "action_coordinates": [frac_to_str(Fraction(9, 25)), frac_to_str(Fraction(16, 25))],
+            "orbit_tangent_vectors": [vector4_to_json(diag_v1), vector4_to_json(diag_v2)],
+            "orbit_rank": rank_of_two_vectors(diag_v1, diag_v2),
+        },
+        "axis_point": {
+            "cartesian_point": vector4_to_json(axis_point),
+            "action_coordinates": [frac_to_str(Fraction(0)), frac_to_str(Fraction(1))],
+            "orbit_tangent_vectors": [vector4_to_json(axis_v1), vector4_to_json(axis_v2)],
+            "orbit_rank": rank_of_two_vectors(axis_v1, axis_v2),
+        },
+    }
+
+
 def active_angle_indices(point: tuple[Fraction, Fraction]) -> tuple[int, ...]:
     """Active torus factors for the standard T^2-action on B^4.
 
@@ -219,6 +273,7 @@ def build_report() -> dict:
                 "changes only the x-dependent translation term, not that linear coefficient."
             ),
         },
+        "torus_rank_controls": torus_orbit_rank_controls(),
         "toy_axis_edge_control": toy_axis_edge_control(),
         "exact_strip_audit": strip,
         "conclusion": {

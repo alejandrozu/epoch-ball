@@ -1,21 +1,59 @@
 {
   "attempt_id": "attempt_012",
   "created_at": "2026-03-31T18:21:43.570845+00:00",
-  "updated_at": "2026-03-31T18:21:43.570859+00:00",
-  "hypothesis": "",
-  "score": null,
-  "keep": false,
+  "updated_at": "2026-03-31T18:31:47.252731+00:00",
+  "hypothesis": "A transform-method enlargement of the exact hybrid strip may still work even though plain toric affine gluing fails: on each face, replace the rigid toric chart by the most general exact fiber-preserving symplectomorphism covering the same affine action map, namely a cotangent-lift / generating-function correction `(x, y) -> (A x + b, A^{-T}(y + grad S(x)))`. If those per-face potentials can glue across the exact strip, the hybrid witness might survive; otherwise the exact strip is ruled out in this broader class.",
+  "score": 0.58,
+  "keep": true,
   "ready_for_paper": false,
-  "paper_readiness_reason": "",
-  "worked": "",
-  "did_not_work": "",
-  "next_step": "",
-  "patterns_noticed": "",
-  "commands_run": [],
-  "files_changed": [],
-  "artifacts": [],
-  "evaluation": {},
-  "notes": "",
-  "exit_code": null,
-  "elapsed_seconds": null
+  "paper_readiness_reason": "This attempt adds a reproducible transform-method obstruction stronger than attempt 011: the repo now contains a concrete audit showing that even the most general facewise generating-function correction over the exact hybrid strip cannot glue. It is not paper-ready because it is still a negative result on one family, no working embedding or Hamiltonian has been produced, and the next constructive family has not yet been implemented.",
+  "worked": "Implemented `src/hybrid_generating_function_audit.py`, a new transform-method / generating-function audit for the exact `m=6`, `k=10` hybrid strip. The script imports the exact strip from attempt 011, uses the cotangent-lift local model `(x, y) -> (A x + b, A^{-T}(y + grad S(x)))`, and checks the exact continuity criterion on each shared edge after restricting to the torus factors that remain active there. It includes two explicit controls: a torus-orbit-rank check showing that a point on the diagonal wall `x1 + x2 = 1` with both complex coordinates nonzero still has `T^2` orbit rank 2, and an axis-edge positive control showing that derivative changes can be hidden only when one circle really collapses. The saved audit `results/research_loop/attempt_012_generating_function_audit.json` shows that on the exact strip all 35 internal edges have source and target active angle sets `[0,1]`, but `restricted_match_count = 0`, so no facewise generating-function correction can repair the strip.",
+  "did_not_work": "This broader family still does not make the proposed solution correct. The exact strip is impossible even after adding arbitrary facewise generating functions over the same affine action map. Every shared edge of the strip is full-rank for the standard `T^2` action on `B^4`: both source action coordinates and both target action coordinates are positive at each midpoint. Therefore the full `2 x 2` restricted matrix `A^{-T}` must already agree across the edge. It never does. So the exact strip is ruled out not only for plain toric affine charts, but for the full facewise fiber-preserving exact symplectic correction family.",
+  "next_step": "Do not revisit the exact hybrid strip with another fiber-preserving toric/generating-function correction. The next family should either redesign the action complex so every derivative jump occurs along coordinate-axis edges where a circle really collapses, or leave the fiber-preserving toric framework entirely and build a non-toric local model or generating-function construction with base-map mixing.",
+  "patterns_noticed": "The strongest new pattern is geometric rather than numerical. For the standard toric action on `B^4`, torus rank drops only when a coordinate action vanishes (`x1 = 0` or `x2 = 0`); the diagonal wall `x1 + x2 = 1` is merely the sphere boundary and does not collapse a circle. The new orbit-rank control makes that explicit inside the repo: the boundary point `(z1,z2) = (3/5,4/5)` has action coordinates `(9/25,16/25)` with `x1 + x2 = 1`, yet its two infinitesimal torus-orbit vectors are linearly independent and the orbit rank is 2, while the axis point `(0,1)` drops to rank 1. This means continuity across a shared edge only ignores the columns and rows of `A^{-T}` corresponding to genuinely collapsed coordinate circles, not the diagonal facet. The positive control in the new script shows the mechanism explicitly: two different affine derivatives can agree on an `x1 = 0` edge and still be compatible because only the second circle survives there. By contrast, the exact hybrid strip has a completely rigid active-angle pattern: all 35 internal edges have source active angles `[0,1]` and target active angles `[0,1]`, so every edge demands full `2 x 2` agreement of `A^{-T}`. None of them match. This upgrades attempt 011's obstruction from 'full-torus at interior edges' to the sharper statement that the strip has no collapsed-circle edges of the kind that a generating-function correction could exploit. A practical design lesson follows: any future piecewise-affine action complex that hopes to glue via facewise cotangent lifts must force all derivative jumps onto coordinate-axis seams, not merely onto edges near or on the diagonal boundary of the simplex.",
+  "commands_run": [
+    "semantic_scholar_paper_search(\"cotangent lift symplectomorphism fiber-preserving generating function\", ...)  # returned 429",
+    "semantic_scholar_snippet_search(\"fiber-preserving symplectomorphism cotangent bundle exact one-form generating function\", ...)  # returned 429",
+    "python - <<'PY' ... direct fallback query against $SEMANTIC_SCHOLAR_GRAPH_API_URL with Authorization bearer token ... PY  # returned HTTP 429",
+    "python - <<'PY' ... validated the restricted-angle criterion on a toy axis-edge control and on the exact strip imported from attempt 011 ... PY",
+    "python -m py_compile src/hybrid_generating_function_audit.py",
+    "python src/hybrid_generating_function_audit.py --output results/research_loop/attempt_012_generating_function_audit.json"
+  ],
+  "files_changed": [
+    "src/hybrid_generating_function_audit.py",
+    "results/research_loop/attempt_012_generating_function_audit.json",
+    "results/research_loop/attempts/attempt_012.json",
+    "results/research_loop/state.json",
+    "results/research_loop/summary.md",
+    "results/research_context.md",
+    "results/research_loop/best_attempt.md",
+    "methods.md"
+  ],
+  "artifacts": [
+    "results/research_loop/attempt_012_generating_function_audit.json"
+  ],
+  "evaluation": {
+    "k10_m6_generating_function_internal_edge_count": 35,
+    "k10_m6_generating_function_restricted_match_count": 0,
+    "k10_m6_generating_function_all_edges_full_rank": true,
+    "k10_m6_generating_function_unique_active_angle_patterns": [
+      [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          1
+        ]
+      ]
+    ],
+    "diagonal_boundary_orbit_rank": 2,
+    "axis_orbit_rank": 1,
+    "toy_axis_edge_restricted_match": true,
+    "k10_m6_generating_function_repair_possible": false
+  },
+  "notes": "Semantic Scholar retrieval was attempted both through MCP and the required direct-proxy fallback, but all queries were rate-limited with HTTP 429 during this run, so no useful literature note was saved. The decisive evidence here came from exact repo-local computation anyway. This attempt deliberately kept the exact action map from attempt 011 fixed; it rules out only the fiber-preserving generating-function enlargement of that map, not more general non-toric or base-mixing local models.",
+  "exit_code": 0,
+  "elapsed_seconds": 603.68
 }

@@ -1,17 +1,17 @@
 # Strongest Current Path
 
-- Score: 0.57
+- Score: 0.58
 - Ready for paper: no
-- Hypothesis: An algebraic exact-recurrence solver can remove the remaining uncertainty in the `m=6` hybrid strip: if the boundary-only source strip admits a rational equal-area realization and the induced local toric charts glue acro
+- Hypothesis: The exact `m=6` hybrid strip is ruled out even after enlarging to the full facewise generating-function / cotangent-lift family over the same affine action map. Any viable near-full hybrid witness must move derivative jumps onto coordinate-axis seams or leave the fiber-preserving toric framework.
 
 ## Why it is currently best
 
-Implemented `src/hybrid_strip_recurrence_solver.py`, a new algebraic exactification tool for the hybrid `9 rigid + 1 strip` family. The script scans rational seeds up to denominator 72, finds a unique exact recurrence seed `17/36`, reconstructs the 38 source boundary vertices in exact `Fraction` arithmetic, and verifies that all 36 source faces have exact area `1/72`, matching the target strip exa
+Implemented `src/hybrid_generating_function_audit.py`, which takes the exact strip from attempt 011 and enlarges each face map to the most general fiber-preserving exact symplectomorphism over the same affine action map. The script derives the restricted-angle continuity rule, includes a toy axis-edge positive control showing that derivative jumps can survive only when a circle really collapses, and proves on the saved exact strip that every one of the 35 internal edges still fails the required restricted `A^{-T}` match. This upgrades the earlier obstruction from “plain toric affine charts fail” to “the whole facewise generating-function repair family fails on this strip.”
 
 ## Known limits
 
-The exactification does not make the proposed solution correct. The toric gluing audit shows that all 35 internal shared edges have midpoints strictly inside `Delta(1)`, so each carries a full `T^2` fiber, but `same_angle_matrix_count = 0`: no adjacent pair has matching `A^{-T}`. In fact the 36 faces carry 36 distinct action matrices. Because constant angle translations cannot repair a nonzero lin
+This attempt is still a stronger negative result rather than a constructive embedding. No Hamiltonian has been produced, and the audit only rules out fiber-preserving generating-function corrections of the saved affine action map. A future successful family may still need a different action complex, a non-fiber-preserving local model, or a fully different smooth construction.
 
 ## Next move
 
-Leave boundary-only exact strip fitting inside the same toric chart class. The next hybrid attempt should add a genuinely different angle/gluing mechanism, such as a generating-function layer, a non-toric local model, or a formal proof that any connected non-triangular boundary-only strip in this piecewise toric affine class forces global affineness and therefore cannot work.
+Stop trying to repair the saved strip inside the same fiber-preserving toric framework. The next live direction is to redesign the action complex so derivative jumps occur only along coordinate-axis seams where a torus factor really collapses, or else move to a non-toric local model where the facewise map does not preserve the action-base projection.

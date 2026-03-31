@@ -77,6 +77,13 @@
 - Core idea: exactify the saved `m=6` boundary-only strip by solving its equal-area boundary recurrence in rational arithmetic, then compute the induced local toric affine maps and audit whether the angle matrices glue across internal edges
 - Outcome: strong exact negative evidence; the unique rational seed `17/36` certifies an exact 36-face equal-area moment realization, but every one of the 35 internal full-torus edges has mismatched `A^{-T}` matrices and the 36 faces all carry distinct affine action matrices, so the boundary-only strip is not a continuous 4D toric piecewise-affine symplectic embedding
 
+## attempt_012
+
+- Family: transform-method / generating-function cotangent-lift audit for piecewise-affine hybrid strips
+- Mathematical modes: transform methods, calculus, topological
+- Core idea: enlarge each affine face map to the most general fiber-preserving exact symplectomorphism over the same base map, derive the restricted-angle continuity rule on shared edges, and test whether facewise generating functions can repair the exact `m=6` hybrid strip
+- Outcome: stronger negative evidence; the toy control shows that only coordinate-axis edges can hide derivative jumps because those are the only loci where a torus factor collapses in `B^4`, while the exact hybrid strip has 35 internal edges all with source and target active angle sets `[0,1]` and zero restricted `A^{-T}` matches, so no facewise generating-function correction can repair it
+
 ## Next family should avoid
 
 - Another global polynomial or neural-style optimization ansatz
@@ -90,7 +97,8 @@
 - Another single connected polyomino / strip-snake action-shape search with integer toric covers whose exact `n_cells=10` optimum already stabilized below attempt_003 and whose path-only subfamily collapsed to ratio `0.5540`
 - Another naive boundary-prefix hybrid `9 rigid + 1 strip` decomposition that only gives a path at `m=6` and does not yet solve the exact source equal-area strip fit or the larger-`m` scaling problem
 - Another boundary-only exact recurrence solve inside the same piecewise toric affine chart class; attempt 011 showed that exact area matching is not the bottleneck because angle gluing already fails on every full-torus internal edge
+- Another facewise fiber-preserving generating-function repair over the same affine action map when the complex still has full-rank internal edges; attempt 012 showed this entire cotangent-lift family cannot fix the saved exact strip
 
 ## Most promising next family
 
-- A hybrid construction with a genuinely new angle/gluing layer from the start, such as generating functions, multi-chart shears, or non-toric local models, rather than another action-only strip solve inside the same toric affine framework
+- A hybrid construction whose derivative jumps occur only along genuine coordinate-axis seams, or a non-toric / base-mixing local model that does not preserve the action-base projection facewise
