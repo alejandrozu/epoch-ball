@@ -1,78 +1,79 @@
+import math
 import torch
 
 torch.set_default_dtype(torch.float64)
 
-_LONG_SCALE = 0.2
-_TWIST = 0.8
-_RADIAL_OFFSET = 1.2
-_RADIAL_GROWTH = 0.16
-_NORMAL_SCALE = 0.5
-_STRENGTH = 1.2
-_SUPPORT_X = 18.0
-_SUPPORT_Y = 3.5
-_X_START = -1.0
-_X_CENTER = 13.5
-_TRANSLATE_DQ = torch.tensor([-4.7721960265780226, -0.5323542345215294], dtype=torch.float64)
-_TRANSLATE_DP = torch.tensor([0.029183262021026557, 0.03503176473205322], dtype=torch.float64)
 _WINDOW_NORM = 0.007029858406609658
+_MAIN_LEVELS = [[{'level': 0, 'q_mid': 1.5, 'support_q': 2.75, 'sign_width': 1.025, 'target_sign_width': 0.6400000000000001, 'shift_q2': 0.8, 'shift_p2': 0.0, 'collapse_q1': 0.675}, {'level': 0, 'q_mid': 7.5, 'support_q': 2.75, 'sign_width': 1.025, 'target_sign_width': 0.6400000000000001, 'shift_q2': 0.8, 'shift_p2': 0.0, 'collapse_q1': 0.675}, {'level': 0, 'q_mid': 13.5, 'support_q': 2.75, 'sign_width': 1.025, 'target_sign_width': 0.6400000000000001, 'shift_q2': 0.8, 'shift_p2': 0.0, 'collapse_q1': 0.675}, {'level': 0, 'q_mid': 19.5, 'support_q': 2.75, 'sign_width': 1.025, 'target_sign_width': 0.6400000000000001, 'shift_q2': 0.8, 'shift_p2': 0.0, 'collapse_q1': 0.675}, {'level': 0, 'q_mid': 25.5, 'support_q': 2.75, 'sign_width': 1.025, 'target_sign_width': 0.6400000000000001, 'shift_q2': 0.8, 'shift_p2': 0.0, 'collapse_q1': 0.675}], [{'level': 1, 'q_mid': 4.5, 'support_q': 4.25, 'sign_width': 1.7000000000000002, 'target_sign_width': 0.75, 'shift_q2': 0.4535961214255773, 'shift_p2': 0.8912073600614354, 'collapse_q1': 1.35}, {'level': 1, 'q_mid': 16.5, 'support_q': 4.25, 'sign_width': 1.7000000000000002, 'target_sign_width': 0.75, 'shift_q2': 0.4535961214255773, 'shift_p2': 0.8912073600614354, 'collapse_q1': 1.35}], [{'level': 2, 'q_mid': 10.5, 'support_q': 7.25, 'sign_width': 3.0500000000000003, 'target_sign_width': 0.8875, 'shift_q2': -0.7356263965691823, 'shift_p2': 1.0106205047744876, 'collapse_q1': 2.7}], [{'level': 3, 'q_mid': 18.0, 'support_q': 8.75, 'sign_width': 3.725, 'target_sign_width': 1.0593750000000002, 'shift_q2': -1.5429371404826013, 'shift_p2': -0.24647764709882602, 'collapse_q1': 3.375}]]
+_P1_SCALE = 3.0
+_TRANSLATE = torch.tensor([-13.444575630541275, 0.39837567737931584, -0.005217264936792967, 0.07131437533152989], dtype=torch.float64)
 
 
-def _bump_window(t, start, end):
-    if not (start < t < end):
-        return 0.0
-    u = (t - start) / (end - start)
+def _bump_unit_interval(u):
     if not (0.0 < u < 1.0):
         return 0.0
-    return torch.exp(torch.tensor(-1.0 / (u * (1.0 - u)), dtype=torch.float64)).item() / ((end - start) * _WINDOW_NORM)
+    return math.exp(-1.0 / (u * (1.0 - u))) / _WINDOW_NORM
 
 
-def _vector_field(Q):
-    x = Q[:, 0]
-    y = Q[:, 1]
-    u = _LONG_SCALE * (x - _X_START)
-    theta = _TWIST * u
-    radius = _RADIAL_OFFSET + _RADIAL_GROWTH * u
+def _stage_weight(t, n_stages):
+    if not (0.0 < t < 1.0):
+        return -1, 0.0
+    s = t * n_stages
+    stage = int(math.floor(s))
+    if stage >= n_stages:
+        stage = n_stages - 1
+    u = s - stage
+    return stage, n_stages * _bump_unit_interval(u)
 
-    cos_theta = torch.cos(theta)
-    sin_theta = torch.sin(theta)
 
-    centerline = torch.stack([radius * cos_theta, radius * sin_theta], dim=1)
+def _stage_a(Q, P, nodes):
+    q1 = Q[:, 0]
+    q2 = Q[:, 1]
+    p1 = P[:, 0]
+    p2 = P[:, 1]
+    H = 0.0 * (q1 + q2 + p1 + p2)
+    for node in nodes:
+        z = q1 - node["q_mid"]
+        a = z / node["support_q"]
+        b = p1 / _P1_SCALE
+        window = torch.exp(-(a.pow(4)) - (b.pow(4)))
+        side = torch.tanh(z / node["sign_width"])
+        coeff = window * side
+        H = H + coeff * (node["shift_q2"] * p2 - node["shift_p2"] * q2)
+    return H
 
-    v = torch.stack(
-        [
-            _RADIAL_GROWTH * cos_theta - radius * _TWIST * sin_theta,
-            _RADIAL_GROWTH * sin_theta + radius * _TWIST * cos_theta,
-        ],
-        dim=1,
-    )
-    speed = torch.linalg.norm(v, dim=1, keepdim=True).clamp_min(1e-12)
-    tangent = v / speed
-    normal = torch.stack([-tangent[:, 1], tangent[:, 0]], dim=1)
 
-    accel = torch.stack(
-        [
-            -2.0 * _RADIAL_GROWTH * _TWIST * sin_theta - radius * (_TWIST ** 2) * cos_theta,
-            2.0 * _RADIAL_GROWTH * _TWIST * cos_theta - radius * (_TWIST ** 2) * sin_theta,
-        ],
-        dim=1,
-    )
-    tangent_accel = (tangent * accel).sum(dim=1, keepdim=True)
-    tangent_u_deriv = (accel - tangent_accel * tangent) / speed
-    normal_u_deriv = torch.stack([-tangent_u_deriv[:, 1], tangent_u_deriv[:, 0]], dim=1)
-
-    target = centerline + _NORMAL_SCALE * y[:, None] * normal
-    sx = (x - _X_CENTER) / _SUPPORT_X
-    sy = y / _SUPPORT_Y
-    cutoff = torch.exp(-(sx.pow(8)) - (sy.pow(8)))
-    return _STRENGTH * cutoff[:, None] * (target - Q)
+def _stage_b(Q, P, nodes):
+    q1 = Q[:, 0]
+    q2 = Q[:, 1]
+    p1 = P[:, 0]
+    p2 = P[:, 1]
+    H = 0.0 * (q1 + q2 + p1 + p2)
+    for node in nodes:
+        z = q1 - node["q_mid"]
+        a = z / node["support_q"]
+        window = torch.exp(-(a.pow(4)))
+        shift_norm = math.hypot(node["shift_q2"], node["shift_p2"])
+        uq = node["shift_q2"] / shift_norm
+        up = node["shift_p2"] / shift_norm
+        proj = uq * q2 + up * p2
+        side = torch.tanh(proj / node["target_sign_width"])
+        H = H + node["collapse_q1"] * window * side * p1
+    return H
 
 
 def Hamiltonian(Q, P, t):
-    fold_weight = _bump_window(t, 0.0, 0.6)
-    translate_weight = _bump_window(t, 0.6, 1.0)
+    n_main_stages = 2 * len(_MAIN_LEVELS)
+    total_stages = n_main_stages + 1
+    stage, weight = _stage_weight(t, total_stages)
     H = 0.0 * (Q[:, 0] + P[:, 0])
-    if fold_weight != 0.0:
-        H = H + fold_weight * (P * _vector_field(Q)).sum(dim=1)
-    if translate_weight != 0.0:
-        H = H + translate_weight * ((P * _TRANSLATE_DQ.to(P.device)).sum(dim=1) - (Q * _TRANSLATE_DP.to(Q.device)).sum(dim=1))
-    return H
+    if weight == 0.0:
+        return H
+    if stage < n_main_stages:
+        level = stage // 2
+        if stage % 2 == 0:
+            return weight * _stage_a(Q, P, _MAIN_LEVELS[level])
+        return weight * _stage_b(Q, P, _MAIN_LEVELS[level])
+    dq = _TRANSLATE[:2].to(Q.device)
+    dp = _TRANSLATE[2:].to(P.device)
+    return weight * ((P * dq).sum(dim=1) - (Q * dp).sum(dim=1))
