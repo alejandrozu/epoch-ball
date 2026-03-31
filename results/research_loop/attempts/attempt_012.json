@@ -1,7 +1,7 @@
 {
   "attempt_id": "attempt_012",
   "created_at": "2026-03-31T18:21:43.570845+00:00",
-  "updated_at": "2026-03-31T18:31:47.252731+00:00",
+  "updated_at": "2026-03-31T18:32:17.733008+00:00",
   "hypothesis": "A transform-method enlargement of the exact hybrid strip may still work even though plain toric affine gluing fails: on each face, replace the rigid toric chart by the most general exact fiber-preserving symplectomorphism covering the same affine action map, namely a cotangent-lift / generating-function correction `(x, y) -> (A x + b, A^{-T}(y + grad S(x)))`. If those per-face potentials can glue across the exact strip, the hybrid witness might survive; otherwise the exact strip is ruled out in this broader class.",
   "score": 0.58,
   "keep": true,
@@ -55,5 +55,5 @@
   },
   "notes": "Semantic Scholar retrieval was attempted both through MCP and the required direct-proxy fallback, but all queries were rate-limited with HTTP 429 during this run, so no useful literature note was saved. The decisive evidence here came from exact repo-local computation anyway. This attempt deliberately kept the exact action map from attempt 011 fixed; it rules out only the fiber-preserving generating-function enlargement of that map, not more general non-toric or base-mixing local models.",
   "exit_code": 0,
-  "elapsed_seconds": 603.68
+  "elapsed_seconds": 623.4
 }

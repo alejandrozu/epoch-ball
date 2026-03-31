@@ -22,25 +22,25 @@ Your task is to analyze this solution and make sure it is correct
 - Status: running
 - Best score: 0.58
 - Ready for paper: no
-- Current hypothesis: The exact `m=6` hybrid strip cannot be repaired by any facewise fiber-preserving generating-function correction over the same affine action map. In `B^4`, only coordinate-axis edges collapse torus directions; the diagonal wall does not. Since all 35 internal edges of the exact strip keep both source and target circles active, every edge would require full `A^{-T}` agreement, which never occurs. The next viable family must either force derivative jumps onto coordinate-axis seams or leave the fiber-preserving toric framework.
-- Stop reason: Attempt 012 broadened the exact strip to the full facewise generating-function / cotangent-lift family and still ruled it out. The new transform-method audit shows that only the coordinate axes collapse torus directions for `B^4`, while the diagonal wall `x1 + x2 = 1` does not. On the exact hybrid strip all 35 internal shared edges have both source and target circles active, so the full restricted `A^{-T}` matrix must agree across each edge. It never does, so no fiber-preserving generating-function correction can repair the strip.
+- Current hypothesis: A transform-method enlargement of the exact hybrid strip may still work even though plain toric affine gluing fails: on each face, replace the rigid toric chart by the most general exact fiber-preserving symplectomorphis
+- Stop reason: Attempt 012 broadened the exact strip to the full facewise generating-function / cotangent-lift family and still ruled it out. The new transform-method audit shows that for `B^4`, only the coordinate axes collapse torus 
 
 ## Latest Summary
 
-- Worked: Implemented `src/hybrid_generating_function_audit.py`, a new transform-method audit for the exact `m=6`, `k=10` hybrid strip. The script enlarges each face map to the most general fiber-preserving exact symplectomorphism over the saved affine action map, derives the restricted-angle continuity rule, includes a toy axis-edge positive control, and saves the exact audit to `results/research_loop/attempt_012_generating_function_audit.json`.
-- Did not work: The generating-function enlargement still cannot repair the exact strip. In `B^4`, only the coordinate axes collapse circles; the diagonal wall does not. All 35 internal edges of the strip have source and target active angle sets `[0,1]`, so the full `2 x 2` restricted matrix `A^{-T}` must match across each edge. It never does (`restricted_match_count = 0`).
-- Next step: Stop trying to repair the saved strip inside the same fiber-preserving toric framework. The next live direction is to redesign the action complex so derivative jumps occur only along coordinate-axis seams, or else move to a non-toric local model where the facewise map does not preserve the action-base projection.
+- Worked: Implemented `src/hybrid_generating_function_audit.py`, a new transform-method / generating-function audit for the exact `m=6`, `k=10` hybrid strip. The script imports the exact strip from attempt 011, uses the cotangent-
+- Did not work: This broader family still does not make the proposed solution correct. The exact strip is impossible even after adding arbitrary facewise generating functions over the same affine action map. Every shared edge of the str
+- Next step: Do not revisit the exact hybrid strip with another fiber-preserving toric/generating-function correction. The next family should either redesign the action complex so every derivative jump occurs along coordinate-axis ed
 
 ## Prior Evidence Ledger
 
 ### attempt_012
-- Hypothesis: A transform-method enlargement of the exact hybrid strip may still work even though plain toric affine gluing fails: replace each face map by the most general exact fiber-preserving symplectomorphism over the same affine action map, namely a cotangent-lift / generating-function correction `(x, y) -> (A x + b, A^{-T}(y + grad S(x)))`.
+- Hypothesis: A transform-method enlargement of the exact hybrid strip may still work even though plain toric affine gluing fails: on each face, replace the rigid toric chart by the most general exact fiber-preserving symplectomorphis
 - Score: 0.58
 - Keep: yes
 - Ready for paper: no
-- Worked: Implemented `src/hybrid_generating_function_audit.py`, which derives the restricted-angle continuity rule, includes a toy axis-edge positive control, and proves on the saved exact strip that every one of the 35 internal edges still fails the required restricted `A^{-T}` match.
-- Did not work: The broader generating-function family still cannot repair the exact strip; all internal edges keep both source and target circles active, so each edge needs full `2 x 2` agreement of `A^{-T}`, and none have it.
-- Next step: Redesign the action complex so derivative jumps occur only on coordinate-axis seams, or abandon the fiber-preserving toric local model.
+- Worked: Implemented `src/hybrid_generating_function_audit.py`, a new transform-method / generating-function audit for the exact `m=6`, `k=10` hybrid strip. The script imports the exact strip from attempt 011, uses the cotangent-
+- Did not work: This broader family still does not make the proposed solution correct. The exact strip is impossible even after adding arbitrary facewise generating functions over the same affine action map. Every shared edge of the str
+- Next step: Do not revisit the exact hybrid strip with another fiber-preserving toric/generating-function correction. The next family should either redesign the action complex so every derivative jump occurs along coordinate-axis ed
 
 ### attempt_011
 - Hypothesis: An algebraic exact-recurrence solver can remove the remaining uncertainty in the `m=6` hybrid strip: if the boundary-only source strip admits a rational equal-area realization and the induced local toric charts glue acro

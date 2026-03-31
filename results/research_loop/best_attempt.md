@@ -2,16 +2,16 @@
 
 - Score: 0.58
 - Ready for paper: no
-- Hypothesis: The exact `m=6` hybrid strip is ruled out even after enlarging to the full facewise generating-function / cotangent-lift family over the same affine action map. Any viable near-full hybrid witness must move derivative jumps onto coordinate-axis seams or leave the fiber-preserving toric framework.
+- Hypothesis: A transform-method enlargement of the exact hybrid strip may still work even though plain toric affine gluing fails: on each face, replace the rigid toric chart by the most general exact fiber-preserving symplectomorphis
 
 ## Why it is currently best
 
-Implemented `src/hybrid_generating_function_audit.py`, which takes the exact strip from attempt 011 and enlarges each face map to the most general fiber-preserving exact symplectomorphism over the same affine action map. The script derives the restricted-angle continuity rule, includes a toy axis-edge positive control showing that derivative jumps can survive only when a circle really collapses, and proves on the saved exact strip that every one of the 35 internal edges still fails the required restricted `A^{-T}` match. This upgrades the earlier obstruction from “plain toric affine charts fail” to “the whole facewise generating-function repair family fails on this strip.”
+Implemented `src/hybrid_generating_function_audit.py`, a new transform-method / generating-function audit for the exact `m=6`, `k=10` hybrid strip. The script imports the exact strip from attempt 011, uses the cotangent-lift local model `(x, y) -> (A x + b, A^{-T}(y + grad S(x)))`, and checks the exact continuity criterion on each shared edge after restricting to the torus factors that remain acti
 
 ## Known limits
 
-This attempt is still a stronger negative result rather than a constructive embedding. No Hamiltonian has been produced, and the audit only rules out fiber-preserving generating-function corrections of the saved affine action map. A future successful family may still need a different action complex, a non-fiber-preserving local model, or a fully different smooth construction.
+This broader family still does not make the proposed solution correct. The exact strip is impossible even after adding arbitrary facewise generating functions over the same affine action map. Every shared edge of the strip is full-rank for the standard `T^2` action on `B^4`: both source action coordinates and both target action coordinates are positive at each midpoint. Therefore the full `2 x 2` 
 
 ## Next move
 
-Stop trying to repair the saved strip inside the same fiber-preserving toric framework. The next live direction is to redesign the action complex so derivative jumps occur only along coordinate-axis seams where a torus factor really collapses, or else move to a non-toric local model where the facewise map does not preserve the action-base projection.
+Do not revisit the exact hybrid strip with another fiber-preserving toric/generating-function correction. The next family should either redesign the action complex so every derivative jump occurs along coordinate-axis edges where a circle really collapses, or leave the fiber-preserving toric framework entirely and build a non-toric local model or generating-function construction with base-map mixi
