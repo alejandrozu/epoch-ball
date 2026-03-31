@@ -33,6 +33,15 @@ Your task is to analyze this solution and make sure it is correct
 
 ## Prior Evidence Ledger
 
+### attempt_004
+- Hypothesis: n/a
+- Score: n/a
+- Keep: no
+- Ready for paper: no
+- Worked: n/a
+- Did not work: n/a
+- Next step: n/a
+
 ### attempt_003
 - Hypothesis: A genuinely constructive solution should come from toric/action-angle packings rather than global optimization: the standard square-slot construction gives an explicit symplectic baseline, and a richer multi-block toric 
 - Score: 0.56
