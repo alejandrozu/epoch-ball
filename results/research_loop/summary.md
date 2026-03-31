@@ -33,6 +33,15 @@ Your task is to analyze this solution and make sure it is correct
 
 ## Prior Evidence Ledger
 
+### attempt_009
+- Hypothesis: n/a
+- Score: n/a
+- Keep: no
+- Ready for paper: no
+- Worked: n/a
+- Did not work: n/a
+- Next step: n/a
+
 ### attempt_008
 - Hypothesis: A genuinely new graph/symmetry route is to enforce continuity at the simplicial level. If continuity and unit-triangle compatibility force the m-subdivision of Delta(1) to propagate row by row as a rigid lattice triangle
 - Score: 0.56
@@ -94,13 +103,4 @@ Your task is to analyze this solution and make sure it is correct
 - Ready for paper: no
 - Worked: Implemented src/ball_packing_bounds.py, a reusable equal-ball packing calculator based on standard Cremona reduction. The code reproduced the classical small-k packing fractions exactly to numerical tolerance, including 
 - Did not work: This attempt did not yet turn the abstract packing certificate into an explicit smooth Hamiltonian generator. I also could not use Semantic Scholar MCP directly because the runtime proxy returned HTTP 429 throughout the 
-- Next step: Use the new reduction benchmark to drive an explicit construction attempt, preferably a toric/simplex or localized Hamiltonian-piece method, starting with k=10 and small eps where the target capacity mu is only slightly 
-
-### attempt_001
-- Hypothesis: The repository's optimization-based polynomial Hamiltonian is not a correct general solution; it only supports a near-trivial epsilon regime and may not even outperform its own linear translate-and-scale seed.
-- Score: 0.27
-- Keep: yes
-- Ready for paper: no
-- Worked: Installed CPU PyTorch so the provided code could be executed. Reproduced the shipped verifier pass for k=10, eps=0.99. Added src/hamiltonian_audit.py and used it to audit the shipped Hamiltonian on seeds 0, 123, and 999 
-- Did not work: The optimization-based Hamiltonian family did not yield evidence for denser packing. The shipped optimized Hamiltonian underperformed the plain linear seed (min sampled ratio 0.012385 versus 0.013649 for the seed). The h
-- Next step: Switch to a qualitatively different construction family: abandon global low-degree polynomial optimization and try a constructive localized packing method, such as toric/moment-polytope style embeddings or sequential com
+- Next step: Use the new reduction benchmark to drive an explicit construction attempt, preferably a toric/simplex or localized Hamiltonian-piece method, starting with k=10 and small eps where the target capacity mu is only slightly
