@@ -33,6 +33,15 @@ Your task is to analyze this solution and make sure it is correct
 
 ## Prior Evidence Ledger
 
+### attempt_015
+- Hypothesis: n/a
+- Score: n/a
+- Keep: no
+- Ready for paper: no
+- Worked: n/a
+- Did not work: n/a
+- Next step: n/a
+
 ### attempt_014
 - Hypothesis: A local boundary-uniqueness obstruction may upgrade attempt 013 from a bounded search failure to a general rigid-family impossibility: if an internal seam edge of a rigid piecewise-affine origami lands on `x1=0` or `x2=0
 - Score: 0.62
@@ -95,12 +104,3 @@ Your task is to analyze this solution and make sure it is correct
 - Worked: Implemented src/graph_rigid_triangle_packing.py, a new graph/symmetry-based analysis tool for continuous simplicial origami. The script verifies that once the first unit triangle seed is fixed, every later row is forced;
 - Did not work: The continuity-preserving simplicial origami family failed as a route to near-full density. The hoped-for fold freedom disappears: row propagation is rigid, so a single ball never becomes a new folded polyiamond, only a 
 - Next step: Leave the continuity-preserving simplicial/unit-triangle origami class. The next family should be non-simplicial and break the rigid row-propagation invariant, for example via a smooth multi-chart shear or generating-fun
-
-### attempt_007
-- Hypothesis: A new topological/origami route may reach arbitrary 1-epsilon density by subdividing each source moment triangle Delta(1) into m^2 tiny lattice triangles and reassigning them piecewise-affinely into tiny target triangles
-- Score: 0.55
-- Keep: yes
-- Ready for paper: no
-- Worked: Implemented src/origami_moment_tiling.py, a new piecewise toric origami family based on subdividing each source moment triangle into m^2 tiny triangles and mapping them by affine symplectic toric charts into tiny target 
-- Did not work: The family fails the correctness requirement because the current origami assignment is not continuous. For every nontrivial k=10 case tested, the continuity audit reported zero continuous internal source adjacencies on b
-- Next step: Keep the origami direction but replace the arbitrary tiny-triangle permutation by a continuity-preserving simplicial origami assignment, where each ball maps to a connected target triangulated disk with a globally consis
