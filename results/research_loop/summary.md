@@ -33,6 +33,15 @@ Your task is to analyze this solution and make sure it is correct
 
 ## Prior Evidence Ledger
 
+### attempt_002
+- Hypothesis: n/a
+- Score: n/a
+- Keep: no
+- Ready for paper: no
+- Worked: n/a
+- Did not work: n/a
+- Next step: n/a
+
 ### attempt_001
 - Hypothesis: The repository's optimization-based polynomial Hamiltonian is not a correct general solution; it only supports a near-trivial epsilon regime and may not even outperform its own linear translate-and-scale seed.
 - Score: 0.27

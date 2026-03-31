@@ -1,7 +1,7 @@
 # Research Context
 
 - Stage: research_loop
-- Note: session 1, attempt_001 done; best=attempt_001
+- Note: session 2, starting attempt_002
 - Agent: ARC1
 - Model: gpt-5.4
 - Reasoning effort: xhigh
