@@ -28,13 +28,21 @@
 - Core idea: replace the nonlinear toric chart by explicit affine symplectic scalings and translations on each ball, group balls into affine blocks, and pack those blocks by q-plane rectangle placements
 - Outcome: failed as a viable solution path; even with exact-radius evaluation the best `k=10` ratio found was only about `0.0364`, and the square case `k=16` still only reached about `0.0232`, showing the affine family is far too rigid
 
+## attempt_005
+
+- Family: smooth nonlinear slit-chart packing via exterior log-polar canonical coordinates and rectangle slotting
+- Mathematical modes: calculus, discrete <-> continuous mapping, geometric
+- Core idea: replace the singular toric polar chart by a smooth planar symplectic chart from an exterior point, flatten each unit disk to a rectangle by an exact area-preserving triangular map, and then reuse the standard `l^2` square-slot packing in those smooth coordinates
+- Outcome: failed as a viable packing family; the planar chart itself is numerically correct with area `≈ pi` and tiny roundtrip error near the best parameters, but the best sampled ratios were only about `0.0769` for `k=10` and `0.1230` for `k=16`, showing that generic area coordinates destroy the toric packing mechanism
+
 ## Next family should avoid
 
 - Another global polynomial or neural-style optimization ansatz
 - Another purely obstruction-based analysis pass with no explicit constructive component
 - Another purely square-grid or one-block toric pass that leaves the polar singularity unresolved
 - Another purely affine local-piece or rectangular lamination ansatz
+- Another generic slit-chart or exterior-log-polar rectangle-packing ansatz that replaces the toric action variables by arbitrary area coordinates and then applies the same square-slot recipe
 
 ## Most promising next family
 
-- Smooth constructive packing from genuinely nonlinear local charts or foldings, such as slit-disk / Traynor-style regularized action-angle maps or non-affine folding constructions that preserve the toric square-root compression mechanism
+- A smooth constructive family that preserves a simplex-type action relation while regularizing the singular toric chart, or a fundamentally different non-affine folding construction that retains the square-root compression mechanism
