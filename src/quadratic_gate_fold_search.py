@@ -99,11 +99,11 @@ def sample_specs() -> list[GateSpec]:
     specs: list[GateSpec] = []
     for lam0 in [-0.35, -0.6, -0.9]:
         for lam_growth in [1.0, 1.25]:
-            for eta in [0.0, 0.5, 1.0]:
+            for eta in [0.0, 1.0]:
                 for theta0 in [0.0, 0.35, 0.7]:
                     for theta_growth in [1.0, 1.3]:
                         for support_scale in [1.1, 1.4]:
-                            for support_r in [1.2, 1.8]:
+                            for support_r in [1.5]:
                                 for support_p in [1.8, 2.6]:
                                     specs.append(
                                         GateSpec(
@@ -452,24 +452,24 @@ def main() -> None:
     parser.add_argument("--emit", type=Path, default=Path("Hamiltonian.py"))
     args = parser.parse_args()
 
-    coarse = coarse_search(k=args.k, n_pts_per_ball=80, seed=11, n_steps=128, keep_top_n=10)
+    coarse = coarse_search(k=args.k, n_pts_per_ball=64, seed=11, n_steps=96, keep_top_n=10)
     refined = refine_candidates(
         coarse["top_candidates"],
         k=args.k,
-        n_pts_per_ball=160,
+        n_pts_per_ball=128,
         seeds=[11, 29, 47],
-        n_steps=192,
+        n_steps=160,
     )
     best_spec = GateSpec(**refined[0]["spec"])
-    best_dense = dense_evaluation(best_spec, k=args.k, n_pts_per_ball=256, seeds=[11, 29, 47, 59, 83], n_steps=256)
+    best_dense = dense_evaluation(best_spec, k=args.k, n_pts_per_ball=192, seeds=[11, 29, 47, 59, 83], n_steps=224)
 
     no_rotation_spec = GateSpec(**coarse["best_no_rotation_candidate"]["spec"])
     no_rotation_dense = dense_evaluation(
         no_rotation_spec,
         k=args.k,
-        n_pts_per_ball=256,
+        n_pts_per_ball=192,
         seeds=[11, 29, 47, 59, 83],
-        n_steps=256,
+        n_steps=224,
     )
 
     best_groups = build_level_groups(args.k, best_spec)
