@@ -33,6 +33,15 @@ Your task is to analyze this solution and make sure it is correct
 
 ## Prior Evidence Ledger
 
+### attempt_008
+- Hypothesis: n/a
+- Score: n/a
+- Keep: no
+- Ready for paper: no
+- Worked: n/a
+- Did not work: n/a
+- Next step: n/a
+
 ### attempt_007
 - Hypothesis: A new topological/origami route may reach arbitrary 1-epsilon density by subdividing each source moment triangle Delta(1) into m^2 tiny lattice triangles and reassigning them piecewise-affinely into tiny target triangles
 - Score: 0.55

@@ -1,0 +1,21 @@
+{
+  "attempt_id": "attempt_008",
+  "created_at": "2026-03-31T16:29:20.154855+00:00",
+  "updated_at": "2026-03-31T16:29:20.154869+00:00",
+  "hypothesis": "",
+  "score": null,
+  "keep": false,
+  "ready_for_paper": false,
+  "paper_readiness_reason": "",
+  "worked": "",
+  "did_not_work": "",
+  "next_step": "",
+  "patterns_noticed": "",
+  "commands_run": [],
+  "files_changed": [],
+  "artifacts": [],
+  "evaluation": {},
+  "notes": "",
+  "exit_code": null,
+  "elapsed_seconds": null
+}
