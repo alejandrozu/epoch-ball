@@ -4,12 +4,12 @@ import torch
 torch.set_default_dtype(torch.float64)
 
 _WINDOW_NORM = 0.007029858406609658
-_MAIN_LEVELS = [[{'level': 0, 'q_mid': 1.5, 'support_q': 3.3499999999999996}, {'level': 0, 'q_mid': 7.5, 'support_q': 3.3499999999999996}, {'level': 0, 'q_mid': 13.5, 'support_q': 3.3499999999999996}, {'level': 0, 'q_mid': 19.5, 'support_q': 3.3499999999999996}, {'level': 0, 'q_mid': 25.5, 'support_q': 3.3499999999999996}], [{'level': 1, 'q_mid': 4.5, 'support_q': 5.449999999999999}, {'level': 1, 'q_mid': 16.5, 'support_q': 5.449999999999999}], [{'level': 2, 'q_mid': 10.5, 'support_q': 9.649999999999999}], [{'level': 3, 'q_mid': 18.0, 'support_q': 11.75}]]
+_MAIN_LEVELS = [[{'level': 0, 'q_mid': 1.5, 'support_q': 3.95}, {'level': 0, 'q_mid': 7.5, 'support_q': 3.95}, {'level': 0, 'q_mid': 13.5, 'support_q': 3.95}, {'level': 0, 'q_mid': 19.5, 'support_q': 3.95}, {'level': 0, 'q_mid': 25.5, 'support_q': 3.95}], [{'level': 1, 'q_mid': 4.5, 'support_q': 6.65}, {'level': 1, 'q_mid': 16.5, 'support_q': 6.65}], [{'level': 2, 'q_mid': 10.5, 'support_q': 12.05}], [{'level': 3, 'q_mid': 18.0, 'support_q': 14.75}]]
 _LEVEL_PARAMS = [{'lam': -0.35, 'theta': 0.0}, {'lam': -0.4375, 'theta': -0.0}, {'lam': -0.546875, 'theta': 0.0}, {'lam': -0.68359375, 'theta': -0.0}]
 _ETA = 0.0
 _SUPPORT_R = 1.5
-_SUPPORT_P = 2.6
-_TRANSLATE = torch.tensor([-14.397002460683188, -0.10265982233563142, -0.3776675923437038, -0.013737259425547538], dtype=torch.float64)
+_SUPPORT_P = 4.0
+_TRANSLATE = torch.tensor([-15.584743203247616, 0.45411957905223366, 0.10872234586865188, -0.11846769932803816], dtype=torch.float64)
 
 
 def _bump_unit_interval(u):
