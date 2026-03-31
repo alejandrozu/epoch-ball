@@ -1,0 +1,151 @@
+{
+  "search_result": {
+    "block_limit": 4,
+    "exact_radius": 5.123105625617661,
+    "exact_ratio": 0.023226658924689562,
+    "found": true,
+    "grid_step": 0.5,
+    "k": 16,
+    "partition": [
+      1,
+      1,
+      2,
+      12
+    ],
+    "placements": [
+      {
+        "n_balls": 12,
+        "q_center": [
+          -0.5,
+          0.0
+        ],
+        "side_a": 4,
+        "side_b": 3
+      },
+      {
+        "n_balls": 2,
+        "q_center": [
+          0.0,
+          -4.0
+        ],
+        "side_a": 2,
+        "side_b": 1
+      },
+      {
+        "n_balls": 1,
+        "q_center": [
+          -1.0,
+          4.0
+        ],
+        "side_a": 1,
+        "side_b": 1
+      },
+      {
+        "n_balls": 1,
+        "q_center": [
+          1.0,
+          4.0
+        ],
+        "side_a": 1,
+        "side_b": 1
+      }
+    ],
+    "predicted_ratio": 0.016383999999999996,
+    "rho": 5.5,
+    "shape_choice": [
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        2,
+        1
+      ],
+      [
+        4,
+        3
+      ]
+    ],
+    "target_radius": 5.5901699437494745
+  },
+  "verification": {
+    "block_limit": 4,
+    "exact_radius": 5.123105625617661,
+    "exact_ratio": 0.023226658924689562,
+    "grid_step": 0.5,
+    "k": 16,
+    "n_pts_per_ball": 1500,
+    "partition": [
+      1,
+      1,
+      2,
+      12
+    ],
+    "placements": [
+      {
+        "n_balls": 12,
+        "q_center": [
+          -0.5,
+          0.0
+        ],
+        "side_a": 4,
+        "side_b": 3
+      },
+      {
+        "n_balls": 2,
+        "q_center": [
+          0.0,
+          -4.0
+        ],
+        "side_a": 2,
+        "side_b": 1
+      },
+      {
+        "n_balls": 1,
+        "q_center": [
+          -1.0,
+          4.0
+        ],
+        "side_a": 1,
+        "side_b": 1
+      },
+      {
+        "n_balls": 1,
+        "q_center": [
+          1.0,
+          4.0
+        ],
+        "side_a": 1,
+        "side_b": 1
+      }
+    ],
+    "predicted_ratio": 0.016383999999999996,
+    "rho": 5.5,
+    "sampled_radius": 5.114211889034319,
+    "sampled_ratio": 0.02338864772419216,
+    "seed": 123,
+    "shape_choice": [
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        2,
+        1
+      ],
+      [
+        4,
+        3
+      ]
+    ],
+    "target_radius": 5.5901699437494745
+  }
+}

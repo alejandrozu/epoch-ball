@@ -22,25 +22,25 @@ Your task is to analyze this solution and make sure it is correct
 - Status: running
 - Best score: 0.56
 - Ready for paper: no
-- Current hypothesis: A genuinely constructive solution should come from toric/action-angle packings rather than global optimization: the standard square-slot construction gives an explicit symplectic baseline, and a richer multi-block toric 
-- Stop reason: Explicit toric constructive baselines now exist, including a k=10 witness with ratio about 0.6925, but the family is still far from arbitrary 1-epsilon density and has not yet been converted into a smooth global Hamilton
+- Current hypothesis: The simplest compactly supported local affine symplectic-piece family is far too rigid: any viable explicit smooth Hamiltonian will need a genuinely nonlinear local chart or folding mechanism, not just affine scalin
+- Stop reason: Attempt 004 ruled out the affine local-piece route as a serious candidate: exact k=10 ratio only about 0.0364 and square-case k=16 ratio only about 0.0232, so the next work should return to genuinely nonlinear smooth co
 
 ## Latest Summary
 
-- Worked: Implemented src/explicit_square_packing.py, an explicit toric square-slot embedding on the disjoint source union. Its predicted ratios were confirmed numerically to machine precision: for k=10 it gives mu=4 and ratio 0.6
-- Did not work: The attempt still does not solve the task. Even the improved k=10 construction remains far from the near-full ratio required for small epsilon: mu=3.8 is still substantially above the full-packing threshold sqrt(10)≈3.16
-- Next step: Keep the toric constructive direction but replace the singular polar chart with a smooth slit-disk or Traynor-style regularized chart, and extend the block search beyond axis-aligned rectangles to non-axis Delzant triang
+- Worked: Implemented src/affine_rectangular_packing.py, a new family based on local affine symplectic block maps and q-plane rectangle packing. Added an exact trust-region radius computation for each affine-image ball and validated i
+- Did not work: The affine local-piece family is not competitive. Even in the square case k=16 it only achieved ratio about 0.0232, whereas the toric family achieved ratio 1. For k=10 its ratio 0.03644 is only about 5.26% of the con
+- Next step: Return to genuinely nonlinear smooth constructions, especially regularized action-angle / slit-disk charts or non-affine folding constructions, and stop spending time on purely affine local-piece variants.
 
 ## Prior Evidence Ledger
 
 ### attempt_004
-- Hypothesis: n/a
-- Score: n/a
-- Keep: no
+- Hypothesis: A genuinely different way to get an explicit smooth Hamiltonian is to use compactly supported local affine symplectic pieces: if affine scalings and translations can already pack well, they would give a direct Hamiltonian-
+- Score: 0.48
+- Keep: yes
 - Ready for paper: no
-- Worked: n/a
-- Did not work: n/a
-- Next step: n/a
+- Worked: Implemented src/affine_rectangular_packing.py, a new constructive family based on affine symplectic block maps and q-plane rectangle packing. Added an exact trust-region radius calculation for each affine-image ball. For k=10 
+- Did not work: The affine local-piece family failed decisively as a serious solution path. Even in the square case k=16, where the toric family packs exactly, the affine family only reached ratio about 0.0232. For k=10 its exact ra
+- Next step: Drop purely affine local Hamiltonian pieces and return to genuinely nonlinear smooth constructions, especially regularized action-angle or slit-disk charts, or non-affine folding constructions.
 
 ### attempt_003
 - Hypothesis: A genuinely constructive solution should come from toric/action-angle packings rather than global optimization: the standard square-slot construction gives an explicit symplectic baseline, and a richer multi-block toric 

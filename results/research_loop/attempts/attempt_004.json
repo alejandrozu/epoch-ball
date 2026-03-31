@@ -1,21 +1,48 @@
 {
   "attempt_id": "attempt_004",
   "created_at": "2026-03-31T15:21:35.783591+00:00",
-  "updated_at": "2026-03-31T15:21:35.783603+00:00",
-  "hypothesis": "",
-  "score": null,
-  "keep": false,
+  "updated_at": "2026-03-31T15:35:29.353555+00:00",
+  "hypothesis": "A genuinely different way to get an explicit smooth Hamiltonian is to use compactly supported local affine symplectic pieces: if affine scalings and translations can already pack well, they would give a direct Hamiltonian-piece route without the toric singularity issue.",
+  "score": 0.48,
+  "keep": true,
   "ready_for_paper": false,
-  "paper_readiness_reason": "",
-  "worked": "",
-  "did_not_work": "",
-  "next_step": "",
-  "patterns_noticed": "",
-  "commands_run": [],
-  "files_changed": [],
-  "artifacts": [],
-  "evaluation": {},
-  "notes": "",
-  "exit_code": null,
-  "elapsed_seconds": null
+  "paper_readiness_reason": "This attempt added a well-defined new family and evaluated it with both exact-radius and sampled checks, so it is defensible as a negative ablation. But the family is nowhere near solving the task and still does not produce a competitive Hamiltonian construction.",
+  "worked": "Implemented src/affine_rectangular_packing.py, a new constructive family based on affine symplectic block maps and q-plane rectangle packing. Added an exact trust-region radius computation for each affine-image ball, so the family can be evaluated without relying only on boundary samples. For k=10, the best searched affine layout used the partition 1+1+1+3+4 and achieved exact radius 4.06997615255347 with exact ratio 0.03644454577737161; the sampled ratio 0.036590628028580714 matched closely. For k=16, the best searched affine layout achieved exact ratio 0.023226658924689562 with sampled ratio 0.02338864772419216. These results are reproducible in results/research_loop/affine_rectangular_packing_k10.json and results/research_loop/affine_rectangular_packing_k16.json.",
+  "did_not_work": "The affine local-piece family failed decisively as a serious solution path. Even in the square case k=16, where the toric family packs exactly, the affine family only reached ratio about 0.0232. For k=10 its exact ratio 0.03644 is only about 5.26% of the toric attempt_003 ratio 0.69252, although it is about 2.94x better than the repository's failed polynomial Hamiltonian audit ratio 0.012385. So the main obstruction is structural: affine scalings enlarge the long axes linearly and do not reproduce the square-root compression mechanism that made the toric family competitive.",
+  "next_step": "Drop purely affine local Hamiltonian pieces and return to genuinely nonlinear smooth constructions, especially regularized action-angle or slit-disk charts, or non-affine folding constructions that can preserve the square-root radius scaling.",
+  "patterns_noticed": "Several clear patterns emerged. First, the exact-radius trust-region calculation and the sampled boundary audit agree very closely, so the failure signal is not a sampling artifact. Second, the best affine k=10 layout preferred long one-dimensional blocks such as 4x1 and 3x1 plus isolated singletons, rather than more balanced rectangles; this indicates that the q-plane rectangle cost dominates the search and the affine family naturally degenerates into thin laminations. Third, the catastrophic failure on the square case k=16 is especially informative: the toric family gets ratio 1 there, while the affine family only gets about 0.0232, so the issue is not arithmetic divisibility or search coarseness. Fourth, the family does beat the original failed polynomial Hamiltonian numerically on k=10, but only by moving from one catastrophically bad regime to another. Finally, the central structural invariant is that affine blocks scale large Euclidean axes linearly in the block parameters, whereas the competitive toric family gets effective square-root behavior; without that nonlinear mechanism, the radius budget explodes.",
+  "commands_run": [
+    "python -m py_compile src/affine_rectangular_packing.py",
+    "python src/affine_rectangular_packing.py --k 10 --rho-min 3.0 --rho-max 7.0 --rho-step 0.5 --grid-step 0.5 --block-limit 4 --n-pts 1500 --seed 123",
+    "python src/affine_rectangular_packing.py --k 4 --rho-min 2.0 --rho-max 4.0 --rho-step 0.25 --grid-step 0.25 --block-limit 2 --n-pts 1500 --seed 123",
+    "python src/affine_rectangular_packing.py --k 10 --rho-min 4.0 --rho-max 5.0 --rho-step 0.25 --grid-step 0.25 --block-limit 5 --n-pts 2000 --seed 123",
+    "python src/affine_rectangular_packing.py --k 16 --rho-min 5.0 --rho-max 8.0 --rho-step 0.5 --grid-step 0.5 --block-limit 4 --n-pts 1500 --seed 123",
+    "python src/affine_rectangular_packing.py --k 10 --rho-min 4.0 --rho-max 5.0 --rho-step 0.25 --grid-step 0.25 --block-limit 5 --n-pts 2000 --seed 123 > results/research_loop/affine_rectangular_packing_k10.json",
+    "python src/affine_rectangular_packing.py --k 16 --rho-min 5.0 --rho-max 8.0 --rho-step 0.5 --grid-step 0.5 --block-limit 4 --n-pts 1500 --seed 123 > results/research_loop/affine_rectangular_packing_k16.json",
+    "python - <<'PY' ... compare affine attempt ratios against attempt_003 and current_hamiltonian_audit ... PY"
+  ],
+  "files_changed": [
+    "src/affine_rectangular_packing.py",
+    "results/research_loop/affine_rectangular_packing_k10.json",
+    "results/research_loop/affine_rectangular_packing_k16.json",
+    "results/research_loop/attempt_004_findings.md",
+    "methods.md"
+  ],
+  "artifacts": [
+    "results/research_loop/affine_rectangular_packing_k10.json",
+    "results/research_loop/affine_rectangular_packing_k16.json",
+    "results/research_loop/attempt_004_findings.md"
+  ],
+  "evaluation": {
+    "k10_affine_exact_radius": 4.06997615255347,
+    "k10_affine_exact_ratio": 0.03644454577737161,
+    "k10_affine_sampled_ratio": 0.036590628028580714,
+    "k10_affine_ratio_vs_attempt003_factor": 0.052625924102524604,
+    "k10_affine_ratio_vs_original_candidate_factor": 2.9425702216302074,
+    "k16_affine_exact_ratio": 0.023226658924689562,
+    "k16_affine_sampled_ratio": 0.02338864772419216
+  },
+  "notes": "The new family is useful mainly as a structural ablation. Because it is built from affine symplectic pieces, it is much closer in spirit to a direct smooth Hamiltonian implementation than the singular toric charts, but the measurements show that this simplicity comes at the wrong geometric price: the family misses the nonlinear square-root compression entirely.",
+  "exit_code": 0,
+  "elapsed_seconds": 833.57
 }

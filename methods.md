@@ -21,12 +21,20 @@
 - Core idea: realize actual symplectic embeddings on the source union using toric coordinates, first via the standard `l^2` square packing and then via combinatorial searches over toric blocks inside the target simplex
 - Outcome: partial success; built a validated explicit baseline with exact ratio `k / ceil(sqrt(k))^2`, found a better `k=10` multi-block arrangement with ratio about `0.6925`, but still did not reach arbitrary `1-epsilon` density and did not yet produce the required smooth global Hamiltonian
 
+## attempt_004
+
+- Family: compactly supported local affine symplectic pieces with rectangle-packed laminate blocks
+- Mathematical modes: linear algebra, combinatorial search, inequalities/bounding
+- Core idea: replace the nonlinear toric chart by explicit affine symplectic scalings and translations on each ball, group balls into affine blocks, and pack those blocks by q-plane rectangle placements
+- Outcome: failed as a viable solution path; even with exact-radius evaluation the best `k=10` ratio found was only about `0.0364`, and the square case `k=16` still only reached about `0.0232`, showing the affine family is far too rigid
+
 ## Next family should avoid
 
 - Another global polynomial or neural-style optimization ansatz
 - Another purely obstruction-based analysis pass with no explicit constructive component
 - Another purely square-grid or one-block toric pass that leaves the polar singularity unresolved
+- Another purely affine local-piece or rectangular lamination ansatz
 
 ## Most promising next family
 
-- Smooth constructive packing from toric/simplex geometry using slit-disk or Traynor-style regularized charts, plus richer non-axis multi-block layouts or localized Hamiltonian pieces
+- Smooth constructive packing from genuinely nonlinear local charts or foldings, such as slit-disk / Traynor-style regularized action-angle maps or non-affine folding constructions that preserve the toric square-root compression mechanism
