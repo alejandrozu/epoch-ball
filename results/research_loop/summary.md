@@ -33,6 +33,15 @@ Your task is to analyze this solution and make sure it is correct
 
 ## Prior Evidence Ledger
 
+### attempt_010
+- Hypothesis: n/a
+- Score: n/a
+- Keep: no
+- Ready for paper: no
+- Worked: n/a
+- Did not work: n/a
+- Next step: n/a
+
 ### attempt_009
 - Hypothesis: A genuinely new non-simplicial route is to replace the rigid simplicial triangle image by a connected equal-area polyomino action-shape and then apply an integer toric cover matrix. If exact search over these connected p
 - Score: 0.55
@@ -95,12 +104,3 @@ Your task is to analyze this solution and make sure it is correct
 - Worked: Implemented src/explicit_square_packing.py, an explicit toric square-slot embedding on the disjoint source union. Its predicted ratios were confirmed numerically to machine precision: for k=10 it gives mu=4 and ratio 0.6
 - Did not work: The attempt still does not solve the task. Even the improved k=10 construction remains far from the near-full ratio required for small epsilon: mu=3.8 is still substantially above the full-packing threshold sqrt(10)≈3.16
 - Next step: Keep the toric constructive direction but replace the singular polar chart with a smooth slit-disk or Traynor-style regularized chart, and extend the block search beyond axis-aligned rectangles to non-axis Delzant triang
-
-### attempt_002
-- Hypothesis: The right benchmark for this problem is the geometric/algebraic equal-ball packing theory of B^4: Cremona reduction should show that the task regime k>=10 has full abstract packing, so the repository's current Hamiltonia
-- Score: 0.44
-- Keep: yes
-- Ready for paper: no
-- Worked: Implemented src/ball_packing_bounds.py, a reusable equal-ball packing calculator based on standard Cremona reduction. The code reproduced the classical small-k packing fractions exactly to numerical tolerance, including 
-- Did not work: This attempt did not yet turn the abstract packing certificate into an explicit smooth Hamiltonian generator. I also could not use Semantic Scholar MCP directly because the runtime proxy returned HTTP 429 throughout the 
-- Next step: Use the new reduction benchmark to drive an explicit construction attempt, preferably a toric/simplex or localized Hamiltonian-piece method, starting with k=10 and small eps where the target capacity mu is only slightly
