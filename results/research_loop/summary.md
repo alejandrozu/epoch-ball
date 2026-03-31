@@ -33,6 +33,15 @@ Your task is to analyze this solution and make sure it is correct
 
 ## Prior Evidence Ledger
 
+### attempt_005
+- Hypothesis: n/a
+- Score: n/a
+- Keep: no
+- Ready for paper: no
+- Worked: n/a
+- Did not work: n/a
+- Next step: n/a
+
 ### attempt_004
 - Hypothesis: A genuinely different way to get an explicit smooth Hamiltonian is to use compactly supported local affine symplectic pieces: if affine scalings and translations can already pack well, they would give a direct Hamiltonia
 - Score: 0.48
