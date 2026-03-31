@@ -1,0 +1,17 @@
+{
+  "best_found_count": 9,
+  "best_found_ratio": 0.8668252080856124,
+  "best_found_unit_triangles": 729,
+  "exact_max_count": 9,
+  "exact_max_ratio": 0.8668252080856124,
+  "exact_ratio_if_perfect": 0.9631391200951248,
+  "exact_search_used": true,
+  "exact_target_feasible": false,
+  "exact_target_ratio": 0.8668252080856124,
+  "k": 10,
+  "m": 9,
+  "n": 29,
+  "placement_count": 309,
+  "random_trials": 4000,
+  "seed": 123
+}
