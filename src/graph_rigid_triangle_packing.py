@@ -22,6 +22,7 @@ import math
 import random
 from dataclasses import asdict, dataclass
 
+import networkx as nx
 
 Point = tuple[int, int]
 TriangleId = tuple[Point, Point, Point]
@@ -55,6 +56,11 @@ class PackingSummary:
     best_found_count: int
     best_found_ratio: float
     best_found_unit_triangles: int
+    exact_max_count: int | None
+    exact_max_ratio: float | None
+    exact_target_feasible: bool | None
+    exact_target_ratio: float | None
+    exact_search_used: bool
     random_trials: int
     seed: int
 
@@ -237,6 +243,29 @@ def greedy_random_packing(placements: list[dict], k: int, n_trials: int, seed: i
     return best_count, best_indices
 
 
+def compatibility_graph(placements: list[dict]) -> nx.Graph:
+    g = nx.Graph()
+    g.add_nodes_from(range(len(placements)))
+    triangle_sets = [set(item["triangles"]) for item in placements]
+    for i in range(len(placements)):
+        ti = triangle_sets[i]
+        for j in range(i + 1, len(placements)):
+            if not (ti & triangle_sets[j]):
+                g.add_edge(i, j)
+    return g
+
+
+def exact_max_packing_count(placements: list[dict], target_k: int | None = None) -> int:
+    g = compatibility_graph(placements)
+    best = 0
+    for clique in nx.find_cliques(g):
+        if len(clique) > best:
+            best = len(clique)
+        if target_k is not None and best >= target_k:
+            return best
+    return best
+
+
 def rigid_triangle_ratio(k: int, m: int, count: int) -> tuple[int, float]:
     n = math.ceil(m * math.sqrt(k))
     covered = count * m * m
@@ -264,10 +293,12 @@ def verify_rigidity(m_max: int) -> RigiditySummary:
     )
 
 
-def search_rigid_packing(k: int, m: int, n_trials: int, seed: int) -> PackingSummary:
+def search_rigid_packing(k: int, m: int, n_trials: int, seed: int, exact_limit: int) -> PackingSummary:
     n = math.ceil(m * math.sqrt(k))
     placements = enumerate_placements(m=m, n=n)
     best_count, _ = greedy_random_packing(placements=placements, k=k, n_trials=n_trials, seed=seed)
+    exact_used = len(placements) <= exact_limit
+    exact_max = exact_max_packing_count(placements, target_k=k) if exact_used else None
     return PackingSummary(
         k=k,
         m=m,
@@ -277,6 +308,11 @@ def search_rigid_packing(k: int, m: int, n_trials: int, seed: int) -> PackingSum
         best_found_count=best_count,
         best_found_ratio=(best_count * m * m) / float(n * n),
         best_found_unit_triangles=best_count * m * m,
+        exact_max_count=exact_max,
+        exact_max_ratio=((exact_max * m * m) / float(n * n)) if exact_max is not None else None,
+        exact_target_feasible=(exact_max >= k) if exact_max is not None else None,
+        exact_target_ratio=((min(exact_max, k) * m * m) / float(n * n)) if exact_max is not None else None,
+        exact_search_used=exact_used,
         random_trials=n_trials,
         seed=seed,
     )
@@ -289,6 +325,7 @@ def main() -> None:
     parser.add_argument("--k", type=int, default=10)
     parser.add_argument("--seed", type=int, default=123)
     parser.add_argument("--trials", type=int, default=2000)
+    parser.add_argument("--exact-limit", type=int, default=300)
     parser.add_argument("--mode", choices=("rigidity", "packing", "sweep"), default="sweep")
     args = parser.parse_args()
 
@@ -301,7 +338,13 @@ def main() -> None:
     if args.mode == "packing":
         if args.m is None:
             parser.error("--m is required in packing mode")
-        print(json.dumps(asdict(search_rigid_packing(k=args.k, m=args.m, n_trials=args.trials, seed=args.seed)), indent=2, sort_keys=True))
+        print(
+            json.dumps(
+                asdict(search_rigid_packing(k=args.k, m=args.m, n_trials=args.trials, seed=args.seed, exact_limit=args.exact_limit)),
+                indent=2,
+                sort_keys=True,
+            )
+        )
         return
 
     if args.m_max is None:
@@ -309,7 +352,10 @@ def main() -> None:
 
     payload = {
         "rigidity": asdict(verify_rigidity(args.m_max)),
-        "packing": [asdict(search_rigid_packing(k=args.k, m=m, n_trials=args.trials, seed=args.seed)) for m in range(1, args.m_max + 1)],
+        "packing": [
+            asdict(search_rigid_packing(k=args.k, m=m, n_trials=args.trials, seed=args.seed, exact_limit=args.exact_limit))
+            for m in range(1, args.m_max + 1)
+        ],
     }
     print(json.dumps(payload, indent=2, sort_keys=True))
 

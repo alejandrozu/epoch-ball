@@ -1,0 +1,268 @@
+{
+  "packing": [
+    {
+      "best_found_count": 10,
+      "best_found_ratio": 0.625,
+      "best_found_unit_triangles": 10,
+      "exact_max_count": 16,
+      "exact_max_ratio": 1.0,
+      "exact_ratio_if_perfect": 0.625,
+      "exact_search_used": true,
+      "exact_target_feasible": true,
+      "exact_target_ratio": 0.625,
+      "k": 10,
+      "m": 1,
+      "n": 4,
+      "placement_count": 16,
+      "random_trials": 4000,
+      "seed": 123
+    },
+    {
+      "best_found_count": 10,
+      "best_found_ratio": 0.8163265306122449,
+      "best_found_unit_triangles": 40,
+      "exact_max_count": 10,
+      "exact_max_ratio": 0.8163265306122449,
+      "exact_ratio_if_perfect": 0.8163265306122449,
+      "exact_search_used": true,
+      "exact_target_feasible": true,
+      "exact_target_ratio": 0.8163265306122449,
+      "k": 10,
+      "m": 2,
+      "n": 7,
+      "placement_count": 31,
+      "random_trials": 4000,
+      "seed": 123
+    },
+    {
+      "best_found_count": 9,
+      "best_found_ratio": 0.81,
+      "best_found_unit_triangles": 81,
+      "exact_max_count": 9,
+      "exact_max_ratio": 0.81,
+      "exact_ratio_if_perfect": 0.9,
+      "exact_search_used": true,
+      "exact_target_feasible": false,
+      "exact_target_ratio": 0.81,
+      "k": 10,
+      "m": 3,
+      "n": 10,
+      "placement_count": 51,
+      "random_trials": 4000,
+      "seed": 123
+    },
+    {
+      "best_found_count": 9,
+      "best_found_ratio": 0.8520710059171598,
+      "best_found_unit_triangles": 144,
+      "exact_max_count": 9,
+      "exact_max_ratio": 0.8520710059171598,
+      "exact_ratio_if_perfect": 0.9467455621301775,
+      "exact_search_used": true,
+      "exact_target_feasible": false,
+      "exact_target_ratio": 0.8520710059171598,
+      "k": 10,
+      "m": 4,
+      "n": 13,
+      "placement_count": 76,
+      "random_trials": 4000,
+      "seed": 123
+    },
+    {
+      "best_found_count": 9,
+      "best_found_ratio": 0.87890625,
+      "best_found_unit_triangles": 225,
+      "exact_max_count": 9,
+      "exact_max_ratio": 0.87890625,
+      "exact_ratio_if_perfect": 0.9765625,
+      "exact_search_used": true,
+      "exact_target_feasible": false,
+      "exact_target_ratio": 0.87890625,
+      "k": 10,
+      "m": 5,
+      "n": 16,
+      "placement_count": 106,
+      "random_trials": 4000,
+      "seed": 123
+    },
+    {
+      "best_found_count": 9,
+      "best_found_ratio": 0.8975069252077562,
+      "best_found_unit_triangles": 324,
+      "exact_max_count": 9,
+      "exact_max_ratio": 0.8975069252077562,
+      "exact_ratio_if_perfect": 0.997229916897507,
+      "exact_search_used": true,
+      "exact_target_feasible": false,
+      "exact_target_ratio": 0.8975069252077562,
+      "k": 10,
+      "m": 6,
+      "n": 19,
+      "placement_count": 141,
+      "random_trials": 4000,
+      "seed": 123
+    },
+    {
+      "best_found_count": 9,
+      "best_found_ratio": 0.833648393194707,
+      "best_found_unit_triangles": 441,
+      "exact_max_count": 9,
+      "exact_max_ratio": 0.833648393194707,
+      "exact_ratio_if_perfect": 0.9262759924385633,
+      "exact_search_used": true,
+      "exact_target_feasible": false,
+      "exact_target_ratio": 0.833648393194707,
+      "k": 10,
+      "m": 7,
+      "n": 23,
+      "placement_count": 208,
+      "random_trials": 4000,
+      "seed": 123
+    },
+    {
+      "best_found_count": 9,
+      "best_found_ratio": 0.8520710059171598,
+      "best_found_unit_triangles": 576,
+      "exact_max_count": 9,
+      "exact_max_ratio": 0.8520710059171598,
+      "exact_ratio_if_perfect": 0.9467455621301775,
+      "exact_search_used": true,
+      "exact_target_feasible": false,
+      "exact_target_ratio": 0.8520710059171598,
+      "k": 10,
+      "m": 8,
+      "n": 26,
+      "placement_count": 256,
+      "random_trials": 4000,
+      "seed": 123
+    },
+    {
+      "best_found_count": 9,
+      "best_found_ratio": 0.8668252080856124,
+      "best_found_unit_triangles": 729,
+      "exact_max_count": null,
+      "exact_max_ratio": null,
+      "exact_ratio_if_perfect": 0.9631391200951248,
+      "exact_search_used": false,
+      "exact_target_feasible": null,
+      "exact_target_ratio": null,
+      "k": 10,
+      "m": 9,
+      "n": 29,
+      "placement_count": 309,
+      "random_trials": 4000,
+      "seed": 123
+    },
+    {
+      "best_found_count": 9,
+      "best_found_ratio": 0.87890625,
+      "best_found_unit_triangles": 900,
+      "exact_max_count": null,
+      "exact_max_ratio": null,
+      "exact_ratio_if_perfect": 0.9765625,
+      "exact_search_used": false,
+      "exact_target_feasible": null,
+      "exact_target_ratio": null,
+      "k": 10,
+      "m": 10,
+      "n": 32,
+      "placement_count": 367,
+      "random_trials": 4000,
+      "seed": 123
+    },
+    {
+      "best_found_count": 9,
+      "best_found_ratio": 0.8889795918367347,
+      "best_found_unit_triangles": 1089,
+      "exact_max_count": null,
+      "exact_max_ratio": null,
+      "exact_ratio_if_perfect": 0.9877551020408163,
+      "exact_search_used": false,
+      "exact_target_feasible": null,
+      "exact_target_ratio": null,
+      "k": 10,
+      "m": 11,
+      "n": 35,
+      "placement_count": 430,
+      "random_trials": 4000,
+      "seed": 123
+    },
+    {
+      "best_found_count": 9,
+      "best_found_ratio": 0.8975069252077562,
+      "best_found_unit_triangles": 1296,
+      "exact_max_count": null,
+      "exact_max_ratio": null,
+      "exact_ratio_if_perfect": 0.997229916897507,
+      "exact_search_used": false,
+      "exact_target_feasible": null,
+      "exact_target_ratio": null,
+      "k": 10,
+      "m": 12,
+      "n": 38,
+      "placement_count": 498,
+      "random_trials": 4000,
+      "seed": 123
+    }
+  ],
+  "rigidity": {
+    "admissible_seed_count": 12,
+    "all_rows_affine": true,
+    "all_rows_unique": true,
+    "m_max": 12,
+    "sample_last_row": [
+      [
+        0,
+        12
+      ],
+      [
+        -1,
+        12
+      ],
+      [
+        -2,
+        12
+      ],
+      [
+        -3,
+        12
+      ],
+      [
+        -4,
+        12
+      ],
+      [
+        -5,
+        12
+      ],
+      [
+        -6,
+        12
+      ],
+      [
+        -7,
+        12
+      ],
+      [
+        -8,
+        12
+      ],
+      [
+        -9,
+        12
+      ],
+      [
+        -10,
+        12
+      ],
+      [
+        -11,
+        12
+      ],
+      [
+        -12,
+        12
+      ]
+    ]
+  }
+}

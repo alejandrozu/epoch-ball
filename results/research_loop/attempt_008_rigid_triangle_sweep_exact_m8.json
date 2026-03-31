@@ -1,0 +1,184 @@
+{
+  "packing": [
+    {
+      "best_found_count": 10,
+      "best_found_ratio": 0.625,
+      "best_found_unit_triangles": 10,
+      "exact_max_count": 16,
+      "exact_max_ratio": 1.0,
+      "exact_ratio_if_perfect": 0.625,
+      "exact_search_used": true,
+      "exact_target_feasible": true,
+      "exact_target_ratio": 0.625,
+      "k": 10,
+      "m": 1,
+      "n": 4,
+      "placement_count": 16,
+      "random_trials": 2000,
+      "seed": 123
+    },
+    {
+      "best_found_count": 10,
+      "best_found_ratio": 0.8163265306122449,
+      "best_found_unit_triangles": 40,
+      "exact_max_count": 10,
+      "exact_max_ratio": 0.8163265306122449,
+      "exact_ratio_if_perfect": 0.8163265306122449,
+      "exact_search_used": true,
+      "exact_target_feasible": true,
+      "exact_target_ratio": 0.8163265306122449,
+      "k": 10,
+      "m": 2,
+      "n": 7,
+      "placement_count": 31,
+      "random_trials": 2000,
+      "seed": 123
+    },
+    {
+      "best_found_count": 9,
+      "best_found_ratio": 0.81,
+      "best_found_unit_triangles": 81,
+      "exact_max_count": 9,
+      "exact_max_ratio": 0.81,
+      "exact_ratio_if_perfect": 0.9,
+      "exact_search_used": true,
+      "exact_target_feasible": false,
+      "exact_target_ratio": 0.81,
+      "k": 10,
+      "m": 3,
+      "n": 10,
+      "placement_count": 51,
+      "random_trials": 2000,
+      "seed": 123
+    },
+    {
+      "best_found_count": 9,
+      "best_found_ratio": 0.8520710059171598,
+      "best_found_unit_triangles": 144,
+      "exact_max_count": 9,
+      "exact_max_ratio": 0.8520710059171598,
+      "exact_ratio_if_perfect": 0.9467455621301775,
+      "exact_search_used": true,
+      "exact_target_feasible": false,
+      "exact_target_ratio": 0.8520710059171598,
+      "k": 10,
+      "m": 4,
+      "n": 13,
+      "placement_count": 76,
+      "random_trials": 2000,
+      "seed": 123
+    },
+    {
+      "best_found_count": 9,
+      "best_found_ratio": 0.87890625,
+      "best_found_unit_triangles": 225,
+      "exact_max_count": 9,
+      "exact_max_ratio": 0.87890625,
+      "exact_ratio_if_perfect": 0.9765625,
+      "exact_search_used": true,
+      "exact_target_feasible": false,
+      "exact_target_ratio": 0.87890625,
+      "k": 10,
+      "m": 5,
+      "n": 16,
+      "placement_count": 106,
+      "random_trials": 2000,
+      "seed": 123
+    },
+    {
+      "best_found_count": 9,
+      "best_found_ratio": 0.8975069252077562,
+      "best_found_unit_triangles": 324,
+      "exact_max_count": 9,
+      "exact_max_ratio": 0.8975069252077562,
+      "exact_ratio_if_perfect": 0.997229916897507,
+      "exact_search_used": true,
+      "exact_target_feasible": false,
+      "exact_target_ratio": 0.8975069252077562,
+      "k": 10,
+      "m": 6,
+      "n": 19,
+      "placement_count": 141,
+      "random_trials": 2000,
+      "seed": 123
+    },
+    {
+      "best_found_count": 9,
+      "best_found_ratio": 0.833648393194707,
+      "best_found_unit_triangles": 441,
+      "exact_max_count": 9,
+      "exact_max_ratio": 0.833648393194707,
+      "exact_ratio_if_perfect": 0.9262759924385633,
+      "exact_search_used": true,
+      "exact_target_feasible": false,
+      "exact_target_ratio": 0.833648393194707,
+      "k": 10,
+      "m": 7,
+      "n": 23,
+      "placement_count": 208,
+      "random_trials": 2000,
+      "seed": 123
+    },
+    {
+      "best_found_count": 9,
+      "best_found_ratio": 0.8520710059171598,
+      "best_found_unit_triangles": 576,
+      "exact_max_count": 9,
+      "exact_max_ratio": 0.8520710059171598,
+      "exact_ratio_if_perfect": 0.9467455621301775,
+      "exact_search_used": true,
+      "exact_target_feasible": false,
+      "exact_target_ratio": 0.8520710059171598,
+      "k": 10,
+      "m": 8,
+      "n": 26,
+      "placement_count": 256,
+      "random_trials": 2000,
+      "seed": 123
+    }
+  ],
+  "rigidity": {
+    "admissible_seed_count": 12,
+    "all_rows_affine": true,
+    "all_rows_unique": true,
+    "m_max": 8,
+    "sample_last_row": [
+      [
+        0,
+        8
+      ],
+      [
+        -1,
+        8
+      ],
+      [
+        -2,
+        8
+      ],
+      [
+        -3,
+        8
+      ],
+      [
+        -4,
+        8
+      ],
+      [
+        -5,
+        8
+      ],
+      [
+        -6,
+        8
+      ],
+      [
+        -7,
+        8
+      ],
+      [
+        -8,
+        8
+      ]
+    ]
+  }
+}
