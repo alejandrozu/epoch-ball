@@ -105,6 +105,13 @@
 - Core idea: replace rigid seam origami by a one-sided affine symplectic transvection fold across a hyperplane, normalize it to the active-slice map `F_{s,lambda,d}`, and test whether a common linear symplectic left factor that mixes the active and passive planes can evade the preserved-slice obstruction
 - Outcome: stronger exact negative evidence on this new non-rigid family; the central active slice keeps symplectic area `pi`, so any containing ball radius obeys `R >= delta^(-1/2) >= 1`, where `delta = |omega(f1,f2)|` for an orthonormal basis of the mixed slice plane. The new script exact-checks the transvection formulas, runs a 5776-case nontrivial grid search with best sampled radius `1.001083448194763`, and audits 16 random symplectic mixers with theoretical lower bounds between `1.0083706647215258` and `2.1715166455758785` and minimum sampled radius `1.4699275946793848`. A naive attempt to extend the same area-`pi` argument to arbitrary linear pre-factors failed numerically, so pre-mixing remains a live escape route rather than something already ruled out
 
+## attempt_016
+
+- Family: multistage one-sided symplectic transvection network search
+- Mathematical modes: algorithmic, dynamical systems, geometric
+- Core idea: leave the slice-preserving/common-left-factor family by composing several exact one-sided transvection folds with stage-dependent isotropic directions, then search beam/random stage dictionaries to see whether noncommuting folds can genuinely compress the full `k=10` ball chain
+- Outcome: negative constructive evidence; the saved 3-stage winner has refined worst radius `5.940129794736341`, a bounded 4-stage extension improves this only to `5.844588636564803`, and dense 2048-point validation over seven seeds leaves the best 4-stage candidate at worst radius `5.86484829393902` and worst ratio `0.008452260414214097`. The best networks still overwhelmingly reuse `q1/p1` folds and only add a tiny late `q2` correction, while more strongly cross-plane candidates are worse
+
 ## Next family should avoid
 
 - Another global polynomial or neural-style optimization ansatz
@@ -122,7 +129,8 @@
 - Another two-piece rigid axis-seam origami search with a single straight cut; attempt 013 already exact-searched all such coordinate-axis seams for `m = 3,4,5,6,7,8` in the near-full `k=10` regime and found only overlapping pairs
 - Another rigid axis-seam origami construction of any tree/leaf type whose internal seams land on target boundary edges; attempt 014 showed that any such seam forces overlap locally because each boundary edge has a unique incident target unit triangle
 - Another slice-preserving affine transvection fold with only a common postcomposition linear symplectic mixer; attempt 015 showed that the preserved symplectic 2-plane slice forces `R >= delta^(-1/2) >= 1`, and generic mixing only worsens the lower bound
+- Another multistage one-sided transvection network built from repeated half-space folds; attempt 016 pushed this family to a bounded 4-stage search and dense validation, yet the best worst-case ratio stayed near `0.00845`
 
 ## Most promising next family
 
-- A genuinely nonlinear base-mixing local model, or a pre-mixed/multi-stage fold, that destroys every invariant symplectic 2-plane slice rather than preserving one up to a common left factor
+- An explicit symplectic folding / spiral-product style construction, or another genuinely nonlinear base-mixing local model that destroys every invariant symplectic 2-plane slice without being built from repeated half-space transvections
