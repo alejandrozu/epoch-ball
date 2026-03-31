@@ -1,0 +1,19 @@
+{
+  "combinatorial_ratio": 0.997229916897507,
+  "continuous_adjacencies_ball0": 0,
+  "exact_radius": 1.7795130420052185,
+  "exact_ratio": 0.9972299168975068,
+  "k": 10,
+  "m": 6,
+  "max_edge_midpoint_jump_ball0": 1.1843892002959913,
+  "mean_edge_midpoint_jump_ball0": 0.45166567821749953,
+  "n": 19,
+  "n_pts_per_ball": 300,
+  "pieces_per_ball": 36,
+  "sampled_radius": 1.7795130420052194,
+  "sampled_ratio": 0.997229916897505,
+  "seed": 123,
+  "source_adjacencies": 45,
+  "target_mu": 3.1666666666666665,
+  "used_target_pieces": 360
+}
