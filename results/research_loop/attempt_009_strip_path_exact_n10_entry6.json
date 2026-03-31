@@ -1,0 +1,138 @@
+{
+  "best_by_n_cells": [
+    {
+      "achieved_ratio": 0.5540166204986149,
+      "cells": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          0,
+          4
+        ],
+        [
+          0,
+          5
+        ],
+        [
+          0,
+          6
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          2,
+          1
+        ]
+      ],
+      "determinant": 10,
+      "matrix": [
+        [
+          -5,
+          -2
+        ],
+        [
+          5,
+          0
+        ]
+      ],
+      "n_cells": 10,
+      "required_capacity_mu": 4.2485291572496005,
+      "scale": 0.22360679774997896,
+      "transformed_corner_count": 22
+    }
+  ],
+  "best_overall": {
+    "achieved_ratio": 0.5540166204986149,
+    "cells": [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        2
+      ],
+      [
+        0,
+        3
+      ],
+      [
+        0,
+        4
+      ],
+      [
+        0,
+        5
+      ],
+      [
+        0,
+        6
+      ],
+      [
+        1,
+        0
+      ],
+      [
+        2,
+        0
+      ],
+      [
+        2,
+        1
+      ]
+    ],
+    "determinant": 10,
+    "matrix": [
+      [
+        -5,
+        -2
+      ],
+      [
+        5,
+        0
+      ]
+    ],
+    "n_cells": 10,
+    "required_capacity_mu": 4.2485291572496005,
+    "scale": 0.22360679774997896,
+    "transformed_corner_count": 22
+  },
+  "det_max": 14,
+  "det_min": 10,
+  "entry_bound": 6,
+  "exact_enumeration": true,
+  "k": 10,
+  "matrix_count": 2280,
+  "seed": 123,
+  "shape_trials": 1000,
+  "unique_shape_count_by_n_cells": [
+    {
+      "count": 2662,
+      "n_cells": 10
+    }
+  ]
+}

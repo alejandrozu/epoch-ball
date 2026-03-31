@@ -75,6 +75,30 @@ def cell_neighbors(cell: Cell) -> list[Cell]:
     return [(x + 1, y), (x - 1, y), (x, y + 1), (x, y - 1)]
 
 
+def cell_adjacency_count(cells: tuple[Cell, ...]) -> tuple[int, dict[Cell, int]]:
+    cell_set = set(cells)
+    degrees = {cell: 0 for cell in cells}
+    adjacency_edges = 0
+    for cell in cells:
+        x, y = cell
+        for nb in ((x + 1, y), (x, y + 1)):
+            if nb in cell_set:
+                degrees[cell] += 1
+                degrees[nb] += 1
+                adjacency_edges += 1
+    return adjacency_edges, degrees
+
+
+def is_path_polyomino(cells: tuple[Cell, ...]) -> bool:
+    if len(cells) <= 2:
+        return True
+    adjacency_edges, degrees = cell_adjacency_count(cells)
+    if adjacency_edges != len(cells) - 1:
+        return False
+    degree_values = sorted(degrees.values())
+    return degree_values.count(1) == 2 and all(value <= 2 for value in degree_values)
+
+
 def random_snake_polyomino(n_cells: int, rng: random.Random, max_restarts: int = 200) -> tuple[Cell, ...]:
     if n_cells < 1:
         raise ValueError("n_cells must be positive")
@@ -101,7 +125,17 @@ def random_snake_polyomino(n_cells: int, rng: random.Random, max_restarts: int =
 def canonical_seed_shapes(n_cells: int) -> list[tuple[Cell, ...]]:
     out: list[tuple[Cell, ...]] = []
     out.append(tuple((i, 0) for i in range(n_cells)))
-    out.append(normalize_cells({(i, i // 2) for i in range(n_cells)}))
+
+    staircase: list[Cell] = [(0, 0)]
+    x = 0
+    y = 0
+    for step in range(1, n_cells):
+        if step % 2 == 1:
+            x += 1
+        else:
+            y += 1
+        staircase.append((x, y))
+    out.append(normalize_cells(set(staircase)))
     return list(dict.fromkeys(out))
 
 
@@ -211,6 +245,7 @@ def search_family(
     shape_trials: int,
     seed: int,
     exact_enumeration: bool,
+    path_only: bool,
 ) -> SearchSummary:
     matrices = enumerate_cover_matrices(det_min=det_min, det_max=det_max, entry_bound=entry_bound)
     rng = random.Random(seed)
@@ -224,6 +259,8 @@ def search_family(
         seen_shapes: set[tuple[Cell, ...]] = set()
 
         for shape in canonical_seed_shapes(n_cells):
+            if path_only and not is_path_polyomino(shape):
+                continue
             seen_shapes.add(shape)
             cand = evaluate_shape(shape, matrices, k=k)
             if best_for_n is None or cand.achieved_ratio > best_for_n.achieved_ratio + 1e-12:
@@ -231,6 +268,8 @@ def search_family(
 
         if exact_enumeration:
             for shape in enumerate_snake_polyominoes(n_cells):
+                if path_only and not is_path_polyomino(shape):
+                    continue
                 if shape in seen_shapes:
                     continue
                 seen_shapes.add(shape)
@@ -240,6 +279,8 @@ def search_family(
         else:
             for _ in range(shape_trials):
                 shape = random_snake_polyomino(n_cells=n_cells, rng=rng)
+                if path_only and not is_path_polyomino(shape):
+                    continue
                 if shape in seen_shapes:
                     continue
                 seen_shapes.add(shape)
@@ -281,6 +322,7 @@ def main() -> None:
     parser.add_argument("--shape-trials", type=int, default=1000)
     parser.add_argument("--seed", type=int, default=123)
     parser.add_argument("--exact-enumeration", action="store_true")
+    parser.add_argument("--path-only", action="store_true")
     parser.add_argument("--n-cells", type=int, nargs="+", default=[3, 4, 5, 6, 7, 8, 10, 12, 16])
     args = parser.parse_args()
 
@@ -296,6 +338,7 @@ def main() -> None:
         shape_trials=args.shape_trials,
         seed=args.seed,
         exact_enumeration=args.exact_enumeration,
+        path_only=args.path_only,
     )
     print(json.dumps(asdict(summary), indent=2, sort_keys=True))
 
