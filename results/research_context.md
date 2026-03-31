@@ -1,7 +1,7 @@
 # Research Context
 
 - Stage: research_loop
-- Note: session 19, starting attempt_019
+- Note: session 19, attempt_019 done; best=attempt_015
 - Agent: ARC1
 - Model: gpt-5.4
 - Reasoning effort: xhigh
@@ -10,13 +10,13 @@
 - Semantic Scholar auth token available: yes
 - Best score: 0.64
 - Ready for paper: no
-- Current hypothesis: A recursive four-dimensional fold tree built from coupled control-translation Hamiltonians may realize a Schlenk-style multiple-folding analogue without reverting to cotangent lifts: use the first symplectic plane to wri
+- Current hypothesis: A recursive pair tree of compactly supported quadratic Hamiltonian gates, combining local squeeze and active/passive-plane rotation terms, may compress the `k=10` ball chain more intrinsically than the attempt-018 contro
 
 ## Latest Summary
 
-- Worked: Saved `results/literature/attempt_018_multiple_folding_notes.md` to justify a recursive multiple-folding direction from Schlenk's 2005 titles, despite intermittent Semantic Scholar `429` limits. Implemented `src/hierarch
-- Did not work: This new family still does not make the proposed solution correct. Even the strongest manually restored candidate in this family only gets the enclosing-ball radius down to about `12`, with direct audited ratios around `
-- Next step: Leave recursive control-translation braid folds. The next family should keep genuine four-dimensional coupling but replace temporary plane-to-plane translations by more intrinsically compressive local primitives, such as
+- Worked: Implemented `src/quadratic_gate_fold_search.py`, a new localized quadratic squeeze/rotation gate-tree family whose nodes are compactly supported quadratic Hamiltonians arranged on the recursive pair tree `[5,2,1,1]`. The
+- Did not work: This family still does not make the proposed solution correct. For `k = 10` and `eps = 0.1`, the target requires `R <= (10 / 0.9)^(1/4) = 1.8257418583505538`, but the emitted Hamiltonian audits at radii about `7.43` to `
+- Next step: Leave localized quadratic squeeze/rotation gate trees. The next family should be an explicit epsilon-dependent constructive model that targets near-capacity geometry directly, for example a smoothened ellipsoid/polydisk 
 
 ## Strongest Current Path
 

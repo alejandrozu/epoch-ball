@@ -126,6 +126,13 @@
 - Core idea: build a recursive pair tree of smooth local Hamiltonian stages where the first symplectic plane writes temporary branch information into the second plane, then the second plane is read back to collapse the first plane toward each pair midpoint; search this family directly, preserve within-family ablations, emit a real `Hamiltonian.py`, and audit that module directly
 - Outcome: negative constructive evidence; after fixing a real sign bug in the collapse stage, the strongest no-return candidate saved in `results/research_loop/attempt_018_manual_best_dense.json` still only achieves dense best radius `11.746645430549528` and dense worst radius `12.00466423985685`, while the direct audit in `results/research_loop/attempt_018_hamiltonian_audit.json` reports radii `11.937526341426917` to `12.160933972735252` with min ratio `0.00045722743136449354`. A partial-return-stage ablation worsened the geometry, and a targeted sharp-readout sweep still preferred the broadest tested target-sign scale, showing that the family remains dominated by the temporary auxiliary-plane workspace it needs for branch separation
 
+## attempt_019
+
+- Family: localized quadratic squeeze / rotation gate-tree search
+- Mathematical modes: dynamical systems, linear algebra, geometric
+- Core idea: replace attempt 018's temporary control-translation stages by compactly supported quadratic Hamiltonians on the recursive pair tree, with a squeeze term on `(q1,p1)` and an optional rotation term coupling `(q1,p1)` to `(q2,p2)`; search this family directly, emit a real `Hamiltonian.py`, and audit the emitted module
+- Outcome: negative constructive evidence; the main sweep saved `results/research_loop/attempt_019_quadratic_gate_search.json` and already showed that the best candidate lies at the pure-squeeze, no-rotation corner. A targeted pure-squeeze follow-up improved the dense worst radius to `7.543937744351222`, and the emitted `Hamiltonian.py` audits at radii `7.432985334926973` to `7.468775468106833` on the base audit and up to `7.472629459139713` on a stricter audit, with min ratio only about `0.00321`. The family is smooth, explicit, and fast enough computationally, but it is still far from the target and the generator script exposes an additional correctness flaw because `--eps` is only recorded in metadata and is not used to choose the Hamiltonian
+
 ## Next family should avoid
 
 - Another global polynomial or neural-style optimization ansatz
@@ -146,7 +153,8 @@
 - Another multistage one-sided transvection network built from repeated half-space folds; attempt 016 pushed this family to a bounded 4-stage search and dense validation, yet the best worst-case ratio stayed near `0.00845`
 - Another pure cotangent-lift folding family that only folds the q-plane and accepts the induced inverse-transpose action on p; attempt 017 made this family smooth and explicit but still stalled near ratio `0.01`
 - Another recursive control-translation braid family that spends one symplectic plane as a temporary label register for the other; attempt 018 showed that even after fixing a real sign bug, the strongest no-return version still stalls near ratio `5e-4`, partial return stages make the geometry worse, and sharper branch readout does not remove the need for large temporary workspace
+- Another localized quadratic squeeze/rotation gate tree on the same recursive pair support; attempt 019 showed that this architecture collapses to pure local squeeze, prefers moderate rather than asymptotically gentle supports, still stalls near audited ratio `0.00321`, and does not yet provide any genuine epsilon-dependent parameter selection
 
 ## Most promising next family
 
-- A genuinely four-dimensional explicit folding construction with more intrinsically compressive local primitives, such as coupled quadratic squeeze/rotation gates or a direct ellipsoid/polydisk-style folding model, rather than a family that uses temporary plane-to-plane translations as its main mechanism
+- An explicit epsilon-dependent near-capacity construction, such as a smoothened ellipsoid/polydisk or toric-folding style model whose parameters are derived from `epsilon` rather than another bounded local gate search
