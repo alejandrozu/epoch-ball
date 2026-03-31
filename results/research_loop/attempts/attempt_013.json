@@ -1,21 +1,67 @@
 {
   "attempt_id": "attempt_013",
   "created_at": "2026-03-31T18:32:25.460934+00:00",
-  "updated_at": "2026-03-31T18:32:25.460946+00:00",
-  "hypothesis": "",
-  "score": null,
-  "keep": false,
+  "updated_at": "2026-03-31T18:52:06.074230+00:00",
+  "hypothesis": "A genuinely new axis-seam origami family may survive the attempt-012 obstruction: partition one source moment triangle into rigid affine pieces and allow derivative jumps only along seams whose common image lies on a true coordinate axis. The simplest nontrivial case is a two-piece rigid origami separated by a straight lattice cut; if even that cannot be realized without overlap, then coordinate-axis seams alone are far weaker than hoped.",
+  "score": 0.6,
+  "keep": true,
   "ready_for_paper": false,
-  "paper_readiness_reason": "",
-  "worked": "",
-  "did_not_work": "",
-  "next_step": "",
-  "patterns_noticed": "",
-  "commands_run": [],
-  "files_changed": [],
-  "artifacts": [],
-  "evaluation": {},
-  "notes": "",
-  "exit_code": null,
-  "elapsed_seconds": null
+  "paper_readiness_reason": "This attempt adds exact repo-local evidence on a genuinely new post-attempt-012 family. The new script exhaustively tests all two-piece rigid axis-seam decompositions along straight cuts for `m=3,...,8` in the `k=10` near-full regime and finds none. It is not paper-ready because it still stops short of a general theorem for all multi-piece axis-seam trees, and no positive embedding or Hamiltonian has been produced.",
+  "worked": "Implemented `src/axis_seam_origami_search.py`, an exact search for the simplest nontrivial axis-seam origami family. The script enumerates the 12 rigid triangular-lattice automorphisms, splits a source side-`m` moment triangle into two connected rigid pieces along every internal straight cut `i=c`, `j=c`, or `i+j=c`, and tests all rigid placements of the two pieces inside the target side-`n` simplex with `n = ceil(m * sqrt(10))`. It forces the common seam to land on `x1=0` or `x2=0` and checks whether the two target images can be interior-disjoint. The saved artifact `results/research_loop/attempt_013_axis_seam_two_piece_search.json` shows `total_valid_nonoverlapping_pairs = 0` for every tested `m = 3,4,5,6,7,8`, even though there are many matching axis-line candidates (156, 288, 456, 660, 972, 1260 by `m`).",
+  "did_not_work": "The new axis-seam family still does not make the proposed solution correct. In the bounded two-piece rigid setting, coordinate-axis seams never produce a genuine fold inside the target simplex. Every matched pair of rigid placements that sends the common cut to `x1=0` or `x2=0` overlaps in at least one target unit triangle, so no interior-disjoint two-piece axis-seam origami exists in the tested near-full `k=10` regime. This means the attempt-012 lesson is sharper than hoped: while axis seams are the only places where derivative jumps can be hidden, the standard simplex still appears too one-sided to host even the simplest rigid axis-seam fold.",
+  "next_step": "Stay on the axis-seam line and move to a stronger structural step: either prove a general overlap lemma for any rigid leaf piece attached along a coordinate-axis seam, or extend the search to multi-piece axis-seam trees to see whether a nontrivial leaf attachment can ever avoid the same overlap mechanism.",
+  "patterns_noticed": "A new structural pattern emerged. First, for a two-piece rigid decomposition, the interface must be straight: if two different affine maps agree on a bent seam containing two nonparallel segments, their difference vanishes on a 2D affine span, so the maps are identical. That reduces the nontrivial two-piece search to the internal lines `i=c`, `j=c`, and `i+j=c`. Second, axis alignment itself is not scarce. For each `m = 3,4,5,6,7,8`, both source pieces admit many rigid placements whose common cut lands exactly on `x1=0` or `x2=0`; the number of matching axis-line pairs grows monotonically with `m` (156, 288, 456, 660, 972, 1260). So failure is not due to a lack of coordinate-axis placement options. Third, every matching pair still overlaps. The global minimum overlap count is `1` for every tested `m`, achieved by the shallowest cuts near the boundary, while deeper cuts have much larger forced overlap counts (for example, at `m=7`, the first `i=1` and `sum=6` cuts still overlap in at least 11 tiny triangles, the `i=2` or `sum=5` cuts force at least 16 overlaps, and at `m=8` the corresponding deep cuts rise to at least 13 and 20 overlaps respectively). The overlap witnesses always include triangles immediately adjacent to the axis seam, which matches the geometric picture that the simplex has only one interior side next to each coordinate axis. This suggests a broader invariant: coordinate-axis seams may permit derivative mismatch algebraically, but inside the standard target simplex they do not seem to provide enough geometric room to separate two different rigid sheets.",
+  "commands_run": [
+    "python -m py_compile src/axis_seam_origami_search.py",
+    "python src/axis_seam_origami_search.py --k 10 --m-values 3 4 5 6 --output results/research_loop/attempt_013_axis_seam_two_piece_search.json",
+    "python src/axis_seam_origami_search.py --k 10 --m-values 7",
+    "python src/axis_seam_origami_search.py --k 10 --m-values 3 4 5 6 7 --output results/research_loop/attempt_013_axis_seam_two_piece_search.json",
+    "python src/axis_seam_origami_search.py --k 10 --m-values 8",
+    "python src/axis_seam_origami_search.py --k 10 --m-values 3 4 5 6 7 8 --output results/research_loop/attempt_013_axis_seam_two_piece_search.json"
+  ],
+  "files_changed": [
+    "src/axis_seam_origami_search.py",
+    "results/research_loop/attempt_013_axis_seam_two_piece_search.json",
+    "results/research_loop/attempts/attempt_013.json",
+    "results/research_loop/state.json",
+    "results/research_loop/summary.md",
+    "results/research_context.md",
+    "results/research_loop/best_attempt.md",
+    "methods.md"
+  ],
+  "artifacts": [
+    "results/research_loop/attempt_013_axis_seam_two_piece_search.json"
+  ],
+  "evaluation": {
+    "triangular_lattice_automorphism_count": 12,
+    "k10_axis_seam_two_piece_tested_m_values": [
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+    ],
+    "k10_axis_seam_two_piece_exists": false,
+    "k10_axis_seam_two_piece_total_valid_pairs": 0,
+    "k10_axis_seam_two_piece_matching_pairs_by_m": {
+      "3": 156,
+      "4": 288,
+      "5": 456,
+      "6": 660,
+      "7": 972,
+      "8": 1260
+    },
+    "k10_axis_seam_two_piece_min_overlap_by_m": {
+      "3": 1,
+      "4": 1,
+      "5": 1,
+      "6": 1,
+      "7": 1,
+      "8": 1
+    }
+  },
+  "notes": "This attempt intentionally targets the simplest nontrivial post-attempt-012 axis-seam family rather than the full multi-piece problem. The straight-cut reduction is exact only for the two-piece rigid case. The result is therefore a strong negative step, not a full theorem about all axis-seam trees. No literature note was added because the decisive evidence here was repo-local exact search rather than external references.",
+  "exit_code": 0,
+  "elapsed_seconds": 1180.6
 }

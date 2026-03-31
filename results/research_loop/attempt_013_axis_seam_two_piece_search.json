@@ -7597,6 +7597,2880 @@
       "n": 23,
       "straight_cut_count": 18,
       "valid_nonoverlapping_pair_count_total": 0
+    },
+    {
+      "axis_aligned_left_placements_total": 1484,
+      "axis_aligned_right_placements_total": 1708,
+      "best_cut_witness": {
+        "best_overlap_witness": {
+          "axis_family": "x1=0",
+          "axis_line_vertices": [
+            [
+              0,
+              8
+            ],
+            [
+              0,
+              7
+            ]
+          ],
+          "left": {
+            "A": [
+              [
+                -1,
+                0
+              ],
+              [
+                0,
+                -1
+              ]
+            ],
+            "b": [
+              7,
+              8
+            ]
+          },
+          "overlap_count": 1,
+          "overlap_triangles_sample": [
+            [
+              [
+                0,
+                7
+              ],
+              [
+                0,
+                8
+              ],
+              [
+                1,
+                7
+              ]
+            ]
+          ],
+          "right": {
+            "A": [
+              [
+                1,
+                0
+              ],
+              [
+                -1,
+                -1
+              ]
+            ],
+            "b": [
+              -7,
+              15
+            ]
+          }
+        },
+        "cut_family": "i",
+        "cut_length_edges": 1,
+        "cut_parameter": 7,
+        "left_piece_triangle_count": 63,
+        "right_piece_triangle_count": 1
+      },
+      "cuts": [
+        {
+          "best_overlap_witness": {
+            "axis_family": "x1=0",
+            "axis_line_vertices": [
+              [
+                0,
+                8
+              ],
+              [
+                0,
+                7
+              ],
+              [
+                0,
+                6
+              ],
+              [
+                0,
+                5
+              ],
+              [
+                0,
+                4
+              ],
+              [
+                0,
+                3
+              ],
+              [
+                0,
+                2
+              ],
+              [
+                0,
+                1
+              ]
+            ],
+            "left": {
+              "A": [
+                [
+                  -1,
+                  0
+                ],
+                [
+                  0,
+                  -1
+                ]
+              ],
+              "b": [
+                1,
+                8
+              ]
+            },
+            "overlap_count": 13,
+            "overlap_triangles_sample": [
+              [
+                [
+                  0,
+                  1
+                ],
+                [
+                  0,
+                  2
+                ],
+                [
+                  1,
+                  1
+                ]
+              ],
+              [
+                [
+                  0,
+                  2
+                ],
+                [
+                  0,
+                  3
+                ],
+                [
+                  1,
+                  2
+                ]
+              ],
+              [
+                [
+                  0,
+                  2
+                ],
+                [
+                  1,
+                  1
+                ],
+                [
+                  1,
+                  2
+                ]
+              ],
+              [
+                [
+                  0,
+                  3
+                ],
+                [
+                  0,
+                  4
+                ],
+                [
+                  1,
+                  3
+                ]
+              ],
+              [
+                [
+                  0,
+                  3
+                ],
+                [
+                  1,
+                  2
+                ],
+                [
+                  1,
+                  3
+                ]
+              ]
+            ],
+            "right": {
+              "A": [
+                [
+                  1,
+                  0
+                ],
+                [
+                  -1,
+                  -1
+                ]
+              ],
+              "b": [
+                -1,
+                9
+              ]
+            }
+          },
+          "cut_family": "i",
+          "cut_length_edges": 7,
+          "cut_parameter": 1,
+          "first_valid_pair": null,
+          "left_axis_aligned_placement_count": 72,
+          "left_piece_triangle_count": 15,
+          "matching_axis_line_pair_count": 72,
+          "min_overlap_count": 13,
+          "right_axis_aligned_placement_count": 80,
+          "right_piece_triangle_count": 49,
+          "valid_nonoverlapping_pair_count": 0
+        },
+        {
+          "best_overlap_witness": {
+            "axis_family": "x1=0",
+            "axis_line_vertices": [
+              [
+                0,
+                8
+              ],
+              [
+                0,
+                7
+              ],
+              [
+                0,
+                6
+              ],
+              [
+                0,
+                5
+              ],
+              [
+                0,
+                4
+              ],
+              [
+                0,
+                3
+              ],
+              [
+                0,
+                2
+              ]
+            ],
+            "left": {
+              "A": [
+                [
+                  -1,
+                  0
+                ],
+                [
+                  0,
+                  -1
+                ]
+              ],
+              "b": [
+                2,
+                8
+              ]
+            },
+            "overlap_count": 20,
+            "overlap_triangles_sample": [
+              [
+                [
+                  0,
+                  2
+                ],
+                [
+                  0,
+                  3
+                ],
+                [
+                  1,
+                  2
+                ]
+              ],
+              [
+                [
+                  0,
+                  3
+                ],
+                [
+                  0,
+                  4
+                ],
+                [
+                  1,
+                  3
+                ]
+              ],
+              [
+                [
+                  0,
+                  3
+                ],
+                [
+                  1,
+                  2
+                ],
+                [
+                  1,
+                  3
+                ]
+              ],
+              [
+                [
+                  0,
+                  4
+                ],
+                [
+                  0,
+                  5
+                ],
+                [
+                  1,
+                  4
+                ]
+              ],
+              [
+                [
+                  0,
+                  4
+                ],
+                [
+                  1,
+                  3
+                ],
+                [
+                  1,
+                  4
+                ]
+              ]
+            ],
+            "right": {
+              "A": [
+                [
+                  1,
+                  0
+                ],
+                [
+                  -1,
+                  -1
+                ]
+              ],
+              "b": [
+                -2,
+                10
+              ]
+            }
+          },
+          "cut_family": "i",
+          "cut_length_edges": 6,
+          "cut_parameter": 2,
+          "first_valid_pair": null,
+          "left_axis_aligned_placement_count": 68,
+          "left_piece_triangle_count": 28,
+          "matching_axis_line_pair_count": 68,
+          "min_overlap_count": 20,
+          "right_axis_aligned_placement_count": 84,
+          "right_piece_triangle_count": 36,
+          "valid_nonoverlapping_pair_count": 0
+        },
+        {
+          "best_overlap_witness": {
+            "axis_family": "x1=0",
+            "axis_line_vertices": [
+              [
+                0,
+                8
+              ],
+              [
+                0,
+                7
+              ],
+              [
+                0,
+                6
+              ],
+              [
+                0,
+                5
+              ],
+              [
+                0,
+                4
+              ],
+              [
+                0,
+                3
+              ]
+            ],
+            "left": {
+              "A": [
+                [
+                  -1,
+                  0
+                ],
+                [
+                  0,
+                  -1
+                ]
+              ],
+              "b": [
+                3,
+                8
+              ]
+            },
+            "overlap_count": 21,
+            "overlap_triangles_sample": [
+              [
+                [
+                  0,
+                  3
+                ],
+                [
+                  0,
+                  4
+                ],
+                [
+                  1,
+                  3
+                ]
+              ],
+              [
+                [
+                  0,
+                  4
+                ],
+                [
+                  0,
+                  5
+                ],
+                [
+                  1,
+                  4
+                ]
+              ],
+              [
+                [
+                  0,
+                  4
+                ],
+                [
+                  1,
+                  3
+                ],
+                [
+                  1,
+                  4
+                ]
+              ],
+              [
+                [
+                  0,
+                  5
+                ],
+                [
+                  0,
+                  6
+                ],
+                [
+                  1,
+                  5
+                ]
+              ],
+              [
+                [
+                  0,
+                  5
+                ],
+                [
+                  1,
+                  4
+                ],
+                [
+                  1,
+                  5
+                ]
+              ]
+            ],
+            "right": {
+              "A": [
+                [
+                  1,
+                  0
+                ],
+                [
+                  -1,
+                  -1
+                ]
+              ],
+              "b": [
+                -3,
+                11
+              ]
+            }
+          },
+          "cut_family": "i",
+          "cut_length_edges": 5,
+          "cut_parameter": 3,
+          "first_valid_pair": null,
+          "left_axis_aligned_placement_count": 64,
+          "left_piece_triangle_count": 39,
+          "matching_axis_line_pair_count": 64,
+          "min_overlap_count": 21,
+          "right_axis_aligned_placement_count": 88,
+          "right_piece_triangle_count": 25,
+          "valid_nonoverlapping_pair_count": 0
+        },
+        {
+          "best_overlap_witness": {
+            "axis_family": "x1=0",
+            "axis_line_vertices": [
+              [
+                0,
+                8
+              ],
+              [
+                0,
+                7
+              ],
+              [
+                0,
+                6
+              ],
+              [
+                0,
+                5
+              ],
+              [
+                0,
+                4
+              ]
+            ],
+            "left": {
+              "A": [
+                [
+                  -1,
+                  0
+                ],
+                [
+                  0,
+                  -1
+                ]
+              ],
+              "b": [
+                4,
+                8
+              ]
+            },
+            "overlap_count": 16,
+            "overlap_triangles_sample": [
+              [
+                [
+                  0,
+                  4
+                ],
+                [
+                  0,
+                  5
+                ],
+                [
+                  1,
+                  4
+                ]
+              ],
+              [
+                [
+                  0,
+                  5
+                ],
+                [
+                  0,
+                  6
+                ],
+                [
+                  1,
+                  5
+                ]
+              ],
+              [
+                [
+                  0,
+                  5
+                ],
+                [
+                  1,
+                  4
+                ],
+                [
+                  1,
+                  5
+                ]
+              ],
+              [
+                [
+                  0,
+                  6
+                ],
+                [
+                  0,
+                  7
+                ],
+                [
+                  1,
+                  6
+                ]
+              ],
+              [
+                [
+                  0,
+                  6
+                ],
+                [
+                  1,
+                  5
+                ],
+                [
+                  1,
+                  6
+                ]
+              ]
+            ],
+            "right": {
+              "A": [
+                [
+                  1,
+                  0
+                ],
+                [
+                  -1,
+                  -1
+                ]
+              ],
+              "b": [
+                -4,
+                12
+              ]
+            }
+          },
+          "cut_family": "i",
+          "cut_length_edges": 4,
+          "cut_parameter": 4,
+          "first_valid_pair": null,
+          "left_axis_aligned_placement_count": 60,
+          "left_piece_triangle_count": 48,
+          "matching_axis_line_pair_count": 60,
+          "min_overlap_count": 16,
+          "right_axis_aligned_placement_count": 92,
+          "right_piece_triangle_count": 16,
+          "valid_nonoverlapping_pair_count": 0
+        },
+        {
+          "best_overlap_witness": {
+            "axis_family": "x1=0",
+            "axis_line_vertices": [
+              [
+                0,
+                8
+              ],
+              [
+                0,
+                7
+              ],
+              [
+                0,
+                6
+              ],
+              [
+                0,
+                5
+              ]
+            ],
+            "left": {
+              "A": [
+                [
+                  -1,
+                  0
+                ],
+                [
+                  0,
+                  -1
+                ]
+              ],
+              "b": [
+                5,
+                8
+              ]
+            },
+            "overlap_count": 9,
+            "overlap_triangles_sample": [
+              [
+                [
+                  0,
+                  5
+                ],
+                [
+                  0,
+                  6
+                ],
+                [
+                  1,
+                  5
+                ]
+              ],
+              [
+                [
+                  0,
+                  6
+                ],
+                [
+                  0,
+                  7
+                ],
+                [
+                  1,
+                  6
+                ]
+              ],
+              [
+                [
+                  0,
+                  6
+                ],
+                [
+                  1,
+                  5
+                ],
+                [
+                  1,
+                  6
+                ]
+              ],
+              [
+                [
+                  0,
+                  7
+                ],
+                [
+                  0,
+                  8
+                ],
+                [
+                  1,
+                  7
+                ]
+              ],
+              [
+                [
+                  0,
+                  7
+                ],
+                [
+                  1,
+                  6
+                ],
+                [
+                  1,
+                  7
+                ]
+              ]
+            ],
+            "right": {
+              "A": [
+                [
+                  1,
+                  0
+                ],
+                [
+                  -1,
+                  -1
+                ]
+              ],
+              "b": [
+                -5,
+                13
+              ]
+            }
+          },
+          "cut_family": "i",
+          "cut_length_edges": 3,
+          "cut_parameter": 5,
+          "first_valid_pair": null,
+          "left_axis_aligned_placement_count": 56,
+          "left_piece_triangle_count": 55,
+          "matching_axis_line_pair_count": 56,
+          "min_overlap_count": 9,
+          "right_axis_aligned_placement_count": 96,
+          "right_piece_triangle_count": 9,
+          "valid_nonoverlapping_pair_count": 0
+        },
+        {
+          "best_overlap_witness": {
+            "axis_family": "x1=0",
+            "axis_line_vertices": [
+              [
+                0,
+                8
+              ],
+              [
+                0,
+                7
+              ],
+              [
+                0,
+                6
+              ]
+            ],
+            "left": {
+              "A": [
+                [
+                  -1,
+                  0
+                ],
+                [
+                  0,
+                  -1
+                ]
+              ],
+              "b": [
+                6,
+                8
+              ]
+            },
+            "overlap_count": 4,
+            "overlap_triangles_sample": [
+              [
+                [
+                  0,
+                  6
+                ],
+                [
+                  0,
+                  7
+                ],
+                [
+                  1,
+                  6
+                ]
+              ],
+              [
+                [
+                  0,
+                  7
+                ],
+                [
+                  0,
+                  8
+                ],
+                [
+                  1,
+                  7
+                ]
+              ],
+              [
+                [
+                  0,
+                  7
+                ],
+                [
+                  1,
+                  6
+                ],
+                [
+                  1,
+                  7
+                ]
+              ],
+              [
+                [
+                  1,
+                  6
+                ],
+                [
+                  1,
+                  7
+                ],
+                [
+                  2,
+                  6
+                ]
+              ]
+            ],
+            "right": {
+              "A": [
+                [
+                  1,
+                  0
+                ],
+                [
+                  -1,
+                  -1
+                ]
+              ],
+              "b": [
+                -6,
+                14
+              ]
+            }
+          },
+          "cut_family": "i",
+          "cut_length_edges": 2,
+          "cut_parameter": 6,
+          "first_valid_pair": null,
+          "left_axis_aligned_placement_count": 52,
+          "left_piece_triangle_count": 60,
+          "matching_axis_line_pair_count": 52,
+          "min_overlap_count": 4,
+          "right_axis_aligned_placement_count": 100,
+          "right_piece_triangle_count": 4,
+          "valid_nonoverlapping_pair_count": 0
+        },
+        {
+          "best_overlap_witness": {
+            "axis_family": "x1=0",
+            "axis_line_vertices": [
+              [
+                0,
+                8
+              ],
+              [
+                0,
+                7
+              ]
+            ],
+            "left": {
+              "A": [
+                [
+                  -1,
+                  0
+                ],
+                [
+                  0,
+                  -1
+                ]
+              ],
+              "b": [
+                7,
+                8
+              ]
+            },
+            "overlap_count": 1,
+            "overlap_triangles_sample": [
+              [
+                [
+                  0,
+                  7
+                ],
+                [
+                  0,
+                  8
+                ],
+                [
+                  1,
+                  7
+                ]
+              ]
+            ],
+            "right": {
+              "A": [
+                [
+                  1,
+                  0
+                ],
+                [
+                  -1,
+                  -1
+                ]
+              ],
+              "b": [
+                -7,
+                15
+              ]
+            }
+          },
+          "cut_family": "i",
+          "cut_length_edges": 1,
+          "cut_parameter": 7,
+          "first_valid_pair": null,
+          "left_axis_aligned_placement_count": 48,
+          "left_piece_triangle_count": 63,
+          "matching_axis_line_pair_count": 48,
+          "min_overlap_count": 1,
+          "right_axis_aligned_placement_count": 104,
+          "right_piece_triangle_count": 1,
+          "valid_nonoverlapping_pair_count": 0
+        },
+        {
+          "best_overlap_witness": {
+            "axis_family": "x2=0",
+            "axis_line_vertices": [
+              [
+                8,
+                0
+              ],
+              [
+                7,
+                0
+              ],
+              [
+                6,
+                0
+              ],
+              [
+                5,
+                0
+              ],
+              [
+                4,
+                0
+              ],
+              [
+                3,
+                0
+              ],
+              [
+                2,
+                0
+              ],
+              [
+                1,
+                0
+              ]
+            ],
+            "left": {
+              "A": [
+                [
+                  -1,
+                  0
+                ],
+                [
+                  0,
+                  -1
+                ]
+              ],
+              "b": [
+                8,
+                1
+              ]
+            },
+            "overlap_count": 13,
+            "overlap_triangles_sample": [
+              [
+                [
+                  1,
+                  0
+                ],
+                [
+                  1,
+                  1
+                ],
+                [
+                  2,
+                  0
+                ]
+              ],
+              [
+                [
+                  1,
+                  1
+                ],
+                [
+                  2,
+                  0
+                ],
+                [
+                  2,
+                  1
+                ]
+              ],
+              [
+                [
+                  2,
+                  0
+                ],
+                [
+                  2,
+                  1
+                ],
+                [
+                  3,
+                  0
+                ]
+              ],
+              [
+                [
+                  2,
+                  1
+                ],
+                [
+                  3,
+                  0
+                ],
+                [
+                  3,
+                  1
+                ]
+              ],
+              [
+                [
+                  3,
+                  0
+                ],
+                [
+                  3,
+                  1
+                ],
+                [
+                  4,
+                  0
+                ]
+              ]
+            ],
+            "right": {
+              "A": [
+                [
+                  -1,
+                  -1
+                ],
+                [
+                  0,
+                  1
+                ]
+              ],
+              "b": [
+                9,
+                -1
+              ]
+            }
+          },
+          "cut_family": "j",
+          "cut_length_edges": 7,
+          "cut_parameter": 1,
+          "first_valid_pair": null,
+          "left_axis_aligned_placement_count": 72,
+          "left_piece_triangle_count": 15,
+          "matching_axis_line_pair_count": 72,
+          "min_overlap_count": 13,
+          "right_axis_aligned_placement_count": 80,
+          "right_piece_triangle_count": 49,
+          "valid_nonoverlapping_pair_count": 0
+        },
+        {
+          "best_overlap_witness": {
+            "axis_family": "x2=0",
+            "axis_line_vertices": [
+              [
+                8,
+                0
+              ],
+              [
+                7,
+                0
+              ],
+              [
+                6,
+                0
+              ],
+              [
+                5,
+                0
+              ],
+              [
+                4,
+                0
+              ],
+              [
+                3,
+                0
+              ],
+              [
+                2,
+                0
+              ]
+            ],
+            "left": {
+              "A": [
+                [
+                  -1,
+                  0
+                ],
+                [
+                  0,
+                  -1
+                ]
+              ],
+              "b": [
+                8,
+                2
+              ]
+            },
+            "overlap_count": 20,
+            "overlap_triangles_sample": [
+              [
+                [
+                  2,
+                  0
+                ],
+                [
+                  2,
+                  1
+                ],
+                [
+                  3,
+                  0
+                ]
+              ],
+              [
+                [
+                  2,
+                  1
+                ],
+                [
+                  2,
+                  2
+                ],
+                [
+                  3,
+                  1
+                ]
+              ],
+              [
+                [
+                  2,
+                  1
+                ],
+                [
+                  3,
+                  0
+                ],
+                [
+                  3,
+                  1
+                ]
+              ],
+              [
+                [
+                  2,
+                  2
+                ],
+                [
+                  3,
+                  1
+                ],
+                [
+                  3,
+                  2
+                ]
+              ],
+              [
+                [
+                  3,
+                  0
+                ],
+                [
+                  3,
+                  1
+                ],
+                [
+                  4,
+                  0
+                ]
+              ]
+            ],
+            "right": {
+              "A": [
+                [
+                  -1,
+                  -1
+                ],
+                [
+                  0,
+                  1
+                ]
+              ],
+              "b": [
+                10,
+                -2
+              ]
+            }
+          },
+          "cut_family": "j",
+          "cut_length_edges": 6,
+          "cut_parameter": 2,
+          "first_valid_pair": null,
+          "left_axis_aligned_placement_count": 68,
+          "left_piece_triangle_count": 28,
+          "matching_axis_line_pair_count": 68,
+          "min_overlap_count": 20,
+          "right_axis_aligned_placement_count": 84,
+          "right_piece_triangle_count": 36,
+          "valid_nonoverlapping_pair_count": 0
+        },
+        {
+          "best_overlap_witness": {
+            "axis_family": "x2=0",
+            "axis_line_vertices": [
+              [
+                8,
+                0
+              ],
+              [
+                7,
+                0
+              ],
+              [
+                6,
+                0
+              ],
+              [
+                5,
+                0
+              ],
+              [
+                4,
+                0
+              ],
+              [
+                3,
+                0
+              ]
+            ],
+            "left": {
+              "A": [
+                [
+                  -1,
+                  0
+                ],
+                [
+                  0,
+                  -1
+                ]
+              ],
+              "b": [
+                8,
+                3
+              ]
+            },
+            "overlap_count": 21,
+            "overlap_triangles_sample": [
+              [
+                [
+                  3,
+                  0
+                ],
+                [
+                  3,
+                  1
+                ],
+                [
+                  4,
+                  0
+                ]
+              ],
+              [
+                [
+                  3,
+                  1
+                ],
+                [
+                  3,
+                  2
+                ],
+                [
+                  4,
+                  1
+                ]
+              ],
+              [
+                [
+                  3,
+                  1
+                ],
+                [
+                  4,
+                  0
+                ],
+                [
+                  4,
+                  1
+                ]
+              ],
+              [
+                [
+                  3,
+                  2
+                ],
+                [
+                  3,
+                  3
+                ],
+                [
+                  4,
+                  2
+                ]
+              ],
+              [
+                [
+                  3,
+                  2
+                ],
+                [
+                  4,
+                  1
+                ],
+                [
+                  4,
+                  2
+                ]
+              ]
+            ],
+            "right": {
+              "A": [
+                [
+                  -1,
+                  -1
+                ],
+                [
+                  0,
+                  1
+                ]
+              ],
+              "b": [
+                11,
+                -3
+              ]
+            }
+          },
+          "cut_family": "j",
+          "cut_length_edges": 5,
+          "cut_parameter": 3,
+          "first_valid_pair": null,
+          "left_axis_aligned_placement_count": 64,
+          "left_piece_triangle_count": 39,
+          "matching_axis_line_pair_count": 64,
+          "min_overlap_count": 21,
+          "right_axis_aligned_placement_count": 88,
+          "right_piece_triangle_count": 25,
+          "valid_nonoverlapping_pair_count": 0
+        },
+        {
+          "best_overlap_witness": {
+            "axis_family": "x2=0",
+            "axis_line_vertices": [
+              [
+                8,
+                0
+              ],
+              [
+                7,
+                0
+              ],
+              [
+                6,
+                0
+              ],
+              [
+                5,
+                0
+              ],
+              [
+                4,
+                0
+              ]
+            ],
+            "left": {
+              "A": [
+                [
+                  -1,
+                  0
+                ],
+                [
+                  0,
+                  -1
+                ]
+              ],
+              "b": [
+                8,
+                4
+              ]
+            },
+            "overlap_count": 16,
+            "overlap_triangles_sample": [
+              [
+                [
+                  4,
+                  0
+                ],
+                [
+                  4,
+                  1
+                ],
+                [
+                  5,
+                  0
+                ]
+              ],
+              [
+                [
+                  4,
+                  1
+                ],
+                [
+                  4,
+                  2
+                ],
+                [
+                  5,
+                  1
+                ]
+              ],
+              [
+                [
+                  4,
+                  1
+                ],
+                [
+                  5,
+                  0
+                ],
+                [
+                  5,
+                  1
+                ]
+              ],
+              [
+                [
+                  4,
+                  2
+                ],
+                [
+                  4,
+                  3
+                ],
+                [
+                  5,
+                  2
+                ]
+              ],
+              [
+                [
+                  4,
+                  2
+                ],
+                [
+                  5,
+                  1
+                ],
+                [
+                  5,
+                  2
+                ]
+              ]
+            ],
+            "right": {
+              "A": [
+                [
+                  -1,
+                  -1
+                ],
+                [
+                  0,
+                  1
+                ]
+              ],
+              "b": [
+                12,
+                -4
+              ]
+            }
+          },
+          "cut_family": "j",
+          "cut_length_edges": 4,
+          "cut_parameter": 4,
+          "first_valid_pair": null,
+          "left_axis_aligned_placement_count": 60,
+          "left_piece_triangle_count": 48,
+          "matching_axis_line_pair_count": 60,
+          "min_overlap_count": 16,
+          "right_axis_aligned_placement_count": 92,
+          "right_piece_triangle_count": 16,
+          "valid_nonoverlapping_pair_count": 0
+        },
+        {
+          "best_overlap_witness": {
+            "axis_family": "x2=0",
+            "axis_line_vertices": [
+              [
+                8,
+                0
+              ],
+              [
+                7,
+                0
+              ],
+              [
+                6,
+                0
+              ],
+              [
+                5,
+                0
+              ]
+            ],
+            "left": {
+              "A": [
+                [
+                  -1,
+                  0
+                ],
+                [
+                  0,
+                  -1
+                ]
+              ],
+              "b": [
+                8,
+                5
+              ]
+            },
+            "overlap_count": 9,
+            "overlap_triangles_sample": [
+              [
+                [
+                  5,
+                  0
+                ],
+                [
+                  5,
+                  1
+                ],
+                [
+                  6,
+                  0
+                ]
+              ],
+              [
+                [
+                  5,
+                  1
+                ],
+                [
+                  5,
+                  2
+                ],
+                [
+                  6,
+                  1
+                ]
+              ],
+              [
+                [
+                  5,
+                  1
+                ],
+                [
+                  6,
+                  0
+                ],
+                [
+                  6,
+                  1
+                ]
+              ],
+              [
+                [
+                  5,
+                  2
+                ],
+                [
+                  5,
+                  3
+                ],
+                [
+                  6,
+                  2
+                ]
+              ],
+              [
+                [
+                  5,
+                  2
+                ],
+                [
+                  6,
+                  1
+                ],
+                [
+                  6,
+                  2
+                ]
+              ]
+            ],
+            "right": {
+              "A": [
+                [
+                  -1,
+                  -1
+                ],
+                [
+                  0,
+                  1
+                ]
+              ],
+              "b": [
+                13,
+                -5
+              ]
+            }
+          },
+          "cut_family": "j",
+          "cut_length_edges": 3,
+          "cut_parameter": 5,
+          "first_valid_pair": null,
+          "left_axis_aligned_placement_count": 56,
+          "left_piece_triangle_count": 55,
+          "matching_axis_line_pair_count": 56,
+          "min_overlap_count": 9,
+          "right_axis_aligned_placement_count": 96,
+          "right_piece_triangle_count": 9,
+          "valid_nonoverlapping_pair_count": 0
+        },
+        {
+          "best_overlap_witness": {
+            "axis_family": "x2=0",
+            "axis_line_vertices": [
+              [
+                8,
+                0
+              ],
+              [
+                7,
+                0
+              ],
+              [
+                6,
+                0
+              ]
+            ],
+            "left": {
+              "A": [
+                [
+                  -1,
+                  0
+                ],
+                [
+                  0,
+                  -1
+                ]
+              ],
+              "b": [
+                8,
+                6
+              ]
+            },
+            "overlap_count": 4,
+            "overlap_triangles_sample": [
+              [
+                [
+                  6,
+                  0
+                ],
+                [
+                  6,
+                  1
+                ],
+                [
+                  7,
+                  0
+                ]
+              ],
+              [
+                [
+                  6,
+                  1
+                ],
+                [
+                  6,
+                  2
+                ],
+                [
+                  7,
+                  1
+                ]
+              ],
+              [
+                [
+                  6,
+                  1
+                ],
+                [
+                  7,
+                  0
+                ],
+                [
+                  7,
+                  1
+                ]
+              ],
+              [
+                [
+                  7,
+                  0
+                ],
+                [
+                  7,
+                  1
+                ],
+                [
+                  8,
+                  0
+                ]
+              ]
+            ],
+            "right": {
+              "A": [
+                [
+                  -1,
+                  -1
+                ],
+                [
+                  0,
+                  1
+                ]
+              ],
+              "b": [
+                14,
+                -6
+              ]
+            }
+          },
+          "cut_family": "j",
+          "cut_length_edges": 2,
+          "cut_parameter": 6,
+          "first_valid_pair": null,
+          "left_axis_aligned_placement_count": 52,
+          "left_piece_triangle_count": 60,
+          "matching_axis_line_pair_count": 52,
+          "min_overlap_count": 4,
+          "right_axis_aligned_placement_count": 100,
+          "right_piece_triangle_count": 4,
+          "valid_nonoverlapping_pair_count": 0
+        },
+        {
+          "best_overlap_witness": {
+            "axis_family": "x2=0",
+            "axis_line_vertices": [
+              [
+                8,
+                0
+              ],
+              [
+                7,
+                0
+              ]
+            ],
+            "left": {
+              "A": [
+                [
+                  -1,
+                  0
+                ],
+                [
+                  0,
+                  -1
+                ]
+              ],
+              "b": [
+                8,
+                7
+              ]
+            },
+            "overlap_count": 1,
+            "overlap_triangles_sample": [
+              [
+                [
+                  7,
+                  0
+                ],
+                [
+                  7,
+                  1
+                ],
+                [
+                  8,
+                  0
+                ]
+              ]
+            ],
+            "right": {
+              "A": [
+                [
+                  -1,
+                  -1
+                ],
+                [
+                  0,
+                  1
+                ]
+              ],
+              "b": [
+                15,
+                -7
+              ]
+            }
+          },
+          "cut_family": "j",
+          "cut_length_edges": 1,
+          "cut_parameter": 7,
+          "first_valid_pair": null,
+          "left_axis_aligned_placement_count": 48,
+          "left_piece_triangle_count": 63,
+          "matching_axis_line_pair_count": 48,
+          "min_overlap_count": 1,
+          "right_axis_aligned_placement_count": 104,
+          "right_piece_triangle_count": 1,
+          "valid_nonoverlapping_pair_count": 0
+        },
+        {
+          "best_overlap_witness": {
+            "axis_family": "x1=0",
+            "axis_line_vertices": [
+              [
+                0,
+                8
+              ],
+              [
+                0,
+                7
+              ]
+            ],
+            "left": {
+              "A": [
+                [
+                  -1,
+                  -1
+                ],
+                [
+                  0,
+                  1
+                ]
+              ],
+              "b": [
+                1,
+                7
+              ]
+            },
+            "overlap_count": 1,
+            "overlap_triangles_sample": [
+              [
+                [
+                  0,
+                  7
+                ],
+                [
+                  0,
+                  8
+                ],
+                [
+                  1,
+                  7
+                ]
+              ]
+            ],
+            "right": {
+              "A": [
+                [
+                  1,
+                  1
+                ],
+                [
+                  -1,
+                  0
+                ]
+              ],
+              "b": [
+                -1,
+                8
+              ]
+            }
+          },
+          "cut_family": "sum",
+          "cut_length_edges": 1,
+          "cut_parameter": 1,
+          "first_valid_pair": null,
+          "left_axis_aligned_placement_count": 104,
+          "left_piece_triangle_count": 1,
+          "matching_axis_line_pair_count": 48,
+          "min_overlap_count": 1,
+          "right_axis_aligned_placement_count": 48,
+          "right_piece_triangle_count": 63,
+          "valid_nonoverlapping_pair_count": 0
+        },
+        {
+          "best_overlap_witness": {
+            "axis_family": "x1=0",
+            "axis_line_vertices": [
+              [
+                0,
+                8
+              ],
+              [
+                0,
+                7
+              ],
+              [
+                0,
+                6
+              ]
+            ],
+            "left": {
+              "A": [
+                [
+                  -1,
+                  -1
+                ],
+                [
+                  0,
+                  1
+                ]
+              ],
+              "b": [
+                2,
+                6
+              ]
+            },
+            "overlap_count": 4,
+            "overlap_triangles_sample": [
+              [
+                [
+                  0,
+                  6
+                ],
+                [
+                  0,
+                  7
+                ],
+                [
+                  1,
+                  6
+                ]
+              ],
+              [
+                [
+                  0,
+                  7
+                ],
+                [
+                  0,
+                  8
+                ],
+                [
+                  1,
+                  7
+                ]
+              ],
+              [
+                [
+                  0,
+                  7
+                ],
+                [
+                  1,
+                  6
+                ],
+                [
+                  1,
+                  7
+                ]
+              ],
+              [
+                [
+                  1,
+                  6
+                ],
+                [
+                  1,
+                  7
+                ],
+                [
+                  2,
+                  6
+                ]
+              ]
+            ],
+            "right": {
+              "A": [
+                [
+                  1,
+                  1
+                ],
+                [
+                  -1,
+                  0
+                ]
+              ],
+              "b": [
+                -2,
+                8
+              ]
+            }
+          },
+          "cut_family": "sum",
+          "cut_length_edges": 2,
+          "cut_parameter": 2,
+          "first_valid_pair": null,
+          "left_axis_aligned_placement_count": 100,
+          "left_piece_triangle_count": 4,
+          "matching_axis_line_pair_count": 52,
+          "min_overlap_count": 4,
+          "right_axis_aligned_placement_count": 52,
+          "right_piece_triangle_count": 60,
+          "valid_nonoverlapping_pair_count": 0
+        },
+        {
+          "best_overlap_witness": {
+            "axis_family": "x1=0",
+            "axis_line_vertices": [
+              [
+                0,
+                8
+              ],
+              [
+                0,
+                7
+              ],
+              [
+                0,
+                6
+              ],
+              [
+                0,
+                5
+              ]
+            ],
+            "left": {
+              "A": [
+                [
+                  -1,
+                  -1
+                ],
+                [
+                  0,
+                  1
+                ]
+              ],
+              "b": [
+                3,
+                5
+              ]
+            },
+            "overlap_count": 9,
+            "overlap_triangles_sample": [
+              [
+                [
+                  0,
+                  5
+                ],
+                [
+                  0,
+                  6
+                ],
+                [
+                  1,
+                  5
+                ]
+              ],
+              [
+                [
+                  0,
+                  6
+                ],
+                [
+                  0,
+                  7
+                ],
+                [
+                  1,
+                  6
+                ]
+              ],
+              [
+                [
+                  0,
+                  6
+                ],
+                [
+                  1,
+                  5
+                ],
+                [
+                  1,
+                  6
+                ]
+              ],
+              [
+                [
+                  0,
+                  7
+                ],
+                [
+                  0,
+                  8
+                ],
+                [
+                  1,
+                  7
+                ]
+              ],
+              [
+                [
+                  0,
+                  7
+                ],
+                [
+                  1,
+                  6
+                ],
+                [
+                  1,
+                  7
+                ]
+              ]
+            ],
+            "right": {
+              "A": [
+                [
+                  1,
+                  1
+                ],
+                [
+                  -1,
+                  0
+                ]
+              ],
+              "b": [
+                -3,
+                8
+              ]
+            }
+          },
+          "cut_family": "sum",
+          "cut_length_edges": 3,
+          "cut_parameter": 3,
+          "first_valid_pair": null,
+          "left_axis_aligned_placement_count": 96,
+          "left_piece_triangle_count": 9,
+          "matching_axis_line_pair_count": 56,
+          "min_overlap_count": 9,
+          "right_axis_aligned_placement_count": 56,
+          "right_piece_triangle_count": 55,
+          "valid_nonoverlapping_pair_count": 0
+        },
+        {
+          "best_overlap_witness": {
+            "axis_family": "x1=0",
+            "axis_line_vertices": [
+              [
+                0,
+                8
+              ],
+              [
+                0,
+                7
+              ],
+              [
+                0,
+                6
+              ],
+              [
+                0,
+                5
+              ],
+              [
+                0,
+                4
+              ]
+            ],
+            "left": {
+              "A": [
+                [
+                  -1,
+                  -1
+                ],
+                [
+                  0,
+                  1
+                ]
+              ],
+              "b": [
+                4,
+                4
+              ]
+            },
+            "overlap_count": 16,
+            "overlap_triangles_sample": [
+              [
+                [
+                  0,
+                  4
+                ],
+                [
+                  0,
+                  5
+                ],
+                [
+                  1,
+                  4
+                ]
+              ],
+              [
+                [
+                  0,
+                  5
+                ],
+                [
+                  0,
+                  6
+                ],
+                [
+                  1,
+                  5
+                ]
+              ],
+              [
+                [
+                  0,
+                  5
+                ],
+                [
+                  1,
+                  4
+                ],
+                [
+                  1,
+                  5
+                ]
+              ],
+              [
+                [
+                  0,
+                  6
+                ],
+                [
+                  0,
+                  7
+                ],
+                [
+                  1,
+                  6
+                ]
+              ],
+              [
+                [
+                  0,
+                  6
+                ],
+                [
+                  1,
+                  5
+                ],
+                [
+                  1,
+                  6
+                ]
+              ]
+            ],
+            "right": {
+              "A": [
+                [
+                  1,
+                  1
+                ],
+                [
+                  -1,
+                  0
+                ]
+              ],
+              "b": [
+                -4,
+                8
+              ]
+            }
+          },
+          "cut_family": "sum",
+          "cut_length_edges": 4,
+          "cut_parameter": 4,
+          "first_valid_pair": null,
+          "left_axis_aligned_placement_count": 92,
+          "left_piece_triangle_count": 16,
+          "matching_axis_line_pair_count": 60,
+          "min_overlap_count": 16,
+          "right_axis_aligned_placement_count": 60,
+          "right_piece_triangle_count": 48,
+          "valid_nonoverlapping_pair_count": 0
+        },
+        {
+          "best_overlap_witness": {
+            "axis_family": "x1=0",
+            "axis_line_vertices": [
+              [
+                0,
+                8
+              ],
+              [
+                0,
+                7
+              ],
+              [
+                0,
+                6
+              ],
+              [
+                0,
+                5
+              ],
+              [
+                0,
+                4
+              ],
+              [
+                0,
+                3
+              ]
+            ],
+            "left": {
+              "A": [
+                [
+                  -1,
+                  -1
+                ],
+                [
+                  0,
+                  1
+                ]
+              ],
+              "b": [
+                5,
+                3
+              ]
+            },
+            "overlap_count": 21,
+            "overlap_triangles_sample": [
+              [
+                [
+                  0,
+                  3
+                ],
+                [
+                  0,
+                  4
+                ],
+                [
+                  1,
+                  3
+                ]
+              ],
+              [
+                [
+                  0,
+                  4
+                ],
+                [
+                  0,
+                  5
+                ],
+                [
+                  1,
+                  4
+                ]
+              ],
+              [
+                [
+                  0,
+                  4
+                ],
+                [
+                  1,
+                  3
+                ],
+                [
+                  1,
+                  4
+                ]
+              ],
+              [
+                [
+                  0,
+                  5
+                ],
+                [
+                  0,
+                  6
+                ],
+                [
+                  1,
+                  5
+                ]
+              ],
+              [
+                [
+                  0,
+                  5
+                ],
+                [
+                  1,
+                  4
+                ],
+                [
+                  1,
+                  5
+                ]
+              ]
+            ],
+            "right": {
+              "A": [
+                [
+                  1,
+                  1
+                ],
+                [
+                  -1,
+                  0
+                ]
+              ],
+              "b": [
+                -5,
+                8
+              ]
+            }
+          },
+          "cut_family": "sum",
+          "cut_length_edges": 5,
+          "cut_parameter": 5,
+          "first_valid_pair": null,
+          "left_axis_aligned_placement_count": 88,
+          "left_piece_triangle_count": 25,
+          "matching_axis_line_pair_count": 64,
+          "min_overlap_count": 21,
+          "right_axis_aligned_placement_count": 64,
+          "right_piece_triangle_count": 39,
+          "valid_nonoverlapping_pair_count": 0
+        },
+        {
+          "best_overlap_witness": {
+            "axis_family": "x1=0",
+            "axis_line_vertices": [
+              [
+                0,
+                8
+              ],
+              [
+                0,
+                7
+              ],
+              [
+                0,
+                6
+              ],
+              [
+                0,
+                5
+              ],
+              [
+                0,
+                4
+              ],
+              [
+                0,
+                3
+              ],
+              [
+                0,
+                2
+              ]
+            ],
+            "left": {
+              "A": [
+                [
+                  -1,
+                  -1
+                ],
+                [
+                  0,
+                  1
+                ]
+              ],
+              "b": [
+                6,
+                2
+              ]
+            },
+            "overlap_count": 20,
+            "overlap_triangles_sample": [
+              [
+                [
+                  0,
+                  2
+                ],
+                [
+                  0,
+                  3
+                ],
+                [
+                  1,
+                  2
+                ]
+              ],
+              [
+                [
+                  0,
+                  3
+                ],
+                [
+                  0,
+                  4
+                ],
+                [
+                  1,
+                  3
+                ]
+              ],
+              [
+                [
+                  0,
+                  3
+                ],
+                [
+                  1,
+                  2
+                ],
+                [
+                  1,
+                  3
+                ]
+              ],
+              [
+                [
+                  0,
+                  4
+                ],
+                [
+                  0,
+                  5
+                ],
+                [
+                  1,
+                  4
+                ]
+              ],
+              [
+                [
+                  0,
+                  4
+                ],
+                [
+                  1,
+                  3
+                ],
+                [
+                  1,
+                  4
+                ]
+              ]
+            ],
+            "right": {
+              "A": [
+                [
+                  1,
+                  1
+                ],
+                [
+                  -1,
+                  0
+                ]
+              ],
+              "b": [
+                -6,
+                8
+              ]
+            }
+          },
+          "cut_family": "sum",
+          "cut_length_edges": 6,
+          "cut_parameter": 6,
+          "first_valid_pair": null,
+          "left_axis_aligned_placement_count": 84,
+          "left_piece_triangle_count": 36,
+          "matching_axis_line_pair_count": 68,
+          "min_overlap_count": 20,
+          "right_axis_aligned_placement_count": 68,
+          "right_piece_triangle_count": 28,
+          "valid_nonoverlapping_pair_count": 0
+        },
+        {
+          "best_overlap_witness": {
+            "axis_family": "x1=0",
+            "axis_line_vertices": [
+              [
+                0,
+                8
+              ],
+              [
+                0,
+                7
+              ],
+              [
+                0,
+                6
+              ],
+              [
+                0,
+                5
+              ],
+              [
+                0,
+                4
+              ],
+              [
+                0,
+                3
+              ],
+              [
+                0,
+                2
+              ],
+              [
+                0,
+                1
+              ]
+            ],
+            "left": {
+              "A": [
+                [
+                  -1,
+                  -1
+                ],
+                [
+                  0,
+                  1
+                ]
+              ],
+              "b": [
+                7,
+                1
+              ]
+            },
+            "overlap_count": 13,
+            "overlap_triangles_sample": [
+              [
+                [
+                  0,
+                  1
+                ],
+                [
+                  0,
+                  2
+                ],
+                [
+                  1,
+                  1
+                ]
+              ],
+              [
+                [
+                  0,
+                  2
+                ],
+                [
+                  0,
+                  3
+                ],
+                [
+                  1,
+                  2
+                ]
+              ],
+              [
+                [
+                  0,
+                  2
+                ],
+                [
+                  1,
+                  1
+                ],
+                [
+                  1,
+                  2
+                ]
+              ],
+              [
+                [
+                  0,
+                  3
+                ],
+                [
+                  0,
+                  4
+                ],
+                [
+                  1,
+                  3
+                ]
+              ],
+              [
+                [
+                  0,
+                  3
+                ],
+                [
+                  1,
+                  2
+                ],
+                [
+                  1,
+                  3
+                ]
+              ]
+            ],
+            "right": {
+              "A": [
+                [
+                  1,
+                  1
+                ],
+                [
+                  -1,
+                  0
+                ]
+              ],
+              "b": [
+                -7,
+                8
+              ]
+            }
+          },
+          "cut_family": "sum",
+          "cut_length_edges": 7,
+          "cut_parameter": 7,
+          "first_valid_pair": null,
+          "left_axis_aligned_placement_count": 80,
+          "left_piece_triangle_count": 49,
+          "matching_axis_line_pair_count": 72,
+          "min_overlap_count": 13,
+          "right_axis_aligned_placement_count": 72,
+          "right_piece_triangle_count": 15,
+          "valid_nonoverlapping_pair_count": 0
+        }
+      ],
+      "global_min_overlap_count": 1,
+      "m": 8,
+      "matching_axis_line_pair_count_total": 1260,
+      "n": 26,
+      "straight_cut_count": 21,
+      "valid_nonoverlapping_pair_count_total": 0
     }
   ],
   "tested_m_values": [
@@ -7604,7 +10478,8 @@
     4,
     5,
     6,
-    7
+    7,
+    8
   ],
   "total_valid_nonoverlapping_pairs": 0,
   "triangular_lattice_automorphism_count": 12,

@@ -20,27 +20,27 @@ A solution to this problem is meant to rest on finding a family of embeddings th
 Your task is to analyze this solution and make sure it is correct
 - Stage: research_loop
 - Status: running
-- Best score: 0.58
+- Best score: 0.59
 - Ready for paper: no
-- Current hypothesis: A transform-method enlargement of the exact hybrid strip may still work even though plain toric affine gluing fails: on each face, replace the rigid toric chart by the most general exact fiber-preserving symplectomorphis
-- Stop reason: Attempt 012 broadened the exact strip to the full facewise generating-function / cotangent-lift family and still ruled it out. The new transform-method audit shows that for `B^4`, only the coordinate axes collapse torus 
+- Current hypothesis: A genuinely new axis-seam origami family may survive the attempt-012 obstruction: partition one source moment triangle into rigid affine pieces and allow derivative jumps only along seams whose common image lies o
+- Stop reason: Attempt 013 exact-searched the simplest nontrivial coordinate-axis seam family and found no viable examples. The new script `src/axis_seam_origami_search.py` enumerates every two-piece rigid decomposition of a source 
 
 ## Latest Summary
 
-- Worked: Implemented `src/hybrid_generating_function_audit.py`, a new transform-method / generating-function audit for the exact `m=6`, `k=10` hybrid strip. The script imports the exact strip from attempt 011, uses the cotangent-
-- Did not work: This broader family still does not make the proposed solution correct. The exact strip is impossible even after adding arbitrary facewise generating functions over the same affine action map. Every shared edge of the str
-- Next step: Do not revisit the exact hybrid strip with another fiber-preserving toric/generating-function correction. The next family should either redesign the action complex so every derivative jump occurs along coordinate-axis ed
+- Worked: Implemented `src/axis_seam_origami_search.py`, a new exact search for the simplest nontrivial axis-seam origami family. The script enumerates the 12 rigid triangular-lattice automorphisms, splits a source side-`m` trian
+- Did not work: The new family still does not make the proposed solution correct. Even when derivative jumps are restricted to true coordinate-axis seams, the standard simplex appears too one-sided to host a genuine rigid fold. For eac
+- Next step: Stay on the axis-seam line and either prove a general overlap lemma for any rigid leaf piece attached along a coordinate-axis seam, or extend the exact search to multi-piece axis-seam trees to see whether any nontrivial
 
 ## Prior Evidence Ledger
 
 ### attempt_013
-- Hypothesis: n/a
-- Score: n/a
-- Keep: no
+- Hypothesis: A genuinely new axis-seam origami family may survive the attempt-012 obstruction: partition one source moment triangle into rigid affine pieces and allow derivative jumps only along seams whose common image lies o
+- Score: 0.59
+- Keep: yes
 - Ready for paper: no
-- Worked: n/a
-- Did not work: n/a
-- Next step: n/a
+- Worked: Implemented `src/axis_seam_origami_search.py`, a new exact search for the simplest nontrivial axis-seam origami family. The script enumerates the 12 rigid triangular-lattice automorphisms, splits a source side-`m` trian
+- Did not work: The new family still does not make the proposed solution correct. Even when derivative jumps are restricted to true coordinate-axis seams, the standard simplex appears too one-sided to host a genuine rigid fold. For eac
+- Next step: Stay on the axis-seam line and either prove a general overlap lemma for any rigid leaf piece attached along a coordinate-axis seam, or extend the exact search to multi-piece axis-seam trees to see whether any nontrivial
 
 ### attempt_012
 - Hypothesis: A transform-method enlargement of the exact hybrid strip may still work even though plain toric affine gluing fails: on each face, replace the rigid toric chart by the most general exact fiber-preserving symplectomorphis

@@ -1,17 +1,17 @@
 # Strongest Current Path
 
-- Score: 0.58
+- Score: 0.59
 - Ready for paper: no
-- Hypothesis: A transform-method enlargement of the exact hybrid strip may still work even though plain toric affine gluing fails: on each face, replace the rigid toric chart by the most general exact fiber-preserving symplectomorphis
+- Hypothesis: A genuinely new axis-seam origami family may survive the attempt-012 obstruction: partition one source moment triangle into rigid affine pieces and allow derivative jumps only along seams whose common image lies o
 
 ## Why it is currently best
 
-Implemented `src/hybrid_generating_function_audit.py`, a new transform-method / generating-function audit for the exact `m=6`, `k=10` hybrid strip. The script imports the exact strip from attempt 011, uses the cotangent-lift local model `(x, y) -> (A x + b, A^{-T}(y + grad S(x)))`, and checks the exact continuity criterion on each shared edge after restricting to the torus factors that remain acti
+Implemented `src/axis_seam_origami_search.py`, a new exact search for the simplest nontrivial post-attempt-012 axis-seam family. The script enumerates the 12 rigid triangular-lattice automorphisms, splits a source side-`m` triangle into two connected rigid pieces along every internal straight cut `i=c`, `j=c`, or `i+j=c`, and checks all rigid placements of both pieces in the target side-`n` simplex with `n = ceil(m * sqrt(10))`. The saved artifact `results/research_loop/attempt_013_axis_seam_two_piece_search.json` shows zero valid nonoverlapping pairs for every tested `m = 3,4,5,6,7`, even though the number of matching axis-line candidates grows substantially with `m`.
 
 ## Known limits
 
-This broader family still does not make the proposed solution correct. The exact strip is impossible even after adding arbitrary facewise generating functions over the same affine action map. Every shared edge of the strip is full-rank for the standard `T^2` action on `B^4`: both source action coordinates and both target action coordinates are positive at each midpoint. Therefore the full `2 x 2` 
+This broader family still does not make the proposed solution correct. The search only covers the two-piece rigid axis-seam case, not full multi-piece axis-seam trees or non-rigid / base-mixing local models. What it does show is that coordinate-axis seams alone are not enough to produce even the simplest rigid fold inside the standard simplex: every matched pair of axis-aligned rigid placements still overlaps in at least one target unit triangle.
 
 ## Next move
 
-Do not revisit the exact hybrid strip with another fiber-preserving toric/generating-function correction. The next family should either redesign the action complex so every derivative jump occurs along coordinate-axis edges where a circle really collapses, or leave the fiber-preserving toric framework entirely and build a non-toric local model or generating-function construction with base-map mixi
+Stay on the axis-seam line and either prove a general overlap lemma for any rigid leaf piece attached along a coordinate-axis seam, or extend the exact search to multi-piece axis-seam trees to see whether any nontrivial leaf attachment can ever avoid the same overlap mechanism.

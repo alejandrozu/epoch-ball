@@ -84,6 +84,13 @@
 - Core idea: enlarge each affine face map to the most general fiber-preserving exact symplectomorphism over the same base map, derive the restricted-angle continuity rule on shared edges, and test whether facewise generating functions can repair the exact `m=6` hybrid strip
 - Outcome: stronger negative evidence; the toy control shows that only coordinate-axis edges can hide derivative jumps because those are the only loci where a torus factor collapses in `B^4`, while the exact hybrid strip has 35 internal edges all with source and target active angle sets `[0,1]` and zero restricted `A^{-T}` matches, so no facewise generating-function correction can repair it
 
+## attempt_013
+
+- Family: axis-seam two-piece rigid origami search in the standard simplex
+- Mathematical modes: game-theoretic, information-theoretic, set / logic
+- Core idea: accept attempt 012's coordinate-axis restriction and test the simplest nontrivial family it leaves open: split one source side-`m` triangle into two rigid affine pieces along an internal straight cut, force the common seam to land on `x1=0` or `x2=0`, and enumerate every rigid placement of both pieces inside the near-full target simplex
+- Outcome: stronger negative evidence on the axis-seam line; for `k=10` and every tested `m = 3,4,5,6,7`, the exact search found many matching axis-line candidates but zero interior-disjoint pairs, so even the simplest two-piece rigid coordinate-axis seam does not produce a valid origami fold inside the simplex
+
 ## Next family should avoid
 
 - Another global polynomial or neural-style optimization ansatz
@@ -98,7 +105,8 @@
 - Another naive boundary-prefix hybrid `9 rigid + 1 strip` decomposition that only gives a path at `m=6` and does not yet solve the exact source equal-area strip fit or the larger-`m` scaling problem
 - Another boundary-only exact recurrence solve inside the same piecewise toric affine chart class; attempt 011 showed that exact area matching is not the bottleneck because angle gluing already fails on every full-torus internal edge
 - Another facewise fiber-preserving generating-function repair over the same affine action map when the complex still has full-rank internal edges; attempt 012 showed this entire cotangent-lift family cannot fix the saved exact strip
+- Another two-piece rigid axis-seam origami search with a single straight cut; attempt 013 already exact-searched all such coordinate-axis seams for `m = 3,4,5,6,7` in the near-full `k=10` regime and found only overlapping pairs
 
 ## Most promising next family
 
-- A hybrid construction whose derivative jumps occur only along genuine coordinate-axis seams, or a non-toric / base-mixing local model that does not preserve the action-base projection facewise
+- A stronger axis-seam construction with multi-piece leaf attachments and a provable overlap criterion, or a non-toric / base-mixing local model that does not preserve the action-base projection facewise
