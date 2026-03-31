@@ -388,6 +388,7 @@ def verify_transvection_formulas() -> dict:
     a = np.array([-1.0, 0.0, 0.0, 0.0])
     lam = 0.375
     d = 0.2
+    s = 1.5
     points = np.array(
         [
             [0.1, 0.0, -0.5, 0.0],
@@ -398,19 +399,21 @@ def verify_transvection_formulas() -> dict:
     affine = affine_transvection(points, a=a, lam=lam, d=d)
     one_sided = one_sided_transvection_fold(points, lam=lam, d=d)
     linear_error = symplectic_error(transvection_linear_part(a=a, lam=lam))
-    affine_match_error = float(np.max(np.abs(affine[:, 0] - (points[:, 0] + lam * (points[:, 2] - d)))))
+    expected_affine = points + lam * (points @ (J @ a) - d)[:, None] * a[None, :]
+    affine_match_error = float(np.max(np.abs(affine - expected_affine)))
     fold_match_error = float(np.max(np.abs(one_sided[:, 0] - (points[:, 0] + lam * np.maximum(points[:, 2] - d, 0.0)))))
     return {
         "active_transvection_vector": a.tolist(),
         "sample_lambda": lam,
         "sample_d": d,
+        "sample_s": s,
         "linear_transvection_symplectic_error": linear_error,
         "affine_slice_formula_error": affine_match_error,
         "one_sided_slice_formula_error": fold_match_error,
         "jacobian_below_seam": [[1.0, 0.0], [0.0, 1.0]],
         "jacobian_above_seam": [[1.0, lam], [0.0, 1.0]],
-        "normalized_jacobian_below_seam": [[1.5, 0.0], [0.0, 2.0 / 3.0]],
-        "normalized_jacobian_above_seam": [[1.5, 1.5 * lam], [0.0, 2.0 / 3.0]],
+        "normalized_jacobian_below_seam": [[s, 0.0], [0.0, 1.0 / s]],
+        "normalized_jacobian_above_seam": [[s, s * lam], [0.0, 1.0 / s]],
         "jacobian_determinant_below_seam": 1.0,
         "jacobian_determinant_above_seam": 1.0,
         "normalized_jacobian_determinant_below_seam": 1.0,
