@@ -1,89 +1,59 @@
-import math
 import torch
 
 torch.set_default_dtype(torch.float64)
 
-_K = 10
-_N_BLOCKS = 3
-_SIGMA_Q1 = 0.7
-_CENTER_SHIFT = -13.5
-_SCALE_LOG = -1.6862664444758209
-_KICK_A = [[0.023715312326644488, 0.0019693247290527203, -0.03543284582476472, -0.5331374403193142, -0.088503068050155, -0.02229084872535883, -0.1864779965584296, -0.024866215039898346, 0.023715312326644488, 0.0019693247287318276], [-0.205321380094884, -0.029859973322322576, -0.030143879589843242, -0.11843938209556425, 0.0016943768478174072, 2.0130786582440047e-16, 2.548239903305849e-37, 4.567777743392284e-66, 8.891809717630572e-103, 1.8612629486306787e-147], [-1.0041250856007002, -0.18237359183559673, -0.2139408501387381, -0.037561591129454945, 0.14904529643133838, 0.18056136573444115, 0.16267852820462747, 6.0590121802064635e-12, 1.5058071699321735e-31, 4.146497285169908e-59]]
-_KICK_B = [[-0.14954010654089886, -0.1495401065395215, -0.5892917435075387, -0.7409043406257386, -0.6554781169110105, -0.01738487038816055, -0.1395052312757438, -0.014212125643386576, 0.013342025534793408, 0.013342025534793408], [-0.21090329171683977, -0.007070932067216942, 0.04408658712895093, 0.026056031112522915, 0.11086319449989843, 3.3857251273334044e-15, 7.64717925715292e-37, 1.4190220438002535e-65, 3.4554145678859484e-102, 8.699390870068108e-147], [-0.9351884406930002, -0.024017197148013474, -0.05808188331317835, -0.09294062974298288, -0.08391596430987665, 0.09111344031213058, 0.1728300515323105, 5.036622057961085e-10, 1.874143403335292e-29, 6.866480091382037e-57]]
-_KICK_C = [[-4.7488698019221486e-35, 1.7577455518568624e-14, 0.10481928898718076, -0.03857917657035819, -0.2011383732557423, 0.13250560625361088, 0.13770561842443801, 1.3932999231586618e-05, 3.739371911717614e-21, 1.1612129116067392e-44], [0.1635007521252307, -0.04817814284463836, 0.006238066864433299, -0.18839095747267678, 0.002281662328309049, 1.490138196469263e-15, 2.1235569222991335e-37, 1.0005731087465988e-66, 2.1617038993248144e-103, 5.4862797338124186e-148], [0.2530317985761054, 0.06715874446040097, 0.010136861273861188, -0.06233656637253157, -0.07565658879477631, -0.030583407652829887, 0.17163780692597103, 1.7634331776015492e-09, 6.519999899240293e-29, 2.378266443519108e-56]]
-_KICK_D = [[-7.470763564261075e-36, -7.051926699516333e-15, -0.033918401293002144, 0.177147138736886, -0.0961801106569998, 0.05481667576076633, -0.05661902659486946, -1.9860250055919274e-07, -4.305310744118705e-23, -3.599097159858462e-47], [0.015257108952060013, 0.05570386737185865, 0.10856023815897413, 0.07709747927921363, 0.13189480274161952, 5.6617866301286126e-15, 3.3261446828234493e-37, 2.9472278280975244e-67, 1.9466097742960123e-104, 4.654204249639927e-149], [0.37994278797474523, -0.003048730042034791, -0.017277185498699794, 0.009419112070132823, 0.022462604261391652, 0.03457952843098914, 0.16906334798641612, 8.311367477755718e-09, 3.0575819639492545e-28, 1.1113863454935065e-55]]
-_DRIFT_LIN = [[-12.783084636004197, 0.08243371048650823], [0.718697512756922, 0.1712482892926537], [0.6962897443761296, -0.1704779189606883]]
-_DRIFT_QUAD = [[0.023272565615837484, -0.15864664687668834, 0.15585058187599427], [0.029017205080411262, -0.16414416914483268, 0.10998223266584126], [0.19540526159860708, 0.019688011633609413, 0.1097860820307521]]
-_DRIFT_CUBIC = [[0.19655718342771822, 0.026014890771529922, -0.00438221496608603, 0.06917471631878952], [0.1705946052205111, 0.10125426354194314, 0.06472465066543225, 0.1030962082490876], [0.2815033263035259, -0.06219100064545546, -0.08306126671801999, 0.19244777969411056]]
-_WINDOW_NORM = 0.007029858406609658
-_SQRT_PI_OVER_2 = 1.2533141373155001
-_SQRT_2 = 1.4142135623730951
-_CENTERS = torch.tensor([3.0 * i + _CENTER_SHIFT for i in range(_K)], dtype=torch.float64)
+_LONG_SCALE = 0.2
+_TWIST = 0.8
+_RADIAL_OFFSET = 1.2
+_RADIAL_GROWTH = 0.16
+_NORMAL_SCALE = 0.5
+_STRENGTH = 1.2
+_SUPPORT_X = 18.0
+_SUPPORT_Y = 3.5
+_X_START = -1.0
+_X_CENTER = 13.5
 
 
-def _bump_window(t, start, end):
-    if not (start < t < end):
-        return 0.0
-    u = (t - start) / (end - start)
-    if not (0.0 < u < 1.0):
-        return 0.0
-    return math.exp(-1.0 / (u * (1.0 - u))) / ((end - start) * _WINDOW_NORM)
+def _vector_field(Q):
+    x = Q[:, 0]
+    y = Q[:, 1]
+    u = _LONG_SCALE * (x - _X_START)
+    theta = _TWIST * u
+    radius = _RADIAL_OFFSET + _RADIAL_GROWTH * u
 
+    cos_theta = torch.cos(theta)
+    sin_theta = torch.sin(theta)
 
-def _kick_potential(Q, block):
-    q1 = Q[:, 0:1]
-    q2 = Q[:, 1:2]
-    s = (q1 - _CENTERS.view(1, -1).to(Q.device)) / _SIGMA_Q1
-    bump = torch.exp(-0.5 * s.square())
-    primitive = _SIGMA_Q1 * _SQRT_PI_OVER_2 * torch.erf(s / _SQRT_2)
-    a = torch.tensor(_KICK_A[block], dtype=Q.dtype, device=Q.device).view(1, -1)
-    b = torch.tensor(_KICK_B[block], dtype=Q.dtype, device=Q.device).view(1, -1)
-    c = torch.tensor(_KICK_C[block], dtype=Q.dtype, device=Q.device).view(1, -1)
-    d = torch.tensor(_KICK_D[block], dtype=Q.dtype, device=Q.device).view(1, -1)
-    poly = b * q2 + 0.5 * c * q2.square() + (d / 3.0) * q2.pow(3)
-    return (primitive * a + bump * poly).sum(dim=1)
+    centerline = torch.stack([radius * cos_theta, radius * sin_theta], dim=1)
 
-
-def _drift_potential(P, block):
-    p1 = P[:, 0]
-    p2 = P[:, 1]
-    lin1, lin2 = _DRIFT_LIN[block]
-    q11, q22, q12 = _DRIFT_QUAD[block]
-    c1, c2, c12, c21 = _DRIFT_CUBIC[block]
-    return (
-        lin1 * p1
-        + lin2 * p2
-        + 0.5 * q11 * p1.square()
-        + 0.5 * q22 * p2.square()
-        + q12 * p1 * p2
-        + (c1 / 3.0) * p1.pow(3)
-        + (c2 / 3.0) * p2.pow(3)
-        + c12 * p1.square() * p2
-        + c21 * p1 * p2.square()
+    v = torch.stack(
+        [
+            _RADIAL_GROWTH * cos_theta - radius * _TWIST * sin_theta,
+            _RADIAL_GROWTH * sin_theta + radius * _TWIST * cos_theta,
+        ],
+        dim=1,
     )
+    speed = torch.linalg.norm(v, dim=1, keepdim=True).clamp_min(1e-12)
+    tangent = v / speed
+    normal = torch.stack([-tangent[:, 1], tangent[:, 0]], dim=1)
+
+    accel = torch.stack(
+        [
+            -2.0 * _RADIAL_GROWTH * _TWIST * sin_theta - radius * (_TWIST ** 2) * cos_theta,
+            2.0 * _RADIAL_GROWTH * _TWIST * cos_theta - radius * (_TWIST ** 2) * sin_theta,
+        ],
+        dim=1,
+    )
+    tangent_accel = (tangent * accel).sum(dim=1, keepdim=True)
+    tangent_u_deriv = (accel - tangent_accel * tangent) / speed
+    normal_u_deriv = torch.stack([-tangent_u_deriv[:, 1], tangent_u_deriv[:, 0]], dim=1)
+
+    target = centerline + _NORMAL_SCALE * y[:, None] * normal
+    sx = (x - _X_CENTER) / _SUPPORT_X
+    sy = y / _SUPPORT_Y
+    cutoff = torch.exp(-(sx.pow(8)) - (sy.pow(8)))
+    return _STRENGTH * cutoff[:, None] * (target - Q)
 
 
 def Hamiltonian(Q, P, t):
-    pre_size = 1.0 / (2 * _N_BLOCKS + 2)
-    block_size = pre_size
-    H = 0.0 * (Q[:, 0] + P[:, 0])
-    w_center = _bump_window(t, 0.0, pre_size)
-    w_scale = _bump_window(t, pre_size, 2.0 * pre_size)
-    if w_center != 0.0:
-        H = H + w_center * (_CENTER_SHIFT * P[:, 0])
-    if w_scale != 0.0:
-        H = H + w_scale * _SCALE_LOG * (
-            Q[:, 0] * P[:, 0] + Q[:, 1] * P[:, 1]
-        )
-    for block in range(_N_BLOCKS):
-        kick_start = (2 + 2 * block) * block_size
-        kick_end = kick_start + block_size
-        drift_start = kick_end
-        drift_end = drift_start + block_size
-        wk = _bump_window(t, kick_start, kick_end)
-        wd = _bump_window(t, drift_start, drift_end)
-        if wk != 0.0:
-            H = H + wk * _kick_potential(Q, block)
-        if wd != 0.0:
-            H = H + wd * _drift_potential(P, block)
-    return H
+    return (P * _vector_field(Q)).sum(dim=1)

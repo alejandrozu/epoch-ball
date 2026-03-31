@@ -182,7 +182,7 @@ def evaluate_points(points: np.ndarray, spec: SpiralSpec, n_steps: int) -> dict:
 
 def build_specs(k: int) -> list[SpiralSpec]:
     x_start = -1.0
-    x_center = 1.5 * 3.0 * (k - 1)
+    x_center = 1.5 * float(k - 1)
     specs: list[SpiralSpec] = []
     for long_scale in [0.2, 0.3, 0.4, 0.5]:
         for twist in [0.8, 1.2, 1.6, 2.0]:
@@ -277,7 +277,7 @@ def refine_candidates(top_candidates: list[dict], k: int, n_pts_per_ball: int, s
     return refined
 
 
-def render_hamiltonian(spec: SpiralSpec) -> str:
+def render_hamiltonian(spec: SpiralSpec, translation_shift: list[float]) -> str:
     return f"""import torch
 
 torch.set_default_dtype(torch.float64)
@@ -292,6 +292,18 @@ _SUPPORT_X = {spec.support_x!r}
 _SUPPORT_Y = {spec.support_y!r}
 _X_START = {spec.x_start!r}
 _X_CENTER = {spec.x_center!r}
+_TRANSLATE_DQ = torch.tensor([{translation_shift[0]!r}, {translation_shift[1]!r}], dtype=torch.float64)
+_TRANSLATE_DP = torch.tensor([{translation_shift[2]!r}, {translation_shift[3]!r}], dtype=torch.float64)
+_WINDOW_NORM = 0.007029858406609658
+
+
+def _bump_window(t, start, end):
+    if not (start < t < end):
+        return 0.0
+    u = (t - start) / (end - start)
+    if not (0.0 < u < 1.0):
+        return 0.0
+    return torch.exp(torch.tensor(-1.0 / (u * (1.0 - u)), dtype=torch.float64)).item() / ((end - start) * _WINDOW_NORM)
 
 
 def _vector_field(Q):
@@ -336,7 +348,14 @@ def _vector_field(Q):
 
 
 def Hamiltonian(Q, P, t):
-    return (P * _vector_field(Q)).sum(dim=1)
+    fold_weight = _bump_window(t, 0.0, 0.6)
+    translate_weight = _bump_window(t, 0.6, 1.0)
+    H = 0.0 * (Q[:, 0] + P[:, 0])
+    if fold_weight != 0.0:
+        H = H + fold_weight * (P * _vector_field(Q)).sum(dim=1)
+    if translate_weight != 0.0:
+        H = H + translate_weight * ((P * _TRANSLATE_DQ.to(P.device)).sum(dim=1) - (Q * _TRANSLATE_DP.to(Q.device)).sum(dim=1))
+    return H
 """
 
 
@@ -364,6 +383,11 @@ def build_report(args: argparse.Namespace) -> dict:
         seeds=args.dense_seeds,
         n_steps=args.dense_n_steps,
     )[0]
+    dense_center_mean = [
+        float(np.mean([row["center"][idx] for row in dense["refine_seed_rows"]]))
+        for idx in range(4)
+    ]
+    translation_shift = [-value for value in dense_center_mean]
     return {
         "family": "cotangent_lift_spiral_fold_hamiltonian",
         "hamiltonian_form": "H(q,p,t) = <p, X(q)>",
@@ -372,9 +396,12 @@ def build_report(args: argparse.Namespace) -> dict:
         "refined_candidates": refined,
         "best_candidate": best,
         "dense_validation": dense,
+        "suggested_translation_center": dense_center_mean,
+        "suggested_translation_shift": translation_shift,
         "generated_hamiltonian": {
             "path": str(args.out_hamiltonian),
             "spec": asdict(best_spec),
+            "translation_shift": translation_shift,
         },
         "conclusion": (
             "This attempt tests a smooth Hamiltonian family whose flow is a cotangent lift of a "
@@ -410,7 +437,7 @@ def main() -> None:
     args.output.write_text(json.dumps(report, indent=2, sort_keys=True))
 
     best_spec = SpiralSpec(**report["best_candidate"]["spec"])
-    args.out_hamiltonian.write_text(render_hamiltonian(best_spec))
+    args.out_hamiltonian.write_text(render_hamiltonian(best_spec, report["suggested_translation_shift"]))
     print(json.dumps(report, indent=2, sort_keys=True))
 
 
