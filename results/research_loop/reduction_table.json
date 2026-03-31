@@ -1,0 +1,275 @@
+{
+  "table": [
+    {
+      "abstract_minimum_eps": 0.0,
+      "full_packing": true,
+      "k": 1,
+      "optimal_capacity_mu": 1.0,
+      "reduction_at_infimum": null,
+      "volume_fraction": 1.0
+    },
+    {
+      "abstract_minimum_eps": 0.5,
+      "full_packing": false,
+      "k": 2,
+      "optimal_capacity_mu": 2.0,
+      "reduction_at_infimum": null,
+      "volume_fraction": 0.5
+    },
+    {
+      "abstract_minimum_eps": 0.2499999999250001,
+      "full_packing": false,
+      "k": 3,
+      "optimal_capacity_mu": 1.9999999999000002,
+      "reduction_at_infimum": {
+        "defect": -0.9999999990999999,
+        "final_mu": 1.0000000018000001,
+        "final_weights": [
+          9.000000744663339e-10,
+          9.000000744663339e-10,
+          9.000000744663339e-10
+        ],
+        "input_mu": 2.0000000009,
+        "is_reduced": true,
+        "iterations": 1,
+        "positive_entries": true,
+        "positive_square": true
+      },
+      "volume_fraction": 0.7500000000749999
+    },
+    {
+      "abstract_minimum_eps": 0.0,
+      "full_packing": true,
+      "k": 4,
+      "optimal_capacity_mu": 2.0,
+      "reduction_at_infimum": {
+        "defect": 0.0,
+        "final_mu": 1.0000000020000002,
+        "final_weights": [
+          1.0,
+          1.000000082740371e-09,
+          1.000000082740371e-09,
+          1.000000082740371e-09
+        ],
+        "input_mu": 2.000000001,
+        "is_reduced": true,
+        "iterations": 1,
+        "positive_entries": true,
+        "positive_square": true
+      },
+      "volume_fraction": 1.0
+    },
+    {
+      "abstract_minimum_eps": 0.19999999996800033,
+      "full_packing": false,
+      "k": 5,
+      "optimal_capacity_mu": 2.4999999999500004,
+      "reduction_at_infimum": {
+        "defect": 0.0,
+        "final_mu": 1.5000000028500016,
+        "final_weights": [
+          0.5000000009500005,
+          0.5000000009500005,
+          0.5000000009500005,
+          0.5000000009500005,
+          1.9000010453851246e-09
+        ],
+        "input_mu": 2.5000000009500005,
+        "is_reduced": true,
+        "iterations": 2,
+        "positive_entries": true,
+        "positive_square": true
+      },
+      "volume_fraction": 0.8000000000319997
+    },
+    {
+      "abstract_minimum_eps": 0.03999999996160042,
+      "full_packing": false,
+      "k": 6,
+      "optimal_capacity_mu": 2.4999999999500004,
+      "reduction_at_infimum": {
+        "defect": -0.4999999990499995,
+        "final_mu": 0.5000000047500026,
+        "final_weights": [
+          1.9000010453851246e-09,
+          1.9000010453851246e-09,
+          1.9000010453851246e-09,
+          1.9000010453851246e-09,
+          1.9000010453851246e-09,
+          1.9000010453851246e-09
+        ],
+        "input_mu": 2.5000000009500005,
+        "is_reduced": true,
+        "iterations": 3,
+        "positive_entries": true,
+        "positive_square": true
+      },
+      "volume_fraction": 0.9600000000383996
+    },
+    {
+      "abstract_minimum_eps": 0.015624999975390796,
+      "full_packing": false,
+      "k": 7,
+      "optimal_capacity_mu": 2.6666666666333336,
+      "reduction_at_infimum": {
+        "defect": -0.3333333323666663,
+        "final_mu": 0.3333333410666697,
+        "final_weights": [
+          2.9000011281254956e-09,
+          2.9000011281254956e-09,
+          2.9000011281254956e-09,
+          2.9000011281254956e-09,
+          2.9000011281254956e-09,
+          2.9000011281254956e-09,
+          2.9000011281254956e-09
+        ],
+        "input_mu": 2.6666666676333337,
+        "is_reduced": true,
+        "iterations": 5,
+        "positive_entries": true,
+        "positive_square": true
+      },
+      "volume_fraction": 0.9843750000246092
+    },
+    {
+      "abstract_minimum_eps": 0.0034602076007329563,
+      "full_packing": false,
+      "k": 8,
+      "optimal_capacity_mu": 2.833333333316667,
+      "reduction_at_infimum": {
+        "defect": -0.1666666656833331,
+        "final_mu": 0.16666668338333723,
+        "final_weights": [
+          5.900001376346609e-09,
+          5.900001376346609e-09,
+          5.900001376346609e-09,
+          5.900001376346609e-09,
+          5.900001376346609e-09,
+          5.900001376346609e-09,
+          5.900001376346609e-09,
+          5.900001376346609e-09
+        ],
+        "input_mu": 2.833333334316667,
+        "is_reduced": true,
+        "iterations": 8,
+        "positive_entries": true,
+        "positive_square": true
+      },
+      "volume_fraction": 0.996539792399267
+    },
+    {
+      "abstract_minimum_eps": 0.0,
+      "full_packing": true,
+      "k": 9,
+      "optimal_capacity_mu": 3.0,
+      "reduction_at_infimum": {
+        "defect": -1.000000082740371e-09,
+        "final_mu": 3.000000001,
+        "final_weights": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "input_mu": 3.000000001,
+        "is_reduced": true,
+        "iterations": 0,
+        "positive_entries": true,
+        "positive_square": true
+      },
+      "volume_fraction": 1.0
+    },
+    {
+      "abstract_minimum_eps": 3.3306690738754696e-16,
+      "full_packing": true,
+      "k": 10,
+      "optimal_capacity_mu": 3.16227766016838,
+      "reduction_at_infimum": {
+        "defect": -0.16227766116838005,
+        "final_mu": 3.16227766116838,
+        "final_weights": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "input_mu": 3.16227766116838,
+        "is_reduced": true,
+        "iterations": 0,
+        "positive_entries": true,
+        "positive_square": true
+      },
+      "volume_fraction": 0.9999999999999997
+    },
+    {
+      "abstract_minimum_eps": 0.0,
+      "full_packing": true,
+      "k": 11,
+      "optimal_capacity_mu": 3.3166247903554,
+      "reduction_at_infimum": {
+        "defect": -0.3166247913553999,
+        "final_mu": 3.3166247913554,
+        "final_weights": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "input_mu": 3.3166247913554,
+        "is_reduced": true,
+        "iterations": 0,
+        "positive_entries": true,
+        "positive_square": true
+      },
+      "volume_fraction": 1.0
+    },
+    {
+      "abstract_minimum_eps": 0.0,
+      "full_packing": true,
+      "k": 12,
+      "optimal_capacity_mu": 3.4641016151377544,
+      "reduction_at_infimum": {
+        "defect": -0.46410161613775447,
+        "final_mu": 3.4641016161377545,
+        "final_weights": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "input_mu": 3.4641016161377545,
+        "is_reduced": true,
+        "iterations": 0,
+        "positive_entries": true,
+        "positive_square": true
+      },
+      "volume_fraction": 1.0000000000000002
+    }
+  ]
+}
