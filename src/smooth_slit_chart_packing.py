@@ -78,6 +78,8 @@ class SmoothSlitChart:
         self.a = float(a)
         self.beta = 2.0 * math.asin(1.0 / self.a)
         self.v0 = PI - 0.5 * self.beta
+        self.v1 = self.v0 + self.beta
+        self.eps = 1e-10
 
         y_grid = torch.linspace(0.0, 1.0, n_grid)
         phi = self.v0 + self.beta * y_grid
@@ -92,10 +94,6 @@ class SmoothSlitChart:
         cumulative = torch.empty_like(y_grid)
         cumulative[0] = 0.0
         cumulative[1:] = torch.cumsum(w_mid, dim=0) * dy
-        scale = PI / float(cumulative[-1])
-        cumulative = cumulative * scale
-        width = width * scale
-        self.beta = self.beta * scale
 
         self.y_grid = y_grid
         self.width_grid = width
@@ -113,22 +111,23 @@ class SmoothSlitChart:
     def forward(self, q: torch.Tensor, p: torch.Tensor) -> tuple[torch.Tensor, torch.Tensor]:
         dx = q - self.a
         phi = torch.atan2(p, dx)
-        y = (phi - self.v0) / (2.0 * math.asin(1.0 / self.a))
-        y = y.clamp(0.0, 1.0)
-        phi = self.v0 + (2.0 * math.asin(1.0 / self.a)) * y
+        phi = torch.where(phi < self.v0, phi + 2.0 * PI, phi)
+        y = (phi - self.v0) / self.beta
+        y = y.clamp(self.eps, 1.0 - self.eps)
+        phi = self.v0 + self.beta * y
         rho = torch.sqrt(dx.square() + p.square())
         rho_minus, _, width_raw = self._ray_data_from_phi(phi)
         width = linear_interp(y, self.y_grid, self.width_grid)
-        x_band_raw = 0.5 * (2.0 * math.asin(1.0 / self.a)) * (rho.square() - rho_minus.square())
-        x_band = x_band_raw * (self.beta / (2.0 * math.asin(1.0 / self.a)))
+        x_band = 0.5 * self.beta * (rho.square() - rho_minus.square())
         X = x_band / width
         Y = linear_interp(y, self.y_grid, self.W_grid)
         return X, Y
 
     def inverse(self, X: torch.Tensor, Y: torch.Tensor) -> tuple[torch.Tensor, torch.Tensor]:
-        Y = Y.clamp(0.0, PI)
+        Y = Y.clamp(self.eps, self.area_total - self.eps)
         y = linear_interp(Y, self.W_grid, self.y_grid)
-        phi = self.v0 + (2.0 * math.asin(1.0 / self.a)) * y
+        y = y.clamp(self.eps, 1.0 - self.eps)
+        phi = self.v0 + self.beta * y
         rho_minus, _, _ = self._ray_data_from_phi(phi)
         width = linear_interp(y, self.y_grid, self.width_grid)
         x_band = X * width

@@ -1,0 +1,128 @@
+{
+  "best": {
+    "a": 1.01,
+    "chart_area_total": 3.141592546227775,
+    "chart_roundtrip_max_error": 2.496670725115072e-13,
+    "k": 16,
+    "l": 4,
+    "n_pts_per_ball": 2000,
+    "sampled_radius": 3.376970763778154,
+    "sampled_ratio": 0.12302993079584774,
+    "seed": 123
+  },
+  "k": 16,
+  "n_pts_per_ball": 2000,
+  "rows": [
+    {
+      "a": 1.01,
+      "chart_area_total": 3.141592546227775,
+      "chart_roundtrip_max_error": 2.496670725115072e-13,
+      "k": 16,
+      "l": 4,
+      "n_pts_per_ball": 2000,
+      "sampled_radius": 3.376970763778154,
+      "sampled_ratio": 0.12302993079584774,
+      "seed": 123
+    },
+    {
+      "a": 1.02,
+      "chart_area_total": 3.1415924831889837,
+      "chart_roundtrip_max_error": 6.953791055459483e-13,
+      "k": 16,
+      "l": 4,
+      "n_pts_per_ball": 2000,
+      "sampled_radius": 3.390991789390858,
+      "sampled_ratio": 0.12100770652248083,
+      "seed": 123
+    },
+    {
+      "a": 1.03,
+      "chart_area_total": 3.1415924327320326,
+      "chart_roundtrip_max_error": 4.03290521298822e-12,
+      "k": 16,
+      "l": 4,
+      "n_pts_per_ball": 2000,
+      "sampled_radius": 3.4048877540898648,
+      "sampled_ratio": 0.11904434908736132,
+      "seed": 123
+    },
+    {
+      "a": 1.04,
+      "chart_area_total": 3.141592389732719,
+      "chart_roundtrip_max_error": 6.117752513934616e-13,
+      "k": 16,
+      "l": 4,
+      "n_pts_per_ball": 2000,
+      "sampled_radius": 3.4186608758000356,
+      "sampled_ratio": 0.11713748504410498,
+      "seed": 123
+    },
+    {
+      "a": 1.05,
+      "chart_area_total": 3.1415923519303495,
+      "chart_roundtrip_max_error": 8.318020455235844e-12,
+      "k": 16,
+      "l": 4,
+      "n_pts_per_ball": 2000,
+      "sampled_radius": 3.432313312540067,
+      "sampled_ratio": 0.11528486187103003,
+      "seed": 123
+    },
+    {
+      "a": 1.06,
+      "chart_area_total": 3.1415923180564795,
+      "chart_roundtrip_max_error": 1.932918576191695e-11,
+      "k": 16,
+      "l": 4,
+      "n_pts_per_ball": 2000,
+      "sampled_radius": 3.4458471498539347,
+      "sampled_ratio": 0.11348434251581238,
+      "seed": 123
+    },
+    {
+      "a": 1.07,
+      "chart_area_total": 3.1415922873007704,
+      "chart_roundtrip_max_error": 9.885271880864758e-12,
+      "k": 16,
+      "l": 4,
+      "n_pts_per_ball": 2000,
+      "sampled_radius": 3.4592644469902374,
+      "sampled_ratio": 0.11173389263868638,
+      "seed": 123
+    },
+    {
+      "a": 1.08,
+      "chart_area_total": 3.14159225911026,
+      "chart_roundtrip_max_error": 2.110565250450145e-12,
+      "k": 16,
+      "l": 4,
+      "n_pts_per_ball": 2000,
+      "sampled_radius": 3.4725671703368146,
+      "sampled_ratio": 0.11003158328421375,
+      "seed": 123
+    },
+    {
+      "a": 1.09,
+      "chart_area_total": 3.1415922330755692,
+      "chart_roundtrip_max_error": 5.486386465258775e-13,
+      "k": 16,
+      "l": 4,
+      "n_pts_per_ball": 2000,
+      "sampled_radius": 3.485757263683545,
+      "sampled_ratio": 0.10837557595708298,
+      "seed": 123
+    },
+    {
+      "a": 1.1,
+      "chart_area_total": 3.141592208893375,
+      "chart_roundtrip_max_error": 3.6635408880152213e-13,
+      "k": 16,
+      "l": 4,
+      "n_pts_per_ball": 2000,
+      "sampled_radius": 3.4988366194859926,
+      "sampled_ratio": 0.10676412117093172,
+      "seed": 123
+    }
+  ],
+  "seed": 123
+}

@@ -1,0 +1,84 @@
+{
+  "best": {
+    "a": 1.05,
+    "chart_area_total": 3.1415923519303495,
+    "chart_roundtrip_max_error": 8.318020455235844e-12,
+    "k": 10,
+    "l": 4,
+    "n_pts_per_ball": 1500,
+    "sampled_radius": 3.4299790742101344,
+    "sampled_ratio": 0.07224937891278219,
+    "seed": 123
+  },
+  "k": 10,
+  "n_pts_per_ball": 1500,
+  "rows": [
+    {
+      "a": 1.05,
+      "chart_area_total": 3.1415923519303495,
+      "chart_roundtrip_max_error": 8.318020455235844e-12,
+      "k": 10,
+      "l": 4,
+      "n_pts_per_ball": 1500,
+      "sampled_radius": 3.4299790742101344,
+      "sampled_ratio": 0.07224937891278219,
+      "seed": 123
+    },
+    {
+      "a": 1.44,
+      "chart_area_total": 3.141591819374085,
+      "chart_roundtrip_max_error": 5.447190106439612e-13,
+      "k": 10,
+      "l": 4,
+      "n_pts_per_ball": 1500,
+      "sampled_radius": 3.885812678545133,
+      "sampled_ratio": 0.04386039678324109,
+      "seed": 123
+    },
+    {
+      "a": 1.83,
+      "chart_area_total": 3.1415916728056112,
+      "chart_roundtrip_max_error": 4.5989554836288535e-12,
+      "k": 10,
+      "l": 4,
+      "n_pts_per_ball": 1500,
+      "sampled_radius": 4.236778591250315,
+      "sampled_ratio": 0.03103536978633191,
+      "seed": 123
+    },
+    {
+      "a": 2.2199999999999998,
+      "chart_area_total": 3.141591605461602,
+      "chart_roundtrip_max_error": 1.3107643236592372e-12,
+      "k": 10,
+      "l": 4,
+      "n_pts_per_ball": 1500,
+      "sampled_radius": 4.52070843204062,
+      "sampled_ratio": 0.023942748818977937,
+      "seed": 123
+    },
+    {
+      "a": 2.6100000000000003,
+      "chart_area_total": 3.1415915682589874,
+      "chart_roundtrip_max_error": 9.356800812456387e-11,
+      "k": 10,
+      "l": 4,
+      "n_pts_per_ball": 1500,
+      "sampled_radius": 4.757789602723582,
+      "sampled_ratio": 0.019515472395256382,
+      "seed": 123
+    },
+    {
+      "a": 3.0,
+      "chart_area_total": 3.1415915453795717,
+      "chart_roundtrip_max_error": 1.480516607479829e-11,
+      "k": 10,
+      "l": 4,
+      "n_pts_per_ball": 1500,
+      "sampled_radius": 4.960203020814707,
+      "sampled_ratio": 0.01651970128514057,
+      "seed": 123
+    }
+  ],
+  "seed": 123
+}
