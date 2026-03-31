@@ -33,6 +33,15 @@ Your task is to analyze this solution and make sure it is correct
 
 ## Prior Evidence Ledger
 
+### attempt_019
+- Hypothesis: n/a
+- Score: n/a
+- Keep: no
+- Ready for paper: no
+- Worked: n/a
+- Did not work: n/a
+- Next step: n/a
+
 ### attempt_018
 - Hypothesis: A recursive four-dimensional fold tree built from coupled control-translation Hamiltonians may realize a Schlenk-style multiple-folding analogue without reverting to cotangent lifts: use the first symplectic plane to wri
 - Score: 0.55
@@ -95,12 +104,3 @@ Your task is to analyze this solution and make sure it is correct
 - Worked: Implemented `src/hybrid_generating_function_audit.py`, a new transform-method / generating-function audit for the exact `m=6`, `k=10` hybrid strip. The script imports the exact strip from attempt 011, uses the cotangent-
 - Did not work: This broader family still does not make the proposed solution correct. The exact strip is impossible even after adding arbitrary facewise generating functions over the same affine action map. Every shared edge of the str
 - Next step: Do not revisit the exact hybrid strip with another fiber-preserving toric/generating-function correction. The next family should either redesign the action complex so every derivative jump occurs along coordinate-axis ed
-
-### attempt_011
-- Hypothesis: An algebraic exact-recurrence solver can remove the remaining uncertainty in the `m=6` hybrid strip: if the boundary-only source strip admits a rational equal-area realization and the induced local toric charts glue acro
-- Score: 0.57
-- Keep: yes
-- Ready for paper: no
-- Worked: Implemented `src/hybrid_strip_recurrence_solver.py`, a new algebraic exactification tool for the hybrid `9 rigid + 1 strip` family. The script scans rational seeds up to denominator 72, finds a unique exact recurrence se
-- Did not work: The exactification does not make the proposed solution correct. The toric gluing audit shows that all 35 internal shared edges have midpoints strictly inside `Delta(1)`, so each carries a full `T^2` fiber, but `same_angl
-- Next step: Leave boundary-only exact strip fitting inside the same toric chart class. The next hybrid attempt should add a genuinely different angle/gluing mechanism, such as a generating-function layer, a non-toric local model, or
