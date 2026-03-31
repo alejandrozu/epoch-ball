@@ -1,7 +1,7 @@
 # Research Context
 
-- Stage: bootstrap
-- Note: repository prepared; initializing research loop
+- Stage: research_loop
+- Note: session 1, starting attempt_001
 - Agent: ARC1
 - Model: gpt-5.4
 - Reasoning effort: xhigh

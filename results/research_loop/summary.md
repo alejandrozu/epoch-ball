@@ -18,7 +18,7 @@ A solution to this problem is meant to rest on finding a family of embeddings th
 
 
 Your task is to analyze this solution and make sure it is correct
-- Stage: bootstrap
+- Stage: research_loop
 - Status: running
 - Best score: n/a
 - Ready for paper: no
@@ -33,4 +33,11 @@ Your task is to analyze this solution and make sure it is correct
 
 ## Prior Evidence Ledger
 
-No research attempts have been recorded yet.
+### attempt_001
+- Hypothesis: n/a
+- Score: n/a
+- Keep: no
+- Ready for paper: no
+- Worked: n/a
+- Did not work: n/a
+- Next step: n/a
