@@ -1,7 +1,7 @@
 # Research Context
 
 - Stage: research_loop
-- Note: session 4, starting attempt_004
+- Note: session 4, attempt_004 done; best=attempt_003
 - Agent: ARC1
 - Model: gpt-5.4
 - Reasoning effort: xhigh
@@ -10,13 +10,13 @@
 - Semantic Scholar auth token available: yes
 - Best score: 0.56
 - Ready for paper: no
-- Current hypothesis: A genuinely constructive solution should come from toric/action-angle packings rather than global optimization: the standard square-slot construction gives an explicit symplectic baseline, and a richer multi-block toric 
+- Current hypothesis: A genuinely different way to get an explicit smooth Hamiltonian is to use compactly supported local affine symplectic pieces: if affine scalings and translations can already pack well, they would give a direct Hamiltonia
 
 ## Latest Summary
 
-- Worked: Implemented src/explicit_square_packing.py, an explicit toric square-slot embedding on the disjoint source union. Its predicted ratios were confirmed numerically to machine precision: for k=10 it gives mu=4 and ratio 0.6
-- Did not work: The attempt still does not solve the task. Even the improved k=10 construction remains far from the near-full ratio required for small epsilon: mu=3.8 is still substantially above the full-packing threshold sqrt(10)≈3.16
-- Next step: Keep the toric constructive direction but replace the singular polar chart with a smooth slit-disk or Traynor-style regularized chart, and extend the block search beyond axis-aligned rectangles to non-axis Delzant triang
+- Worked: Implemented src/affine_rectangular_packing.py, a new constructive family based on affine symplectic block maps and q-plane rectangle packing. Added an exact trust-region radius computation for each affine-image ball, so 
+- Did not work: The affine local-piece family failed decisively as a serious solution path. Even in the square case k=16, where the toric family packs exactly, the affine family only reached ratio about 0.0232. For k=10 its exact ratio 
+- Next step: Drop purely affine local Hamiltonian pieces and return to genuinely nonlinear smooth constructions, especially regularized action-angle or slit-disk charts, or non-affine folding constructions that can preserve the squar
 
 ## Strongest Current Path
 

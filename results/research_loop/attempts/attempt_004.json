@@ -1,7 +1,7 @@
 {
   "attempt_id": "attempt_004",
   "created_at": "2026-03-31T15:21:35.783591+00:00",
-  "updated_at": "2026-03-31T15:35:29.353555+00:00",
+  "updated_at": "2026-03-31T15:37:16.282750+00:00",
   "hypothesis": "A genuinely different way to get an explicit smooth Hamiltonian is to use compactly supported local affine symplectic pieces: if affine scalings and translations can already pack well, they would give a direct Hamiltonian-piece route without the toric singularity issue.",
   "score": 0.48,
   "keep": true,
@@ -44,5 +44,5 @@
   },
   "notes": "The new family is useful mainly as a structural ablation. Because it is built from affine symplectic pieces, it is much closer in spirit to a direct smooth Hamiltonian implementation than the singular toric charts, but the measurements show that this simplicity comes at the wrong geometric price: the family misses the nonlinear square-root compression entirely.",
   "exit_code": 0,
-  "elapsed_seconds": 833.57
+  "elapsed_seconds": 938.08
 }
