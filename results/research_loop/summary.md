@@ -33,6 +33,15 @@ Your task is to analyze this solution and make sure it is correct
 
 ## Prior Evidence Ledger
 
+### attempt_017
+- Hypothesis: n/a
+- Score: n/a
+- Keep: no
+- Ready for paper: no
+- Worked: n/a
+- Did not work: n/a
+- Next step: n/a
+
 ### attempt_016
 - Hypothesis: A multistage network of one-sided symplectic transvection folds with stage-dependent isotropic directions may evade attempt 015's preserved-slice obstruction by destroying every fixed symplectic 2-plane slice and acting 
 - Score: 0.53
@@ -95,12 +104,3 @@ Your task is to analyze this solution and make sure it is correct
 - Worked: Implemented src/hybrid_boundary_strip_family.py and verified a genuinely new k=10 hybrid decomposition. At m=6, n=19 the first 324 target cells are exactly the inner side-18 triangle tiled by 9 rigid side-6 triangles, wh
 - Did not work: The family is still not a correct solution. The m=6 source strip fit remains only approximate: in the best positive realization the target face area is 1/72 = 0.013888888888888888, but the optimized source face areas ran
 - Next step: Keep the hybrid 9 rigid + 1 strip/tree line, but solve the concrete m=6 source strip exactly, likely by an analytic equal-area boundary recurrence or by allowing a small interior-vertex extension, and in parallel replace
-
-### attempt_009
-- Hypothesis: A genuinely new non-simplicial route is to replace the rigid simplicial triangle image by a connected equal-area polyomino action-shape and then apply an integer toric cover matrix. If exact search over these connected p
-- Score: 0.55
-- Keep: yes
-- Ready for paper: no
-- Worked: Implemented and validated src/strip_snake_cover_search.py for the new connected-polyomino toric-cover family. Added exact enumeration for fixed n_cells, added a strict --path-only filter for true strip-snake polyominoes 
-- Did not work: This family still does not solve the task and does not even beat the repository's best constructive baseline from attempt_003. The exact unrestricted optimum 0.6920415224913494 is slightly below attempt_003's 0.692520775
-- Next step: Leave the single connected polyomino action-shape family. The next non-simplicial attempt should build explicit continuous gluing data from the start, for example a multi-chart shear or generating-function construction,
