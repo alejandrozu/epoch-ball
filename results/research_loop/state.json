@@ -1,7 +1,7 @@
 {
   "version": "1.1",
   "created_at": "2026-03-31T14:22:51.477190+00:00",
-  "updated_at": "2026-03-31T18:48:02.536602+00:00",
+  "updated_at": "2026-03-31T18:53:50.359093+00:00",
   "status": "running",
   "current_stage": "research_loop",
   "attempt_count": 13,
@@ -9,15 +9,15 @@
   "last_exit_code": 0,
   "current_attempt_id": "attempt_013",
   "best_attempt_id": "attempt_013",
-  "best_score": 0.59,
+  "best_score": 0.6,
   "current_hypothesis": "A genuinely new axis-seam origami family may survive the attempt-012 obstruction: partition one source moment triangle into rigid affine pieces and allow derivative jumps only along seams whose common image lies on a true coordinate axis. The simplest nontrivial case is a two-piece rigid origami separated by a straight lattice cut; if even that cannot be realized without overlap, then coordinate-axis seams alone are far weaker than hoped.",
   "ready_for_paper": false,
-  "stop_reason": "Attempt 013 exact-searched the simplest nontrivial coordinate-axis seam family and found no viable examples. The new script `src/axis_seam_origami_search.py` enumerates every two-piece rigid decomposition of a source side-`m` triangle along an internal straight cut, every rigid triangular-lattice placement of both pieces inside the near-full target simplex for `k=10`, and every way to send the common cut to `x1=0` or `x2=0`. For `m = 3,4,5,6,7`, there are many matching axis-line candidates, but every matched pair overlaps in at least one target unit triangle, so `total_valid_nonoverlapping_pairs = 0`. Coordinate-axis seams are the only algebraically legal places for derivative jumps, but in the standard simplex they still do not provide a genuine rigid fold.",
+  "stop_reason": "Attempt 013 exact-searched the simplest nontrivial coordinate-axis seam family and found no viable examples. The new script `src/axis_seam_origami_search.py` enumerates every two-piece rigid decomposition of a source side-`m` triangle along an internal straight cut, every rigid triangular-lattice placement of both pieces inside the near-full target simplex for `k=10`, and every way to send the common cut to `x1=0` or `x2=0`. For `m = 3,4,5,6,7,8`, there are many matching axis-line candidates, but every matched pair overlaps in at least one target unit triangle, so `total_valid_nonoverlapping_pairs = 0`. Coordinate-axis seams are the only algebraically legal places for derivative jumps, but in the standard simplex they still do not provide a genuine rigid fold.",
   "paper_generated": false,
   "review_verdict": null,
   "last_summary": {
-    "worked": "Implemented `src/axis_seam_origami_search.py`, a new exact search for the simplest nontrivial axis-seam origami family. The script enumerates the 12 rigid triangular-lattice automorphisms, splits a source side-`m` triangle into two connected rigid pieces along every internal straight cut `i=c`, `j=c`, or `i+j=c`, and checks all rigid placements of both pieces in the target side-`n` simplex with `n = ceil(m * sqrt(10))`. It forces the common seam to map to `x1=0` or `x2=0` and tests whether the two target images can be interior-disjoint. The saved artifact `results/research_loop/attempt_013_axis_seam_two_piece_search.json` shows zero valid nonoverlapping pairs for every tested `m = 3,4,5,6,7`, despite many matching axis-line candidates.",
-    "did_not_work": "The new family still does not make the proposed solution correct. Even when derivative jumps are restricted to true coordinate-axis seams, the standard simplex appears too one-sided to host a genuine rigid fold. For each tested `m`, every matched pair of axis-aligned rigid placements overlaps in at least one target unit triangle, so no two-piece rigid axis-seam origami exists in the tested near-full `k=10` regime.",
-    "next_step": "Stay on the axis-seam line and either prove a general overlap lemma for any rigid leaf piece attached along a coordinate-axis seam, or extend the exact search to multi-piece axis-seam trees to see whether any nontrivial leaf attachment can ever avoid the same overlap mechanism."
+    "worked": "Implemented `src/axis_seam_origami_search.py`, an exact search for the simplest nontrivial axis-seam origami family. The script enumerates the 12 rigid triangular-lattice automorphisms, splits a source side-`m` moment triangle into two connected rigid pieces along every internal straight cut `i=c`, `j=c`, or `i+j=c`, and tests all rigid placements of the two pieces inside the target side-`n` simplex with `n = ceil(m * sqrt(10))`. It forces the common seam to land on `x1=0` or `x2=0` and checks whether the two target images can be interior-disjoint. The saved artifact `results/research_loop/attempt_013_axis_seam_two_piece_search.json` shows `total_valid_nonoverlapping_pairs = 0` for every tested `m = 3,4,5,6,7,8`, even though there are many matching axis-line candidates (156, 288, 456, 660, 972, 1260 by `m`).",
+    "did_not_work": "The new axis-seam family still does not make the proposed solution correct. In the bounded two-piece rigid setting, coordinate-axis seams never produce a genuine fold inside the target simplex. Every matched pair of rigid placements that sends the common cut to `x1=0` or `x2=0` overlaps in at least one target unit triangle, so no interior-disjoint two-piece axis-seam origami exists in the tested near-full `k=10` regime. This means the attempt-012 lesson is sharper than hoped: while axis seams are the only places where derivative jumps can be hidden, the standard simplex still appears too one-sided to host even the simplest rigid axis-seam fold.",
+    "next_step": "Stay on the axis-seam line and move to a stronger structural step: either prove a general overlap lemma for any rigid leaf piece attached along a coordinate-axis seam, or extend the search to multi-piece axis-seam trees to see whether a nontrivial leaf attachment can ever avoid the same overlap mechanism."
   }
 }

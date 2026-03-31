@@ -1,7 +1,7 @@
 {
   "attempt_id": "attempt_013",
   "created_at": "2026-03-31T18:32:25.460934+00:00",
-  "updated_at": "2026-03-31T18:52:06.074230+00:00",
+  "updated_at": "2026-03-31T18:53:50.358277+00:00",
   "hypothesis": "A genuinely new axis-seam origami family may survive the attempt-012 obstruction: partition one source moment triangle into rigid affine pieces and allow derivative jumps only along seams whose common image lies on a true coordinate axis. The simplest nontrivial case is a two-piece rigid origami separated by a straight lattice cut; if even that cannot be realized without overlap, then coordinate-axis seams alone are far weaker than hoped.",
   "score": 0.6,
   "keep": true,
@@ -63,5 +63,5 @@
   },
   "notes": "This attempt intentionally targets the simplest nontrivial post-attempt-012 axis-seam family rather than the full multi-piece problem. The straight-cut reduction is exact only for the two-piece rigid case. The result is therefore a strong negative step, not a full theorem about all axis-seam trees. No literature note was added because the decisive evidence here was repo-local exact search rather than external references.",
   "exit_code": 0,
-  "elapsed_seconds": 1180.6
+  "elapsed_seconds": 1282.24
 }

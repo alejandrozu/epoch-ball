@@ -20,27 +20,27 @@ A solution to this problem is meant to rest on finding a family of embeddings th
 Your task is to analyze this solution and make sure it is correct
 - Stage: research_loop
 - Status: running
-- Best score: 0.59
+- Best score: 0.6
 - Ready for paper: no
-- Current hypothesis: A genuinely new axis-seam origami family may survive the attempt-012 obstruction: partition one source moment triangle into rigid affine pieces and allow derivative jumps only along seams whose common image lies o
-- Stop reason: Attempt 013 exact-searched the simplest nontrivial coordinate-axis seam family and found no viable examples. The new script `src/axis_seam_origami_search.py` enumerates every two-piece rigid decomposition of a source 
+- Current hypothesis: A genuinely new axis-seam origami family may survive the attempt-012 obstruction: partition one source moment triangle into rigid affine pieces and allow derivative jumps only along seams whose common image lies on a tru
+- Stop reason: Attempt 013 exact-searched the simplest nontrivial coordinate-axis seam family and found no viable examples. The new script `src/axis_seam_origami_search.py` enumerates every two-piece rigid decomposition of a source sid
 
 ## Latest Summary
 
-- Worked: Implemented `src/axis_seam_origami_search.py`, a new exact search for the simplest nontrivial axis-seam origami family. The script enumerates the 12 rigid triangular-lattice automorphisms, splits a source side-`m` trian
-- Did not work: The new family still does not make the proposed solution correct. Even when derivative jumps are restricted to true coordinate-axis seams, the standard simplex appears too one-sided to host a genuine rigid fold. For eac
-- Next step: Stay on the axis-seam line and either prove a general overlap lemma for any rigid leaf piece attached along a coordinate-axis seam, or extend the exact search to multi-piece axis-seam trees to see whether any nontrivial
+- Worked: Implemented `src/axis_seam_origami_search.py`, an exact search for the simplest nontrivial axis-seam origami family. The script enumerates the 12 rigid triangular-lattice automorphisms, splits a source side-`m` moment tr
+- Did not work: The new axis-seam family still does not make the proposed solution correct. In the bounded two-piece rigid setting, coordinate-axis seams never produce a genuine fold inside the target simplex. Every matched pair of rigi
+- Next step: Stay on the axis-seam line and move to a stronger structural step: either prove a general overlap lemma for any rigid leaf piece attached along a coordinate-axis seam, or extend the search to multi-piece axis-seam trees 
 
 ## Prior Evidence Ledger
 
 ### attempt_013
-- Hypothesis: A genuinely new axis-seam origami family may survive the attempt-012 obstruction: partition one source moment triangle into rigid affine pieces and allow derivative jumps only along seams whose common image lies o
-- Score: 0.59
+- Hypothesis: A genuinely new axis-seam origami family may survive the attempt-012 obstruction: partition one source moment triangle into rigid affine pieces and allow derivative jumps only along seams whose common image lies on a tru
+- Score: 0.6
 - Keep: yes
 - Ready for paper: no
-- Worked: Implemented `src/axis_seam_origami_search.py`, a new exact search for the simplest nontrivial axis-seam origami family. The script enumerates the 12 rigid triangular-lattice automorphisms, splits a source side-`m` trian
-- Did not work: The new family still does not make the proposed solution correct. Even when derivative jumps are restricted to true coordinate-axis seams, the standard simplex appears too one-sided to host a genuine rigid fold. For eac
-- Next step: Stay on the axis-seam line and either prove a general overlap lemma for any rigid leaf piece attached along a coordinate-axis seam, or extend the exact search to multi-piece axis-seam trees to see whether any nontrivial
+- Worked: Implemented `src/axis_seam_origami_search.py`, an exact search for the simplest nontrivial axis-seam origami family. The script enumerates the 12 rigid triangular-lattice automorphisms, splits a source side-`m` moment tr
+- Did not work: The new axis-seam family still does not make the proposed solution correct. In the bounded two-piece rigid setting, coordinate-axis seams never produce a genuine fold inside the target simplex. Every matched pair of rigi
+- Next step: Stay on the axis-seam line and move to a stronger structural step: either prove a general overlap lemma for any rigid leaf piece attached along a coordinate-axis seam, or extend the search to multi-piece axis-seam trees 
 
 ### attempt_012
 - Hypothesis: A transform-method enlargement of the exact hybrid strip may still work even though plain toric affine gluing fails: on each face, replace the rigid toric chart by the most general exact fiber-preserving symplectomorphis

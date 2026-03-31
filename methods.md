@@ -89,7 +89,7 @@
 - Family: axis-seam two-piece rigid origami search in the standard simplex
 - Mathematical modes: game-theoretic, information-theoretic, set / logic
 - Core idea: accept attempt 012's coordinate-axis restriction and test the simplest nontrivial family it leaves open: split one source side-`m` triangle into two rigid affine pieces along an internal straight cut, force the common seam to land on `x1=0` or `x2=0`, and enumerate every rigid placement of both pieces inside the near-full target simplex
-- Outcome: stronger negative evidence on the axis-seam line; for `k=10` and every tested `m = 3,4,5,6,7`, the exact search found many matching axis-line candidates but zero interior-disjoint pairs, so even the simplest two-piece rigid coordinate-axis seam does not produce a valid origami fold inside the simplex
+- Outcome: stronger negative evidence on the axis-seam line; for `k=10` and every tested `m = 3,4,5,6,7,8`, the exact search found many matching axis-line candidates but zero interior-disjoint pairs, so even the simplest two-piece rigid coordinate-axis seam does not produce a valid origami fold inside the simplex
 
 ## Next family should avoid
 
@@ -105,7 +105,7 @@
 - Another naive boundary-prefix hybrid `9 rigid + 1 strip` decomposition that only gives a path at `m=6` and does not yet solve the exact source equal-area strip fit or the larger-`m` scaling problem
 - Another boundary-only exact recurrence solve inside the same piecewise toric affine chart class; attempt 011 showed that exact area matching is not the bottleneck because angle gluing already fails on every full-torus internal edge
 - Another facewise fiber-preserving generating-function repair over the same affine action map when the complex still has full-rank internal edges; attempt 012 showed this entire cotangent-lift family cannot fix the saved exact strip
-- Another two-piece rigid axis-seam origami search with a single straight cut; attempt 013 already exact-searched all such coordinate-axis seams for `m = 3,4,5,6,7` in the near-full `k=10` regime and found only overlapping pairs
+- Another two-piece rigid axis-seam origami search with a single straight cut; attempt 013 already exact-searched all such coordinate-axis seams for `m = 3,4,5,6,7,8` in the near-full `k=10` regime and found only overlapping pairs
 
 ## Most promising next family
 
