@@ -56,6 +56,13 @@
 - Core idea: impose continuity at the simplicial unit-triangle level, prove by row propagation that the source subdivision can only map to a rigid side-m lattice triangle, and then solve the reduced k-ball problem as an exact compatibility-clique search over rigid triangle placements inside the target triangular grid
 - Outcome: strong negative evidence; the local rigidity reduction held exactly for all tested seeds and all `m <= 20`, and exact searches showed that for `k=10` the reduced family fits at most 9 rigid side-m triangles for every tested `m = 3, ..., 11`
 
+## attempt_009
+
+- Family: exact / probabilistic search over connected non-simplicial polyomino action-shapes with integer toric covers
+- Mathematical modes: probabilistic, combinatorial, discrete <-> continuous mapping
+- Core idea: replace the rigid simplicial image by a connected equal-area polyomino in moment space, search exact and sampled self-avoiding-walk polyominoes, and combine them with determinant-`>= k` integer cover matrices to minimize the target simplex capacity `mu`
+- Outcome: useful near-match but negative overall; the exact unrestricted `n_cells=10` optimum stabilized at ratio `0.6920415224913494` for both `entry_bound=6` and `entry_bound=8`, still below attempt 003, while the stricter path-only strip-snake subfamily dropped to ratio `0.5540166204986149`, showing that the best surrogate witness depends on branching polyomino geometry and still lacks an explicit continuous/smooth realization
+
 ## Next family should avoid
 
 - Another global polynomial or neural-style optimization ansatz
@@ -66,7 +73,8 @@
 - Another separable kick-drift boundary-fitting ansatz that tries to learn the branch structure of the toric witness through source-indexed Gaussian kicks and global drifts
 - Another arbitrary tiny-triangle origami permutation that ignores global vertex and edge compatibility across fold lines
 - Another continuity-preserving unit-triangle simplicial origami ansatz whose single-ball images are forced to rigid lattice triangles and then reduced to rigid triangle set packing
+- Another single connected polyomino / strip-snake action-shape search with integer toric covers whose exact `n_cells=10` optimum already stabilized below attempt_003 and whose path-only subfamily collapsed to ratio `0.5540`
 
 ## Most promising next family
 
-- A non-simplicial family that breaks the rigid row-propagation invariant, such as a smooth multi-chart shear / strip-folding construction or a generating-function method whose single-ball image is not constrained to be a rigid lattice triangle
+- A non-simplicial construction with explicit continuous gluing from the start, such as a smooth multi-chart shear / generating-function method or a multi-block non-simplicial complex that is not reduced to one connected action-shape

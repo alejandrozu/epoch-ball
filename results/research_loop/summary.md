@@ -22,25 +22,25 @@ Your task is to analyze this solution and make sure it is correct
 - Status: running
 - Best score: 0.56
 - Ready for paper: no
-- Current hypothesis: A genuinely new graph/symmetry route is to enforce continuity at the simplicial level. If continuity and unit-triangle compatibility force the m-subdivision of Delta(1) to propagate row by row as a rigid lattice triangle
-- Stop reason: Attempt 008 reduced continuity-preserving simplicial origami to exact rigid-triangle packing and found a hard cap of 9 copies for k=10 in every exact case tested from m=3 through m=11, so this family cannot realize the r
+- Current hypothesis: A genuinely new non-simplicial route is to replace the rigid simplicial triangle image by a connected equal-area polyomino action-shape and then apply an integer toric cover matrix. If exact search over these connected p
+- Stop reason: Attempt 009 found that the single connected polyomino action-shape family plateaus below the current constructive best: the exact unrestricted n_cells=10 optimum is 0.6920415224913494 at both entry_bound=6 and entry_boun
 
 ## Latest Summary
 
-- Worked: Implemented src/graph_rigid_triangle_packing.py, a new graph/symmetry-based analysis tool for continuous simplicial origami. The script verifies that once the first unit triangle seed is fixed, every later row is forced;
-- Did not work: The continuity-preserving simplicial origami family failed as a route to near-full density. The hoped-for fold freedom disappears: row propagation is rigid, so a single ball never becomes a new folded polyiamond, only a 
-- Next step: Leave the continuity-preserving simplicial/unit-triangle origami class. The next family should be non-simplicial and break the rigid row-propagation invariant, for example via a smooth multi-chart shear or generating-fun
+- Worked: Implemented and validated src/strip_snake_cover_search.py for the new connected-polyomino toric-cover family. Added exact enumeration for fixed n_cells, added a strict --path-only filter for true strip-snake polyominoes 
+- Did not work: This family still does not solve the task and does not even beat the repository's best constructive baseline from attempt_003. The exact unrestricted optimum 0.6920415224913494 is slightly below attempt_003's 0.692520775
+- Next step: Leave the single connected polyomino action-shape family. The next non-simplicial attempt should build explicit continuous gluing data from the start, for example a multi-chart shear or generating-function construction, 
 
 ## Prior Evidence Ledger
 
 ### attempt_009
-- Hypothesis: n/a
-- Score: n/a
-- Keep: no
+- Hypothesis: A genuinely new non-simplicial route is to replace the rigid simplicial triangle image by a connected equal-area polyomino action-shape and then apply an integer toric cover matrix. If exact search over these connected p
+- Score: 0.55
+- Keep: yes
 - Ready for paper: no
-- Worked: n/a
-- Did not work: n/a
-- Next step: n/a
+- Worked: Implemented and validated src/strip_snake_cover_search.py for the new connected-polyomino toric-cover family. Added exact enumeration for fixed n_cells, added a strict --path-only filter for true strip-snake polyominoes 
+- Did not work: This family still does not solve the task and does not even beat the repository's best constructive baseline from attempt_003. The exact unrestricted optimum 0.6920415224913494 is slightly below attempt_003's 0.692520775
+- Next step: Leave the single connected polyomino action-shape family. The next non-simplicial attempt should build explicit continuous gluing data from the start, for example a multi-chart shear or generating-function construction, 
 
 ### attempt_008
 - Hypothesis: A genuinely new graph/symmetry route is to enforce continuity at the simplicial level. If continuity and unit-triangle compatibility force the m-subdivision of Delta(1) to propagate row by row as a rigid lattice triangle
