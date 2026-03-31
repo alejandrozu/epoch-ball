@@ -1,0 +1,220 @@
+{
+  "boundary_connected": true,
+  "boundary_degree1_count": 2,
+  "boundary_degree3_count": 0,
+  "boundary_degree_histogram": {
+    "1": 2,
+    "2": 34
+  },
+  "boundary_hamiltonian_path_degree_obstruction": false,
+  "boundary_is_path_graph": true,
+  "boundary_level_histogram": {
+    "19": 36
+  },
+  "boundary_path_head": [
+    360,
+    188,
+    359,
+    186,
+    357,
+    183,
+    354,
+    179,
+    350,
+    174,
+    345,
+    168
+  ],
+  "boundary_path_tail": [
+    282,
+    98,
+    269,
+    84,
+    255,
+    69,
+    240,
+    53,
+    224,
+    36,
+    207,
+    18
+  ],
+  "boundary_piece_count": 36,
+  "discarded_target_pieces": 1,
+  "exact_ratio": 0.997229916897507,
+  "inner_macro_triangle_count": 9,
+  "inner_macro_triangles": [
+    {
+      "lattice_vertices": [
+        [
+          0,
+          0
+        ],
+        [
+          6,
+          0
+        ],
+        [
+          0,
+          6
+        ]
+      ],
+      "orientation": "up",
+      "piece_id": 0
+    },
+    {
+      "lattice_vertices": [
+        [
+          0,
+          6
+        ],
+        [
+          6,
+          6
+        ],
+        [
+          0,
+          12
+        ]
+      ],
+      "orientation": "up",
+      "piece_id": 1
+    },
+    {
+      "lattice_vertices": [
+        [
+          0,
+          12
+        ],
+        [
+          6,
+          12
+        ],
+        [
+          0,
+          18
+        ]
+      ],
+      "orientation": "up",
+      "piece_id": 2
+    },
+    {
+      "lattice_vertices": [
+        [
+          6,
+          0
+        ],
+        [
+          12,
+          0
+        ],
+        [
+          6,
+          6
+        ]
+      ],
+      "orientation": "up",
+      "piece_id": 3
+    },
+    {
+      "lattice_vertices": [
+        [
+          6,
+          6
+        ],
+        [
+          12,
+          6
+        ],
+        [
+          6,
+          12
+        ]
+      ],
+      "orientation": "up",
+      "piece_id": 4
+    },
+    {
+      "lattice_vertices": [
+        [
+          12,
+          0
+        ],
+        [
+          18,
+          0
+        ],
+        [
+          12,
+          6
+        ]
+      ],
+      "orientation": "up",
+      "piece_id": 5
+    },
+    {
+      "lattice_vertices": [
+        [
+          6,
+          0
+        ],
+        [
+          6,
+          6
+        ],
+        [
+          0,
+          6
+        ]
+      ],
+      "orientation": "down",
+      "piece_id": 6
+    },
+    {
+      "lattice_vertices": [
+        [
+          6,
+          6
+        ],
+        [
+          6,
+          12
+        ],
+        [
+          0,
+          12
+        ]
+      ],
+      "orientation": "down",
+      "piece_id": 7
+    },
+    {
+      "lattice_vertices": [
+        [
+          12,
+          0
+        ],
+        [
+          12,
+          6
+        ],
+        [
+          6,
+          6
+        ]
+      ],
+      "orientation": "down",
+      "piece_id": 8
+    }
+  ],
+  "inner_max_level": 18,
+  "inner_piece_count": 324,
+  "k": 10,
+  "m": 6,
+  "n": 19,
+  "source_down_triangle_count": 15,
+  "source_rhombus_tiling_possible_by_parity": false,
+  "source_up_triangle_count": 21,
+  "target_mu": 3.1666666666666665,
+  "used_target_pieces": 360
+}

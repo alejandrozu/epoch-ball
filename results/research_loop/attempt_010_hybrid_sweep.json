@@ -1,0 +1,1014 @@
+{
+  "rows": [
+    {
+      "boundary_connected": true,
+      "boundary_degree1_count": 2,
+      "boundary_degree3_count": 0,
+      "boundary_degree_histogram": {
+        "1": 2,
+        "2": 34
+      },
+      "boundary_hamiltonian_path_degree_obstruction": false,
+      "boundary_is_path_graph": true,
+      "boundary_level_histogram": {
+        "19": 36
+      },
+      "boundary_path_head": [
+        360,
+        188,
+        359,
+        186,
+        357,
+        183,
+        354,
+        179,
+        350,
+        174,
+        345,
+        168
+      ],
+      "boundary_path_tail": [
+        282,
+        98,
+        269,
+        84,
+        255,
+        69,
+        240,
+        53,
+        224,
+        36,
+        207,
+        18
+      ],
+      "boundary_piece_count": 36,
+      "discarded_target_pieces": 1,
+      "exact_ratio": 0.997229916897507,
+      "inner_macro_triangle_count": 9,
+      "inner_macro_triangles": [
+        {
+          "lattice_vertices": [
+            [
+              0,
+              0
+            ],
+            [
+              6,
+              0
+            ],
+            [
+              0,
+              6
+            ]
+          ],
+          "orientation": "up",
+          "piece_id": 0
+        },
+        {
+          "lattice_vertices": [
+            [
+              0,
+              6
+            ],
+            [
+              6,
+              6
+            ],
+            [
+              0,
+              12
+            ]
+          ],
+          "orientation": "up",
+          "piece_id": 1
+        },
+        {
+          "lattice_vertices": [
+            [
+              0,
+              12
+            ],
+            [
+              6,
+              12
+            ],
+            [
+              0,
+              18
+            ]
+          ],
+          "orientation": "up",
+          "piece_id": 2
+        },
+        {
+          "lattice_vertices": [
+            [
+              6,
+              0
+            ],
+            [
+              12,
+              0
+            ],
+            [
+              6,
+              6
+            ]
+          ],
+          "orientation": "up",
+          "piece_id": 3
+        },
+        {
+          "lattice_vertices": [
+            [
+              6,
+              6
+            ],
+            [
+              12,
+              6
+            ],
+            [
+              6,
+              12
+            ]
+          ],
+          "orientation": "up",
+          "piece_id": 4
+        },
+        {
+          "lattice_vertices": [
+            [
+              12,
+              0
+            ],
+            [
+              18,
+              0
+            ],
+            [
+              12,
+              6
+            ]
+          ],
+          "orientation": "up",
+          "piece_id": 5
+        },
+        {
+          "lattice_vertices": [
+            [
+              6,
+              0
+            ],
+            [
+              6,
+              6
+            ],
+            [
+              0,
+              6
+            ]
+          ],
+          "orientation": "down",
+          "piece_id": 6
+        },
+        {
+          "lattice_vertices": [
+            [
+              6,
+              6
+            ],
+            [
+              6,
+              12
+            ],
+            [
+              0,
+              12
+            ]
+          ],
+          "orientation": "down",
+          "piece_id": 7
+        },
+        {
+          "lattice_vertices": [
+            [
+              12,
+              0
+            ],
+            [
+              12,
+              6
+            ],
+            [
+              6,
+              6
+            ]
+          ],
+          "orientation": "down",
+          "piece_id": 8
+        }
+      ],
+      "inner_max_level": 18,
+      "inner_piece_count": 324,
+      "k": 10,
+      "m": 6,
+      "n": 19,
+      "source_down_triangle_count": 15,
+      "source_rhombus_tiling_possible_by_parity": false,
+      "source_up_triangle_count": 21,
+      "target_mu": 3.1666666666666665,
+      "used_target_pieces": 360
+    },
+    {
+      "boundary_connected": true,
+      "boundary_degree1_count": 4,
+      "boundary_degree3_count": 68,
+      "boundary_degree_histogram": {
+        "1": 4,
+        "2": 72,
+        "3": 68
+      },
+      "boundary_hamiltonian_path_degree_obstruction": true,
+      "boundary_is_path_graph": false,
+      "boundary_level_histogram": {
+        "37": 73,
+        "38": 71
+      },
+      "boundary_path_head": [],
+      "boundary_path_tail": [],
+      "boundary_piece_count": 144,
+      "discarded_target_pieces": 4,
+      "exact_ratio": 0.997229916897507,
+      "inner_macro_triangle_count": 9,
+      "inner_macro_triangles": [
+        {
+          "lattice_vertices": [
+            [
+              0,
+              0
+            ],
+            [
+              12,
+              0
+            ],
+            [
+              0,
+              12
+            ]
+          ],
+          "orientation": "up",
+          "piece_id": 0
+        },
+        {
+          "lattice_vertices": [
+            [
+              0,
+              12
+            ],
+            [
+              12,
+              12
+            ],
+            [
+              0,
+              24
+            ]
+          ],
+          "orientation": "up",
+          "piece_id": 1
+        },
+        {
+          "lattice_vertices": [
+            [
+              0,
+              24
+            ],
+            [
+              12,
+              24
+            ],
+            [
+              0,
+              36
+            ]
+          ],
+          "orientation": "up",
+          "piece_id": 2
+        },
+        {
+          "lattice_vertices": [
+            [
+              12,
+              0
+            ],
+            [
+              24,
+              0
+            ],
+            [
+              12,
+              12
+            ]
+          ],
+          "orientation": "up",
+          "piece_id": 3
+        },
+        {
+          "lattice_vertices": [
+            [
+              12,
+              12
+            ],
+            [
+              24,
+              12
+            ],
+            [
+              12,
+              24
+            ]
+          ],
+          "orientation": "up",
+          "piece_id": 4
+        },
+        {
+          "lattice_vertices": [
+            [
+              24,
+              0
+            ],
+            [
+              36,
+              0
+            ],
+            [
+              24,
+              12
+            ]
+          ],
+          "orientation": "up",
+          "piece_id": 5
+        },
+        {
+          "lattice_vertices": [
+            [
+              12,
+              0
+            ],
+            [
+              12,
+              12
+            ],
+            [
+              0,
+              12
+            ]
+          ],
+          "orientation": "down",
+          "piece_id": 6
+        },
+        {
+          "lattice_vertices": [
+            [
+              12,
+              12
+            ],
+            [
+              12,
+              24
+            ],
+            [
+              0,
+              24
+            ]
+          ],
+          "orientation": "down",
+          "piece_id": 7
+        },
+        {
+          "lattice_vertices": [
+            [
+              24,
+              0
+            ],
+            [
+              24,
+              12
+            ],
+            [
+              12,
+              12
+            ]
+          ],
+          "orientation": "down",
+          "piece_id": 8
+        }
+      ],
+      "inner_max_level": 36,
+      "inner_piece_count": 1296,
+      "k": 10,
+      "m": 12,
+      "n": 38,
+      "source_down_triangle_count": 66,
+      "source_rhombus_tiling_possible_by_parity": false,
+      "source_up_triangle_count": 78,
+      "target_mu": 3.1666666666666665,
+      "used_target_pieces": 1440
+    },
+    {
+      "boundary_connected": true,
+      "boundary_degree1_count": 9,
+      "boundary_degree3_count": 209,
+      "boundary_degree_histogram": {
+        "1": 9,
+        "2": 106,
+        "3": 209
+      },
+      "boundary_hamiltonian_path_degree_obstruction": true,
+      "boundary_is_path_graph": false,
+      "boundary_level_histogram": {
+        "55": 109,
+        "56": 111,
+        "57": 104
+      },
+      "boundary_path_head": [],
+      "boundary_path_tail": [],
+      "boundary_piece_count": 324,
+      "discarded_target_pieces": 9,
+      "exact_ratio": 0.997229916897507,
+      "inner_macro_triangle_count": 9,
+      "inner_macro_triangles": [
+        {
+          "lattice_vertices": [
+            [
+              0,
+              0
+            ],
+            [
+              18,
+              0
+            ],
+            [
+              0,
+              18
+            ]
+          ],
+          "orientation": "up",
+          "piece_id": 0
+        },
+        {
+          "lattice_vertices": [
+            [
+              0,
+              18
+            ],
+            [
+              18,
+              18
+            ],
+            [
+              0,
+              36
+            ]
+          ],
+          "orientation": "up",
+          "piece_id": 1
+        },
+        {
+          "lattice_vertices": [
+            [
+              0,
+              36
+            ],
+            [
+              18,
+              36
+            ],
+            [
+              0,
+              54
+            ]
+          ],
+          "orientation": "up",
+          "piece_id": 2
+        },
+        {
+          "lattice_vertices": [
+            [
+              18,
+              0
+            ],
+            [
+              36,
+              0
+            ],
+            [
+              18,
+              18
+            ]
+          ],
+          "orientation": "up",
+          "piece_id": 3
+        },
+        {
+          "lattice_vertices": [
+            [
+              18,
+              18
+            ],
+            [
+              36,
+              18
+            ],
+            [
+              18,
+              36
+            ]
+          ],
+          "orientation": "up",
+          "piece_id": 4
+        },
+        {
+          "lattice_vertices": [
+            [
+              36,
+              0
+            ],
+            [
+              54,
+              0
+            ],
+            [
+              36,
+              18
+            ]
+          ],
+          "orientation": "up",
+          "piece_id": 5
+        },
+        {
+          "lattice_vertices": [
+            [
+              18,
+              0
+            ],
+            [
+              18,
+              18
+            ],
+            [
+              0,
+              18
+            ]
+          ],
+          "orientation": "down",
+          "piece_id": 6
+        },
+        {
+          "lattice_vertices": [
+            [
+              18,
+              18
+            ],
+            [
+              18,
+              36
+            ],
+            [
+              0,
+              36
+            ]
+          ],
+          "orientation": "down",
+          "piece_id": 7
+        },
+        {
+          "lattice_vertices": [
+            [
+              36,
+              0
+            ],
+            [
+              36,
+              18
+            ],
+            [
+              18,
+              18
+            ]
+          ],
+          "orientation": "down",
+          "piece_id": 8
+        }
+      ],
+      "inner_max_level": 54,
+      "inner_piece_count": 2916,
+      "k": 10,
+      "m": 18,
+      "n": 57,
+      "source_down_triangle_count": 153,
+      "source_rhombus_tiling_possible_by_parity": false,
+      "source_up_triangle_count": 171,
+      "target_mu": 3.1666666666666665,
+      "used_target_pieces": 3240
+    },
+    {
+      "boundary_connected": true,
+      "boundary_degree1_count": 16,
+      "boundary_degree3_count": 422,
+      "boundary_degree_histogram": {
+        "1": 16,
+        "2": 138,
+        "3": 422
+      },
+      "boundary_hamiltonian_path_degree_obstruction": true,
+      "boundary_is_path_graph": false,
+      "boundary_level_histogram": {
+        "73": 145,
+        "74": 147,
+        "75": 149,
+        "76": 135
+      },
+      "boundary_path_head": [],
+      "boundary_path_tail": [],
+      "boundary_piece_count": 576,
+      "discarded_target_pieces": 16,
+      "exact_ratio": 0.997229916897507,
+      "inner_macro_triangle_count": 9,
+      "inner_macro_triangles": [
+        {
+          "lattice_vertices": [
+            [
+              0,
+              0
+            ],
+            [
+              24,
+              0
+            ],
+            [
+              0,
+              24
+            ]
+          ],
+          "orientation": "up",
+          "piece_id": 0
+        },
+        {
+          "lattice_vertices": [
+            [
+              0,
+              24
+            ],
+            [
+              24,
+              24
+            ],
+            [
+              0,
+              48
+            ]
+          ],
+          "orientation": "up",
+          "piece_id": 1
+        },
+        {
+          "lattice_vertices": [
+            [
+              0,
+              48
+            ],
+            [
+              24,
+              48
+            ],
+            [
+              0,
+              72
+            ]
+          ],
+          "orientation": "up",
+          "piece_id": 2
+        },
+        {
+          "lattice_vertices": [
+            [
+              24,
+              0
+            ],
+            [
+              48,
+              0
+            ],
+            [
+              24,
+              24
+            ]
+          ],
+          "orientation": "up",
+          "piece_id": 3
+        },
+        {
+          "lattice_vertices": [
+            [
+              24,
+              24
+            ],
+            [
+              48,
+              24
+            ],
+            [
+              24,
+              48
+            ]
+          ],
+          "orientation": "up",
+          "piece_id": 4
+        },
+        {
+          "lattice_vertices": [
+            [
+              48,
+              0
+            ],
+            [
+              72,
+              0
+            ],
+            [
+              48,
+              24
+            ]
+          ],
+          "orientation": "up",
+          "piece_id": 5
+        },
+        {
+          "lattice_vertices": [
+            [
+              24,
+              0
+            ],
+            [
+              24,
+              24
+            ],
+            [
+              0,
+              24
+            ]
+          ],
+          "orientation": "down",
+          "piece_id": 6
+        },
+        {
+          "lattice_vertices": [
+            [
+              24,
+              24
+            ],
+            [
+              24,
+              48
+            ],
+            [
+              0,
+              48
+            ]
+          ],
+          "orientation": "down",
+          "piece_id": 7
+        },
+        {
+          "lattice_vertices": [
+            [
+              48,
+              0
+            ],
+            [
+              48,
+              24
+            ],
+            [
+              24,
+              24
+            ]
+          ],
+          "orientation": "down",
+          "piece_id": 8
+        }
+      ],
+      "inner_max_level": 72,
+      "inner_piece_count": 5184,
+      "k": 10,
+      "m": 24,
+      "n": 76,
+      "source_down_triangle_count": 276,
+      "source_rhombus_tiling_possible_by_parity": false,
+      "source_up_triangle_count": 300,
+      "target_mu": 3.1666666666666665,
+      "used_target_pieces": 5760
+    },
+    {
+      "boundary_connected": true,
+      "boundary_degree1_count": 25,
+      "boundary_degree3_count": 707,
+      "boundary_degree_histogram": {
+        "1": 25,
+        "2": 168,
+        "3": 707
+      },
+      "boundary_hamiltonian_path_degree_obstruction": true,
+      "boundary_is_path_graph": false,
+      "boundary_level_histogram": {
+        "91": 181,
+        "92": 183,
+        "93": 185,
+        "94": 187,
+        "95": 164
+      },
+      "boundary_path_head": [],
+      "boundary_path_tail": [],
+      "boundary_piece_count": 900,
+      "discarded_target_pieces": 25,
+      "exact_ratio": 0.997229916897507,
+      "inner_macro_triangle_count": 9,
+      "inner_macro_triangles": [
+        {
+          "lattice_vertices": [
+            [
+              0,
+              0
+            ],
+            [
+              30,
+              0
+            ],
+            [
+              0,
+              30
+            ]
+          ],
+          "orientation": "up",
+          "piece_id": 0
+        },
+        {
+          "lattice_vertices": [
+            [
+              0,
+              30
+            ],
+            [
+              30,
+              30
+            ],
+            [
+              0,
+              60
+            ]
+          ],
+          "orientation": "up",
+          "piece_id": 1
+        },
+        {
+          "lattice_vertices": [
+            [
+              0,
+              60
+            ],
+            [
+              30,
+              60
+            ],
+            [
+              0,
+              90
+            ]
+          ],
+          "orientation": "up",
+          "piece_id": 2
+        },
+        {
+          "lattice_vertices": [
+            [
+              30,
+              0
+            ],
+            [
+              60,
+              0
+            ],
+            [
+              30,
+              30
+            ]
+          ],
+          "orientation": "up",
+          "piece_id": 3
+        },
+        {
+          "lattice_vertices": [
+            [
+              30,
+              30
+            ],
+            [
+              60,
+              30
+            ],
+            [
+              30,
+              60
+            ]
+          ],
+          "orientation": "up",
+          "piece_id": 4
+        },
+        {
+          "lattice_vertices": [
+            [
+              60,
+              0
+            ],
+            [
+              90,
+              0
+            ],
+            [
+              60,
+              30
+            ]
+          ],
+          "orientation": "up",
+          "piece_id": 5
+        },
+        {
+          "lattice_vertices": [
+            [
+              30,
+              0
+            ],
+            [
+              30,
+              30
+            ],
+            [
+              0,
+              30
+            ]
+          ],
+          "orientation": "down",
+          "piece_id": 6
+        },
+        {
+          "lattice_vertices": [
+            [
+              30,
+              30
+            ],
+            [
+              30,
+              60
+            ],
+            [
+              0,
+              60
+            ]
+          ],
+          "orientation": "down",
+          "piece_id": 7
+        },
+        {
+          "lattice_vertices": [
+            [
+              60,
+              0
+            ],
+            [
+              60,
+              30
+            ],
+            [
+              30,
+              30
+            ]
+          ],
+          "orientation": "down",
+          "piece_id": 8
+        }
+      ],
+      "inner_max_level": 90,
+      "inner_piece_count": 8100,
+      "k": 10,
+      "m": 30,
+      "n": 95,
+      "source_down_triangle_count": 435,
+      "source_rhombus_tiling_possible_by_parity": false,
+      "source_up_triangle_count": 465,
+      "target_mu": 3.1666666666666665,
+      "used_target_pieces": 9000
+    }
+  ]
+}
