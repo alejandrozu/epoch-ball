@@ -170,7 +170,7 @@
       0.0,
       0.0
     ],
-    "affine_slice_formula_error": 0.5249999999999999,
+    "affine_slice_formula_error": 0.0,
     "jacobian_above_seam": [
       [
         1.0,
@@ -218,7 +218,8 @@
     "normalized_jacobian_determinant_below_seam": 1.0,
     "one_sided_slice_formula_error": 0.0,
     "sample_d": 0.2,
-    "sample_lambda": 0.375
+    "sample_lambda": 0.375,
+    "sample_s": 1.5
   },
   "identity_baseline": {
     "boundary_samples": 4096,

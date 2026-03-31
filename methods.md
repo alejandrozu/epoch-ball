@@ -98,6 +98,13 @@
 - Core idea: replace the brute-force search by a local combinatorial theorem on the target simplex: every unit boundary edge has a unique incident unit triangle, so if an internal rigid seam edge lands on `x1=0` or `x2=0`, the two source unit triangles adjacent to that seam edge must map to the same target unit triangle and overlap; audit the saved attempt-013 artifact against the resulting lower bound `overlap >= seam length`
 - Outcome: stronger general negative evidence; the local theorem rules out the entire rigid axis-seam strategy, not just the searched two-piece straight-cut cases, and all 81 cuts in the saved attempt-013 artifact satisfy the theoremic lower bound
 
+## attempt_015
+
+- Family: slice-preserving affine transvection-fold audit with symplectic left-factor mixing
+- Mathematical modes: linear algebra, geometric, dynamical systems
+- Core idea: replace rigid seam origami by a one-sided affine symplectic transvection fold across a hyperplane, normalize it to the active-slice map `F_{s,lambda,d}`, and test whether a common linear symplectic left factor that mixes the active and passive planes can evade the preserved-slice obstruction
+- Outcome: stronger exact negative evidence on this new non-rigid family; the central active slice keeps symplectic area `pi`, so any containing ball radius obeys `R >= delta^(-1/2) >= 1`, where `delta = |omega(f1,f2)|` for an orthonormal basis of the mixed slice plane. The new script exact-checks the transvection formulas, runs a 5776-case nontrivial grid search with best sampled radius `1.001083448194763`, and audits 16 random symplectic mixers with theoretical lower bounds between `1.0083706647215258` and `2.1715166455758785` and minimum sampled radius `1.4699275946793848`
+
 ## Next family should avoid
 
 - Another global polynomial or neural-style optimization ansatz
@@ -114,7 +121,8 @@
 - Another facewise fiber-preserving generating-function repair over the same affine action map when the complex still has full-rank internal edges; attempt 012 showed this entire cotangent-lift family cannot fix the saved exact strip
 - Another two-piece rigid axis-seam origami search with a single straight cut; attempt 013 already exact-searched all such coordinate-axis seams for `m = 3,4,5,6,7,8` in the near-full `k=10` regime and found only overlapping pairs
 - Another rigid axis-seam origami construction of any tree/leaf type whose internal seams land on target boundary edges; attempt 014 showed that any such seam forces overlap locally because each boundary edge has a unique incident target unit triangle
+- Another slice-preserving affine transvection fold with only a common postcomposition linear symplectic mixer; attempt 015 showed that the preserved symplectic 2-plane slice forces `R >= delta^(-1/2) >= 1`, and generic mixing only worsens the lower bound
 
 ## Most promising next family
 
-- A non-rigid within-piece construction or a non-toric / base-mixing local model that does not preserve the action-base projection facewise and does not rely on target boundary seams
+- A genuinely nonlinear base-mixing local model, or a pre-mixed/multi-stage fold, that destroys every invariant symplectic 2-plane slice rather than preserving one up to a common left factor
