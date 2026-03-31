@@ -1,25 +1,25 @@
 # Research Context
 
 - Stage: research_loop
-- Note: session 3, starting attempt_003
+- Note: session 3, attempt_003 done; best=attempt_003
 - Agent: ARC1
 - Model: gpt-5.4
 - Reasoning effort: xhigh
 - Semantic Scholar access: runtime-configured proxy + Codex MCP tools
 - Semantic Scholar env vars: `SEMANTIC_SCHOLAR_API_BASE_URL`, `SEMANTIC_SCHOLAR_GRAPH_API_URL`, `SEMANTIC_SCHOLAR_RECOMMENDATIONS_API_URL`
 - Semantic Scholar auth token available: yes
-- Best score: 0.44
+- Best score: 0.56
 - Ready for paper: no
-- Current hypothesis: The right benchmark for this problem is the geometric/algebraic equal-ball packing theory of B^4: Cremona reduction should show that the task regime k>=10 has full abstract packing, so the repository's current Hamiltonia
+- Current hypothesis: A genuinely constructive solution should come from toric/action-angle packings rather than global optimization: the standard square-slot construction gives an explicit symplectic baseline, and a richer multi-block toric 
 
 ## Latest Summary
 
-- Worked: Implemented src/ball_packing_bounds.py, a reusable equal-ball packing calculator based on standard Cremona reduction. The code reproduced the classical small-k packing fractions exactly to numerical tolerance, including 
-- Did not work: This attempt did not yet turn the abstract packing certificate into an explicit smooth Hamiltonian generator. I also could not use Semantic Scholar MCP directly because the runtime proxy returned HTTP 429 throughout the 
-- Next step: Use the new reduction benchmark to drive an explicit construction attempt, preferably a toric/simplex or localized Hamiltonian-piece method, starting with k=10 and small eps where the target capacity mu is only slightly 
+- Worked: Implemented src/explicit_square_packing.py, an explicit toric square-slot embedding on the disjoint source union. Its predicted ratios were confirmed numerically to machine precision: for k=10 it gives mu=4 and ratio 0.6
+- Did not work: The attempt still does not solve the task. Even the improved k=10 construction remains far from the near-full ratio required for small epsilon: mu=3.8 is still substantially above the full-packing threshold sqrt(10)≈3.16
+- Next step: Keep the toric constructive direction but replace the singular polar chart with a smooth slit-disk or Traynor-style regularized chart, and extend the block search beyond axis-aligned rectangles to non-axis Delzant triang
 
 ## Strongest Current Path
 
-- Hypothesis: The right benchmark for this problem is the geometric/algebraic equal-ball packing theory of B^4: Cremona reduction should show that the task regime k>=10 has full abstract packing, so the repository's current Hamiltonia
-- Worked: Implemented src/ball_packing_bounds.py, a reusable equal-ball packing calculator based on standard Cremona reduction. The code reproduced the classical small-k packing fractions exactly to numerical tolerance, including 
-- Limits: This attempt did not yet turn the abstract packing certificate into an explicit smooth Hamiltonian generator. I also could not use Semantic Scholar MCP directly because the runtime proxy returned HTTP 429 throughout the
+- Hypothesis: A genuinely constructive solution should come from toric/action-angle packings rather than global optimization: the standard square-slot construction gives an explicit symplectic baseline, and a richer multi-block toric 
+- Worked: Implemented src/explicit_square_packing.py, an explicit toric square-slot embedding on the disjoint source union. Its predicted ratios were confirmed numerically to machine precision: for k=10 it gives mu=4 and ratio 0.6
+- Limits: The attempt still does not solve the task. Even the improved k=10 construction remains far from the near-full ratio required for small epsilon: mu=3.8 is still substantially above the full-packing threshold sqrt(10)≈3.16

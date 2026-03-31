@@ -1,7 +1,7 @@
 {
   "version": "1.1",
   "created_at": "2026-03-31T14:22:51.477190+00:00",
-  "updated_at": "2026-03-31T15:20:55.941922+00:00",
+  "updated_at": "2026-03-31T15:21:27.549002+00:00",
   "status": "running",
   "current_stage": "research_loop",
   "attempt_count": 3,
@@ -10,14 +10,14 @@
   "current_attempt_id": "attempt_003",
   "best_attempt_id": "attempt_003",
   "best_score": 0.56,
-  "current_hypothesis": "A constructive solution should come from toric/action-angle packings rather than global optimization, but the naive square-grid and one-block versions are too rigid; the promising path is richer multi-block toric layouts combined with a smooth slit-disk regularization that can be promoted to a Hamiltonian-piece construction.",
+  "current_hypothesis": "A genuinely constructive solution should come from toric/action-angle packings rather than global optimization: the standard square-slot construction gives an explicit symplectic baseline, and a richer multi-block toric layout may improve it further enough to guide a smooth Hamiltonian-piece construction.",
   "ready_for_paper": false,
   "stop_reason": "Explicit toric constructive baselines now exist, including a k=10 witness with ratio about 0.6925, but the family is still far from arbitrary 1-epsilon density and has not yet been converted into a smooth global Hamiltonian.",
   "paper_generated": false,
   "review_verdict": null,
   "last_summary": {
-    "worked": "Implemented three constructive toric tools under src/: explicit_square_packing.py, toric_linear_family.py, and axis_block_packing_search.py. The square-slot construction was verified exactly to machine precision, giving ratio 0.625 for k=10 and exact full packing for the square case k=16. The one-block toric covering search showed that simple determinant-k blocks are exact on perfect squares but poor for k=10, where the best one-block ratio is only 0.4. The multi-block axis-aligned toric search then found a concrete k=10 arrangement with partition 1+2+3+4 inside Delta(3.8), improving the constructive ratio to about 0.6925.",
-    "did_not_work": "The attempt still does not reach the task regime of arbitrary 1-epsilon density and still does not produce the required explicit smooth Hamiltonian. The best k=10 witness found here uses mu=3.8, which remains well above sqrt(10), and the current maps are still expressed in singular action-angle coordinates rather than as a smooth Hamiltonian on all of R^4.",
-    "next_step": "Regularize the toric construction with a smooth slit-disk or Traynor-style chart and extend the combinatorial search beyond axis-aligned blocks to non-axis Delzant triangles and richer multi-block layouts, starting again from k=10."
+    "worked": "Implemented src/explicit_square_packing.py, an explicit toric square-slot embedding on the disjoint source union. Its predicted ratios were confirmed numerically to machine precision: for k=10 it gives mu=4 and ratio 0.625, and for the square case k=16 it gives exact full packing at mu=4 with sampled ratio 0.9999999999999858. Implemented src/toric_linear_family.py to search one-block affine toric covering constructions; this showed the one-block family is exact on perfect squares but poor for k=10, where the best one-block candidate needs mu=5 and ratio 0.4. Implemented src/axis_block_packing_search.py, a heuristic constructive search over disjoint axis-aligned toric blocks. That search found a concrete k=10 layout with partition 1+2+3+4 inside Delta(3.8), improving the explicit constructive ratio to 0.6925207756232687.",
+    "did_not_work": "The attempt still does not solve the task. Even the improved k=10 construction remains far from the near-full ratio required for small epsilon: mu=3.8 is still substantially above the full-packing threshold sqrt(10)\u22483.1623. The current constructive maps are written in polar/action-angle coordinates and therefore do not yet provide the required explicit smooth Hamiltonian on R^4 x [0,1]. The axis-block search is also only heuristic because it restricts translations to a finite grid and only explores axis-aligned blocks, so it is evidence of improvement rather than a definitive optimum.",
+    "next_step": "Keep the toric constructive direction but replace the singular polar chart with a smooth slit-disk or Traynor-style regularized chart, and extend the block search beyond axis-aligned rectangles to non-axis Delzant triangles and richer multi-block layouts, again starting with k=10."
   }
 }
