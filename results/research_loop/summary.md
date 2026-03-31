@@ -33,6 +33,15 @@ Your task is to analyze this solution and make sure it is correct
 
 ## Prior Evidence Ledger
 
+### attempt_012
+- Hypothesis: n/a
+- Score: n/a
+- Keep: no
+- Ready for paper: no
+- Worked: n/a
+- Did not work: n/a
+- Next step: n/a
+
 ### attempt_011
 - Hypothesis: An algebraic exact-recurrence solver can remove the remaining uncertainty in the `m=6` hybrid strip: if the boundary-only source strip admits a rational equal-area realization and the induced local toric charts glue acro
 - Score: 0.57
@@ -95,12 +104,3 @@ Your task is to analyze this solution and make sure it is correct
 - Worked: Validated src/smooth_slit_chart_packing.py, a new smooth nonlinear slit-chart packing family. After the earlier fixes to the chart tables and angle branch handling, the planar chart had area_total approximately pi and ro
 - Did not work: The family failed decisively as a packing mechanism. Even in the perfect-square case k=16, where the toric square-slot family is exact, the smooth slit-chart family only achieved sampled ratio about 0.1230. For k=10 it o
 - Next step: Do not revisit generic slit-chart rectangle packings. The next construction should either smooth the toric/action variables while preserving a simplex-type relation analogous to x1+x2<=1, or switch to a fundamentally dif
-
-### attempt_004
-- Hypothesis: A genuinely different way to get an explicit smooth Hamiltonian is to use compactly supported local affine symplectic pieces: if affine scalings and translations can already pack well, they would give a direct Hamiltonia
-- Score: 0.48
-- Keep: yes
-- Ready for paper: no
-- Worked: Implemented src/affine_rectangular_packing.py, a new constructive family based on affine symplectic block maps and q-plane rectangle packing. Added an exact trust-region radius computation for each affine-image ball, so 
-- Did not work: The affine local-piece family failed decisively as a serious solution path. Even in the square case k=16, where the toric family packs exactly, the affine family only reached ratio about 0.0232. For k=10 its exact ratio 
-- Next step: Drop purely affine local Hamiltonian pieces and return to genuinely nonlinear smooth constructions, especially regularized action-angle or slit-disk charts, or non-affine folding constructions that can preserve the squar
