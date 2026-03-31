@@ -33,6 +33,15 @@ Your task is to analyze this solution and make sure it is correct
 
 ## Prior Evidence Ledger
 
+### attempt_011
+- Hypothesis: n/a
+- Score: n/a
+- Keep: no
+- Ready for paper: no
+- Worked: n/a
+- Did not work: n/a
+- Next step: n/a
+
 ### attempt_010
 - Hypothesis: A hybrid non-simplicial route may isolate the continuity problem to one ball: for k=10, split the near-full target set into 9 rigid side-m triangles inside the inner side-3m triangle plus one boundary strip/tree complex 
 - Score: 0.55
@@ -95,12 +104,3 @@ Your task is to analyze this solution and make sure it is correct
 - Worked: Implemented src/affine_rectangular_packing.py, a new constructive family based on affine symplectic block maps and q-plane rectangle packing. Added an exact trust-region radius computation for each affine-image ball, so 
 - Did not work: The affine local-piece family failed decisively as a serious solution path. Even in the square case k=16, where the toric family packs exactly, the affine family only reached ratio about 0.0232. For k=10 its exact ratio 
 - Next step: Drop purely affine local Hamiltonian pieces and return to genuinely nonlinear smooth constructions, especially regularized action-angle or slit-disk charts, or non-affine folding constructions that can preserve the squar
-
-### attempt_003
-- Hypothesis: A genuinely constructive solution should come from toric/action-angle packings rather than global optimization: the standard square-slot construction gives an explicit symplectic baseline, and a richer multi-block toric 
-- Score: 0.56
-- Keep: yes
-- Ready for paper: no
-- Worked: Implemented src/explicit_square_packing.py, an explicit toric square-slot embedding on the disjoint source union. Its predicted ratios were confirmed numerically to machine precision: for k=10 it gives mu=4 and ratio 0.6
-- Did not work: The attempt still does not solve the task. Even the improved k=10 construction remains far from the near-full ratio required for small epsilon: mu=3.8 is still substantially above the full-packing threshold sqrt(10)≈3.16
-- Next step: Keep the toric constructive direction but replace the singular polar chart with a smooth slit-disk or Traynor-style regularized chart, and extend the block search beyond axis-aligned rectangles to non-axis Delzant triang
