@@ -10,8 +10,8 @@ Implemented `src/transvection_fold_slice_obstruction.py`, a new audit for affine
 
 ## Known limits
 
-This is still a negative result on one broad but structured family. It rules out slice-preserving/common-left-factor affine transvection folds, but it does not yet address pre-mixing before the fold, more general multi-stage folds, or genuinely nonlinear base-mixing constructions that destroy every invariant symplectic 2-plane slice.
+This is still a negative result on one broad but structured family. It rules out slice-preserving/common-left-factor affine transvection folds, but it does not yet address pre-mixing before the fold, more general multi-stage folds, or genuinely nonlinear base-mixing constructions that destroy every invariant symplectic 2-plane slice. A naive extension of the same area-`pi` claim to arbitrary linear pre-factors failed numerically, so pre-mixing remains genuinely live rather than already ruled out.
 
 ## Next move
 
-Leave slice-preserving/common-left-factor affine transvection folds. The next live family must destroy every invariant symplectic 2-plane slice, for example via pre-mixing before the fold or a genuinely nonlinear multi-stage local model.
+Leave slice-preserving/common-left-factor affine transvection folds. The next live family should target pre-mixing before the fold or a genuinely nonlinear multi-stage local model, since those are the remaining ways to destroy or shrink the preserved-slice mechanism.

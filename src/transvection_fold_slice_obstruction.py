@@ -24,12 +24,9 @@ This script proves and audits the key obstruction:
 1. `F_{s,lambda,d}` is area-preserving on the active slice.
 2. Therefore the image of the central slice `D = B^4(1) ∩ E` always has
    symplectic area `pi`.
-3. The same argument survives arbitrary linear symplectic pre- and post-factors:
-   for `P, L in Sp(4,R)`, the source ball meets the plane `P^{-1}(E)` in a unit
-   disk of symplectic area `pi`, `P` maps that disk to an area-`pi` ellipse in
-   `E`, `F` preserves that area inside `E`, and `L` then places the slice inside
-   the 2-plane `L(E)`. If `f1, f2` is an orthonormal basis of `L(E)` and
-   `delta = |omega(f1, f2)| <= 1`, then
+3. If a common symplectic linear left factor `L in Sp(4,R)` is applied, the
+   slice image lies in the 2-plane `L(E)`. If `f1, f2` is an orthonormal basis
+   of `L(E)` and `delta = |omega(f1, f2)| <= 1`, then
 
        EuclideanArea(L(F(D))) = pi / delta,
 
@@ -37,8 +34,8 @@ This script proves and audits the key obstruction:
 
        R >= delta^(-1/2) >= 1.
 
-So neither the normalized fold itself nor any linear symplectic pre/post
-factors can compress the preserved slice below radius 1. In particular, this
+So neither the normalized fold itself nor any common linear symplectic left
+factor can compress the preserved slice below radius 1. In particular, this
 family does not yield a one-ball compressor and cannot serve as the missing
 high-density local mechanism for the target packing problem.
 """
@@ -214,17 +211,6 @@ def orthonormalize_plane(v1: np.ndarray, v2: np.ndarray) -> np.ndarray:
 
 def project_to_plane(points_4d: np.ndarray, plane_basis: np.ndarray) -> np.ndarray:
     return points_4d @ plane_basis
-
-
-def preimage_plane_basis(pre_matrix: np.ndarray) -> np.ndarray:
-    pre_inv = np.linalg.inv(pre_matrix)
-    basis = pre_inv @ ACTIVE_PLANE_BASIS
-    return orthonormalize_plane(basis[:, 0], basis[:, 1])
-
-
-def sample_plane_disk_boundary(plane_basis: np.ndarray, n_samples: int) -> np.ndarray:
-    boundary = sample_disk_boundary(n_samples)
-    return boundary @ plane_basis.T
 
 
 def q_shear_matrix(b11: float, b12: float, b22: float) -> np.ndarray:
@@ -503,68 +489,6 @@ def mixed_left_factor_audit(
     }
 
 
-def pre_post_factor_audit(
-    best_fold: dict,
-    boundary_samples: int,
-    circle_seed: int,
-    n_pairs: int,
-    random_seed: int,
-    mixer_scale: float,
-) -> dict:
-    rng = np.random.default_rng(random_seed)
-    rows = []
-    for pair_index in range(n_pairs):
-        pre_matrix = random_symplectic_matrix(rng=rng, scale=mixer_scale)
-        post_matrix = random_symplectic_matrix(rng=rng, scale=mixer_scale)
-        source_basis = preimage_plane_basis(pre_matrix)
-        source_boundary = sample_plane_disk_boundary(source_basis, boundary_samples)
-        intermediate = (pre_matrix @ source_boundary.T).T
-        inactive_residual = float(np.max(np.abs(intermediate[:, [1, 3]])))
-        folded = normalized_fold_4d(
-            intermediate,
-            s=best_fold["s"],
-            lam=best_fold["lam"],
-            d=best_fold["d"],
-        )
-        image = (post_matrix @ folded.T).T
-        delta, ortho_basis = plane_delta(post_matrix)
-        projected = project_to_plane(image, ortho_basis)
-        circle_center, circle_radius = minimum_enclosing_circle(projected, seed=circle_seed + 1000 + pair_index)
-        sampled_area = abs(oriented_polygon_area(projected))
-        rows.append(
-            {
-                "pair_index": pair_index,
-                "pre_symplectic_error": symplectic_error(pre_matrix),
-                "post_symplectic_error": symplectic_error(post_matrix),
-                "plane_delta": delta,
-                "theoretical_lower_bound": delta ** (-0.5),
-                "sampled_radius": circle_radius,
-                "radius_minus_bound": circle_radius - delta ** (-0.5),
-                "sampled_area": sampled_area,
-                "area_minus_pi_over_delta": sampled_area - (math.pi / delta),
-                "inactive_residual_after_pre": inactive_residual,
-                "pre_matrix": pre_matrix.tolist(),
-                "post_matrix": post_matrix.tolist(),
-                "circle_center": circle_center.tolist(),
-            }
-        )
-    rows.sort(key=lambda row: row["sampled_radius"])
-    return {
-        "n_pairs": n_pairs,
-        "best_fold_parameters": best_fold,
-        "min_plane_delta": min(row["plane_delta"] for row in rows),
-        "max_plane_delta": max(row["plane_delta"] for row in rows),
-        "min_theoretical_lower_bound": min(row["theoretical_lower_bound"] for row in rows),
-        "max_theoretical_lower_bound": max(row["theoretical_lower_bound"] for row in rows),
-        "min_sampled_radius": min(row["sampled_radius"] for row in rows),
-        "min_radius_minus_bound": min(row["radius_minus_bound"] for row in rows),
-        "max_pre_symplectic_error": max(row["pre_symplectic_error"] for row in rows),
-        "max_post_symplectic_error": max(row["post_symplectic_error"] for row in rows),
-        "max_inactive_residual_after_pre": max(row["inactive_residual_after_pre"] for row in rows),
-        "rows": rows,
-    }
-
-
 def build_report(args: argparse.Namespace) -> dict:
     coarse = coarse_search(
         boundary_samples=args.coarse_boundary_samples,
@@ -586,25 +510,16 @@ def build_report(args: argparse.Namespace) -> dict:
         random_seed=args.random_seed,
         mixer_scale=args.mixer_scale,
     )
-    pre_post = pre_post_factor_audit(
-        best_fold=best_fold,
-        boundary_samples=args.pre_post_boundary_samples,
-        circle_seed=args.circle_seed,
-        n_pairs=args.n_pre_post_pairs,
-        random_seed=args.random_seed + 10000,
-        mixer_scale=args.mixer_scale,
-    )
     return {
         "family": "affine_symplectic_transvection_folds_with_preserved_slice",
         "normalized_slice_formula": "F_{s,lambda,d}(u,v) = ( s * (u + lambda * max(v-d, 0)), v / s )",
         "one_sided_fold_formula": "(q1,q2,p1,p2) -> (q1 + lambda * max(p1-d,0), q2, p1, p2)",
         "mixed_left_factor_formula": "x -> L(S_s(Phi_{lambda,d}(x))) for L in Sp(4,R)",
-        "pre_post_factor_formula": "x -> L(S_s(Phi_{lambda,d}(P x))) for P, L in Sp(4,R)",
         "exact_claim": (
-            "For every normalized fold and every linear symplectic pre/post pair P, L, "
-            "the source ball still contributes a planar image subset of symplectic area pi "
-            "inside the plane L(E). If delta = |omega(f1,f2)| for an orthonormal basis of "
-            "L(E), then any containing Euclidean 4-ball must satisfy R >= delta^(-1/2) >= 1."
+            "For every normalized fold and every common linear symplectic left factor L, "
+            "the image of the central active slice has symplectic area pi inside the plane "
+            "L(E). If delta = |omega(f1,f2)| for an orthonormal basis of L(E), then any "
+            "containing Euclidean 4-ball must satisfy R >= delta^(-1/2) >= 1."
         ),
         "formula_checks": verify_transvection_formulas(),
         "identity_baseline": identity_baseline(
@@ -614,13 +529,11 @@ def build_report(args: argparse.Namespace) -> dict:
         "coarse_nontrivial_search": coarse,
         "refined_nontrivial_search": refined,
         "mixed_left_factor_audit": mixed,
-        "pre_post_factor_audit": pre_post,
         "conclusion": (
             "The preserved-slice obstruction survives the full normalized family and any "
-            "linear symplectic pre/post factors. Nontrivial folds do not beat radius 1 even "
-            "before mixing, random post-mixing audits obey the sharper bound "
-            "R >= delta^(-1/2), and random pre/post audits show that pre-mixing also fails "
-            "to evade the same bound. This family does not repair the proposed solution."
+            "common linear symplectic left factor. Nontrivial folds do not beat radius 1 "
+            "even before mixing, and random mixed audits obey the sharper bound "
+            "R >= delta^(-1/2). This family does not repair the proposed solution."
         ),
     }
 
@@ -635,10 +548,8 @@ def main() -> None:
     parser.add_argument("--coarse-boundary-samples", type=int, default=256)
     parser.add_argument("--refined-boundary-samples", type=int, default=4096)
     parser.add_argument("--mixed-boundary-samples", type=int, default=2048)
-    parser.add_argument("--pre-post-boundary-samples", type=int, default=2048)
     parser.add_argument("--refine-top-n", type=int, default=12)
     parser.add_argument("--n-mixers", type=int, default=16)
-    parser.add_argument("--n-pre-post-pairs", type=int, default=8)
     parser.add_argument("--mixer-scale", type=float, default=0.65)
     parser.add_argument("--circle-seed", type=int, default=101)
     parser.add_argument("--random-seed", type=int, default=1234)
