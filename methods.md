@@ -49,6 +49,13 @@
 - Core idea: subdivide each source moment triangle into `m^2` tiny lattice triangles and map them piecewise-affinely into tiny target triangles inside `Delta(ceil(m sqrt(k)) / m)`, using local affine symplectic toric charts on each tiny triangle
 - Outcome: partial but invalid as a Hamiltonian solution; the exact density formula was validated up to ratio `0.9999269539810081` for `k=10`, `eps=1e-4`, but every nontrivial `k=10` test had zero continuous internal source adjacencies and `O(1)` fold jumps, so the current assignment is not even continuous
 
+## attempt_008
+
+- Family: graph/symmetry reduction of continuity-preserving simplicial origami to rigid lattice-triangle packing
+- Mathematical modes: graph / network, symmetry / group
+- Core idea: impose continuity at the simplicial unit-triangle level, prove by row propagation that the source subdivision can only map to a rigid side-m lattice triangle, and then solve the reduced k-ball problem as an exact compatibility-clique search over rigid triangle placements inside the target triangular grid
+- Outcome: strong negative evidence; the local rigidity reduction held exactly for all tested seeds and all `m <= 20`, and exact searches showed that for `k=10` the reduced family fits at most 9 rigid side-m triangles for every tested `m = 3, ..., 11`
+
 ## Next family should avoid
 
 - Another global polynomial or neural-style optimization ansatz
@@ -58,7 +65,8 @@
 - Another generic slit-chart or exterior-log-polar rectangle-packing ansatz that replaces the toric action variables by arbitrary area coordinates and then applies the same square-slot recipe
 - Another separable kick-drift boundary-fitting ansatz that tries to learn the branch structure of the toric witness through source-indexed Gaussian kicks and global drifts
 - Another arbitrary tiny-triangle origami permutation that ignores global vertex and edge compatibility across fold lines
+- Another continuity-preserving unit-triangle simplicial origami ansatz whose single-ball images are forced to rigid lattice triangles and then reduced to rigid triangle set packing
 
 ## Most promising next family
 
-- A continuity-preserving simplicial origami family: search for connected target subcomplexes or triangular-grid graph embeddings whose per-triangle affine symplectic charts glue with a globally consistent vertex map, or another generating-function construction that enforces this compatibility directly
+- A non-simplicial family that breaks the rigid row-propagation invariant, such as a smooth multi-chart shear / strip-folding construction or a generating-function method whose single-ball image is not constrained to be a rigid lattice triangle
