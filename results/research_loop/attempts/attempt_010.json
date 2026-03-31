@@ -1,21 +1,69 @@
 {
   "attempt_id": "attempt_010",
   "created_at": "2026-03-31T17:18:16.809935+00:00",
-  "updated_at": "2026-03-31T17:18:16.809946+00:00",
-  "hypothesis": "",
-  "score": null,
-  "keep": false,
+  "updated_at": "2026-03-31T18:03:24.051920+00:00",
+  "hypothesis": "A hybrid non-simplicial route may isolate the continuity problem to one ball: for k=10, split the near-full target set into 9 rigid side-m triangles inside the inner side-3m triangle plus one boundary strip/tree complex for the 10th ball. If the m=6 proof-of-concept can be exactified and larger-m boundary subsets can retain explicit strip/tree combinatorics, this could repair the origami line without forcing every ball to be rigid.",
+  "score": 0.55,
+  "keep": true,
   "ready_for_paper": false,
-  "paper_readiness_reason": "",
-  "worked": "",
-  "did_not_work": "",
-  "next_step": "",
-  "patterns_noticed": "",
-  "commands_run": [],
-  "files_changed": [],
-  "artifacts": [],
-  "evaluation": {},
-  "notes": "",
-  "exit_code": null,
-  "elapsed_seconds": null
+  "paper_readiness_reason": "Attempt 010 now has reproducible evidence for a genuinely new hybrid family: the target side-19 near-full split is exact at m=6 and the source-side strip audit found strictly positive boundary-only realizations. But there is still no exact equal-area source map for the 10th ball, no emitted Hamiltonian, and no scalable larger-m strip/tree boundary subset.",
+  "worked": "Implemented src/hybrid_boundary_strip_family.py and verified a genuinely new k=10 hybrid decomposition. At m=6, n=19 the first 324 target cells are exactly the inner side-18 triangle tiled by 9 rigid side-6 triangles, while the remaining 36 cells form a connected path strip, preserving the near-full ratio 0.997229916897507. Implemented src/hybrid_strip_realization.py and used it to audit the source-side realization problem for that strip. The audit shows that the target strip is a 38-vertex boundary-only triangulation, that naive open-side corner counting overestimates the feasible source boundary placements (140) but the stricter closed-side test still leaves 36 genuinely non-collinear corner triples, and that the best positive boundary-only realization found at corners [9,18,37] with side counts [9,19,10] keeps all 36 source face areas positive.",
+  "did_not_work": "The family is still not a correct solution. The m=6 source strip fit remains only approximate: in the best positive realization the target face area is 1/72 = 0.013888888888888888, but the optimized source face areas range from 0.0027991314071759907 to 0.024940329133336117, with mean absolute error 0.005915893299600265, max error 0.011089757481712897, and MSE 4.652374300853456e-05. So no exact area-preserving piecewise-affine map for the 10th ball has been produced. The naive boundary-prefix target also stops being a path immediately after m=6 and becomes strongly branching for larger m, so the current hybrid witness does not scale with epsilon.",
+  "next_step": "Keep the hybrid 9 rigid + 1 strip/tree line, but solve the concrete m=6 source strip exactly, likely by an analytic equal-area boundary recurrence or by allowing a small interior-vertex extension, and in parallel replace the naive boundary-prefix region by a searched larger-m annular subset whose dual graph stays a path or another explicitly gluable strip/tree complex.",
+  "patterns_noticed": "Several concrete structural patterns emerged. First, the m=6 target strip is not merely a path graph; as a simplicial 2-ball it has 38 boundary vertices, 36 faces, and no interior vertices, with face indices in boundary-cycle order following the rigid strip pattern (17,18,19), (17,19,20), (16,17,20), ..., (0,36,37). Second, the natural open-side corner test is misleading: it reports 140 candidate source corner triples, but once corner collinearity is handled correctly by using side closures, only 36 triples survive, and they are exactly the families (a,18,37) and (18,b,37). Third, these two closed-feasible branches behave differently under optimization. The branch with middle arc length 19, especially counts [9,19,10] and [10,19,9], consistently gives strictly positive source realizations, while the branch with final arc length 19 often drives some face areas negative and is materially worse. Fourth, the best positive configuration found by the saved search uses corners [9,18,37] and side assignment [0,1,2]; it keeps all face areas positive but still spreads them widely, which suggests the boundary-only degrees of freedom may be enough for a topological strip realization but not enough for exact equal-area matching without a more structured solve or extra vertices. Fifth, the optimizer's boundary coordinates are monotone and close to uniformly spaced along the AB and BC arcs, hinting that an analytic recurrence or convex program may be more appropriate than blind gradient descent. Finally, on the target side, the naive boundary-prefix choice gives an exact path only at m=6; at m=12,18,24,30 the degree-1 counts jump to 4,9,16,25 and degree-3 counts to 68,209,422,707, so scaling will require a genuinely searched annular subset, not just the prefix ordering.",
+  "commands_run": [
+    "python src/hybrid_boundary_strip_family.py --m 6 > results/research_loop/attempt_010_hybrid_m6.json",
+    "python src/hybrid_boundary_strip_family.py --m 6 12 18 24 30 > results/research_loop/attempt_010_hybrid_sweep.json",
+    "python - <<'PY' ... extracted the m=6 strip path, counted unique vertices/faces, and verified the strip-sequence / boundary-cycle combinatorics ... PY",
+    "python - <<'PY' ... compared open-side and closed-side source corner-triple feasibility for the m=6 strip triangulation ... PY",
+    "python -m py_compile src/hybrid_boundary_strip_family.py src/hybrid_strip_realization.py",
+    "python src/hybrid_strip_realization.py --m 6 --k 10 --config-limit 1 --steps 3000 > results/research_loop/attempt_010_strip_realization_m6.json"
+  ],
+  "files_changed": [
+    "src/hybrid_boundary_strip_family.py",
+    "src/hybrid_strip_realization.py",
+    "results/research_loop/attempt_010_hybrid_m6.json",
+    "results/research_loop/attempt_010_hybrid_sweep.json",
+    "results/research_loop/attempt_010_strip_realization_m6.json",
+    "results/research_loop/attempt_010_findings.md",
+    "results/research_loop/attempts/attempt_010.json",
+    "results/research_loop/state.json",
+    "results/research_loop/summary.md",
+    "results/research_context.md",
+    "methods.md"
+  ],
+  "artifacts": [
+    "results/research_loop/attempt_010_hybrid_m6.json",
+    "results/research_loop/attempt_010_hybrid_sweep.json",
+    "results/research_loop/attempt_010_strip_realization_m6.json",
+    "results/research_loop/attempt_010_findings.md"
+  ],
+  "evaluation": {
+    "k10_m6_exact_ratio": 0.997229916897507,
+    "k10_m6_boundary_is_path": true,
+    "k10_m6_boundary_vertex_count": 38,
+    "k10_m6_open_feasible_corner_triple_count": 140,
+    "k10_m6_closed_feasible_corner_triple_count": 36,
+    "k10_m6_strip_realization_tested_configs": 4,
+    "k10_m6_strip_best_positive_corners": [
+      9,
+      18,
+      37
+    ],
+    "k10_m6_strip_best_positive_counts": [
+      9,
+      19,
+      10
+    ],
+    "k10_m6_strip_best_positive_mse": 4.652374300853456e-05,
+    "k10_m6_strip_best_positive_min_area": 0.0027991314071759907,
+    "k10_m6_strip_best_positive_max_area": 0.024940329133336117,
+    "k10_m6_strip_best_positive_mean_err": 0.005915893299600265,
+    "k10_m6_strip_best_positive_max_err": 0.011089757481712897,
+    "k10_m6_strip_best_positive_all_positive": true,
+    "k10_hybrid_scaling_boundary_path_only_at_m6": true
+  },
+  "notes": "Semantic Scholar MCP access was still rate-limited earlier in the project, and no new literature artifact was needed here because the decisive progress came from direct combinatorial and optimization evidence inside the repo. The saved strip-realization artifact only tests the strongest first closed-feasible triple family, so the current best positive source witness is still a lower bound on what a more exhaustive m=6 realization search might find.",
+  "exit_code": 0,
+  "elapsed_seconds": 2704.53
 }

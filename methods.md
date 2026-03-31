@@ -63,6 +63,13 @@
 - Core idea: replace the rigid simplicial image by a connected equal-area polyomino in moment space, search exact and sampled self-avoiding-walk polyominoes, and combine them with determinant-`>= k` integer cover matrices to minimize the target simplex capacity `mu`
 - Outcome: useful near-match but negative overall; the exact unrestricted `n_cells=10` optimum stabilized at ratio `0.6920415224913494` for both `entry_bound=6` and `entry_bound=8`, still below attempt 003, while the stricter path-only strip-snake subfamily dropped to ratio `0.5540166204986149`, showing that the best surrogate witness depends on branching polyomino geometry and still lacks an explicit continuous/smooth realization
 
+## attempt_010
+
+- Family: hybrid set/logic `9 rigid + 1 strip` decomposition on the triangular grid
+- Mathematical modes: set / logic, algorithmic
+- Core idea: for `k=10`, split the near-full target set into an inner side-`3m` triangle that tiles exactly into 9 rigid side-`m` triangles plus one remaining boundary strip/tree complex for the 10th ball, then test whether the `m=6` boundary path admits a continuous equal-area source-side strip realization
+- Outcome: promising but still incomplete; at `m=6` the boundary region is exactly a 36-face path strip and the source-side boundary-realization search found 36 genuinely non-collinear corner placements plus a strictly positive best candidate with counts `[9,19,10]`, but the face areas still stalled at MSE about `4.65e-05` and max error about `0.0111`, while the naive boundary-prefix region also branches immediately for larger `m`
+
 ## Next family should avoid
 
 - Another global polynomial or neural-style optimization ansatz
@@ -74,7 +81,8 @@
 - Another arbitrary tiny-triangle origami permutation that ignores global vertex and edge compatibility across fold lines
 - Another continuity-preserving unit-triangle simplicial origami ansatz whose single-ball images are forced to rigid lattice triangles and then reduced to rigid triangle set packing
 - Another single connected polyomino / strip-snake action-shape search with integer toric covers whose exact `n_cells=10` optimum already stabilized below attempt_003 and whose path-only subfamily collapsed to ratio `0.5540`
+- Another naive boundary-prefix hybrid `9 rigid + 1 strip` decomposition that only gives a path at `m=6` and does not yet solve the exact source equal-area strip fit or the larger-`m` scaling problem
 
 ## Most promising next family
 
-- A non-simplicial construction with explicit continuous gluing from the start, such as a smooth multi-chart shear / generating-function method or a multi-block non-simplicial complex that is not reduced to one connected action-shape
+- A non-simplicial construction with explicit continuous gluing from the start; the strongest live version is now a scalable hybrid multi-block complex where most balls stay rigid and only a small boundary strip/tree block carries the non-simplicial complexity
