@@ -1,7 +1,7 @@
 {
-  "updated_at": "2026-03-31T18:53:57.910370+00:00",
+  "updated_at": "2026-03-31T19:01:17.784067+00:00",
   "stage": "research_loop",
-  "note": "session 14, starting attempt_014",
+  "note": "session 14, attempt_014 done; best=attempt_014",
   "task": "This is the proposed solution to the following problem\r\n\r\nFix $n=2$. Let $k \\ge 10$ be an integer and take $\\epsilon \\in (0,1)$. For $i = 1,\\dots,k$, let $B_i \\subset \\R^{2n}$ denote the closed unit ball centered at $(3i-3,0,\\dots,0)$.\r\n\r\nYour goal is to find an algorithm that takes $k$ and $\\epislon$ as inputs and produces as output an explicit smooth Hamiltonian function $H_\\epsilon: \\R^{2n} \\times [0,1] \\rightarrow \\R$ whose time-$1$ Hamiltonian flow $\\phi: \\R^{2n} \\ra \\R^{2n}$ satisfies $\\phi(\\sqcup_{i=1}^{k}B_i) \\subset B^{2n}(R)$, where $B^{2n}(R) \\subset \\R^{2n}$ is the closed ball centered at the origin of radius $R$,  and where we require the volume ratio of $\\bigsqcup\\limits_{i=1}^{k} B_i$ to $B^{2n}(R)$ to satisfy $\\dfrac{k}{R^{2n}} > 1 - \\epsilon$.\r\n\r\nPresent the algorithm as a Python program that takes $k$ and $\\epislon$ as inputs. The algorithm's output must itself be a Python program that implements the Hamiltonian for the given $k$ and $\\epislon$. This program should be in a file called Hamiltonian.py which implements a function Hamiltonian(Q, P, t) that has the following properties.\r\n    - Takes inputs Q (positions), P (momenta), and t (time).\r\n    - Must be implemented using PyTorch operations to support automatic differentiation.\r\n    - Inputs Q and P will be `torch.Tensor`s of shape `(N, n)` (where N is the size of a batch size of points sampled from the boundaries of the input balls).\r\n    - Input t will be a scalar float.\r\n    - Returns a `torch.Tensor` of shape `(N,)` representing the Hamiltonian value for each point in the batch.\r\n    - Is smooth, to ensure existence and uniqueness of flow.\r\n\r\nA solution to this problem is meant to rest on finding a family of embeddings that has a natural algorithmic dependence on $\\epsilon$. As such, the algorithm that produces the Hamiltonians for a given $\\epsilon$ must finish running in under an hour on a typical laptop. The Hamiltonian function itself will be called multiple times during solution verification and must return within ten seconds on each call.\r\n\r\n\r\nYour task is to analyze this solution and make sure it is correct",
   "requirements": "",
   "agent": "codex",
@@ -29,53 +29,52 @@
     "session_count": 14,
     "last_exit_code": 0,
     "current_attempt_id": "attempt_014",
-    "best_attempt_id": "attempt_013",
-    "best_score": 0.6,
-    "current_hypothesis": "A genuinely new axis-seam origami family may survive the attempt-012 obstruction: partition one source moment triangle into rigid affine pieces and allow derivative jumps only along seams whose common image lies on a tru",
+    "best_attempt_id": "attempt_014",
+    "best_score": 0.62,
+    "current_hypothesis": "A local boundary-uniqueness obstruction may upgrade attempt 013 from a bounded search failure to a general rigid-family impossibility: if an internal seam edge of a rigid piecewise-affine origami lands on `x1=0` or `x2=0",
     "ready_for_paper": false,
-    "stop_reason": "Attempt 013 exact-searched the simplest nontrivial coordinate-axis seam family and found no viable examples. The new script `src/axis_seam_origami_search.py` enumerates every two-piece rigid decomposition of a source sid",
+    "stop_reason": "Attempt 014 upgraded the bounded axis-seam search to a local combinatorial obstruction. The new script `src/axis_seam_local_obstruction.py` verifies exactly up to side 40 that every unit boundary edge of the target simpl",
     "paper_generated": false,
     "review_verdict": null,
     "last_summary": {
-      "worked": "Implemented `src/axis_seam_origami_search.py`, an exact search for the simplest nontrivial axis-seam origami family. The script enumerates the 12 rigid triangular-lattice automorphisms, splits a source side-`m` moment tr",
-      "did_not_work": "The new axis-seam family still does not make the proposed solution correct. In the bounded two-piece rigid setting, coordinate-axis seams never produce a genuine fold inside the target simplex. Every matched pair of rigi",
-      "next_step": "Stay on the axis-seam line and move to a stronger structural step: either prove a general overlap lemma for any rigid leaf piece attached along a coordinate-axis seam, or extend the search to multi-piece axis-seam trees "
+      "worked": "Implemented `src/axis_seam_local_obstruction.py`, a proof-style local obstruction script for rigid axis seams. The script enumerates the unit-triangle incidence structure of the target simplex, verifies exactly up to sid",
+      "did_not_work": "This broader rigid family still does not make the proposed solution correct. Attempt 014 shows that any rigid internal seam mapped to a true coordinate axis in the target simplex forces overlap immediately, edge-by-edge.",
+      "next_step": "Leave rigid axis-seam origami entirely. The next live family must either use non-rigid within-piece maps, a non-fiber-preserving/base-mixing local model, or a construction whose discontinuity set does not map to boundary"
     }
   },
   "git": {
-    "changed_count": 3,
+    "changed_count": 6,
     "changed_files": [
+      "methods.md",
+      "results/research_context.md",
+      "results/research_loop/attempts/attempt_014.json",
+      "results/research_loop/best_attempt.md",
       "results/research_loop/state.json",
-      "results/research_loop/summary.md",
-      "results/research_loop/attempts/attempt_014.json"
+      "results/research_loop/summary.md"
     ],
-    "head_commit": "8ecbace research-loop: session 13, attempt_013 (score=0.6, ready=no)"
+    "head_commit": "6309e33 research-loop: live checkpoint session 14, attempt_014 (t+300s)"
   },
   "best_attempt": {
-    "attempt_id": "attempt_013",
-    "created_at": "2026-03-31T18:32:25.460934+00:00",
-    "updated_at": "2026-03-31T18:53:50.358277+00:00",
-    "hypothesis": "A genuinely new axis-seam origami family may survive the attempt-012 obstruction: partition one source moment triangle into rigid affine pieces and allow derivative jumps only along seams whose common image lies on a true coordinate axis. The simplest nontrivial case is a two-piece rigid origami separated by a straight lattice cut; if even that cannot be realized without overlap, then coordinate-axis seams alone are far weaker than hoped.",
-    "score": 0.6,
+    "attempt_id": "attempt_014",
+    "created_at": "2026-03-31T18:53:57.904423+00:00",
+    "updated_at": "2026-03-31T19:01:17.778981+00:00",
+    "hypothesis": "A local boundary-uniqueness obstruction may upgrade attempt 013 from a bounded search failure to a general rigid-family impossibility: if an internal seam edge of a rigid piecewise-affine origami lands on `x1=0` or `x2=0` in the target simplex, then the two unit source triangles adjacent to that seam edge are forced to map to the same unique target unit triangle. If this is correct, the entire rigid axis-seam strategy is impossible, not just the two-piece straight-cut cases exhaustively searched in attempt 013.",
+    "score": 0.62,
     "keep": true,
     "ready_for_paper": false,
-    "paper_readiness_reason": "This attempt adds exact repo-local evidence on a genuinely new post-attempt-012 family. The new script exhaustively tests all two-piece rigid axis-seam decompositions along straight cuts for `m=3,...,8` in the `k=10` near-full regime and finds none. It is not paper-ready because it still stops short of a general theorem for all multi-piece axis-seam trees, and no positive embedding or Hamiltonian has been produced.",
-    "worked": "Implemented `src/axis_seam_origami_search.py`, an exact search for the simplest nontrivial axis-seam origami family. The script enumerates the 12 rigid triangular-lattice automorphisms, splits a source side-`m` moment triangle into two connected rigid pieces along every internal straight cut `i=c`, `j=c`, or `i+j=c`, and tests all rigid placements of the two pieces inside the target side-`n` simplex with `n = ceil(m * sqrt(10))`. It forces the common seam to land on `x1=0` or `x2=0` and checks whether the two target images can be interior-disjoint. The saved artifact `results/research_loop/attempt_013_axis_seam_two_piece_search.json` shows `total_valid_nonoverlapping_pairs = 0` for every tested `m = 3,4,5,6,7,8`, even though there are many matching axis-line candidates (156, 288, 456, 660, 972, 1260 by `m`).",
-    "did_not_work": "The new axis-seam family still does not make the proposed solution correct. In the bounded two-piece rigid setting, coordinate-axis seams never produce a genuine fold inside the target simplex. Every matched pair of rigid placements that sends the common cut to `x1=0` or `x2=0` overlaps in at least one target unit triangle, so no interior-disjoint two-piece axis-seam origami exists in the tested near-full `k=10` regime. This means the attempt-012 lesson is sharper than hoped: while axis seams are the only places where derivative jumps can be hidden, the standard simplex still appears too one-sided to host even the simplest rigid axis-seam fold.",
-    "next_step": "Stay on the axis-seam line and move to a stronger structural step: either prove a general overlap lemma for any rigid leaf piece attached along a coordinate-axis seam, or extend the search to multi-piece axis-seam trees to see whether a nontrivial leaf attachment can ever avoid the same overlap mechanism.",
-    "patterns_noticed": "A new structural pattern emerged. First, for a two-piece rigid decomposition, the interface must be straight: if two different affine maps agree on a bent seam containing two nonparallel segments, their difference vanishes on a 2D affine span, so the maps are identical. That reduces the nontrivial two-piece search to the internal lines `i=c`, `j=c`, and `i+j=c`. Second, axis alignment itself is not scarce. For each `m = 3,4,5,6,7,8`, both source pieces admit many rigid placements whose common cut lands exactly on `x1=0` or `x2=0`; the number of matching axis-line pairs grows monotonically with `m` (156, 288, 456, 660, 972, 1260). So failure is not due to a lack of coordinate-axis placement options. Third, every matching pair still overlaps. The global minimum overlap count is `1` for every tested `m`, achieved by the shallowest cuts near the boundary, while deeper cuts have much larger forced overlap counts (for example, at `m=7`, the first `i=1` and `sum=6` cuts still overlap in at least 11 tiny triangles, the `i=2` or `sum=5` cuts force at least 16 overlaps, and at `m=8` the corresponding deep cuts rise to at least 13 and 20 overlaps respectively). The overlap witnesses always include triangles immediately adjacent to the axis seam, which matches the geometric picture that the simplex has only one interior side next to each coordinate axis. This suggests a broader invariant: coordinate-axis seams may permit derivative mismatch algebraically, but inside the standard target simplex they do not seem to provide enough geometric room to separate two different rigid sheets.",
+    "paper_readiness_reason": "This attempt adds the strongest repo-local obstruction so far on the post-attempt-012 axis-seam line. The new script proves and validates the local boundary-edge uniqueness mechanism, then audits all 81 cuts in the saved attempt-013 search artifact and shows every one satisfies the theorem's forced-overlap bound. It is still not paper-ready because it remains a negative result on one broad rigid family, does not address non-rigid or base-mixing local models, and does not produce a constructive Hamiltonian.",
+    "worked": "Implemented `src/axis_seam_local_obstruction.py`, a proof-style local obstruction script for rigid axis seams. The script enumerates the unit-triangle incidence structure of the target simplex, verifies exactly up to side 40 that every unit boundary edge on `x1=0`, `x2=0`, or the diagonal has one incident unit triangle while interior edges have two, and verifies up to axis-path length 20 that a boundary path of length `L` on `x1=0` or `x2=0` meets `L` distinct incident unit triangles. It then audits the saved search artifact `results/research_loop/attempt_013_axis_seam_two_piece_search.json` and checks all 81 searched cuts from attempt 013 against the resulting lower bound `min_overlap_count >= seam_length_edges`. Every cut passes, and the artifact still has total valid pair count 0. The saved report is `results/research_loop/attempt_014_axis_seam_local_obstruction.json`.",
+    "did_not_work": "This broader rigid family still does not make the proposed solution correct. Attempt 014 shows that any rigid internal seam mapped to a true coordinate axis in the target simplex forces overlap immediately, edge-by-edge. So the entire rigid axis-seam origami strategy is impossible, not merely the specific two-piece straight-cut instances from attempt 013. Coordinate-axis seams were the only algebraically plausible place for derivative mismatch after attempt 012, but they are now ruled out geometrically for rigid piecewise-affine target sheets.",
+    "next_step": "Leave rigid axis-seam origami entirely. The next live family must either use non-rigid within-piece maps, a non-fiber-preserving/base-mixing local model, or a construction whose discontinuity set does not map to boundary edges of the target simplex.",
+    "patterns_noticed": "The key new pattern is local and exact. Every unit boundary edge of the triangular target simplex has only one incident unit triangle; this is true not only on `x1=0` and `x2=0` but also on the diagonal boundary. Interior edges have exactly two incident unit triangles. Combining that with attempt 012 yields a sharp separation: geometrically, any target boundary seam forces sheet coincidence because the boundary edge has only one adjacent triangle, while symplectically, only the coordinate axes are even eligible to hide derivative mismatch because only there does a torus factor collapse. So the coordinate axes are the only algebraically legal seams, yet they are still geometrically impossible for rigid origami. The path-level version is equally clean: a boundary axis path of length `L` meets `L` distinct unit triangles, so a rigid seam of length `L` on `x1=0` or `x2=0` forces at least `L` overlapping target triangles. When audited against attempt 013, every searched cut obeys this lower bound exactly or with slack; the slack ranges from 0 up to 16 in the saved artifact, with the tight cases occurring at the shallow one-edge cuts. This upgrades the search signal into a general rigid-family obstruction: any future piecewise-affine family that still relies on rigid target triangles and internal seams on boundary edges is structurally doomed, regardless of how many pieces it uses.",
     "commands_run": [
-      "python -m py_compile src/axis_seam_origami_search.py",
-      "python src/axis_seam_origami_search.py --k 10 --m-values 3 4 5 6 --output results/research_loop/attempt_013_axis_seam_two_piece_search.json",
-      "python src/axis_seam_origami_search.py --k 10 --m-values 7",
-      "python src/axis_seam_origami_search.py --k 10 --m-values 3 4 5 6 7 --output results/research_loop/attempt_013_axis_seam_two_piece_search.json",
-      "python src/axis_seam_origami_search.py --k 10 --m-values 8",
-      "python src/axis_seam_origami_search.py --k 10 --m-values 3 4 5 6 7 8 --output results/research_loop/attempt_013_axis_seam_two_piece_search.json"
+      "python -m py_compile src/axis_seam_local_obstruction.py",
+      "python src/axis_seam_local_obstruction.py --max-side 40 --max-length 20 --output results/research_loop/attempt_014_axis_seam_local_obstruction.json"
     ],
     "files_changed": [
-      "src/axis_seam_origami_search.py",
-      "results/research_loop/attempt_013_axis_seam_two_piece_search.json",
-      "results/research_loop/attempts/attempt_013.json",
+      "src/axis_seam_local_obstruction.py",
+      "results/research_loop/attempt_014_axis_seam_local_obstruction.json",
+      "results/research_loop/attempts/attempt_014.json",
       "results/research_loop/state.json",
       "results/research_loop/summary.md",
       "results/research_context.md",
@@ -83,39 +82,21 @@
       "methods.md"
     ],
     "artifacts": [
-      "results/research_loop/attempt_013_axis_seam_two_piece_search.json"
+      "results/research_loop/attempt_014_axis_seam_local_obstruction.json"
     ],
     "evaluation": {
-      "triangular_lattice_automorphism_count": 12,
-      "k10_axis_seam_two_piece_tested_m_values": [
-        3,
-        4,
-        5,
-        6,
-        7,
-        8
-      ],
-      "k10_axis_seam_two_piece_exists": false,
-      "k10_axis_seam_two_piece_total_valid_pairs": 0,
-      "k10_axis_seam_two_piece_matching_pairs_by_m": {
-        "3": 156,
-        "4": 288,
-        "5": 456,
-        "6": 660,
-        "7": 972,
-        "8": 1260
-      },
-      "k10_axis_seam_two_piece_min_overlap_by_m": {
-        "3": 1,
-        "4": 1,
-        "5": 1,
-        "6": 1,
-        "7": 1,
-        "8": 1
-      }
+      "boundary_uniqueness_max_side_checked": 40,
+      "axis_path_overlap_max_length_checked": 20,
+      "all_boundary_counts_match_expected": true,
+      "all_axis_paths_force_distinct_overlap_count_equal_to_length": true,
+      "attempt_013_audited_cut_count": 81,
+      "attempt_013_total_valid_pair_count": 0,
+      "attempt_013_all_cuts_satisfy_min_overlap_ge_seam_length": true,
+      "attempt_013_min_gap_over_theorem": 0,
+      "attempt_013_max_gap_over_theorem": 16
     },
-    "notes": "This attempt intentionally targets the simplest nontrivial post-attempt-012 axis-seam family rather than the full multi-piece problem. The straight-cut reduction is exact only for the two-piece rigid case. The result is therefore a strong negative step, not a full theorem about all axis-seam trees. No literature note was added because the decisive evidence here was repo-local exact search rather than external references.",
+    "notes": "No external literature was needed for this step because the obstruction is a direct combinatorial property of the triangular lattice and the target simplex. The script's conclusion is a mathematical inference from the verified local uniqueness mechanism and the exact incidence structure, not just another bounded search result.",
     "exit_code": 0,
-    "elapsed_seconds": 1282.24
+    "elapsed_seconds": 437.42
   }
 }

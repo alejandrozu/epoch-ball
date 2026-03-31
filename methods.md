@@ -91,6 +91,13 @@
 - Core idea: accept attempt 012's coordinate-axis restriction and test the simplest nontrivial family it leaves open: split one source side-`m` triangle into two rigid affine pieces along an internal straight cut, force the common seam to land on `x1=0` or `x2=0`, and enumerate every rigid placement of both pieces inside the near-full target simplex
 - Outcome: stronger negative evidence on the axis-seam line; for `k=10` and every tested `m = 3,4,5,6,7,8`, the exact search found many matching axis-line candidates but zero interior-disjoint pairs, so even the simplest two-piece rigid coordinate-axis seam does not produce a valid origami fold inside the simplex
 
+## attempt_014
+
+- Family: local boundary-uniqueness obstruction for rigid axis-seam origami
+- Mathematical modes: topological, inequalities / bounding, set / logic
+- Core idea: replace the brute-force search by a local combinatorial theorem on the target simplex: every unit boundary edge has a unique incident unit triangle, so if an internal rigid seam edge lands on `x1=0` or `x2=0`, the two source unit triangles adjacent to that seam edge must map to the same target unit triangle and overlap; audit the saved attempt-013 artifact against the resulting lower bound `overlap >= seam length`
+- Outcome: stronger general negative evidence; the local theorem rules out the entire rigid axis-seam strategy, not just the searched two-piece straight-cut cases, and all 81 cuts in the saved attempt-013 artifact satisfy the theoremic lower bound
+
 ## Next family should avoid
 
 - Another global polynomial or neural-style optimization ansatz
@@ -106,7 +113,8 @@
 - Another boundary-only exact recurrence solve inside the same piecewise toric affine chart class; attempt 011 showed that exact area matching is not the bottleneck because angle gluing already fails on every full-torus internal edge
 - Another facewise fiber-preserving generating-function repair over the same affine action map when the complex still has full-rank internal edges; attempt 012 showed this entire cotangent-lift family cannot fix the saved exact strip
 - Another two-piece rigid axis-seam origami search with a single straight cut; attempt 013 already exact-searched all such coordinate-axis seams for `m = 3,4,5,6,7,8` in the near-full `k=10` regime and found only overlapping pairs
+- Another rigid axis-seam origami construction of any tree/leaf type whose internal seams land on target boundary edges; attempt 014 showed that any such seam forces overlap locally because each boundary edge has a unique incident target unit triangle
 
 ## Most promising next family
 
-- A stronger axis-seam construction with multi-piece leaf attachments and a provable overlap criterion, or a non-toric / base-mixing local model that does not preserve the action-base projection facewise
+- A non-rigid within-piece construction or a non-toric / base-mixing local model that does not preserve the action-base projection facewise and does not rely on target boundary seams

@@ -20,27 +20,27 @@ A solution to this problem is meant to rest on finding a family of embeddings th
 Your task is to analyze this solution and make sure it is correct
 - Stage: research_loop
 - Status: running
-- Best score: 0.6
+- Best score: 0.62
 - Ready for paper: no
-- Current hypothesis: A genuinely new axis-seam origami family may survive the attempt-012 obstruction: partition one source moment triangle into rigid affine pieces and allow derivative jumps only along seams whose common image lies on a tru
-- Stop reason: Attempt 013 exact-searched the simplest nontrivial coordinate-axis seam family and found no viable examples. The new script `src/axis_seam_origami_search.py` enumerates every two-piece rigid decomposition of a source sid
+- Current hypothesis: A local boundary-uniqueness obstruction may upgrade attempt 013 from a bounded search failure to a general rigid-family impossibility: if an internal seam edge of a rigid piecewise-affine origami lands on `x1=0` or `x2=0
+- Stop reason: Attempt 014 upgraded the bounded axis-seam search to a local combinatorial obstruction. The new script `src/axis_seam_local_obstruction.py` verifies exactly up to side 40 that every unit boundary edge of the target simpl
 
 ## Latest Summary
 
-- Worked: Implemented `src/axis_seam_origami_search.py`, an exact search for the simplest nontrivial axis-seam origami family. The script enumerates the 12 rigid triangular-lattice automorphisms, splits a source side-`m` moment tr
-- Did not work: The new axis-seam family still does not make the proposed solution correct. In the bounded two-piece rigid setting, coordinate-axis seams never produce a genuine fold inside the target simplex. Every matched pair of rigi
-- Next step: Stay on the axis-seam line and move to a stronger structural step: either prove a general overlap lemma for any rigid leaf piece attached along a coordinate-axis seam, or extend the search to multi-piece axis-seam trees 
+- Worked: Implemented `src/axis_seam_local_obstruction.py`, a proof-style local obstruction script for rigid axis seams. The script enumerates the unit-triangle incidence structure of the target simplex, verifies exactly up to sid
+- Did not work: This broader rigid family still does not make the proposed solution correct. Attempt 014 shows that any rigid internal seam mapped to a true coordinate axis in the target simplex forces overlap immediately, edge-by-edge.
+- Next step: Leave rigid axis-seam origami entirely. The next live family must either use non-rigid within-piece maps, a non-fiber-preserving/base-mixing local model, or a construction whose discontinuity set does not map to boundary
 
 ## Prior Evidence Ledger
 
 ### attempt_014
-- Hypothesis: n/a
-- Score: n/a
-- Keep: no
+- Hypothesis: A local boundary-uniqueness obstruction may upgrade attempt 013 from a bounded search failure to a general rigid-family impossibility: if an internal seam edge of a rigid piecewise-affine origami lands on `x1=0` or `x2=0
+- Score: 0.62
+- Keep: yes
 - Ready for paper: no
-- Worked: n/a
-- Did not work: n/a
-- Next step: n/a
+- Worked: Implemented `src/axis_seam_local_obstruction.py`, a proof-style local obstruction script for rigid axis seams. The script enumerates the unit-triangle incidence structure of the target simplex, verifies exactly up to sid
+- Did not work: This broader rigid family still does not make the proposed solution correct. Attempt 014 shows that any rigid internal seam mapped to a true coordinate axis in the target simplex forces overlap immediately, edge-by-edge.
+- Next step: Leave rigid axis-seam origami entirely. The next live family must either use non-rigid within-piece maps, a non-fiber-preserving/base-mixing local model, or a construction whose discontinuity set does not map to boundary
 
 ### attempt_013
 - Hypothesis: A genuinely new axis-seam origami family may survive the attempt-012 obstruction: partition one source moment triangle into rigid affine pieces and allow derivative jumps only along seams whose common image lies on a tru
