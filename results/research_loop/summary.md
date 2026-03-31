@@ -20,27 +20,27 @@ A solution to this problem is meant to rest on finding a family of embeddings th
 Your task is to analyze this solution and make sure it is correct
 - Stage: research_loop
 - Status: running
-- Best score: 0.27
+- Best score: 0.44
 - Ready for paper: no
-- Current hypothesis: The repository's optimization-based polynomial Hamiltonian is not a correct general solution; it only supports a near-trivial epsilon regime and may not even outperform its own linear translate-and-scale seed.
-- Stop reason: Current candidate audited and found insufficient; evidence now points away from global polynomial optimization toward a different construction family.
+- Current hypothesis: The right benchmark for this problem is the geometric/algebraic equal-ball packing theory of B^4: Cremona reduction should show that the task regime k>=10 has full abstract packing, so the repository's current Hamiltonia
+- Stop reason: Abstract packing benchmark established; no obstruction remains for k>=10, so the next work should focus on an explicit localized construction rather than obstruction analysis.
 
 ## Latest Summary
 
-- Worked: Installed CPU PyTorch so the provided code could be executed. Reproduced the shipped verifier pass for k=10, eps=0.99. Added src/hamiltonian_audit.py and used it to audit the shipped Hamiltonian on seeds 0, 123, and 999 
-- Did not work: The optimization-based Hamiltonian family did not yield evidence for denser packing. The shipped optimized Hamiltonian underperformed the plain linear seed (min sampled ratio 0.012385 versus 0.013649 for the seed). The h
-- Next step: Switch to a qualitatively different construction family: abandon global low-degree polynomial optimization and try a constructive localized packing method, such as toric/moment-polytope style embeddings or sequential com
+- Worked: Implemented src/ball_packing_bounds.py, a reusable equal-ball packing calculator based on standard Cremona reduction. The code reproduced the classical small-k packing fractions exactly to numerical tolerance, including 
+- Did not work: This attempt did not yet turn the abstract packing certificate into an explicit smooth Hamiltonian generator. I also could not use Semantic Scholar MCP directly because the runtime proxy returned HTTP 429 throughout the 
+- Next step: Use the new reduction benchmark to drive an explicit construction attempt, preferably a toric/simplex or localized Hamiltonian-piece method, starting with k=10 and small eps where the target capacity mu is only slightly 
 
 ## Prior Evidence Ledger
 
 ### attempt_002
-- Hypothesis: n/a
-- Score: n/a
-- Keep: no
+- Hypothesis: The right benchmark for this problem is the geometric/algebraic equal-ball packing theory of B^4: Cremona reduction should show that the task regime k>=10 has full abstract packing, so the repository's current Hamiltonia
+- Score: 0.44
+- Keep: yes
 - Ready for paper: no
-- Worked: n/a
-- Did not work: n/a
-- Next step: n/a
+- Worked: Implemented src/ball_packing_bounds.py, a reusable equal-ball packing calculator based on standard Cremona reduction. The code reproduced the classical small-k packing fractions exactly to numerical tolerance, including 
+- Did not work: This attempt did not yet turn the abstract packing certificate into an explicit smooth Hamiltonian generator. I also could not use Semantic Scholar MCP directly because the runtime proxy returned HTTP 429 throughout the 
+- Next step: Use the new reduction benchmark to drive an explicit construction attempt, preferably a toric/simplex or localized Hamiltonian-piece method, starting with k=10 and small eps where the target capacity mu is only slightly 
 
 ### attempt_001
 - Hypothesis: The repository's optimization-based polynomial Hamiltonian is not a correct general solution; it only supports a near-trivial epsilon regime and may not even outperform its own linear translate-and-scale seed.

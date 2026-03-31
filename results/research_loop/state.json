@@ -1,23 +1,23 @@
 {
   "version": "1.1",
   "created_at": "2026-03-31T14:22:51.477190+00:00",
-  "updated_at": "2026-03-31T14:37:04.978674+00:00",
+  "updated_at": "2026-03-31T14:50:53.799304+00:00",
   "status": "running",
   "current_stage": "research_loop",
   "attempt_count": 2,
   "session_count": 2,
   "last_exit_code": 0,
   "current_attempt_id": "attempt_002",
-  "best_attempt_id": "attempt_001",
-  "best_score": 0.27,
-  "current_hypothesis": "The repository's optimization-based polynomial Hamiltonian is not a correct general solution; it only supports a near-trivial epsilon regime and may not even outperform its own linear translate-and-scale seed.",
+  "best_attempt_id": "attempt_002",
+  "best_score": 0.44,
+  "current_hypothesis": "The right benchmark for this problem is the geometric/algebraic equal-ball packing theory of B^4: Cremona reduction should show that the task regime k>=10 has full abstract packing, so the repository's current Hamiltonian fails for constructive reasons rather than because of a packing obstruction.",
   "ready_for_paper": false,
-  "stop_reason": "Current candidate audited and found insufficient; evidence now points away from global polynomial optimization toward a different construction family.",
+  "stop_reason": "Abstract packing benchmark established; no obstruction remains for k>=10, so the next work should focus on an explicit localized construction rather than obstruction analysis.",
   "paper_generated": false,
   "review_verdict": null,
   "last_summary": {
-    "worked": "Installed CPU PyTorch so the provided code could be executed. Reproduced the shipped verifier pass for k=10, eps=0.99. Added src/hamiltonian_audit.py and used it to audit the shipped Hamiltonian on seeds 0, 123, and 999 with 1000 points per ball and 500 RK4 steps; the min sampled ratio was 0.012385 and the Hamiltonian call time stayed around 3-5 ms for a batch of 5000 points. Captured a timed trace for k=10, eps=0.98 showing the generator never beat its linear initialization during the recorded window.",
-    "did_not_work": "The optimization-based Hamiltonian family did not yield evidence for denser packing. The shipped optimized Hamiltonian underperformed the plain linear seed (min sampled ratio 0.012385 versus 0.013649 for the seed). The harder eps=0.98 run started at ratio 0.01357 and showed no best-ratio improvement through the recorded iterations. The included verifier is also non-independent because the generator trains on seed 123 and verify.py uses the same seed 123.",
-    "next_step": "Switch to a qualitatively different construction family: abandon global low-degree polynomial optimization and try a constructive localized packing method, such as toric/moment-polytope style embeddings or sequential compactly supported Hamiltonians, reusing src/hamiltonian_audit.py for verification."
+    "worked": "Implemented src/ball_packing_bounds.py, a reusable equal-ball packing calculator based on standard Cremona reduction. The code reproduced the classical small-k packing fractions exactly to numerical tolerance, including 3/4 for k=3, 20/25 for k=5, 24/25 for k=6, 63/64 for k=7, 288/289 for k=8, and full packing for k>=9. For k=10 it computed the full-packing infimum capacity mu=sqrt(10), and for every tested eps the task target mu=sqrt(10/(1-eps)) was already reduced with positive square. This shows the task regime k>=10 has no abstract packing obstruction. It also quantified the constructive gap: the audited repository Hamiltonian has effective mu about 28.415, roughly 9x the theoretical full-packing threshold sqrt(10).",
+    "did_not_work": "This attempt did not yet turn the abstract packing certificate into an explicit smooth Hamiltonian generator. I also could not use Semantic Scholar MCP directly because the runtime proxy returned HTTP 429 throughout the session, so I used fallback web retrieval and recorded the sources locally. I did not yet build the toric/simplex or compactly supported local Hamiltonian construction that the reduction benchmark suggests should be possible.",
+    "next_step": "Use the new reduction benchmark to drive an explicit construction attempt, preferably a toric/simplex or localized Hamiltonian-piece method, starting with k=10 and small eps where the target capacity mu is only slightly above sqrt(10)."
   }
 }
