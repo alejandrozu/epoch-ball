@@ -1,7 +1,7 @@
 {
   "attempt_id": "attempt_017",
   "created_at": "2026-03-31T19:54:06.780744+00:00",
-  "updated_at": "2026-03-31T20:12:01+00:00",
+  "updated_at": "2026-03-31T20:14:40.844753+00:00",
   "hypothesis": "Cotangent lifts of smooth base-plane folding vector fields, inspired by Schlenk-style symplectic folding, may give an explicit smooth Hamiltonian family `H(q,p,t) = <p, X_t(q)>` that curls the long `q`-support of the source chain into a compact region while remaining globally symplectic and outperforming the transvection network family.",
   "score": 0.58,
   "keep": true,
@@ -66,5 +66,5 @@
   },
   "notes": "Semantic Scholar MCP retrieval hit intermittent `429` limits, but enough evidence was saved to justify the folding direction. The first full search run was not discarded silently: it exposed a real implementation bug in the support center, and the corrected rerun was what drove the final conclusions. The final generated `Hamiltonian.py` is an explicit smooth time-dependent Hamiltonian with two stages: a cotangent-lift folding stage and a postcomposition translation stage. The direct `hamiltonian_audit.py` result is slightly more optimistic than the 1024-point dense search artifact because it uses 512 boundary points per ball and a fixed mean translation rather than seedwise optimal recentering, but both evaluations agree that the family stays near ratio `1e-2` and is nowhere close to solving the task.",
   "exit_code": 0,
-  "elapsed_seconds": 1074.219256
+  "elapsed_seconds": 1231.29
 }

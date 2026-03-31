@@ -1,7 +1,7 @@
 # Research Context
 
 - Stage: research_loop
-- Note: session 17, attempt_017 completed and ledger synced
+- Note: session 17, attempt_017 done; best=attempt_015
 - Agent: ARC1
 - Model: gpt-5.4
 - Reasoning effort: xhigh
@@ -10,13 +10,13 @@
 - Semantic Scholar auth token available: yes
 - Best score: 0.64
 - Ready for paper: no
-- Current hypothesis: Cotangent lifts of smooth base-plane folding vector fields, inspired by symplectic folding, may give an explicit smooth Hamiltonian family `H(q,p,t) = <p, X_t(q)>` that curls the chain inward while remaining globally symplectic.
+- Current hypothesis: Cotangent lifts of smooth base-plane folding vector fields, inspired by Schlenk-style symplectic folding, may give an explicit smooth Hamiltonian family `H(q,p,t) = <p, X_t(q)>` that curls the long `q`-support of the sou
 
 ## Latest Summary
 
-- Worked: Implemented `src/cotangent_lift_folding_search.py`, saved a folding literature note, searched a new smooth Hamiltonian family of cotangent-lift base folds, emitted `Hamiltonian.py`, and audited it directly.
-- Did not work: The corrected dense search still has worst radius `5.884403405260652`, and the real emitted `Hamiltonian.py` still audits near radius `5.6` with min ratio `0.009660348728953829`. Pure cotangent-lift folding is explicit and smooth but remains far from the full-density target.
-- Next step: Leave pure cotangent-lift folding and move to a genuinely four-dimensional explicit folding family, such as direct ellipsoid/polydisk folding or another coupled q-p Hamiltonian architecture.
+- Worked: Saved a literature note in `results/literature/attempt_017_symplectic_folding_notes.md` tying the new direction to Schlenk's folding paper and Christianson-Nelson's use of folding for sharp `P(a,1) -> B(c)` bounds. Imple
+- Did not work: This new smooth Hamiltonian family still does not make the proposed solution correct. Even after the centering fix and an explicit post-fold translation stage, the actual generated `Hamiltonian.py` only achieves audited 
+- Next step: Leave pure cotangent-lift base-fold Hamiltonians. The next family should be a genuinely four-dimensional explicit folding construction that mixes `q` and `p` beyond a cotangent lift, for example a direct Schlenk-style el
 
 ## Strongest Current Path
 
