@@ -56,9 +56,11 @@ class SearchSummary:
     entry_bound: int
     shape_trials: int
     seed: int
+    exact_enumeration: bool
     best_overall: SnakeCandidate
     best_by_n_cells: list[SnakeCandidate]
     matrix_count: int
+    unique_shape_count_by_n_cells: list[dict[str, int]]
 
 
 def normalize_cells(cells: set[Cell]) -> tuple[Cell, ...]:
@@ -101,6 +103,32 @@ def canonical_seed_shapes(n_cells: int) -> list[tuple[Cell, ...]]:
     out.append(tuple((i, 0) for i in range(n_cells)))
     out.append(normalize_cells({(i, i // 2) for i in range(n_cells)}))
     return list(dict.fromkeys(out))
+
+
+def enumerate_snake_polyominoes(n_cells: int) -> list[tuple[Cell, ...]]:
+    """Enumerate all translation-normalized path-polyomino shapes with n cells."""
+    if n_cells < 1:
+        raise ValueError("n_cells must be positive")
+
+    shapes: set[tuple[Cell, ...]] = set()
+    path = [(0, 0)]
+    used = {path[0]}
+
+    def dfs() -> None:
+        if len(path) == n_cells:
+            shapes.add(normalize_cells(set(path)))
+            return
+        for nxt in cell_neighbors(path[-1]):
+            if nxt in used:
+                continue
+            used.add(nxt)
+            path.append(nxt)
+            dfs()
+            path.pop()
+            used.remove(nxt)
+
+    dfs()
+    return sorted(shapes)
 
 
 def shape_corners(cells: tuple[Cell, ...]) -> list[Point]:
@@ -182,12 +210,14 @@ def search_family(
     n_cells_values: list[int],
     shape_trials: int,
     seed: int,
+    exact_enumeration: bool,
 ) -> SearchSummary:
     matrices = enumerate_cover_matrices(det_min=det_min, det_max=det_max, entry_bound=entry_bound)
     rng = random.Random(seed)
 
     best_overall: SnakeCandidate | None = None
     best_by_n_cells: list[SnakeCandidate] = []
+    unique_shape_count_by_n_cells: list[dict[str, int]] = []
 
     for n_cells in n_cells_values:
         best_for_n: SnakeCandidate | None = None
@@ -199,18 +229,28 @@ def search_family(
             if best_for_n is None or cand.achieved_ratio > best_for_n.achieved_ratio + 1e-12:
                 best_for_n = cand
 
-        for _ in range(shape_trials):
-            shape = random_snake_polyomino(n_cells=n_cells, rng=rng)
-            if shape in seen_shapes:
-                continue
-            seen_shapes.add(shape)
-            cand = evaluate_shape(shape, matrices, k=k)
-            if best_for_n is None or cand.achieved_ratio > best_for_n.achieved_ratio + 1e-12:
-                best_for_n = cand
+        if exact_enumeration:
+            for shape in enumerate_snake_polyominoes(n_cells):
+                if shape in seen_shapes:
+                    continue
+                seen_shapes.add(shape)
+                cand = evaluate_shape(shape, matrices, k=k)
+                if best_for_n is None or cand.achieved_ratio > best_for_n.achieved_ratio + 1e-12:
+                    best_for_n = cand
+        else:
+            for _ in range(shape_trials):
+                shape = random_snake_polyomino(n_cells=n_cells, rng=rng)
+                if shape in seen_shapes:
+                    continue
+                seen_shapes.add(shape)
+                cand = evaluate_shape(shape, matrices, k=k)
+                if best_for_n is None or cand.achieved_ratio > best_for_n.achieved_ratio + 1e-12:
+                    best_for_n = cand
 
         if best_for_n is None:
             raise RuntimeError(f"failed to find any candidate for n_cells={n_cells}")
         best_by_n_cells.append(best_for_n)
+        unique_shape_count_by_n_cells.append({"n_cells": n_cells, "count": len(seen_shapes)})
         if best_overall is None or best_for_n.achieved_ratio > best_overall.achieved_ratio + 1e-12:
             best_overall = best_for_n
 
@@ -224,9 +264,11 @@ def search_family(
         entry_bound=entry_bound,
         shape_trials=shape_trials,
         seed=seed,
+        exact_enumeration=exact_enumeration,
         best_overall=best_overall,
         best_by_n_cells=best_by_n_cells,
         matrix_count=len(matrices),
+        unique_shape_count_by_n_cells=unique_shape_count_by_n_cells,
     )
 
 
@@ -238,6 +280,7 @@ def main() -> None:
     parser.add_argument("--entry-bound", type=int, default=6)
     parser.add_argument("--shape-trials", type=int, default=1000)
     parser.add_argument("--seed", type=int, default=123)
+    parser.add_argument("--exact-enumeration", action="store_true")
     parser.add_argument("--n-cells", type=int, nargs="+", default=[3, 4, 5, 6, 7, 8, 10, 12, 16])
     args = parser.parse_args()
 
@@ -252,6 +295,7 @@ def main() -> None:
         n_cells_values=args.n_cells,
         shape_trials=args.shape_trials,
         seed=args.seed,
+        exact_enumeration=args.exact_enumeration,
     )
     print(json.dumps(asdict(summary), indent=2, sort_keys=True))
 
