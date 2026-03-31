@@ -33,6 +33,15 @@ Your task is to analyze this solution and make sure it is correct
 
 ## Prior Evidence Ledger
 
+### attempt_020
+- Hypothesis: n/a
+- Score: n/a
+- Keep: no
+- Ready for paper: no
+- Worked: n/a
+- Did not work: n/a
+- Next step: n/a
+
 ### attempt_019
 - Hypothesis: A recursive pair tree of compactly supported quadratic Hamiltonian gates, combining local squeeze and active/passive-plane rotation terms, may compress the `k=10` ball chain more intrinsically than the attempt-018 contro
 - Score: 0.54
@@ -94,13 +103,4 @@ Your task is to analyze this solution and make sure it is correct
 - Ready for paper: no
 - Worked: Implemented `src/axis_seam_origami_search.py`, an exact search for the simplest nontrivial axis-seam origami family. The script enumerates the 12 rigid triangular-lattice automorphisms, splits a source side-`m` moment tr
 - Did not work: The new axis-seam family still does not make the proposed solution correct. In the bounded two-piece rigid setting, coordinate-axis seams never produce a genuine fold inside the target simplex. Every matched pair of rigi
-- Next step: Stay on the axis-seam line and move to a stronger structural step: either prove a general overlap lemma for any rigid leaf piece attached along a coordinate-axis seam, or extend the search to multi-piece axis-seam trees 
-
-### attempt_012
-- Hypothesis: A transform-method enlargement of the exact hybrid strip may still work even though plain toric affine gluing fails: on each face, replace the rigid toric chart by the most general exact fiber-preserving symplectomorphis
-- Score: 0.58
-- Keep: yes
-- Ready for paper: no
-- Worked: Implemented `src/hybrid_generating_function_audit.py`, a new transform-method / generating-function audit for the exact `m=6`, `k=10` hybrid strip. The script imports the exact strip from attempt 011, uses the cotangent-
-- Did not work: This broader family still does not make the proposed solution correct. The exact strip is impossible even after adding arbitrary facewise generating functions over the same affine action map. Every shared edge of the str
-- Next step: Do not revisit the exact hybrid strip with another fiber-preserving toric/generating-function correction. The next family should either redesign the action complex so every derivative jump occurs along coordinate-axis ed
+- Next step: Stay on the axis-seam line and move to a stronger structural step: either prove a general overlap lemma for any rigid leaf piece attached along a coordinate-axis seam, or extend the search to multi-piece axis-seam trees
