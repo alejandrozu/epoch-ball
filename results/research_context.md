@@ -1,7 +1,7 @@
 # Research Context
 
 - Stage: research_loop
-- Note: session 17, starting attempt_017
+- Note: session 17, attempt_017 completed and ledger synced
 - Agent: ARC1
 - Model: gpt-5.4
 - Reasoning effort: xhigh
@@ -10,13 +10,13 @@
 - Semantic Scholar auth token available: yes
 - Best score: 0.64
 - Ready for paper: no
-- Current hypothesis: A multistage network of one-sided symplectic transvection folds with stage-dependent isotropic directions may evade attempt 015's preserved-slice obstruction by destroying every fixed symplectic 2-plane slice and acting 
+- Current hypothesis: Cotangent lifts of smooth base-plane folding vector fields, inspired by symplectic folding, may give an explicit smooth Hamiltonian family `H(q,p,t) = <p, X_t(q)>` that curls the chain inward while remaining globally symplectic.
 
 ## Latest Summary
 
-- Worked: Implemented `src/multistage_transvection_search.py`, a constructive search over multistage one-sided symplectic transvection networks with exact stage formula `T(x) = x + lambda * max(omega(x,a) - d, 0) * a`. The script 
-- Did not work: This multistage transvection family still does not make the proposed solution correct. Even after adding a fourth stage and a small cross-plane `q2` mix, the best dense enclosing-ball radius stays near `5.86`, while the 
-- Next step: Leave one-sided transvection networks entirely. The next attempt should use a more distant constructive family, ideally an explicit symplectic folding / spiral-product style model in the spirit of Schlenk-type folding, r
+- Worked: Implemented `src/cotangent_lift_folding_search.py`, saved a folding literature note, searched a new smooth Hamiltonian family of cotangent-lift base folds, emitted `Hamiltonian.py`, and audited it directly.
+- Did not work: The corrected dense search still has worst radius `5.884403405260652`, and the real emitted `Hamiltonian.py` still audits near radius `5.6` with min ratio `0.009660348728953829`. Pure cotangent-lift folding is explicit and smooth but remains far from the full-density target.
+- Next step: Leave pure cotangent-lift folding and move to a genuinely four-dimensional explicit folding family, such as direct ellipsoid/polydisk folding or another coupled q-p Hamiltonian architecture.
 
 ## Strongest Current Path
 

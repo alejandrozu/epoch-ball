@@ -465,7 +465,13 @@
       "twist": 0.8,
       "x_center": 13.5,
       "x_start": -1.0
-    }
+    },
+    "translation_shift": [
+      -4.7721960265780226,
+      -0.5323542345215294,
+      0.029183262021026557,
+      0.03503176473205322
+    ]
   },
   "hamiltonian_form": "H(q,p,t) = <p, X(q)>",
   "refined_candidates": [
@@ -1117,6 +1123,18 @@
       "worst_radius": 6.366275250874319,
       "worst_ratio": 0.0060877716380430685
     }
+  ],
+  "suggested_translation_center": [
+    4.7721960265780226,
+    0.5323542345215294,
+    -0.029183262021026557,
+    -0.03503176473205322
+  ],
+  "suggested_translation_shift": [
+    -4.7721960265780226,
+    -0.5323542345215294,
+    0.029183262021026557,
+    0.03503176473205322
   ],
   "vector_field_form": "X(q) = strength * cutoff(q) * (target_spiral_ribbon(q) - q)"
 }

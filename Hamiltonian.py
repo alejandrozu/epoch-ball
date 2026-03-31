@@ -12,6 +12,18 @@ _SUPPORT_X = 18.0
 _SUPPORT_Y = 3.5
 _X_START = -1.0
 _X_CENTER = 13.5
+_TRANSLATE_DQ = torch.tensor([-4.7721960265780226, -0.5323542345215294], dtype=torch.float64)
+_TRANSLATE_DP = torch.tensor([0.029183262021026557, 0.03503176473205322], dtype=torch.float64)
+_WINDOW_NORM = 0.007029858406609658
+
+
+def _bump_window(t, start, end):
+    if not (start < t < end):
+        return 0.0
+    u = (t - start) / (end - start)
+    if not (0.0 < u < 1.0):
+        return 0.0
+    return torch.exp(torch.tensor(-1.0 / (u * (1.0 - u)), dtype=torch.float64)).item() / ((end - start) * _WINDOW_NORM)
 
 
 def _vector_field(Q):
@@ -56,4 +68,11 @@ def _vector_field(Q):
 
 
 def Hamiltonian(Q, P, t):
-    return (P * _vector_field(Q)).sum(dim=1)
+    fold_weight = _bump_window(t, 0.0, 0.6)
+    translate_weight = _bump_window(t, 0.6, 1.0)
+    H = 0.0 * (Q[:, 0] + P[:, 0])
+    if fold_weight != 0.0:
+        H = H + fold_weight * (P * _vector_field(Q)).sum(dim=1)
+    if translate_weight != 0.0:
+        H = H + translate_weight * ((P * _TRANSLATE_DQ.to(P.device)).sum(dim=1) - (Q * _TRANSLATE_DP.to(Q.device)).sum(dim=1))
+    return H

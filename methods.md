@@ -112,6 +112,13 @@
 - Core idea: leave the slice-preserving/common-left-factor family by composing several exact one-sided transvection folds with stage-dependent isotropic directions, then search beam/random stage dictionaries to see whether noncommuting folds can genuinely compress the full `k=10` ball chain
 - Outcome: negative constructive evidence; the saved 3-stage winner has refined worst radius `5.940129794736341`, a bounded 4-stage extension improves this only to `5.844588636564803`, and dense 2048-point validation over seven seeds leaves the best 4-stage candidate at worst radius `5.86484829393902` and worst ratio `0.008452260414214097`. The best networks still overwhelmingly reuse `q1/p1` folds and only add a tiny late `q2` correction, while more strongly cross-plane candidates are worse
 
+## attempt_017
+
+- Family: cotangent-lift spiral folding Hamiltonian search
+- Mathematical modes: calculus, dynamical systems, geometric
+- Core idea: use smooth Hamiltonians of the explicit form `H(q,p,t) = <p, X_t(q)>`, so the phase flow is the cotangent lift of a smooth folding isotopy on the `q`-plane; search spiral-ribbon vector fields inspired by symplectic folding, emit a real `Hamiltonian.py`, and audit that module directly
+- Outcome: negative constructive evidence; after fixing an off-center support bug and adding an explicit post-fold translation stage, the best dense search candidate still has worst radius `5.884403405260652`, and the generated `Hamiltonian.py` audits at radii `5.608910263565111` to `5.67220344010714` with min ratio `0.009660348728953829`. The family is smooth and explicit but pure cotangent-lift folding appears limited by the q-compression versus p-fiber expansion tradeoff
+
 ## Next family should avoid
 
 - Another global polynomial or neural-style optimization ansatz
@@ -130,7 +137,8 @@
 - Another rigid axis-seam origami construction of any tree/leaf type whose internal seams land on target boundary edges; attempt 014 showed that any such seam forces overlap locally because each boundary edge has a unique incident target unit triangle
 - Another slice-preserving affine transvection fold with only a common postcomposition linear symplectic mixer; attempt 015 showed that the preserved symplectic 2-plane slice forces `R >= delta^(-1/2) >= 1`, and generic mixing only worsens the lower bound
 - Another multistage one-sided transvection network built from repeated half-space folds; attempt 016 pushed this family to a bounded 4-stage search and dense validation, yet the best worst-case ratio stayed near `0.00845`
+- Another pure cotangent-lift folding family that only folds the q-plane and accepts the induced inverse-transpose action on p; attempt 017 made this family smooth and explicit but still stalled near ratio `0.01`
 
 ## Most promising next family
 
-- An explicit symplectic folding / spiral-product style construction, or another genuinely nonlinear base-mixing local model that destroys every invariant symplectic 2-plane slice without being built from repeated half-space transvections
+- A genuinely four-dimensional explicit folding construction, such as direct ellipsoid/polydisk folding or another coupled q-p Hamiltonian architecture that is not constrained to be a cotangent lift of a base-plane diffeomorphism
