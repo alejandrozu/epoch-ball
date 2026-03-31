@@ -1,21 +1,52 @@
 {
   "attempt_id": "attempt_011",
   "created_at": "2026-03-31T18:03:31.838926+00:00",
-  "updated_at": "2026-03-31T18:03:31.838937+00:00",
-  "hypothesis": "",
-  "score": null,
-  "keep": false,
+  "updated_at": "2026-03-31T18:21:26.900770+00:00",
+  "hypothesis": "An algebraic exact-recurrence solver can remove the remaining uncertainty in the `m=6` hybrid strip: if the boundary-only source strip admits a rational equal-area realization and the induced local toric charts glue across internal edges, then the `9 rigid + 1 strip` decomposition would become a genuine near-full `k=10` witness. If the exact strip still fails, the obstruction lies in the angle/gluing layer rather than the area equations.",
+  "score": 0.57,
+  "keep": true,
   "ready_for_paper": false,
-  "paper_readiness_reason": "",
-  "worked": "",
-  "did_not_work": "",
-  "next_step": "",
-  "patterns_noticed": "",
-  "commands_run": [],
-  "files_changed": [],
-  "artifacts": [],
-  "evaluation": {},
-  "notes": "",
-  "exit_code": null,
-  "elapsed_seconds": null
+  "paper_readiness_reason": "This attempt now has exact rational and reproducible evidence for the `m=6` hybrid strip, including a saved certificate that the moment-space strip realization is exact and that the induced toric charts fail to glue in 4D. It is still not paper-ready because the candidate remains invalid as a symplectic embedding, no Hamiltonian has been emitted, and the replacement angle/gluing mechanism has not yet been built.",
+  "worked": "Implemented `src/hybrid_strip_recurrence_solver.py`, a new algebraic exactification tool for the hybrid `9 rigid + 1 strip` family. The script scans rational seeds up to denominator 72, finds a unique exact recurrence seed `17/36`, reconstructs the 38 source boundary vertices in exact `Fraction` arithmetic, and verifies that all 36 source faces have exact area `1/72`, matching the target strip exactly. The same script then computes the induced affine toric data on every face and confirms that the piecewise action map glues on all 35 internal edges with exact zero midpoint jump. The full report was saved to `results/research_loop/attempt_011_exact_strip_gluing.json`.",
+  "did_not_work": "The exactification does not make the proposed solution correct. The toric gluing audit shows that all 35 internal shared edges have midpoints strictly inside `Delta(1)`, so each carries a full `T^2` fiber, but `same_angle_matrix_count = 0`: no adjacent pair has matching `A^{-T}`. In fact the 36 faces carry 36 distinct action matrices. Because constant angle translations cannot repair a nonzero linear mismatch on a full torus fiber, the boundary-only strip is still not a continuous 4D toric piecewise-affine symplectic embedding. So the current hybrid family still does not solve the task.",
+  "next_step": "Leave boundary-only exact strip fitting inside the same toric chart class. The next hybrid attempt should add a genuinely different angle/gluing mechanism, such as a generating-function layer, a non-toric local model, or a formal proof that any connected non-triangular boundary-only strip in this piecewise toric affine class forces global affineness and therefore cannot work.",
+  "patterns_noticed": "Several strong exact patterns emerged. First, the optimizer's near-miss from attempt 010 was hiding a genuinely exact rational object: among all seeds with denominator at most 72, the recurrence has a unique root at `17/36`, and that seed forces `x_9 = 1` and `y_19 = 1` exactly. Second, the source strip is no longer an approximate area fit at all: every face has oriented double area exactly `1/36`, so the action-space equal-area equations are solved completely. Third, the internal-edge geometry is uniformly nondegenerate from the toric point of view: every one of the 35 shared-edge midpoints satisfies `x1 > 0`, `x2 > 0`, and `x1 + x2 < 1`, so each edge carries the full two-angle torus and there is no boundary-collapse escape hatch. Fourth, once the boundary vertex map is fixed, action continuity is automatic on a shared edge because the two affine face maps agree at the edge endpoints, and the report confirms exact zero action jump on all 35 edges. Fifth, the obstruction has therefore shifted entirely into the angular linear data: all 36 faces have distinct affine action matrices, and adjacent faces never share the same `A^{-T}`. On a full torus fiber that means continuity would force a single global affine matrix on the whole connected strip, so the current boundary-only non-triangular target shape cannot arise inside this toric piecewise-affine class. Finally, the exact recurrence shows an asymmetric but structured boundary pattern: the left BC parameters `y_1,...,y_8` collapse to repeated-numerator rational families while the right ladder reproduces the simple fractions already seen in scratch, suggesting the recurrence is rigid enough to certify exact witnesses but not rich enough to fix the 4D gluing defect by itself.",
+  "commands_run": [
+    "python - <<'PY' ... extracted the exact 36-face `m=6` strip sequence from `src.hybrid_strip_realization.extract_strip_complex` and inspected the face pattern ... PY",
+    "python - <<'PY' ... evaluated the exact boundary recurrence, verified the unique rational seed `17/36`, and checked the induced source coordinates and affine matrices ... PY",
+    "python -m py_compile src/hybrid_strip_recurrence_solver.py",
+    "python src/hybrid_strip_recurrence_solver.py --output results/research_loop/attempt_011_exact_strip_gluing.json"
+  ],
+  "files_changed": [
+    "src/hybrid_strip_recurrence_solver.py",
+    "results/research_loop/attempt_011_exact_strip_gluing.json",
+    "results/research_loop/attempts/attempt_011.json",
+    "results/research_loop/state.json",
+    "results/research_loop/summary.md",
+    "results/research_context.md",
+    "results/research_loop/best_attempt.md",
+    "methods.md"
+  ],
+  "artifacts": [
+    "results/research_loop/attempt_011_exact_strip_gluing.json"
+  ],
+  "evaluation": {
+    "k10_m6_exact_seed": "17/36",
+    "k10_m6_seed_search_max_denominator": 72,
+    "k10_m6_seed_unique_root_count": 1,
+    "k10_m6_face_count": 36,
+    "k10_m6_exact_face_area": 0.013888888888888888,
+    "k10_m6_internal_edge_count": 35,
+    "k10_m6_action_midpoint_zero_jump_count": 35,
+    "k10_m6_full_torus_internal_edge_count": 35,
+    "k10_m6_same_action_matrix_count": 0,
+    "k10_m6_same_angle_matrix_count": 0,
+    "k10_m6_distinct_action_matrix_count": 36,
+    "k10_m6_distinct_angle_matrix_count": 36,
+    "k10_m6_piecewise_action_map_is_continuous": true,
+    "k10_m6_piecewise_toric_chart_is_continuous": false
+  },
+  "notes": "No new literature pull was needed in this run because the decisive evidence came from exact arithmetic on repo-local constructions. The new script is intentionally focused on the saved `m=6`, `k=10` hybrid witness from attempt 010; it does not address larger-`m` scaling, but it does settle the concrete proof-of-concept exactly and shows that the remaining failure is genuinely 4D rather than a numerical area-fitting artifact.",
+  "exit_code": 0,
+  "elapsed_seconds": 1072.4
 }

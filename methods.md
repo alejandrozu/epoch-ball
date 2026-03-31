@@ -70,6 +70,13 @@
 - Core idea: for `k=10`, split the near-full target set into an inner side-`3m` triangle that tiles exactly into 9 rigid side-`m` triangles plus one remaining boundary strip/tree complex for the 10th ball, then test whether the `m=6` boundary path admits a continuous equal-area source-side strip realization
 - Outcome: promising but still incomplete; at `m=6` the boundary region is exactly a 36-face path strip and the source-side boundary-realization search found 36 genuinely non-collinear corner placements plus a strictly positive best candidate with counts `[9,19,10]`, but the face areas still stalled at MSE about `4.65e-05` and max error about `0.0111`, while the naive boundary-prefix region also branches immediately for larger `m`
 
+## attempt_011
+
+- Family: algebraic / number-theoretic exact recurrence solver for the hybrid boundary strip
+- Mathematical modes: algebraic, number theory, dynamical systems
+- Core idea: exactify the saved `m=6` boundary-only strip by solving its equal-area boundary recurrence in rational arithmetic, then compute the induced local toric affine maps and audit whether the angle matrices glue across internal edges
+- Outcome: strong exact negative evidence; the unique rational seed `17/36` certifies an exact 36-face equal-area moment realization, but every one of the 35 internal full-torus edges has mismatched `A^{-T}` matrices and the 36 faces all carry distinct affine action matrices, so the boundary-only strip is not a continuous 4D toric piecewise-affine symplectic embedding
+
 ## Next family should avoid
 
 - Another global polynomial or neural-style optimization ansatz
@@ -82,7 +89,8 @@
 - Another continuity-preserving unit-triangle simplicial origami ansatz whose single-ball images are forced to rigid lattice triangles and then reduced to rigid triangle set packing
 - Another single connected polyomino / strip-snake action-shape search with integer toric covers whose exact `n_cells=10` optimum already stabilized below attempt_003 and whose path-only subfamily collapsed to ratio `0.5540`
 - Another naive boundary-prefix hybrid `9 rigid + 1 strip` decomposition that only gives a path at `m=6` and does not yet solve the exact source equal-area strip fit or the larger-`m` scaling problem
+- Another boundary-only exact recurrence solve inside the same piecewise toric affine chart class; attempt 011 showed that exact area matching is not the bottleneck because angle gluing already fails on every full-torus internal edge
 
 ## Most promising next family
 
-- A non-simplicial construction with explicit continuous gluing from the start; the strongest live version is now a scalable hybrid multi-block complex where most balls stay rigid and only a small boundary strip/tree block carries the non-simplicial complexity
+- A hybrid construction with a genuinely new angle/gluing layer from the start, such as generating functions, multi-chart shears, or non-toric local models, rather than another action-only strip solve inside the same toric affine framework

@@ -1,17 +1,17 @@
 # Strongest Current Path
 
-- Score: 0.56
+- Score: 0.57
 - Ready for paper: no
-- Hypothesis: A genuinely constructive solution should come from toric/action-angle packings rather than global optimization: the standard square-slot construction gives an explicit symplectic baseline, and a richer multi-block toric 
+- Hypothesis: An algebraic exact-recurrence solver can remove the remaining uncertainty in the `m=6` hybrid strip: if the boundary-only source strip admits a rational equal-area realization and the induced local toric charts glue acro
 
 ## Why it is currently best
 
-Implemented src/explicit_square_packing.py, an explicit toric square-slot embedding on the disjoint source union. Its predicted ratios were confirmed numerically to machine precision: for k=10 it gives mu=4 and ratio 0.625, and for the square case k=16 it gives exact full packing at mu=4 with sampled ratio 0.9999999999999858. Implemented src/toric_linear_family.py to search one-block affine toric 
+Implemented `src/hybrid_strip_recurrence_solver.py`, a new algebraic exactification tool for the hybrid `9 rigid + 1 strip` family. The script scans rational seeds up to denominator 72, finds a unique exact recurrence seed `17/36`, reconstructs the 38 source boundary vertices in exact `Fraction` arithmetic, and verifies that all 36 source faces have exact area `1/72`, matching the target strip exa
 
 ## Known limits
 
-The attempt still does not solve the task. Even the improved k=10 construction remains far from the near-full ratio required for small epsilon: mu=3.8 is still substantially above the full-packing threshold sqrt(10)≈3.1623. The current constructive maps are written in polar/action-angle coordinates and therefore do not yet provide the required explicit smooth Hamiltonian on R^4 x [0,1]. The axis-b
+The exactification does not make the proposed solution correct. The toric gluing audit shows that all 35 internal shared edges have midpoints strictly inside `Delta(1)`, so each carries a full `T^2` fiber, but `same_angle_matrix_count = 0`: no adjacent pair has matching `A^{-T}`. In fact the 36 faces carry 36 distinct action matrices. Because constant angle translations cannot repair a nonzero lin
 
 ## Next move
 
-Keep the toric constructive direction but replace the singular polar chart with a smooth slit-disk or Traynor-style regularized chart, and extend the block search beyond axis-aligned rectangles to non-axis Delzant triangles and richer multi-block layouts, again starting with k=10.
+Leave boundary-only exact strip fitting inside the same toric chart class. The next hybrid attempt should add a genuinely different angle/gluing mechanism, such as a generating-function layer, a non-toric local model, or a formal proof that any connected non-triangular boundary-only strip in this piecewise toric affine class forces global affineness and therefore cannot work.
