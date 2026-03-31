@@ -1,7 +1,7 @@
 # Research Context
 
 - Stage: research_loop
-- Note: session 18, starting attempt_018
+- Note: session 18, attempt_018 done; best=attempt_015
 - Agent: ARC1
 - Model: gpt-5.4
 - Reasoning effort: xhigh
@@ -10,13 +10,13 @@
 - Semantic Scholar auth token available: yes
 - Best score: 0.64
 - Ready for paper: no
-- Current hypothesis: Cotangent lifts of smooth base-plane folding vector fields, inspired by Schlenk-style symplectic folding, may give an explicit smooth Hamiltonian family `H(q,p,t) = <p, X_t(q)>` that curls the long `q`-support of the sou
+- Current hypothesis: A recursive four-dimensional fold tree built from coupled control-translation Hamiltonians may realize a Schlenk-style multiple-folding analogue without reverting to cotangent lifts: use the first symplectic plane to wri
 
 ## Latest Summary
 
-- Worked: Saved a literature note in `results/literature/attempt_017_symplectic_folding_notes.md` tying the new direction to Schlenk's folding paper and Christianson-Nelson's use of folding for sharp `P(a,1) -> B(c)` bounds. Imple
-- Did not work: This new smooth Hamiltonian family still does not make the proposed solution correct. Even after the centering fix and an explicit post-fold translation stage, the actual generated `Hamiltonian.py` only achieves audited 
-- Next step: Leave pure cotangent-lift base-fold Hamiltonians. The next family should be a genuinely four-dimensional explicit folding construction that mixes `q` and `p` beyond a cotangent lift, for example a direct Schlenk-style el
+- Worked: Saved `results/literature/attempt_018_multiple_folding_notes.md` to justify a recursive multiple-folding direction from Schlenk's 2005 titles, despite intermittent Semantic Scholar `429` limits. Implemented `src/hierarch
+- Did not work: This new family still does not make the proposed solution correct. Even the strongest manually restored candidate in this family only gets the enclosing-ball radius down to about `12`, with direct audited ratios around `
+- Next step: Leave recursive control-translation braid folds. The next family should keep genuine four-dimensional coupling but replace temporary plane-to-plane translations by more intrinsically compressive local primitives, such as
 
 ## Strongest Current Path
 

@@ -1,7 +1,7 @@
 {
-  "updated_at": "2026-03-31T20:14:48.360696+00:00",
+  "updated_at": "2026-03-31T20:38:57.358415+00:00",
   "stage": "research_loop",
-  "note": "session 18, starting attempt_018",
+  "note": "session 18, attempt_018 done; best=attempt_015",
   "task": "This is the proposed solution to the following problem\r\n\r\nFix $n=2$. Let $k \\ge 10$ be an integer and take $\\epsilon \\in (0,1)$. For $i = 1,\\dots,k$, let $B_i \\subset \\R^{2n}$ denote the closed unit ball centered at $(3i-3,0,\\dots,0)$.\r\n\r\nYour goal is to find an algorithm that takes $k$ and $\\epislon$ as inputs and produces as output an explicit smooth Hamiltonian function $H_\\epsilon: \\R^{2n} \\times [0,1] \\rightarrow \\R$ whose time-$1$ Hamiltonian flow $\\phi: \\R^{2n} \\ra \\R^{2n}$ satisfies $\\phi(\\sqcup_{i=1}^{k}B_i) \\subset B^{2n}(R)$, where $B^{2n}(R) \\subset \\R^{2n}$ is the closed ball centered at the origin of radius $R$,  and where we require the volume ratio of $\\bigsqcup\\limits_{i=1}^{k} B_i$ to $B^{2n}(R)$ to satisfy $\\dfrac{k}{R^{2n}} > 1 - \\epsilon$.\r\n\r\nPresent the algorithm as a Python program that takes $k$ and $\\epislon$ as inputs. The algorithm's output must itself be a Python program that implements the Hamiltonian for the given $k$ and $\\epislon$. This program should be in a file called Hamiltonian.py which implements a function Hamiltonian(Q, P, t) that has the following properties.\r\n    - Takes inputs Q (positions), P (momenta), and t (time).\r\n    - Must be implemented using PyTorch operations to support automatic differentiation.\r\n    - Inputs Q and P will be `torch.Tensor`s of shape `(N, n)` (where N is the size of a batch size of points sampled from the boundaries of the input balls).\r\n    - Input t will be a scalar float.\r\n    - Returns a `torch.Tensor` of shape `(N,)` representing the Hamiltonian value for each point in the batch.\r\n    - Is smooth, to ensure existence and uniqueness of flow.\r\n\r\nA solution to this problem is meant to rest on finding a family of embeddings that has a natural algorithmic dependence on $\\epsilon$. As such, the algorithm that produces the Hamiltonians for a given $\\epsilon$ must finish running in under an hour on a typical laptop. The Hamiltonian function itself will be called multiple times during solution verification and must return within ten seconds on each call.\r\n\r\n\r\nYour task is to analyze this solution and make sure it is correct",
   "requirements": "",
   "agent": "codex",
@@ -31,25 +31,29 @@
     "current_attempt_id": "attempt_018",
     "best_attempt_id": "attempt_015",
     "best_score": 0.64,
-    "current_hypothesis": "Cotangent lifts of smooth base-plane folding vector fields, inspired by Schlenk-style symplectic folding, may give an explicit smooth Hamiltonian family `H(q,p,t) = <p, X_t(q)>` that curls the long `q`-support of the sou",
+    "current_hypothesis": "A recursive four-dimensional fold tree built from coupled control-translation Hamiltonians may realize a Schlenk-style multiple-folding analogue without reverting to cotangent lifts: use the first symplectic plane to wri",
     "ready_for_paper": false,
-    "stop_reason": "Attempt 017 implemented `src/cotangent_lift_folding_search.py`, saved a folding literature note, searched a new smooth Hamiltonian family of cotangent-lift base folds, emitted `Hamiltonian.py`, and audited it directly. A",
+    "stop_reason": "Attempt 018 implemented `src/hierarchical_braid_fold_search.py`, a genuinely new recursive coupled `q,p` Hamiltonian family inspired by multiple symplectic folding rather than cotangent lifts or half-space transvections.",
     "paper_generated": false,
     "review_verdict": null,
     "last_summary": {
-      "worked": "Saved a literature note in `results/literature/attempt_017_symplectic_folding_notes.md` tying the new direction to Schlenk's folding paper and Christianson-Nelson's use of folding for sharp `P(a,1) -> B(c)` bounds. Imple",
-      "did_not_work": "This new smooth Hamiltonian family still does not make the proposed solution correct. Even after the centering fix and an explicit post-fold translation stage, the actual generated `Hamiltonian.py` only achieves audited ",
-      "next_step": "Leave pure cotangent-lift base-fold Hamiltonians. The next family should be a genuinely four-dimensional explicit folding construction that mixes `q` and `p` beyond a cotangent lift, for example a direct Schlenk-style el"
+      "worked": "Saved `results/literature/attempt_018_multiple_folding_notes.md` to justify a recursive multiple-folding direction from Schlenk's 2005 titles, despite intermittent Semantic Scholar `429` limits. Implemented `src/hierarch",
+      "did_not_work": "This new family still does not make the proposed solution correct. Even the strongest manually restored candidate in this family only gets the enclosing-ball radius down to about `12`, with direct audited ratios around `",
+      "next_step": "Leave recursive control-translation braid folds. The next family should keep genuine four-dimensional coupling but replace temporary plane-to-plane translations by more intrinsically compressive local primitives, such as"
     }
   },
   "git": {
-    "changed_count": 3,
+    "changed_count": 7,
     "changed_files": [
+      "methods.md",
+      "results/research_context.md",
+      "results/research_loop/attempts/attempt_018.json",
       "results/research_loop/state.json",
       "results/research_loop/summary.md",
-      "results/research_loop/attempts/attempt_018.json"
+      "results/literature/attempt_018_multiple_folding_notes.md",
+      "results/research_loop/attempt_018_ablation_notes.md"
     ],
-    "head_commit": "1e38651 research-loop: session 17, attempt_017 (score=0.64, ready=no)"
+    "head_commit": "1c27106 research-loop: live checkpoint session 18, attempt_018 (t+1203s)"
   },
   "best_attempt": {
     "attempt_id": "attempt_015",

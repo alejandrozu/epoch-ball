@@ -22,25 +22,25 @@ Your task is to analyze this solution and make sure it is correct
 - Status: running
 - Best score: 0.64
 - Ready for paper: no
-- Current hypothesis: Cotangent lifts of smooth base-plane folding vector fields, inspired by Schlenk-style symplectic folding, may give an explicit smooth Hamiltonian family `H(q,p,t) = <p, X_t(q)>` that curls the long `q`-support of the sou
-- Stop reason: Attempt 017 implemented `src/cotangent_lift_folding_search.py`, saved a folding literature note, searched a new smooth Hamiltonian family of cotangent-lift base folds, emitted `Hamiltonian.py`, and audited it directly. A
+- Current hypothesis: A recursive four-dimensional fold tree built from coupled control-translation Hamiltonians may realize a Schlenk-style multiple-folding analogue without reverting to cotangent lifts: use the first symplectic plane to wri
+- Stop reason: Attempt 018 implemented `src/hierarchical_braid_fold_search.py`, a genuinely new recursive coupled `q,p` Hamiltonian family inspired by multiple symplectic folding rather than cotangent lifts or half-space transvections.
 
 ## Latest Summary
 
-- Worked: Saved a literature note in `results/literature/attempt_017_symplectic_folding_notes.md` tying the new direction to Schlenk's folding paper and Christianson-Nelson's use of folding for sharp `P(a,1) -> B(c)` bounds. Imple
-- Did not work: This new smooth Hamiltonian family still does not make the proposed solution correct. Even after the centering fix and an explicit post-fold translation stage, the actual generated `Hamiltonian.py` only achieves audited 
-- Next step: Leave pure cotangent-lift base-fold Hamiltonians. The next family should be a genuinely four-dimensional explicit folding construction that mixes `q` and `p` beyond a cotangent lift, for example a direct Schlenk-style el
+- Worked: Saved `results/literature/attempt_018_multiple_folding_notes.md` to justify a recursive multiple-folding direction from Schlenk's 2005 titles, despite intermittent Semantic Scholar `429` limits. Implemented `src/hierarch
+- Did not work: This new family still does not make the proposed solution correct. Even the strongest manually restored candidate in this family only gets the enclosing-ball radius down to about `12`, with direct audited ratios around `
+- Next step: Leave recursive control-translation braid folds. The next family should keep genuine four-dimensional coupling but replace temporary plane-to-plane translations by more intrinsically compressive local primitives, such as
 
 ## Prior Evidence Ledger
 
 ### attempt_018
-- Hypothesis: n/a
-- Score: n/a
-- Keep: no
+- Hypothesis: A recursive four-dimensional fold tree built from coupled control-translation Hamiltonians may realize a Schlenk-style multiple-folding analogue without reverting to cotangent lifts: use the first symplectic plane to wri
+- Score: 0.55
+- Keep: yes
 - Ready for paper: no
-- Worked: n/a
-- Did not work: n/a
-- Next step: n/a
+- Worked: Saved `results/literature/attempt_018_multiple_folding_notes.md` to justify a recursive multiple-folding direction from Schlenk's 2005 titles, despite intermittent Semantic Scholar `429` limits. Implemented `src/hierarch
+- Did not work: This new family still does not make the proposed solution correct. Even the strongest manually restored candidate in this family only gets the enclosing-ball radius down to about `12`, with direct audited ratios around `
+- Next step: Leave recursive control-translation braid folds. The next family should keep genuine four-dimensional coupling but replace temporary plane-to-plane translations by more intrinsically compressive local primitives, such as
 
 ### attempt_017
 - Hypothesis: Cotangent lifts of smooth base-plane folding vector fields, inspired by Schlenk-style symplectic folding, may give an explicit smooth Hamiltonian family `H(q,p,t) = <p, X_t(q)>` that curls the long `q`-support of the sou
