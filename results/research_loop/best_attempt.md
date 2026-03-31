@@ -1,17 +1,17 @@
 # Strongest Current Path
 
-- Score: 0.44
+- Score: 0.56
 - Ready for paper: no
-- Hypothesis: The right benchmark for this problem is the geometric/algebraic equal-ball packing theory of B^4: Cremona reduction should show that the task regime k>=10 has full abstract packing, so the repository's current Hamiltonia
+- Hypothesis: A constructive solution should come from toric/action-angle packings rather than global optimization, but the naive square-grid and one-block versions are too rigid; the promising path is richer multi-block toric layouts combined with a smooth slit-disk regularization that can be promoted to a Hamiltonian-piece construction.
 
 ## Why it is currently best
 
-Implemented src/ball_packing_bounds.py, a reusable equal-ball packing calculator based on standard Cremona reduction. The code reproduced the classical small-k packing fractions exactly to numerical tolerance, including 3/4 for k=3, 20/25 for k=5, 24/25 for k=6, 63/64 for k=7, 288/289 for k=8, and full packing for k>=9. For k=10 it computed the full-packing infimum capacity mu=sqrt(10), and for ev
+Implemented the first explicit constructive toric embeddings in the repo. The square-slot map in `src/explicit_square_packing.py` was verified numerically to machine precision, giving the exact baseline ratio `k / ceil(sqrt(k))^2` and full packing in square cases such as `k=16`. The one-block search in `src/toric_linear_family.py` showed that determinant-`k` single-block toric coverings are too rigid for `k=10`, but the multi-block search in `src/axis_block_packing_search.py` found a concrete `k=10` witness inside `Delta(3.8)`, improving the constructive ratio to about `0.6925`.
 
 ## Known limits
 
-This attempt did not yet turn the abstract packing certificate into an explicit smooth Hamiltonian generator. I also could not use Semantic Scholar MCP directly because the runtime proxy returned HTTP 429 throughout the session, so I used fallback web retrieval and recorded the sources locally. I did not yet build the toric/simplex or compactly supported local Hamiltonian construction that the red
+This attempt still does not solve the stated problem. The best explicit `k=10` ratio found here is about `0.6925`, still far from the arbitrary `1-epsilon` target for small `epsilon`, and the construction has not yet been regularized into the required smooth global Hamiltonian. The current maps still rely on singular action-angle coordinates, so a smooth slit-disk or related regularization is still needed.
 
 ## Next move
 
-Use the new reduction benchmark to drive an explicit construction attempt, preferably a toric/simplex or localized Hamiltonian-piece method, starting with k=10 and small eps where the target capacity mu is only slightly above sqrt(10).
+Regularize the toric construction with a smooth slit-disk or Traynor-style chart and broaden the multi-block search beyond axis-aligned blocks to non-axis Delzant triangles and richer layouts, again starting with `k=10`.

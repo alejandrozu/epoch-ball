@@ -1,0 +1,784 @@
+{
+  "rows": [
+    {
+      "best_one_block": {
+        "achieved_ratio": 1.0,
+        "determinant": 1,
+        "matrix": [
+          [
+            -1,
+            -1
+          ],
+          [
+            1,
+            0
+          ]
+        ],
+        "required_capacity_mu": 1.0,
+        "translation": [
+          1.0,
+          0.0
+        ],
+        "triangle_vertices": [
+          [
+            1.0,
+            0.0
+          ],
+          [
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0
+          ]
+        ]
+      },
+      "k": 1,
+      "mu_gap_vs_sqrt_k": 0.0,
+      "ratio_gap_vs_full": 0.0,
+      "sqrt_k": 1.0
+    },
+    {
+      "best_one_block": {
+        "achieved_ratio": 0.5,
+        "determinant": 2,
+        "matrix": [
+          [
+            -2,
+            -2
+          ],
+          [
+            1,
+            0
+          ]
+        ],
+        "required_capacity_mu": 2.0,
+        "translation": [
+          2.0,
+          0.0
+        ],
+        "triangle_vertices": [
+          [
+            2.0,
+            0.0
+          ],
+          [
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0
+          ]
+        ]
+      },
+      "k": 2,
+      "mu_gap_vs_sqrt_k": 0.5857864376269049,
+      "ratio_gap_vs_full": 0.5,
+      "sqrt_k": 1.4142135623730951
+    },
+    {
+      "best_one_block": {
+        "achieved_ratio": 0.3333333333333333,
+        "determinant": 3,
+        "matrix": [
+          [
+            -3,
+            -3
+          ],
+          [
+            1,
+            0
+          ]
+        ],
+        "required_capacity_mu": 3.0,
+        "translation": [
+          3.0,
+          0.0
+        ],
+        "triangle_vertices": [
+          [
+            3.0,
+            0.0
+          ],
+          [
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0
+          ]
+        ]
+      },
+      "k": 3,
+      "mu_gap_vs_sqrt_k": 1.2679491924311228,
+      "ratio_gap_vs_full": 0.6666666666666667,
+      "sqrt_k": 1.7320508075688772
+    },
+    {
+      "best_one_block": {
+        "achieved_ratio": 1.0,
+        "determinant": 4,
+        "matrix": [
+          [
+            -2,
+            -2
+          ],
+          [
+            2,
+            0
+          ]
+        ],
+        "required_capacity_mu": 2.0,
+        "translation": [
+          2.0,
+          0.0
+        ],
+        "triangle_vertices": [
+          [
+            2.0,
+            0.0
+          ],
+          [
+            0.0,
+            2.0
+          ],
+          [
+            0.0,
+            0.0
+          ]
+        ]
+      },
+      "k": 4,
+      "mu_gap_vs_sqrt_k": 0.0,
+      "ratio_gap_vs_full": 0.0,
+      "sqrt_k": 2.0
+    },
+    {
+      "best_one_block": {
+        "achieved_ratio": 0.3125,
+        "determinant": 5,
+        "matrix": [
+          [
+            -4,
+            -3
+          ],
+          [
+            3,
+            1
+          ]
+        ],
+        "required_capacity_mu": 4.0,
+        "translation": [
+          4.0,
+          0.0
+        ],
+        "triangle_vertices": [
+          [
+            4.0,
+            0.0
+          ],
+          [
+            0.0,
+            3.0
+          ],
+          [
+            1.0,
+            1.0
+          ]
+        ]
+      },
+      "k": 5,
+      "mu_gap_vs_sqrt_k": 1.7639320225002102,
+      "ratio_gap_vs_full": 0.6875,
+      "sqrt_k": 2.23606797749979
+    },
+    {
+      "best_one_block": {
+        "achieved_ratio": 0.6666666666666666,
+        "determinant": 6,
+        "matrix": [
+          [
+            -3,
+            -3
+          ],
+          [
+            2,
+            0
+          ]
+        ],
+        "required_capacity_mu": 3.0,
+        "translation": [
+          3.0,
+          0.0
+        ],
+        "triangle_vertices": [
+          [
+            3.0,
+            0.0
+          ],
+          [
+            0.0,
+            2.0
+          ],
+          [
+            0.0,
+            0.0
+          ]
+        ]
+      },
+      "k": 6,
+      "mu_gap_vs_sqrt_k": 0.5505102572168221,
+      "ratio_gap_vs_full": 0.33333333333333337,
+      "sqrt_k": 2.449489742783178
+    },
+    {
+      "best_one_block": {
+        "achieved_ratio": 0.4375,
+        "determinant": 7,
+        "matrix": [
+          [
+            -3,
+            -2
+          ],
+          [
+            2,
+            -1
+          ]
+        ],
+        "required_capacity_mu": 4.0,
+        "translation": [
+          3.0,
+          1.0
+        ],
+        "triangle_vertices": [
+          [
+            3.0,
+            1.0
+          ],
+          [
+            0.0,
+            3.0
+          ],
+          [
+            1.0,
+            0.0
+          ]
+        ]
+      },
+      "k": 7,
+      "mu_gap_vs_sqrt_k": 1.3542486889354093,
+      "ratio_gap_vs_full": 0.5625,
+      "sqrt_k": 2.6457513110645907
+    },
+    {
+      "best_one_block": {
+        "achieved_ratio": 0.5,
+        "determinant": 8,
+        "matrix": [
+          [
+            -4,
+            -4
+          ],
+          [
+            2,
+            0
+          ]
+        ],
+        "required_capacity_mu": 4.0,
+        "translation": [
+          4.0,
+          0.0
+        ],
+        "triangle_vertices": [
+          [
+            4.0,
+            0.0
+          ],
+          [
+            0.0,
+            2.0
+          ],
+          [
+            0.0,
+            0.0
+          ]
+        ]
+      },
+      "k": 8,
+      "mu_gap_vs_sqrt_k": 1.1715728752538097,
+      "ratio_gap_vs_full": 0.5,
+      "sqrt_k": 2.8284271247461903
+    },
+    {
+      "best_one_block": {
+        "achieved_ratio": 1.0,
+        "determinant": 9,
+        "matrix": [
+          [
+            -3,
+            -3
+          ],
+          [
+            3,
+            0
+          ]
+        ],
+        "required_capacity_mu": 3.0,
+        "translation": [
+          3.0,
+          0.0
+        ],
+        "triangle_vertices": [
+          [
+            3.0,
+            0.0
+          ],
+          [
+            0.0,
+            3.0
+          ],
+          [
+            0.0,
+            0.0
+          ]
+        ]
+      },
+      "k": 9,
+      "mu_gap_vs_sqrt_k": 0.0,
+      "ratio_gap_vs_full": 0.0,
+      "sqrt_k": 3.0
+    },
+    {
+      "best_one_block": {
+        "achieved_ratio": 0.4,
+        "determinant": 10,
+        "matrix": [
+          [
+            -5,
+            -5
+          ],
+          [
+            2,
+            0
+          ]
+        ],
+        "required_capacity_mu": 5.0,
+        "translation": [
+          5.0,
+          0.0
+        ],
+        "triangle_vertices": [
+          [
+            5.0,
+            0.0
+          ],
+          [
+            0.0,
+            2.0
+          ],
+          [
+            0.0,
+            0.0
+          ]
+        ]
+      },
+      "k": 10,
+      "mu_gap_vs_sqrt_k": 1.8377223398316205,
+      "ratio_gap_vs_full": 0.6,
+      "sqrt_k": 3.1622776601683795
+    },
+    {
+      "best_one_block": {
+        "achieved_ratio": 0.44,
+        "determinant": 11,
+        "matrix": [
+          [
+            -5,
+            -4
+          ],
+          [
+            4,
+            1
+          ]
+        ],
+        "required_capacity_mu": 5.0,
+        "translation": [
+          5.0,
+          0.0
+        ],
+        "triangle_vertices": [
+          [
+            5.0,
+            0.0
+          ],
+          [
+            0.0,
+            4.0
+          ],
+          [
+            1.0,
+            1.0
+          ]
+        ]
+      },
+      "k": 11,
+      "mu_gap_vs_sqrt_k": 1.6833752096446002,
+      "ratio_gap_vs_full": 0.56,
+      "sqrt_k": 3.3166247903554
+    },
+    {
+      "best_one_block": {
+        "achieved_ratio": 0.75,
+        "determinant": 12,
+        "matrix": [
+          [
+            -4,
+            -4
+          ],
+          [
+            3,
+            0
+          ]
+        ],
+        "required_capacity_mu": 4.0,
+        "translation": [
+          4.0,
+          0.0
+        ],
+        "triangle_vertices": [
+          [
+            4.0,
+            0.0
+          ],
+          [
+            0.0,
+            3.0
+          ],
+          [
+            0.0,
+            0.0
+          ]
+        ]
+      },
+      "k": 12,
+      "mu_gap_vs_sqrt_k": 0.5358983848622456,
+      "ratio_gap_vs_full": 0.25,
+      "sqrt_k": 3.4641016151377544
+    },
+    {
+      "best_one_block": {
+        "achieved_ratio": 0.52,
+        "determinant": 13,
+        "matrix": [
+          [
+            -4,
+            -3
+          ],
+          [
+            3,
+            -1
+          ]
+        ],
+        "required_capacity_mu": 5.0,
+        "translation": [
+          4.0,
+          1.0
+        ],
+        "triangle_vertices": [
+          [
+            4.0,
+            1.0
+          ],
+          [
+            0.0,
+            4.0
+          ],
+          [
+            1.0,
+            0.0
+          ]
+        ]
+      },
+      "k": 13,
+      "mu_gap_vs_sqrt_k": 1.3944487245360109,
+      "ratio_gap_vs_full": 0.48,
+      "sqrt_k": 3.605551275463989
+    },
+    {
+      "best_one_block": {
+        "achieved_ratio": 0.3888888888888889,
+        "determinant": 14,
+        "matrix": [
+          [
+            -6,
+            -5
+          ],
+          [
+            4,
+            1
+          ]
+        ],
+        "required_capacity_mu": 6.0,
+        "translation": [
+          6.0,
+          0.0
+        ],
+        "triangle_vertices": [
+          [
+            6.0,
+            0.0
+          ],
+          [
+            0.0,
+            4.0
+          ],
+          [
+            1.0,
+            1.0
+          ]
+        ]
+      },
+      "k": 14,
+      "mu_gap_vs_sqrt_k": 2.2583426132260587,
+      "ratio_gap_vs_full": 0.6111111111111112,
+      "sqrt_k": 3.7416573867739413
+    },
+    {
+      "best_one_block": {
+        "achieved_ratio": 0.6,
+        "determinant": 15,
+        "matrix": [
+          [
+            -5,
+            -5
+          ],
+          [
+            3,
+            0
+          ]
+        ],
+        "required_capacity_mu": 5.0,
+        "translation": [
+          5.0,
+          0.0
+        ],
+        "triangle_vertices": [
+          [
+            5.0,
+            0.0
+          ],
+          [
+            0.0,
+            3.0
+          ],
+          [
+            0.0,
+            0.0
+          ]
+        ]
+      },
+      "k": 15,
+      "mu_gap_vs_sqrt_k": 1.127016653792583,
+      "ratio_gap_vs_full": 0.4,
+      "sqrt_k": 3.872983346207417
+    },
+    {
+      "best_one_block": {
+        "achieved_ratio": 1.0,
+        "determinant": 16,
+        "matrix": [
+          [
+            -4,
+            -4
+          ],
+          [
+            4,
+            0
+          ]
+        ],
+        "required_capacity_mu": 4.0,
+        "translation": [
+          4.0,
+          0.0
+        ],
+        "triangle_vertices": [
+          [
+            4.0,
+            0.0
+          ],
+          [
+            0.0,
+            4.0
+          ],
+          [
+            0.0,
+            0.0
+          ]
+        ]
+      },
+      "k": 16,
+      "mu_gap_vs_sqrt_k": 0.0,
+      "ratio_gap_vs_full": 0.0,
+      "sqrt_k": 4.0
+    },
+    {
+      "best_one_block": {
+        "achieved_ratio": 0.4722222222222222,
+        "determinant": 17,
+        "matrix": [
+          [
+            -5,
+            -4
+          ],
+          [
+            3,
+            -1
+          ]
+        ],
+        "required_capacity_mu": 6.0,
+        "translation": [
+          5.0,
+          1.0
+        ],
+        "triangle_vertices": [
+          [
+            5.0,
+            1.0
+          ],
+          [
+            0.0,
+            4.0
+          ],
+          [
+            1.0,
+            0.0
+          ]
+        ]
+      },
+      "k": 17,
+      "mu_gap_vs_sqrt_k": 1.8768943743823394,
+      "ratio_gap_vs_full": 0.5277777777777778,
+      "sqrt_k": 4.123105625617661
+    },
+    {
+      "best_one_block": {
+        "achieved_ratio": 0.5,
+        "determinant": 18,
+        "matrix": [
+          [
+            -6,
+            -6
+          ],
+          [
+            3,
+            0
+          ]
+        ],
+        "required_capacity_mu": 6.0,
+        "translation": [
+          6.0,
+          0.0
+        ],
+        "triangle_vertices": [
+          [
+            6.0,
+            0.0
+          ],
+          [
+            0.0,
+            3.0
+          ],
+          [
+            0.0,
+            0.0
+          ]
+        ]
+      },
+      "k": 18,
+      "mu_gap_vs_sqrt_k": 1.7573593128807152,
+      "ratio_gap_vs_full": 0.5,
+      "sqrt_k": 4.242640687119285
+    },
+    {
+      "best_one_block": {
+        "achieved_ratio": 0.5277777777777778,
+        "determinant": 19,
+        "matrix": [
+          [
+            -6,
+            -5
+          ],
+          [
+            5,
+            1
+          ]
+        ],
+        "required_capacity_mu": 6.0,
+        "translation": [
+          6.0,
+          0.0
+        ],
+        "triangle_vertices": [
+          [
+            6.0,
+            0.0
+          ],
+          [
+            0.0,
+            5.0
+          ],
+          [
+            1.0,
+            1.0
+          ]
+        ]
+      },
+      "k": 19,
+      "mu_gap_vs_sqrt_k": 1.641101056459326,
+      "ratio_gap_vs_full": 0.4722222222222222,
+      "sqrt_k": 4.358898943540674
+    },
+    {
+      "best_one_block": {
+        "achieved_ratio": 0.8,
+        "determinant": 20,
+        "matrix": [
+          [
+            -5,
+            -5
+          ],
+          [
+            4,
+            0
+          ]
+        ],
+        "required_capacity_mu": 5.0,
+        "translation": [
+          5.0,
+          0.0
+        ],
+        "triangle_vertices": [
+          [
+            5.0,
+            0.0
+          ],
+          [
+            0.0,
+            4.0
+          ],
+          [
+            0.0,
+            0.0
+          ]
+        ]
+      },
+      "k": 20,
+      "mu_gap_vs_sqrt_k": 0.5278640450004204,
+      "ratio_gap_vs_full": 0.19999999999999996,
+      "sqrt_k": 4.47213595499958
+    }
+  ]
+}

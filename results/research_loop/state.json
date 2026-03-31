@@ -1,23 +1,23 @@
 {
   "version": "1.1",
   "created_at": "2026-03-31T14:22:51.477190+00:00",
-  "updated_at": "2026-03-31T14:51:01.234114+00:00",
+  "updated_at": "2026-03-31T15:20:55.941922+00:00",
   "status": "running",
   "current_stage": "research_loop",
   "attempt_count": 3,
   "session_count": 3,
   "last_exit_code": 0,
   "current_attempt_id": "attempt_003",
-  "best_attempt_id": "attempt_002",
-  "best_score": 0.44,
-  "current_hypothesis": "The right benchmark for this problem is the geometric/algebraic equal-ball packing theory of B^4: Cremona reduction should show that the task regime k>=10 has full abstract packing, so the repository's current Hamiltonian fails for constructive reasons rather than because of a packing obstruction.",
+  "best_attempt_id": "attempt_003",
+  "best_score": 0.56,
+  "current_hypothesis": "A constructive solution should come from toric/action-angle packings rather than global optimization, but the naive square-grid and one-block versions are too rigid; the promising path is richer multi-block toric layouts combined with a smooth slit-disk regularization that can be promoted to a Hamiltonian-piece construction.",
   "ready_for_paper": false,
-  "stop_reason": "Abstract packing benchmark established; no obstruction remains for k>=10, so the next work should focus on an explicit localized construction rather than obstruction analysis.",
+  "stop_reason": "Explicit toric constructive baselines now exist, including a k=10 witness with ratio about 0.6925, but the family is still far from arbitrary 1-epsilon density and has not yet been converted into a smooth global Hamiltonian.",
   "paper_generated": false,
   "review_verdict": null,
   "last_summary": {
-    "worked": "Implemented src/ball_packing_bounds.py, a reusable equal-ball packing calculator based on standard Cremona reduction. The code reproduced the classical small-k packing fractions exactly to numerical tolerance, including 3/4 for k=3, 20/25 for k=5, 24/25 for k=6, 63/64 for k=7, 288/289 for k=8, and full packing for k>=9. For k=10 it computed the full-packing infimum capacity mu=sqrt(10), and for every tested eps the task target mu=sqrt(10/(1-eps)) was already reduced with positive square. This shows the task regime k>=10 has no abstract packing obstruction. It also quantified the constructive gap: the audited repository Hamiltonian has effective mu about 28.415, roughly 9x the theoretical full-packing threshold sqrt(10).",
-    "did_not_work": "This attempt did not yet turn the abstract packing certificate into an explicit smooth Hamiltonian generator. I also could not use Semantic Scholar MCP directly because the runtime proxy returned HTTP 429 throughout the session, so I used fallback web retrieval and recorded the sources locally. I did not yet build the toric/simplex or compactly supported local Hamiltonian construction that the reduction benchmark suggests should be possible.",
-    "next_step": "Use the new reduction benchmark to drive an explicit construction attempt, preferably a toric/simplex or localized Hamiltonian-piece method, starting with k=10 and small eps where the target capacity mu is only slightly above sqrt(10)."
+    "worked": "Implemented three constructive toric tools under src/: explicit_square_packing.py, toric_linear_family.py, and axis_block_packing_search.py. The square-slot construction was verified exactly to machine precision, giving ratio 0.625 for k=10 and exact full packing for the square case k=16. The one-block toric covering search showed that simple determinant-k blocks are exact on perfect squares but poor for k=10, where the best one-block ratio is only 0.4. The multi-block axis-aligned toric search then found a concrete k=10 arrangement with partition 1+2+3+4 inside Delta(3.8), improving the constructive ratio to about 0.6925.",
+    "did_not_work": "The attempt still does not reach the task regime of arbitrary 1-epsilon density and still does not produce the required explicit smooth Hamiltonian. The best k=10 witness found here uses mu=3.8, which remains well above sqrt(10), and the current maps are still expressed in singular action-angle coordinates rather than as a smooth Hamiltonian on all of R^4.",
+    "next_step": "Regularize the toric construction with a smooth slit-disk or Traynor-style chart and extend the combinatorial search beyond axis-aligned blocks to non-axis Delzant triangles and richer multi-block layouts, starting again from k=10."
   }
 }

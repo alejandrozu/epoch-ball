@@ -1,0 +1,12 @@
+{
+  "k": 16,
+  "l": 4,
+  "max_excess_over_predicted_radius": 7.105427357601002e-15,
+  "n_pts_per_ball": 4000,
+  "predicted_ratio": 1.0,
+  "sampled_radius": 2.000000000000007,
+  "sampled_ratio": 0.9999999999999858,
+  "seed": 123,
+  "target_capacity_mu": 4.0,
+  "target_radius": 2.0
+}
