@@ -1,0 +1,12 @@
+# Archivara runtime files
+.env
+.env.*
+.env.local
+*.key
+*.pem
+.archivara/
+__pycache__/
+*.pyc
+TASK_*.md
+agent_*.log
+orchestration.log
